@@ -1,0 +1,91 @@
+@startuml
+class Pile {
+  -items : Item *
+  -nb 
+  -nbMax
+  -nbAffiche
+  -message : string 
+  +void AgrandissementCapacite ()
+  +Pile() 
+  +void Affiche () const
+  +void push ()
+  +void pop ()
+  +bool estVide () const
+  +size-t estvide () const
+  +Expression& top () const 
+  +void SetMessage (const )
+  +string getMessage () const 
+  +void setnbitemstoaffiche ()
+  ~Pile ()
+}
+
+class Controleur {
+  +ExpressionManager& expmng
+  +Pile& expAff ()
+  +Controleur ()
+  +void Commande (const )
+  +void executer ();
+}
+
+class Item{
+  -exp: Expression*
+  +Item()
+  +void SetExpression ()
+  +Expression& getExpression () 
+  +const Expression& getExpression const ()
+  +raz()
+}
+
+class Expression{
+  -int value; 
+  +Expression()
+  +int getValue () const
+  ~Expression ()
+  +Expression(const Expression&)
+  +Expression& operator=(const Expression&)
+}
+
+class ComputerException {
+  +info: string
+  +ComputerException
+  +string getInfo() const
+}
+
+class ExpressionManager {
+  -exps: Expression**
+  -nb
+  -nbMax
+  +void agrandissementCapacite() 
+  +ExpressionManager()
+  + Expression& addExpression ()
+  +void RemoveExpression(Expression& e)
+  +~ExpressionManager() 
+  +ExpressionManager(const ExpressionManager& e) 
+  +ExpressionManager& operator=(const ExpressionManager& e)
+}
+
+class LitteraleManager{}
+
+class Litterale{
+  
+}
+
+class Lprogramme{}
+class Lnumerique{}
+note top 
+Lnumerique -> entière, réelle, rationnelle
+end note
+
+class Lexpression{}
+class Latome {}
+
+ExpressionManager "1" -- "0..*" Expression
+LitteraleManager "1" -- "0..*" Litterale
+Pile "1" -- "0..*" Item
+Litterale <|--  Lprogramme
+Litterale <|--  Lnumerique
+Litterale <|--  Lexpression
+Litterale <|-- Latome 
+
+
+@enduml
