@@ -8,9 +8,9 @@
 
 //#include <QtUiTools>
 
-MainWindow::MainWindow(QWidget *parent)
+Mainwindow::Mainwindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    , ui(new Ui::Mainwindow)
 {
     ui->setupUi(this);
     ui->LeftColumn->addWidget(new Pile(this));
@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->RightColumn->addWidget(new Varsprogs(this));
 }
 
-MainWindow::~MainWindow()
+Mainwindow::~Mainwindow()
 {
     delete ui;
 }
