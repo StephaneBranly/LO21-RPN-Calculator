@@ -18,6 +18,9 @@ class Pile {
   +void setnbitemstoaffiche ()
   ~Pile ()
 }
+note top 
+singleton , choisir le mode d'implémentation
+end note
 
 class Controleur {
   +ExpressionManager& expmng
@@ -27,9 +30,9 @@ class Controleur {
   +void executer ();
 }
 
-Controleur-->Pile 
 
 
+Controleur-->Pile
 
 class Item{
   -exp: Expression*
@@ -51,10 +54,11 @@ class ComputerException {
 class LitteraleManager{
 -litt: Litterale**
 }
-
+note top 
+singleton
+end note
 
 class Litterale{
-  
 }
 
 class Lprogramme{}
@@ -66,13 +70,14 @@ end note
 class Lexpression{}
 class Latome {}
 
-
 LitteraleManager "1" *-- "0..*" Litterale
 Pile "1" *-- "0..*" Item
 Litterale <|--  Lprogramme
 Litterale <|--  Lnumerique
 Litterale <|--  Lexpression
 Litterale <|-- Latome 
+
+
 
 
 @enduml
