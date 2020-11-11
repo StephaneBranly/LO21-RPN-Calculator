@@ -33,7 +33,7 @@ sur l'écran. Il doit aussi avertir les objets liés à cet input : pile, calcul
 end note 
 
 Controleur-->Pile 
-Controleur-->ExpressionManager
+
 
 
 class Item{
@@ -45,40 +45,13 @@ class Item{
   +raz()
 }
 
-Item o-- Expression 
-
-
-class Expression{
-  -int value; 
-  +Expression()
-  +int getValue () const
-  ~Expression ()
-  +Expression(const Expression&)
-  +Expression& operator=(const Expression&)
-}
+Item o-- Litterale
 
 class ComputerException {
   +info: string
   +ComputerException
   +string getInfo() const
 }
-
-class ExpressionManager {
-  -exps: Expression**
-  -nb
-  -nbMax
-  +void agrandissementCapacite() 
-  -ExpressionManager()
-  + Expression& addExpression ()
-  +void RemoveExpression(Expression& e)
-  -~ExpressionManager() 
-  -ExpressionManager(const ExpressionManager& e) 
-  -ExpressionManager& operator=(const ExpressionManager& e)
-}
-note top 
-c'est un singleton et il nous faut un iterator sur le tableau expression**
-choisir quel type de singleton on veut implémenter, de même quel iterator? 
-end note
 
 class LitteraleManager{
 -litt: Litterale**
@@ -99,8 +72,6 @@ class Lexpression{}
 class Latome {}
 
 
-
-ExpressionManager "1" *-- "0..*" Expression
 LitteraleManager "1" *-- "0..*" Litterale
 Pile "1" *-- "0..*" Item
 Litterale <|--  Lprogramme
