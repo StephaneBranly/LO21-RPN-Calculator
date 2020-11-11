@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Mainwindow</class>
+ <widget class="QMainWindow" name="Mainwindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Comp'UT</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <layout class="QVBoxLayout" name="LeftColumn"/>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="RightColumn"/>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFichier">
+    <property name="title">
+     <string>Fichier</string>
+    </property>
+    <widget class="QMenu" name="menuNouveau">
+     <property name="title">
+      <string>Nouveau</string>
+     </property>
+     <addaction name="actionProgramme"/>
+     <addaction name="actionContexte_2"/>
+    </widget>
+    <widget class="QMenu" name="menuSauvegarder">
+     <property name="title">
+      <string>Sauvegarder</string>
+     </property>
+     <addaction name="actionProgramme_2"/>
+     <addaction name="actionContexte_3"/>
+    </widget>
+    <addaction name="menuNouveau"/>
+    <addaction name="actionOuvrir"/>
+    <addaction name="menuSauvegarder"/>
+   </widget>
+   <widget class="QMenu" name="menuOptions">
+    <property name="title">
+     <string>Options</string>
+    </property>
+   </widget>
+   <addaction name="menuFichier"/>
+   <addaction name="menuOptions"/>
+  </widget>
+  <action name="actionOuvrir_contexte">
+   <property name="text">
+    <string>Ouvrir contexte</string>
+   </property>
+  </action>
+  <action name="actionSauvegarder_contexte">
+   <property name="text">
+    <string>Sauvegarder contexte</string>
+   </property>
+  </action>
+  <action name="actionProgramme">
+   <property name="text">
+    <string>Programme</string>
+   </property>
+  </action>
+  <action name="actionContexte_2">
+   <property name="text">
+    <string>Contexte</string>
+   </property>
+  </action>
+  <action name="actionOuvrir">
+   <property name="text">
+    <string>Ouvrir</string>
+   </property>
+  </action>
+  <action name="actionProgramme_2">
+   <property name="text">
+    <string>Programme</string>
+   </property>
+  </action>
+  <action name="actionContexte_3">
+   <property name="text">
+    <string>Contexte</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
