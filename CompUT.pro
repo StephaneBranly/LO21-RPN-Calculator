@@ -13,7 +13,7 @@ FORMS += \
     src/interface/widgets/commandline/Commandline.ui \
     src/interface/widgets/keyboard/Keyboard.ui \
     src/interface/widgets/pile/Pile.ui \
-    src/interface/widgets/varsprogs/varsprogs.ui
+    src/interface/widgets/varsprogs/Varsprogs.ui
 
 HEADERS += \
     src/interface/mainwindow.h \
