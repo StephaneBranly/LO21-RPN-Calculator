@@ -27,11 +27,6 @@ class Controleur {
   +void executer ();
 }
 
-note 
-un objet T et chargé de lire ce qu'on écrit dans le "input" via l'entrée Qt. Lorsque l'entrée change, T doit avertir l'objet chargé de l'affichage de cette modification 
-sur l'écran. Il doit aussi avertir les objets liés à cet input : pile, calcul etc.
-end note 
-
 Controleur-->Pile 
 
 
