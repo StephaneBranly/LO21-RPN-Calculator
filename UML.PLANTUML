@@ -1,9 +1,9 @@
 @startuml
 class Pile {
   -items : Item *
-  -nb 
-  -nbMax
-  -nbAffiche
+  -nb: size-t
+  -nbMax; size-t
+  -nbAffiche: size-t
   -message : string 
   +void AgrandissementCapacite ()
   +Pile() 
@@ -27,6 +27,15 @@ class Controleur {
   +void executer ();
 }
 
+note 
+un objet T et chargé de lire ce qu'on écrit dans le "input" via l'entrée Qt. Lorsque l'entrée change, T doit avertir l'objet chargé de l'affichage de cette modification 
+sur l'écran. Il doit aussi avertir les objets liés à cet input : pile, calcul etc.
+end note 
+
+Controleur-->Pile 
+Controleur-->ExpressionManager
+
+
 class Item{
   -exp: Expression*
   +Item()
@@ -35,6 +44,9 @@ class Item{
   +const Expression& getExpression const ()
   +raz()
 }
+
+Item o-- Expression 
+
 
 class Expression{
   -int value; 
@@ -56,15 +68,22 @@ class ExpressionManager {
   -nb
   -nbMax
   +void agrandissementCapacite() 
-  +ExpressionManager()
+  -ExpressionManager()
   + Expression& addExpression ()
   +void RemoveExpression(Expression& e)
-  +~ExpressionManager() 
-  +ExpressionManager(const ExpressionManager& e) 
-  +ExpressionManager& operator=(const ExpressionManager& e)
+  -~ExpressionManager() 
+  -ExpressionManager(const ExpressionManager& e) 
+  -ExpressionManager& operator=(const ExpressionManager& e)
+}
+note top 
+c'est un singleton et il nous faut un iterator sur le tableau expression**
+choisir quel type de singleton on veut implémenter, de même quel iterator? 
+end note
+
+class LitteraleManager{
+-litt: Litterale**
 }
 
-class LitteraleManager{}
 
 class Litterale{
   
@@ -79,9 +98,11 @@ end note
 class Lexpression{}
 class Latome {}
 
-ExpressionManager "1" -- "0..*" Expression
-LitteraleManager "1" -- "0..*" Litterale
-Pile "1" -- "0..*" Item
+
+
+ExpressionManager "1" *-- "0..*" Expression
+LitteraleManager "1" *-- "0..*" Litterale
+Pile "1" *-- "0..*" Item
 Litterale <|--  Lprogramme
 Litterale <|--  Lnumerique
 Litterale <|--  Lexpression
