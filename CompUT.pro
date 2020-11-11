@@ -9,11 +9,11 @@ SOURCES += \
     src/interface/widgets/varsprogs/varsprogs.cpp
 
 FORMS += \
-    src/interface/Mainwindow.ui \
-    src/interface/widgets/commandline/Commandline.ui \
-    src/interface/widgets/keyboard/Keyboard.ui \
-    src/interface/widgets/pile/Pile.ui \
-    src/interface/widgets/varsprogs/Varsprogs.ui
+    src/interface/mainwindow.ui \
+    src/interface/widgets/commandline/commandline.ui \
+    src/interface/widgets/keyboard/keyboard.ui \
+    src/interface/widgets/pile/pile.ui \
+    src/interface/widgets/varsprogs/varsprogs.ui
 
 HEADERS += \
     src/interface/mainwindow.h \
