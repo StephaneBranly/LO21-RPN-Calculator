@@ -70,6 +70,9 @@ end note
 class Lexpression{}
 class Latome {}
 
+class varprog {}
+note : stocker un programme utilisateur ou une variable utilisateur 
+
 LitteraleManager "1" *-- "0..*" Litterale
 Pile "1" *-- "0..*" Item
 Litterale <|--  Lprogramme
