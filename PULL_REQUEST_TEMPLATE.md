@@ -12,6 +12,7 @@
 ## Reviews
 
 - commenter le code et dire si les nouvelles features fonctionnent biens ainsi que les anciennes
+  (voir les fichiers modifies dans l'onglet "Files changed" de la PR, puis "Approve" disponible dans "Review changes")
 - si il y a des modifications a faire, l'auteur de la PR fait les maj, et le reviewer reteste en mettant a jour son code local avec `git pull` (recommencer tant que le code ne peut pas etre "approve")
 
 ## Merge
