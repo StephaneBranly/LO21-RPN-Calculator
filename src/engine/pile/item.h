@@ -1,12 +1,7 @@
 #ifndef ITEM_H
 #define ITEM_H
 
-#include <QtWidgets>
-
-QT_BEGIN_NAMESPACE
-namespace Engine { class Item; }
-QT_END_NAMESPACE
-
+namespace Engine  {
 class Item {
 public :
     Item() =default;
@@ -20,6 +15,6 @@ public :
 private :
     Litterale* lit = nullptr;
 };
-
+}
 
 #endif // ITEM_H

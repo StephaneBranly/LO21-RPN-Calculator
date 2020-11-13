@@ -1,12 +1,9 @@
 #ifndef PILE_H
 #define PILE_H
 
-#include <QtWidgets>
 #include <string>
 
-QT_BEGIN_NAMESPACE
-namespace Engine { class Pile; }
-QT_END_NAMESPACE
+namespace  Engine {
 
 class Pile {
 
@@ -43,5 +40,6 @@ private:
 
 
 };
+}
 
 #endif // PILE_H
