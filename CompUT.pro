@@ -2,6 +2,7 @@ QT += widgets
 
 SOURCES += \
     main.cpp \
+    src/connector/connector.cpp \
     src/interface/mainwindow.cpp \
     src/interface/widgets/commandline/commandline.cpp \
     src/interface/widgets/keyboard/keyboard.cpp \
@@ -18,6 +19,7 @@ FORMS += \
     src/interface/widgets/varsprogs/varsprogs.ui \
 
 HEADERS += \
+    src/connector/connector.h \
     src/interface/mainwindow.h \
     src/interface/widgets/commandline/commandline.h \
     src/interface/widgets/keyboard/keyboard.h \

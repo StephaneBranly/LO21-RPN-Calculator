@@ -1,19 +1,22 @@
 #include "subject.h"
 #include "observer.h"
 
-void Subject::notify()
+#include <string>
+#include <QtDebug>
+
+void Subject::notify(const std::string& message)
 {
     std::list<Observer *>::iterator iterator = listObserver.begin();
     while (iterator != listObserver.end()) {
-      (*iterator)->notify("hello");
+      (*iterator)->notify(message);
       ++iterator;
     }
 };
-void Subject::attach(Observer* o)
+void Subject::attach(Observer* obs)
 {
-    listObserver.push_back(o);
+    listObserver.push_back(obs);
 };
-void Subject::detach(Observer* o)
+void Subject::detach(Observer* obs)
 {
-    listObserver.remove(o);
+    listObserver.remove(obs);
 };

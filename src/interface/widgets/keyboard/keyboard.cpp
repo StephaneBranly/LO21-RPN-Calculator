@@ -6,6 +6,8 @@ Keyboard::Keyboard(QWidget *parent)
     , ui(new Ui::Keyboard)
 {
     ui->setupUi(this);
+
+    connect(ui->ButtonEval, SIGNAL(clicked()),parent,SLOT(clickEval()));
 }
 
 Keyboard::~Keyboard()
