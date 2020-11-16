@@ -5,9 +5,9 @@
 class Subject
 {
 public:
-    virtual void Notify() = 0;
-    virtual void Attach(Observer* o) = 0;
-    virtual void Detach(Observer* o) = 0;
+    void notify();
+    void attach(Observer* o);
+    void detach(Observer* o);
 
 private:
     std::list<Observer *> listObserver;

@@ -1,19 +1,19 @@
 #include "subject.h"
 #include "observer.h"
 
-void Subject::Notify()
+void Subject::notify()
 {
     std::list<Observer *>::iterator iterator = listObserver.begin();
     while (iterator != listObserver.end()) {
-      (*iterator)->Notify("hello");
+      (*iterator)->notify("hello");
       ++iterator;
     }
 };
-void Subject::Attach(Observer* o)
+void Subject::attach(Observer* o)
 {
     listObserver.push_back(o);
 };
-void Subject::Detach(Observer* o)
+void Subject::detach(Observer* o)
 {
     listObserver.remove(o);
 };
