@@ -7,6 +7,8 @@ SOURCES += \
     src/interface/widgets/keyboard/keyboard.cpp \
     src/interface/widgets/pile/pile.cpp \
     src/interface/widgets/varsprogs/varsprogs.cpp \
+    src/observer/observer.cpp \
+    src/observer/subject.cpp
 
 FORMS += \
     src/interface/mainwindow.ui \
@@ -24,3 +26,5 @@ HEADERS += \
     src/engine/pile/pile.h \
     src/engine/pile/item.h \
     src/engine/pile/pile.h \
+    src/observer/observer.h \
+    src/observer/subject.h
