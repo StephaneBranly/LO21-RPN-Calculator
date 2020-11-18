@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QMainWindow>
+#include <QSignalMapper>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class KeyboardNumeric; }
@@ -16,12 +17,14 @@ public:
     KeyboardNumeric(QMainWindow *parent = nullptr);
     ~KeyboardNumeric();
 
+
 private:
     Ui::KeyboardNumeric *ui;
     QDockWidget* dock;
+    QSignalMapper* signalMapper;
 
 public slots:
     void toggleDock();
-
 };
+
 #endif // KEYBOARD

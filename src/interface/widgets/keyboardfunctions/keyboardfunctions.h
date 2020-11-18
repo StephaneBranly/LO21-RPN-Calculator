@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QMainWindow>
+#include <QSignalMapper>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class KeyboardFunctions; }
@@ -19,6 +20,7 @@ public:
 private:
     Ui::KeyboardFunctions *ui;
     QDockWidget* dock;
+    QSignalMapper* signalMapper;
 
 public slots:
     void toggleDock();

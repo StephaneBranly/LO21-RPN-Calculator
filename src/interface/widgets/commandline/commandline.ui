@@ -29,7 +29,7 @@
    <item row="0" column="0">
     <layout class="QGridLayout" name="gridLayout">
      <item row="0" column="0">
-      <widget class="QLineEdit" name="CommandLine">
+      <widget class="QLineEdit" name="TextEdit">
        <property name="clearButtonEnabled">
         <bool>true</bool>
        </property>

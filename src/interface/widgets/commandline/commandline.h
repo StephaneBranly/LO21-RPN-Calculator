@@ -14,6 +14,8 @@ class Commandline : public QWidget
 public:
     Commandline(QWidget *parent = nullptr);
     ~Commandline();
+    void addText(const QString str);
+    QString getText() const;
 
 private:
     Ui::Commandline *ui;

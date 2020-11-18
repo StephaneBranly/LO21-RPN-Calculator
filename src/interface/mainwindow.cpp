@@ -23,6 +23,7 @@ Mainwindow::Mainwindow(QWidget *parent)
     programmes = new Programmes(this);
     variables = new Variables(this);
     keyboardnumeric = new KeyboardNumeric(this);
+
     connect(ui->a_keyboardnumeric, SIGNAL(changed()),keyboardnumeric,SLOT(toggleDock()));
     connect(ui->a_keyboardfunctions, SIGNAL(changed()),keyboardfunctions,SLOT(toggleDock()));
     connect(ui->a_programmes, SIGNAL(changed()),programmes,SLOT(toggleDock()));
@@ -47,4 +48,8 @@ Mainwindow::~Mainwindow()
 void Mainwindow::clickEval()
 {
     notify("clickEval");
+}
+void Mainwindow::addToCommandline(QString str)
+{
+    commandline->addText(str);
 }

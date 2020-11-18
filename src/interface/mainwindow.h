@@ -37,5 +37,6 @@ private:
 
 public slots:
     void clickEval();
+    void addToCommandline(QString str);
 };
 #endif // MAINWINDOW_H

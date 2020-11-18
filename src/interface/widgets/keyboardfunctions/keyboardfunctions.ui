@@ -6,22 +6,133 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>200</width>
-    <height>100</height>
+    <width>376</width>
+    <height>423</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="spacing">
+      <number>0</number>
+     </property>
      <item>
-      <widget class="QPushButton" name="pushButton">
-       <property name="text">
-        <string>FUNCTIONS</string>
-       </property>
-      </widget>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QPushButton" name="ButtonDUP">
+         <property name="text">
+          <string>DUP</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="ButtonSWAP">
+         <property name="text">
+          <string>SWAP</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="ButtonCLEAR">
+         <property name="text">
+          <string>CLEAR</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QPushButton" name="ButtonDROP">
+         <property name="text">
+          <string>DROP</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="ButtonLC">
+         <property name="text">
+          <string>[</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="ButtonRC">
+         <property name="text">
+          <string>]</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QPushButton" name="ButtonPOW">
+         <property name="text">
+          <string>POW</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="ButtonDIV">
+         <property name="text">
+          <string>DIV</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="ButtonMOD">
+         <property name="text">
+          <string>MOD</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <item>
+        <widget class="QPushButton" name="ButtonFORGET">
+         <property name="text">
+          <string>FORGET</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="ButtonSTO">
+         <property name="text">
+          <string>STO</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="ButtonIFT">
+         <property name="text">
+          <string>IFT</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
    </item>
