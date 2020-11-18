@@ -13,17 +13,16 @@
   <property name="windowTitle">
    <string>Comp'UT</string>
   </property>
+  <property name="dockNestingEnabled">
+   <bool>true</bool>
+  </property>
+  <property name="dockOptions">
+   <set>QMainWindow::AllowNestedDocks|QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks|QMainWindow::ForceTabbedDocks|QMainWindow::VerticalTabs</set>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <layout class="QVBoxLayout" name="LeftColumn"/>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="RightColumn"/>
-      </item>
-     </layout>
+     <layout class="QVBoxLayout" name="mainLayout"/>
     </item>
    </layout>
   </widget>

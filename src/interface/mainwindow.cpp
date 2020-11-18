@@ -8,6 +8,7 @@
 
 //#include <QtUiTools>
 #include <QDebug>
+#include <QDockWidget>
 
 Mainwindow::Mainwindow(QWidget *parent)
     : QMainWindow(parent)
@@ -18,10 +19,16 @@ Mainwindow::Mainwindow(QWidget *parent)
     pile = new Pile(this);
     commandline = new Commandline(this);
     keyboard = new Keyboard(this);
-    ui->LeftColumn->addWidget(pile);
-    ui->LeftColumn->addWidget(commandline);
-    ui->LeftColumn->addWidget(keyboard);
-    ui->RightColumn->addWidget(new Varsprogs(this));
+
+    QDockWidget *dockKeyboard = new QDockWidget(this);
+    dockKeyboard->setWidget(keyboard);
+    addDockWidget(Qt::BottomDockWidgetArea, dockKeyboard);
+
+    ui->mainLayout->addWidget(pile);
+    ui->mainLayout->addWidget(commandline);
+//    ui->LeftColumn->addWidget(commandline);
+//    ui->LeftColumn->addWidget(keyboard);
+//    ui->RightColumn->addWidget(new Varsprogs(this));
 }
 
 Mainwindow::~Mainwindow()
