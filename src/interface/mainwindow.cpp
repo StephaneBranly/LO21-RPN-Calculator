@@ -7,7 +7,6 @@
 #include "widgets/variables/variables.h"
 #include "widgets/programmes/programmes.h"
 
-//#include <QtUiTools>
 #include <QDebug>
 #include <QDockWidget>
 
@@ -23,23 +22,18 @@ Mainwindow::Mainwindow(QWidget *parent)
     programmes = new Programmes(this);
     variables = new Variables(this);
 
-    QDockWidget *dockKeyboard = new QDockWidget(this);
-    dockKeyboard->setWidget(keyboard);
-    addDockWidget(Qt::BottomDockWidgetArea, dockKeyboard);
-
-    QDockWidget *dockProgrammes = new QDockWidget(this);
-    dockProgrammes->setWidget(programmes);
-    addDockWidget(Qt::RightDockWidgetArea, dockProgrammes);
-
-    QDockWidget *dockVariables = new QDockWidget(this);
-    dockVariables->setWidget(variables);
-    addDockWidget(Qt::RightDockWidgetArea, dockVariables);
+    connect(ui->actionClavier_numerique, SIGNAL(changed()),keyboard,SLOT(toggleDock()));
+    connect(ui->actionProgrammes, SIGNAL(changed()),programmes,SLOT(toggleDock()));
+    connect(ui->actionVariables, SIGNAL(changed()),variables,SLOT(toggleDock()));
 
     ui->mainLayout->addWidget(pile);
     ui->mainLayout->addWidget(commandline);
+
 //    ui->LeftColumn->addWidget(commandline);
 //    ui->LeftColumn->addWidget(keyboard);
 //    ui->RightColumn->addWidget(new Varsprogs(this));
+
+
 }
 
 Mainwindow::~Mainwindow()

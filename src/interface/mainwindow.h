@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QDockWidget>
+
 #include "../observer/subject.h"
 
 #include "widgets/keyboard/keyboard.h"
@@ -27,8 +29,11 @@ private:
     Commandline* commandline;
     Pile* pile;
     Keyboard* keyboard;
+    QDockWidget* dockkeyboard;
     Programmes* programmes;
+    QDockWidget* dockprogrammes;
     Variables* variables;
+    QDockWidget* dockvariables;
 
 public slots:
     void clickEval();

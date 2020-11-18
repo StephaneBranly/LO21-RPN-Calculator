@@ -2,6 +2,7 @@
 #define KEYBOARD_H
 
 #include <QWidget>
+#include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Keyboard; }
@@ -12,10 +13,15 @@ class Keyboard : public QWidget
     Q_OBJECT
 
 public:
-    Keyboard(QWidget *parent = nullptr);
+    Keyboard(QMainWindow *parent = nullptr);
     ~Keyboard();
 
 private:
     Ui::Keyboard *ui;
+    QDockWidget* dock;
+
+public slots:
+    void toggleDock();
+
 };
 #endif // KEYBOARD

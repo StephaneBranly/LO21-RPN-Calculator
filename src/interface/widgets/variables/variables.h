@@ -2,6 +2,7 @@
 #define VARIABLES_H
 
 #include <QWidget>
+#include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Variables; }
@@ -12,11 +13,15 @@ class Variables : public QWidget
     Q_OBJECT
 
 public:
-    Variables(QWidget *parent = nullptr);
+    Variables(QMainWindow *parent = nullptr);
     ~Variables();
 
 private:
     Ui::Variables *ui;
+    QDockWidget* dock;
+
+public slots:
+    void toggleDock();
 };
 
 #endif // VARIABLES_H
