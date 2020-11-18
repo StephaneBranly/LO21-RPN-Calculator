@@ -7,7 +7,8 @@
 #include "widgets/keyboard/keyboard.h"
 #include "widgets/pile/pile.h"
 #include "widgets/commandline/commandline.h"
-#include "widgets/varsprogs/varsprogs.h"
+#include "widgets/variables/variables.h"
+#include "widgets/programmes/programmes.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Mainwindow; }
@@ -26,6 +27,8 @@ private:
     Commandline* commandline;
     Pile* pile;
     Keyboard* keyboard;
+    Programmes* programmes;
+    Variables* variables;
 
 public slots:
     void clickEval();
