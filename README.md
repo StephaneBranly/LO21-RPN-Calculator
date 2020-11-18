@@ -8,9 +8,15 @@ Projet dans le cadre de l'UV LO21 "Programmation et conception orientees objet" 
 
 ## Ajouter une feature / branche
 
+### Creer sa branche
 - `git checkout main`
 - `git pull`
 - `git checkout -b nomBranche`
+
+### Sequencer l'ajout de contenu en commit
+- `git add .`
+- `git commit -m "Description du commit"`
+- `git push`
 
 ## Quelques infos dans le tas :
 

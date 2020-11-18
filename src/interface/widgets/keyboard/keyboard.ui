@@ -27,12 +27,12 @@
     <number>0</number>
    </property>
    <item row="0" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,0,0">
+    <layout class="QHBoxLayout" name="HL" stretch="0,0,0,0">
      <property name="spacing">
       <number>-1</number>
      </property>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_4">
+      <layout class="QVBoxLayout" name="V1">
        <item>
         <widget class="QPushButton" name="Button7">
          <property name="text">
@@ -64,7 +64,7 @@
       </layout>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
+      <layout class="QVBoxLayout" name="V2">
        <item>
         <widget class="QPushButton" name="Button8">
          <property name="text">
@@ -99,7 +99,7 @@
       </layout>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
+      <layout class="QVBoxLayout" name="V3">
        <item>
         <widget class="QPushButton" name="Button9">
          <property name="text">
@@ -134,7 +134,7 @@
       </layout>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
+      <layout class="QVBoxLayout" name="V4">
        <item>
         <widget class="QPushButton" name="ButtonPlus">
          <property name="styleSheet">
