@@ -6,7 +6,7 @@
 
 #include "../observer/subject.h"
 
-#include "widgets/keyboard/keyboard.h"
+#include "widgets/keyboardnumeric/keyboardnumeric.h"
 #include "widgets/pile/pile.h"
 #include "widgets/commandline/commandline.h"
 #include "widgets/variables/variables.h"
@@ -28,7 +28,7 @@ private:
     Ui::Mainwindow *ui;
     Commandline* commandline;
     Pile* pile;
-    Keyboard* keyboard;
+    KeyboardNumeric* keyboardnumeric;
     QDockWidget* dockkeyboard;
     Programmes* programmes;
     QDockWidget* dockprogrammes;

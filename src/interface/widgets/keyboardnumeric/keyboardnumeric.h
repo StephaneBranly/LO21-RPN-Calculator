@@ -5,19 +5,19 @@
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class Keyboard; }
+namespace Ui { class KeyboardNumeric; }
 QT_END_NAMESPACE
 
-class Keyboard : public QWidget
+class KeyboardNumeric : public QWidget
 {
     Q_OBJECT
 
 public:
-    Keyboard(QMainWindow *parent = nullptr);
-    ~Keyboard();
+    KeyboardNumeric(QMainWindow *parent = nullptr);
+    ~KeyboardNumeric();
 
 private:
-    Ui::Keyboard *ui;
+    Ui::KeyboardNumeric *ui;
     QDockWidget* dock;
 
 public slots:

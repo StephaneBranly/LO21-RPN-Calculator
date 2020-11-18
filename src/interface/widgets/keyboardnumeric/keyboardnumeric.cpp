@@ -1,12 +1,12 @@
-#include "keyboard.h"
-#include "ui_keyboard.h"
+#include "keyboardnumeric.h"
+#include "ui_keyboardnumeric.h"
 
 #include <QDockWidget>
 #include <QMainWindow>
 
-Keyboard::Keyboard(QMainWindow *parent)
+KeyboardNumeric::KeyboardNumeric(QMainWindow *parent)
     : QWidget(parent)
-    , ui(new Ui::Keyboard)
+    , ui(new Ui::KeyboardNumeric)
 {
     ui->setupUi(this);
 
@@ -17,14 +17,12 @@ Keyboard::Keyboard(QMainWindow *parent)
     connect(ui->ButtonEval, SIGNAL(clicked()),parent,SLOT(clickEval()));
 }
 
-Keyboard::~Keyboard()
+KeyboardNumeric::~KeyboardNumeric()
 {
     delete ui;
 }
 
-
-
-void Keyboard::toggleDock()
+void KeyboardNumeric::toggleDock()
 {
         dock->setHidden(!dock->isHidden());
 }

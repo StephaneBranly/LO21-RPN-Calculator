@@ -12,7 +12,7 @@ Programmes::Programmes(QMainWindow *parent)
 
     dock = new QDockWidget(parent);
     dock->setWidget(this);
-    parent->addDockWidget(Qt::BottomDockWidgetArea, dock);
+    parent->addDockWidget(Qt::RightDockWidgetArea, dock);
 }
 
 Programmes::~Programmes()
