@@ -40,9 +40,10 @@
     <property name="title">
      <string>Interface</string>
     </property>
-    <addaction name="actionClavier_numerique"/>
-    <addaction name="actionVariables"/>
-    <addaction name="actionProgrammes"/>
+    <addaction name="a_keyboardnumeric"/>
+    <addaction name="a_keyboardfunctions"/>
+    <addaction name="a_variables"/>
+    <addaction name="a_programmes"/>
     <addaction name="actionOptions_pile"/>
    </widget>
    <addaction name="menuInterface"/>
@@ -82,7 +83,7 @@
     <string>Contexte</string>
    </property>
   </action>
-  <action name="actionClavier_numerique">
+  <action name="a_keyboardnumeric">
    <property name="checkable">
     <bool>true</bool>
    </property>
@@ -93,7 +94,7 @@
     <string>Clavier numerique</string>
    </property>
   </action>
-  <action name="actionVariables">
+  <action name="a_variables">
    <property name="checkable">
     <bool>true</bool>
    </property>
@@ -104,7 +105,7 @@
     <string>Variables</string>
    </property>
   </action>
-  <action name="actionProgrammes">
+  <action name="a_programmes">
    <property name="checkable">
     <bool>true</bool>
    </property>
@@ -118,6 +119,17 @@
   <action name="actionOptions_pile">
    <property name="text">
     <string>Options pile</string>
+   </property>
+  </action>
+  <action name="a_keyboardfunctions">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Clavier des fonctions</string>
    </property>
   </action>
  </widget>

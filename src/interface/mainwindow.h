@@ -7,6 +7,7 @@
 #include "../observer/subject.h"
 
 #include "widgets/keyboardnumeric/keyboardnumeric.h"
+#include "widgets/keyboardfunctions/keyboardfunctions.h"
 #include "widgets/pile/pile.h"
 #include "widgets/commandline/commandline.h"
 #include "widgets/variables/variables.h"
@@ -29,11 +30,10 @@ private:
     Commandline* commandline;
     Pile* pile;
     KeyboardNumeric* keyboardnumeric;
-    QDockWidget* dockkeyboard;
+    KeyboardFunctions* keyboardfunctions;
     Programmes* programmes;
-    QDockWidget* dockprogrammes;
     Variables* variables;
-    QDockWidget* dockvariables;
+
 
 public slots:
     void clickEval();
