@@ -83,11 +83,17 @@
          <property name="text">
           <string>[</string>
          </property>
+         <property name="shortcut">
+          <string>[</string>
+         </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="ButtonRC">
          <property name="text">
+          <string>]</string>
+         </property>
+         <property name="shortcut">
           <string>]</string>
          </property>
         </widget>

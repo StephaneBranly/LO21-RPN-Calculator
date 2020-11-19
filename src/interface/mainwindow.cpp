@@ -16,7 +16,7 @@ Mainwindow::Mainwindow(QWidget *parent)
     , ui(new Ui::Mainwindow)
 {
     ui->setupUi(this);
-
+    setBaseSize(1000,500);
     pile = new Pile(this);
     commandline = new Commandline(this);
     keyboardfunctions = new KeyboardFunctions(this);
@@ -31,12 +31,6 @@ Mainwindow::Mainwindow(QWidget *parent)
 
     ui->mainLayout->addWidget(pile);
     ui->mainLayout->addWidget(commandline);
-
-//    ui->LeftColumn->addWidget(commandline);
-//    ui->LeftColumn->addWidget(keyboard);
-//    ui->RightColumn->addWidget(new Varsprogs(this));
-
-
 }
 
 Mainwindow::~Mainwindow()

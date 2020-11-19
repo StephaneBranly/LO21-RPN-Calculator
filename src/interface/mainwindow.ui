@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>Mainwindow</class>
  <widget class="QMainWindow" name="Mainwindow">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -13,11 +16,14 @@
   <property name="windowTitle">
    <string>Comp'UT</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">border-color: rgb(255, 202, 81);</string>
+  </property>
   <property name="dockNestingEnabled">
    <bool>true</bool>
   </property>
   <property name="dockOptions">
-   <set>QMainWindow::AllowNestedDocks|QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks|QMainWindow::ForceTabbedDocks|QMainWindow::VerticalTabs</set>
+   <set>QMainWindow::AllowNestedDocks|QMainWindow::VerticalTabs</set>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">

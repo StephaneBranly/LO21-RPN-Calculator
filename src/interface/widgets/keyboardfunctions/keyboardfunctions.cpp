@@ -4,8 +4,6 @@
 #include <QDockWidget>
 #include <QDebug>
 #include <QMainWindow>
-#include <list>
-#include <string>
 
 KeyboardFunctions::KeyboardFunctions(QMainWindow *parent)
     : QWidget(parent)
