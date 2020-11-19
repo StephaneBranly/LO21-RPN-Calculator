@@ -16,7 +16,7 @@ class KeyboardNumeric : public QWidget
 public:
     KeyboardNumeric(QMainWindow *parent = nullptr);
     ~KeyboardNumeric();
-
+    QDockWidget* getDock() const {return dock;}
 
 private:
     Ui::KeyboardNumeric *ui;

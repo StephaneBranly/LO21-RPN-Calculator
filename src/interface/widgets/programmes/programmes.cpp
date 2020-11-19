@@ -13,6 +13,8 @@ Programmes::Programmes(QMainWindow *parent)
     dock = new QDockWidget(parent);
     dock->setWidget(this);
     parent->addDockWidget(Qt::RightDockWidgetArea, dock);
+
+    connect(dock, SIGNAL(visibilityChanged(bool)), parent, SLOT(updateTabDocks()));
 }
 
 Programmes::~Programmes()

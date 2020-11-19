@@ -16,6 +16,7 @@ class KeyboardFunctions : public QWidget
 public:
     KeyboardFunctions(QMainWindow *parent = nullptr);
     ~KeyboardFunctions();
+    QDockWidget* getDock() const {return dock;}
 
 private:
     Ui::KeyboardFunctions *ui;

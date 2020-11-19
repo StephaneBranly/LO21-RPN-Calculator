@@ -25,6 +25,7 @@ KeyboardFunctions::KeyboardFunctions(QMainWindow *parent)
         }
     }
     connect(signalMapper, SIGNAL(mapped(QString)),parent, SLOT(addToCommandline(QString)));
+    connect(dock, SIGNAL(visibilityChanged(bool)), parent, SLOT(updateTabDocks()));
 }
 
 KeyboardFunctions::~KeyboardFunctions()

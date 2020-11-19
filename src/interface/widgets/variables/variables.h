@@ -15,6 +15,7 @@ class Variables : public QWidget
 public:
     Variables(QMainWindow *parent = nullptr);
     ~Variables();
+    QDockWidget* getDock() const {return dock;}
 
 private:
     Ui::Variables *ui;

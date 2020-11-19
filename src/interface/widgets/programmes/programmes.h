@@ -15,6 +15,7 @@ class Programmes : public QWidget
 public:
     Programmes(QMainWindow *parent = nullptr);
     ~Programmes();
+    QDockWidget* getDock() const {return dock;}
 
 private:
     Ui::Programmes *ui;

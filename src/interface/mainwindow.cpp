@@ -16,6 +16,7 @@ Mainwindow::Mainwindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Mainwindow)
 {
+    setFocusPolicy(Qt::StrongFocus);
     ui->setupUi(this);
     pile = new Pile(this);
     commandline = new Commandline(this);
@@ -43,6 +44,15 @@ void Mainwindow::clickEval()
 {
     notify("clickEval");
 }
+
+void Mainwindow::updateTabDocks()
+{
+    ui->a_keyboardfunctions->setChecked(!keyboardfunctions->getDock()->isHidden());
+    ui->a_keyboardnumeric->setChecked(!keyboardnumeric->getDock()->isHidden());
+    ui->a_programmes->setChecked(!programmes->getDock()->isHidden());
+    ui->a_variables->setChecked(!variables->getDock()->isHidden());
+}
+
 void Mainwindow::addToCommandline(QString str)
 {
     QString c = commandline->getText();
@@ -56,6 +66,7 @@ void Mainwindow::addToCommandline(QString str)
     else
         commandline->addText(str);
 }
+
 void Mainwindow::keyPressEvent(QKeyEvent *ev)
 {
     QString text = ev->text();

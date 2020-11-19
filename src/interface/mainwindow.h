@@ -39,5 +39,6 @@ protected:
 public slots:
     void clickEval();
     void addToCommandline(QString str);
+    void updateTabDocks();
 };
 #endif // MAINWINDOW_H
