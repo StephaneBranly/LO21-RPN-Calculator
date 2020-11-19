@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>514</width>
     <height>300</height>
    </rect>
   </property>
@@ -30,6 +30,12 @@
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QGroupBox" name="groupBox">
+       <property name="minimumSize">
+        <size>
+         <width>512</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="title">
         <string>Pile</string>
        </property>
