@@ -48,7 +48,7 @@ void Mainwindow::addToCommandline(QString str)
     QString c = commandline->getText();
     if(!c.endsWith(" ",Qt::CaseInsensitive))
     {
-        if(str.length() && (str[0].isDigit() || str[0]=='.'))
+        if(str.length() && (str[0].isDigit() || str[0]=='.'|| str[0]=='\''))
             commandline->addText(str);
         else
             commandline->addText(" "+str+" ");
@@ -61,7 +61,7 @@ void Mainwindow::keyPressEvent(QKeyEvent *ev)
     QString text = ev->text();
     if(text.contains(QRegExp("^[A-Za-z]+$")))
         commandline->addText(text.toUpper());
-    else if(text.contains(QRegExp("[-\\d*-+/.\[\\]]")))
+    else if(text.contains(QRegExp("[-\\d*-+/.\[\\]']")))
         addToCommandline(text);
     else
     {
