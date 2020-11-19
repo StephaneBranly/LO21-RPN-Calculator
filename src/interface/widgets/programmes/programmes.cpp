@@ -20,7 +20,7 @@ Programmes::~Programmes()
     delete ui;
 }
 
-void Programmes::toggleDock()
+void Programmes::toggleDock(bool b)
 {
-        dock->setHidden(!dock->isHidden());
+        dock->setHidden(!b);
 }

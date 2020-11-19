@@ -21,7 +21,7 @@ private:
     QDockWidget* dock;
 
 public slots:
-    void toggleDock();
+    void toggleDock(bool b);
 };
 
 #endif // VARIABLES_H

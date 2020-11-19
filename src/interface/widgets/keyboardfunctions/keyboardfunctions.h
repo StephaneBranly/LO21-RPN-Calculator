@@ -23,7 +23,7 @@ private:
     QSignalMapper* signalMapper;
 
 public slots:
-    void toggleDock();
+    void toggleDock(bool b);
 
 };
 

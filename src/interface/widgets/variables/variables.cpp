@@ -20,7 +20,7 @@ Variables::~Variables()
     delete ui;
 }
 
-void Variables::toggleDock()
+void Variables::toggleDock(bool b)
 {
-        dock->setHidden(!dock->isHidden());
+        dock->setHidden(!b);
 }

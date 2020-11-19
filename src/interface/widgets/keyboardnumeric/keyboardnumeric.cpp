@@ -32,7 +32,7 @@ KeyboardNumeric::~KeyboardNumeric()
     delete ui;
 }
 
-void KeyboardNumeric::toggleDock()
+void KeyboardNumeric::toggleDock(bool b)
 {
-        dock->setHidden(!dock->isHidden());
+        dock->setHidden(!b);
 }

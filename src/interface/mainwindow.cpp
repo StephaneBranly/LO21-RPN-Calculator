@@ -24,10 +24,10 @@ Mainwindow::Mainwindow(QWidget *parent)
     variables = new Variables(this);
     keyboardnumeric = new KeyboardNumeric(this);
 
-    connect(ui->a_keyboardnumeric, SIGNAL(changed()),keyboardnumeric,SLOT(toggleDock()));
-    connect(ui->a_keyboardfunctions, SIGNAL(changed()),keyboardfunctions,SLOT(toggleDock()));
-    connect(ui->a_programmes, SIGNAL(changed()),programmes,SLOT(toggleDock()));
-    connect(ui->a_variables, SIGNAL(changed()),variables,SLOT(toggleDock()));
+    connect(ui->a_keyboardnumeric, SIGNAL(toggled(bool)),keyboardnumeric,SLOT(toggleDock(bool)));
+    connect(ui->a_keyboardfunctions, SIGNAL(toggled(bool)),keyboardfunctions,SLOT(toggleDock(bool)));
+    connect(ui->a_programmes, SIGNAL(toggled(bool)),programmes,SLOT(toggleDock(bool)));
+    connect(ui->a_variables, SIGNAL(toggled(bool)),variables,SLOT(toggleDock(bool)));
 
     ui->mainLayout->addWidget(pile);
     ui->mainLayout->addWidget(commandline);

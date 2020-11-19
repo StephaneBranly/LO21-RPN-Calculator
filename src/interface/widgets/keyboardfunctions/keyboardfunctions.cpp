@@ -34,7 +34,7 @@ KeyboardFunctions::~KeyboardFunctions()
     delete ui;
 }
 
-void KeyboardFunctions::toggleDock()
+void KeyboardFunctions::toggleDock(bool b)
 {
-        dock->setHidden(!dock->isHidden());
+        dock->setHidden(!b);
 }
