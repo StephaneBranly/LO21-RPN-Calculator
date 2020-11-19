@@ -33,7 +33,8 @@ private:
     KeyboardFunctions* keyboardfunctions;
     Programmes* programmes;
     Variables* variables;
-
+protected:
+    void keyPressEvent(QKeyEvent *ev);
 
 public slots:
     void clickEval();

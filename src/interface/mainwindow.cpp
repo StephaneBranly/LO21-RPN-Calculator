@@ -10,13 +10,13 @@
 
 #include <QDebug>
 #include <QDockWidget>
+#include <QKeyEvent>
 
 Mainwindow::Mainwindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Mainwindow)
 {
     ui->setupUi(this);
-    setBaseSize(1000,500);
     pile = new Pile(this);
     commandline = new Commandline(this);
     keyboardfunctions = new KeyboardFunctions(this);
@@ -45,5 +45,36 @@ void Mainwindow::clickEval()
 }
 void Mainwindow::addToCommandline(QString str)
 {
-    commandline->addText(str);
+    QString c = commandline->getText();
+    if(!c.endsWith(" ",Qt::CaseInsensitive))
+    {
+        if(str.length() && str[0].isDigit())
+            commandline->addText(str);
+        else
+            commandline->addText(" "+str+" ");
+    }
+    else
+        commandline->addText(str);
 }
+void Mainwindow::keyPressEvent(QKeyEvent *ev)
+{
+    QString text = ev->text();
+    if(text.contains(QRegExp("^[A-Za-z]+$")))
+        commandline->addText(text.toUpper());
+    else
+    {
+        switch(ev->key())
+        {
+            case Qt::Key_Return:
+            case Qt::Key_Enter:
+                notify("clickEval");
+                break;
+            case Qt::Key_Delete:
+                qDebug() << "Delete";
+                break;
+            default:
+                qDebug()<<"\nTouche non geree\n";
+        }
+    }
+}
+

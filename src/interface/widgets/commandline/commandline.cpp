@@ -1,6 +1,8 @@
 #include "commandline.h"
 #include "ui_commandline.h"
 
+#include <QtDebug>
+
 Commandline::Commandline(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Commandline)
@@ -21,14 +23,5 @@ QString Commandline::getText() const
 
 void Commandline::addText(const QString str)
 {
-    QString c = getText();
-    if(!c.endsWith(" ",Qt::CaseInsensitive))
-    {
-        if(str.length() && str[0].isDigit() && c.length() && c[c.length()-1].isDigit())
-            this->ui->TextEdit->insert(str);
-        else
-            this->ui->TextEdit->insert(" "+str);
-    }
-    else
-        this->ui->TextEdit->insert(str);
+    this->ui->TextEdit->insert(str);
 }
