@@ -32,6 +32,8 @@ Mainwindow::Mainwindow(QWidget *parent)
 
     ui->mainLayout->addWidget(pile);
     ui->mainLayout->addWidget(commandline);
+
+    setFocusPolicy(Qt::StrongFocus);
 }
 
 Mainwindow::~Mainwindow()
@@ -58,12 +60,12 @@ void Mainwindow::addToCommandline(QString str)
     QString c = commandline->getText();
     if(!c.endsWith(" ",Qt::CaseInsensitive))
     {
-        if(str.contains(QRegExp("[!=<>\\d.\']")))
+        if(str.contains(QRegExp("[!=<>\\d.\' ]")))
             commandline->addText(str);
         else
             commandline->addText(" "+str+" ");
     }
-    else
+    else if(!str.contains(QRegExp(" ")))
         commandline->addText(str);
 }
 
@@ -84,7 +86,10 @@ void Mainwindow::keyPressEvent(QKeyEvent *ev)
                 break;
             case Qt::Key_Delete:
             case Qt::Key_Backspace:
-                qDebug() << "Delete";
+                commandline->backspace();
+                break;
+            case Qt::Key_Space:
+                addToCommandline(" ");
                 break;
             default:
                 qDebug()<<"\nTouche non geree\n";

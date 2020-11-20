@@ -15,6 +15,8 @@ public:
     Commandline(QWidget *parent = nullptr);
     ~Commandline();
     void addText(const QString str);
+    void clearText();
+    void backspace();
     QString getText() const;
 
 private:

@@ -13,6 +13,9 @@
     <height>600</height>
    </rect>
   </property>
+  <property name="focusPolicy">
+   <enum>Qt::StrongFocus</enum>
+  </property>
   <property name="windowTitle">
    <string>Comp'UT</string>
   </property>

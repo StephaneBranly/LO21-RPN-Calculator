@@ -44,6 +44,9 @@
          <layout class="QHBoxLayout" name="horizontalLayout_5">
           <item>
            <widget class="QPushButton" name="ButtonFORGET">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 69, 0);</string>
+            </property>
             <property name="text">
              <string>FORGET</string>
             </property>
@@ -51,6 +54,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="ButtonSTO">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(43, 156, 0);</string>
+            </property>
             <property name="text">
              <string>STO</string>
             </property>
@@ -71,6 +77,9 @@
          <layout class="QHBoxLayout" name="horizontalLayout_19">
           <item>
            <widget class="QPushButton" name="ButtonEQ">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(43, 156, 0);</string>
+            </property>
             <property name="text">
              <string>=</string>
             </property>
@@ -105,6 +114,9 @@
          <layout class="QHBoxLayout" name="horizontalLayout_20">
           <item>
            <widget class="QPushButton" name="ButtonDif">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 69, 0);</string>
+            </property>
             <property name="text">
              <string>!=</string>
             </property>
@@ -144,6 +156,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="ButtonNOT">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 69, 0);</string>
+            </property>
             <property name="text">
              <string>NOT</string>
             </property>
@@ -195,6 +210,9 @@
          <layout class="QHBoxLayout" name="horizontalLayout_8">
           <item>
            <widget class="QPushButton" name="ButtonCLEAR">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 69, 0);</string>
+            </property>
             <property name="text">
              <string>CLEAR</string>
             </property>
@@ -202,6 +220,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="ButtonDROP">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 130, 90);</string>
+            </property>
             <property name="text">
              <string>DROP</string>
             </property>
@@ -282,6 +303,9 @@
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
            <widget class="QPushButton" name="ButtonLC">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(43, 156, 0);</string>
+            </property>
             <property name="text">
              <string>[</string>
             </property>
@@ -292,6 +316,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="ButtonRC">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(43, 156, 0);</string>
+            </property>
             <property name="text">
              <string>]</string>
             </property>
@@ -306,6 +333,9 @@
          <layout class="QHBoxLayout" name="horizontalLayout_14">
           <item>
            <widget class="QPushButton" name="ButtonAp">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(148, 0, 255);</string>
+            </property>
             <property name="text">
              <string>'</string>
             </property>
@@ -316,6 +346,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="ButtonNEG">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 69, 0);</string>
+            </property>
             <property name="text">
              <string>NEG</string>
             </property>
