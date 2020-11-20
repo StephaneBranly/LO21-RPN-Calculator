@@ -43,15 +43,15 @@ Observer -- Interface : < communique avec
 
 
 
-class Expression{
+class Operande{
 }
 note top 
 encapsule les littérales et les operateurs 
 end note 
-Expression <|-- Litterale
-Expression <|-- Operateur
-Expression <|-- UserVar
-Expression <|-- UserProg
+Operande <|-- Litterale
+Operande <|-- Operateur
+Operande <|-- UserVar
+Operande <|-- UserProg
 
 
 
@@ -135,7 +135,7 @@ ProgrammeManager "1" *-- "*"UserProg
 
 
 LitteraleManager "1" *-- "0..*" Litterale
-Pile "1" *-- "0..*" Expression
+Pile "1" *-- "0..*" Operande
 Litterale <|--  Lprogramme
 Litterale <|--  Lnumerique
 Litterale <|--  Lexpression
