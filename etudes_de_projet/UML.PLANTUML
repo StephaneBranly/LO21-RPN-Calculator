@@ -22,6 +22,10 @@ note top
 singleton , choisir le mode d'implémentation
 end note
 
+class ExpressionManager {
+}
+
+
 
 
 class Interface {
@@ -43,23 +47,24 @@ Observer -- Interface : < communique avec
 
 
 
-class Operande{
+class Expression{
+void SetExpression(Expression& o)
+Expression& GetExpression()
+void raz() //détruit une opérande.
 }
 note top 
 encapsule les littérales et les operateurs 
 end note 
-Operande <|-- Litterale
-Operande <|-- Operateur
-Operande <|-- UserVar
-Operande <|-- UserProg
+Expression <|-- Litterale
+Expression <|-- Operateur
+Expression <|-- UserVar
+Expression <|-- UserProg
 
 
 
 
 
-class OperateurManager {
-Operateur** tab 
-}
+
 class Operateur {
 }
 class OperateurBinaire {
@@ -71,7 +76,7 @@ class OperateurNaire {
 Operateur <|-- OperateurBinaire 
 Operateur <|-- OperateurUnaire 
 Operateur <|-- OperateurNaire
-OperateurManager *-- Operateur
+
 
 
 
@@ -83,12 +88,7 @@ class ComputerException {
 
 
 
-class LitteraleManager{
--litt: Litterale**
-}
-note top 
-singleton
-end note
+
 
 class Litterale{
 }
@@ -134,8 +134,8 @@ ProgrammeManager "1" *-- "*"UserProg
 
 
 
-LitteraleManager "1" *-- "0..*" Litterale
-Pile "1" *-- "0..*" Operande
+ExpressionManager "1" *-- "0..*" Expression
+Pile "1" *-- "0..*" Expression
 Litterale <|--  Lprogramme
 Litterale <|--  Lnumerique
 Litterale <|--  Lexpression
