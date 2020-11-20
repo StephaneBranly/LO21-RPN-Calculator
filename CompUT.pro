@@ -3,6 +3,8 @@ QT += widgets
 SOURCES += \
     main.cpp \
     src/connector/connector.cpp \
+    src/engine/pile/expression.cpp \
+    src/engine/pile/expressionmanager.cpp \
     src/interface/mainwindow.cpp \
     src/interface/widgets/commandline/commandline.cpp \
     src/interface/widgets/keyboard/keyboard.cpp \
@@ -20,6 +22,9 @@ FORMS += \
 
 HEADERS += \
     src/connector/connector.h \
+    src/engine/pile/CompException.h \
+    src/engine/pile/expression.h \
+    src/engine/pile/expressionmanager.h \
     src/interface/mainwindow.h \
     src/interface/widgets/commandline/commandline.h \
     src/interface/widgets/keyboard/keyboard.h \
