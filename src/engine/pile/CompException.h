@@ -4,7 +4,7 @@
 
 namespace Engine {
 
-class ComputerException{
+class CompException{
     std::string info;
 public :
     ComputerException(const std::string& str):info(str){}
