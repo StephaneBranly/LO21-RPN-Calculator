@@ -23,7 +23,37 @@ singleton , choisir le mode d'implémentation
 end note
 
 class ExpressionManager {
+    Expression** exps
+    size_t nb
+    size_t nbMax
+
+    ExpressionManager()
+    ~ExpressionManager()
+    
+    struct Handler {
+        ExpressionManager* instance
+        Handler()
+        ~Handler()
+
+    };
+    static Handler handler;
+
+public:
+    Expression& addExpression(Expression& e);
+    void removeExpression(Expression& e);
+    void agrandissementCapacite();
+    static ExpressionManager& getInstance();
+    void libereinstance();
 }
+note top 
+est ce qu expressionmanager peut ajouter une expression, c'est à dire
+en créer une nouvelle? On a aussi les Varmanager et Progmanager qui vont gérer
+les nouvelles expressions, et le reste des expressions sont prédéfinies?
+
+ * avons nous besoin d'un iterator pour cette classe?
+ * Puisqu'on aura des iterator pour varmanager et prog manager?
+
+end note
 
 
 
