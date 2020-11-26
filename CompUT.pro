@@ -25,6 +25,7 @@ HEADERS += \
     src/engine/pile/CompException.h \
     src/engine/pile/expression.h \
     src/engine/pile/expressionmanager.h \
+    src/engine/pile/operator.h \
     src/interface/mainwindow.h \
     src/interface/widgets/commandline/commandline.h \
     src/interface/widgets/keyboard/keyboard.h \
