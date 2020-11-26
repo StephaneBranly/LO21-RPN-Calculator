@@ -12,6 +12,10 @@ SOURCES += \
     src/interface/widgets/pile/pile.cpp \
     src/interface/widgets/programmes/programmes.cpp \
     src/interface/widgets/variables/variables.cpp \
+    src/litteral/lentiere.cpp \
+    src/litteral/litteral.cpp \
+    src/litteral/lnumerique.cpp \
+    src/litteral/lrationelle.cpp \
     src/observer/observer.cpp \
     src/observer/subject.cpp
 
@@ -39,5 +43,9 @@ HEADERS += \
     src/engine/pile/pile.h \
     src/engine/pile/item.h \
     src/engine/pile/pile.h \
+    src/litteral/lentiere.h \
+    src/litteral/litteral.h \
+    src/litteral/lnumerique.h \
+    src/litteral/lrationelle.h \
     src/observer/observer.h \
     src/observer/subject.h

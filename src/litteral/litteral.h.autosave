@@ -1,0 +1,17 @@
+#ifndef LITTERAL_H
+#define LITTERAL_H
+
+
+class litteral
+{
+public:
+   virtual int getValue() const;
+    
+};
+
+
+
+
+
+
+#endif // LITTERAL_H
