@@ -1,5 +1,6 @@
 #ifndef PILE_H
 #define PILE_H
+#include "item.h"
 
 #include <string>
 
