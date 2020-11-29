@@ -2,12 +2,16 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QDockWidget>
+
 #include "../observer/subject.h"
 
-#include "widgets/keyboard/keyboard.h"
+#include "widgets/keyboardnumeric/keyboardnumeric.h"
+#include "widgets/keyboardfunctions/keyboardfunctions.h"
 #include "widgets/pile/pile.h"
 #include "widgets/commandline/commandline.h"
-#include "widgets/varsprogs/varsprogs.h"
+#include "widgets/variables/variables.h"
+#include "widgets/programmes/programmes.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Mainwindow; }
@@ -25,9 +29,16 @@ private:
     Ui::Mainwindow *ui;
     Commandline* commandline;
     Pile* pile;
-    Keyboard* keyboard;
+    KeyboardNumeric* keyboardnumeric;
+    KeyboardFunctions* keyboardfunctions;
+    Programmes* programmes;
+    Variables* variables;
+protected:
+    void keyPressEvent(QKeyEvent *ev);
 
 public slots:
     void clickEval();
+    void addToCommandline(QString str);
+    void updateTabDocks();
 };
 #endif // MAINWINDOW_H

@@ -1,6 +1,6 @@
 @startuml
 class Pile {
-  -items : Item *
+  -exps : Expression *
   -nb: size-t
   -nbMax; size-t
   -nbAffiche: size-t
@@ -22,28 +22,93 @@ note top
 singleton , choisir le mode d'implémentation
 end note
 
-class Controleur {
-  +ExpressionManager& expmng
-  +Pile& expAff ()
-  +Controleur ()
-  +void Commande (const )
-  +void executer ();
+class ExpressionManager {
+    Expression** exps
+    size_t nb
+    size_t nbMax
+
+    ExpressionManager()
+    ~ExpressionManager()
+    
+    struct Handler {
+        ExpressionManager* instance
+        Handler()
+        ~Handler()
+
+    };
+    static Handler handler;
+
+public:
+    Expression& addExpression(Expression& e);
+    void removeExpression(Expression& e);
+    void agrandissementCapacite();
+    static ExpressionManager& getInstance();
+    void libereinstance();
+}
+note top 
+est ce qu expressionmanager peut ajouter une expression, c'est à dire
+en créer une nouvelle? On a aussi les Varmanager et Progmanager qui vont gérer
+les nouvelles expressions, et le reste des expressions sont prédéfinies?
+
+ * avons nous besoin d'un iterator pour cette classe?
+ * Puisqu'on aura des iterator pour varmanager et prog manager?
+
+end note
+
+
+
+
+class Interface {
 }
 
-
-
-Controleur-->Pile
-
-class Item{
-  -exp: Expression*
-  +Item()
-  +void SetExpression ()
-  +Expression& getExpression () 
-  +const Expression& getExpression const ()
-  +raz()
+class Observer {
+  
 }
+note top 
+fait le lien entre engine et interface
+end note
+Observer -- Pile : < communique avec
+Observer -- VariableManager : < communique avec
+Observer -- ProgrammeManager : < communique avec
+Observer -- Interface : < communique avec
 
-Item o-- Litterale
+
+
+
+
+
+class Expression{
+void SetExpression(Expression& o)
+Expression& GetExpression()
+void raz() //détruit une opérande.
+}
+note top 
+encapsule les littérales et les operateurs 
+end note 
+Expression <|-- Litterale
+Expression <|-- Operateur
+Expression <|-- UserVar
+Expression <|-- UserProg
+
+
+
+
+
+
+class Operateur {
+}
+class OperateurBinaire {
+}
+class OperateurUnaire {
+}
+class OperateurNaire {
+}
+Operateur <|-- OperateurBinaire 
+Operateur <|-- OperateurUnaire 
+Operateur <|-- OperateurNaire
+
+
+
 
 class ComputerException {
   +info: string
@@ -51,36 +116,61 @@ class ComputerException {
   +string getInfo() const
 }
 
-class LitteraleManager{
--litt: Litterale**
-}
-note top 
-singleton
-end note
+
+
+
 
 class Litterale{
 }
 
 class Lprogramme{}
 class Lnumerique{}
-note top 
-Lnumerique -> entière, réelle, rationnelle
-end note
 
+class Lentiere {
+int value
+}
+
+class Lreelle{
+float value
+}
+class Lrationnelle{
+int numerateur; 
+int denominateur; 
+}
 class Lexpression{}
 class Latome {}
 
-class varprog {}
-note : stocker un programme utilisateur ou une variable utilisateur 
 
-LitteraleManager "1" *-- "0..*" Litterale
-Pile "1" *-- "0..*" Item
+
+
+
+class UserVar{
+Latome* id; 
+}
+class UserProg{
+Latome* id; 
+}
+class VariableManager { 
+UserVar** tab
+}
+class ProgrammeManager { 
+UserProg** tab
+} 
+VariableManager "1" *-- "*"UserVar
+ProgrammeManager "1" *-- "*"UserProg
+
+
+
+
+
+
+ExpressionManager "1" *-- "0..*" Expression
+Pile "1" *-- "0..*" Expression
 Litterale <|--  Lprogramme
 Litterale <|--  Lnumerique
 Litterale <|--  Lexpression
-Litterale <|-- Latome 
-
-
-
-
+Litterale <|-- Latome
+Lnumerique <|--  Lentiere
+Lnumerique <|--  Lreelle
+Lnumerique <|--  Lrationnelle
 @enduml
