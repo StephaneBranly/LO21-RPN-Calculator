@@ -7,7 +7,6 @@ using namespace std;
 
 namespace  Engine{
 class ExpressionManager{
-    enum type_literal {Lnumerique, Lexpression, Latome, Lprogramme, Lentiere, Lreelle, Lrationnelle};
     Expression** exps = nullptr; //pointe sur un tableau d'expression
     size_t nb = 0; //nombre d'adresse stockées
     size_t nbMax = 0; //capacité max du tableau
