@@ -23,10 +23,10 @@ FORMS += \
 HEADERS += \
     src/connector/connector.h \
     src/engine/operateur/operator.h \
-    src/engine/pile/CompException.h \
-    src/engine/pile/expression.h \
-    src/engine/pile/expressionmanager.h \
-    src/engine/pile/operator.h \
+    src/engine/exception/CompException.h \
+    src/engine/expression/expression.h \
+    src/engine/expression/expressionmanager.h \
+    src/engine/operateur/operator.h \
     src/interface/mainwindow.h \
     src/interface/widgets/commandline/commandline.h \
     src/interface/widgets/keyboard/keyboard.h \

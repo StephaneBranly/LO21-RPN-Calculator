@@ -11,18 +11,18 @@ using namespace std;
 
 namespace Engine {
     class Operator : public Expression {
-        static size_t arrite;
+        static size_t arrity;
     public :
-        size_t getArrite () {return arrite;}
+        size_t getArrity () {return arrity;}
     };
 
     class OperatorPlus : public Operator {
-        size_t arrite=2;
+        size_t arrity=2;
     public :
         auto eval()
         {
            Pile p = Computeur::GetInstance::GetPile();
-           if (p.taille() < arrite)
+           if (p.taille() < arrity)
                throw ComputerException ("La pile ne contient pas assez de valeurs à additioner");
                Expression L1 = p.top();
                p.pop();
@@ -37,13 +37,13 @@ namespace Engine {
         string toString() {return "+";}
     };
 
-    class OperatorMoins : public Operator {
-        size_t arrite=2;
+    class OperatorMinus : public Operator {
+        size_t arrity=2;
     public :
         auto eval()
         {
            Pile p = Computeur::GetInstance::GetPile();
-           if (p.taille() < arrite)
+           if (p.taille() < arrity)
                throw ComputerException ("La pile ne contient pas assez de valeurs à soustraire");
                Expression L1 = p.top();
                p.pop();
@@ -59,12 +59,12 @@ namespace Engine {
     };
 
     class OperatorMult : public Operator {
-        size_t arrite=2;
+        size_t arrity=2;
     public :
         auto eval()
         {
            Pile p = Computeur::GetInstance::GetPile();
-           if (p.taille() < arrite)
+           if (p.taille() < arrity)
                throw ComputerException ("La pile ne contient pas assez de valeurs à multiplier");
                Expression L1 = p.top();
                p.pop();
@@ -80,12 +80,12 @@ namespace Engine {
     };
 
     class OperatorDiv : public Operator {
-        size_t arrite=2;
+        size_t arrity=2;
     public :
         auto eval()
         {
            Pile p = Computeur::GetInstance::GetPile();
-           if (p.taille() < arrite)
+           if (p.taille() < arrity)
                throw ComputerException ("La pile ne contient pas assez de valeurs à diviser");
                Expression L1 = p.top();
                p.pop();
