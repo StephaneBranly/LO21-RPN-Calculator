@@ -4,6 +4,11 @@
 #include <cstring>
 #include <stdio.h>
 #include <string.h>
+#include <vector>
+#include <sstream>
+#include <algorithm>
+#include <iterator>
+
 
 Engine::Expression& Engine::ExpressionManager::addExpression(Expression& e){
     if (nb==nbMax) agrandissementCapacite();
@@ -27,6 +32,16 @@ Engine::ExpressionManager::type_literal Engine::ExpressionManager::gettype(const
 
 } //détermine le type d'une expression
 
+vector<string> split(const string& cmd, char space) {
+    string buf;
+    vector<string> tokens;
+    stringstream ss(cmd);
+    while(getline(ss,buf, space)) {
+        tokens.push_back(buf);
+    }
+    return tokens;
+}
+
 void Engine::ExpressionManager::evalCommandLine(const string str){
     char c[str.size() + 1];
     strcpy(c, str.c_str()); //passage d'un string en char
@@ -35,8 +50,8 @@ void Engine::ExpressionManager::evalCommandLine(const string str){
     pch = strtok(c," ");
     while (pch != NULL) {
         //comment faire pour un rationnel ? => 3/4
-        printf (pch);
         pch = strtok (NULL," ");
+
         /*Pour chaque token pch faire :
          * pch -> string
          * createExpressionFromstring() /!\ pch is a char

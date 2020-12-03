@@ -2,6 +2,7 @@
 #define EXPRESSIONMANAGER_H
 #include <string>
 #include "expression.h"
+#include <vector>
 using namespace std;
 
 namespace  Engine{
@@ -22,7 +23,7 @@ public:
     type_literal gettype(const string& str)const; //détermine le type d'une expression
 
     void evalCommandLine (const string str);//evalue la command line => ce qui est entré par l'utilisateur
-
+    vector<string> split(const string& text, char delimiter);
     Expression& CreateExpressionFromString (const string s);//création d'une expression à partir d'un string
 };
 }
