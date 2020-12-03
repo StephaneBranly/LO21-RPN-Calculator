@@ -1,8 +1,9 @@
 #ifndef EXPRESSION_H
 #define EXPRESSION_H
 
+
 namespace Engine {
-class Expression : public Pile //iterator à ajouter
+class Expression //iterator à ajouter
 {
     Operande** op; //une expression est une suite d'opérandes
     friend class ExpressionManager; //classe responsable du cycle de vie d'une expression

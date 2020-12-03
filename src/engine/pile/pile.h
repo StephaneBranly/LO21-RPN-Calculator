@@ -17,12 +17,12 @@ public :
 //        if (nb==nbmax) agrandissementCapacite();
 //        items[nb++].setLitterale(l);
 //    }
-    auto pop(){
+    void pop(){
         //dépile une nouvelle littérale, voir gestion de l'exception
         //if (nb==0) ComputerException("La pile est déjà vide");
         auto L = items[nb];
         items[nb--].raz();
-        return L;
+
     }
     bool estVide () const {return nb==0;}
     size_t taille () const {return nb;}
