@@ -22,6 +22,7 @@ FORMS += \
 
 HEADERS += \
     src/connector/connector.h \
+    src/engine/operateur/operator.h \
     src/engine/pile/CompException.h \
     src/engine/pile/expression.h \
     src/engine/pile/expressionmanager.h \

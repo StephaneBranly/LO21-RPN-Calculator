@@ -1,5 +1,6 @@
 #ifndef OPERATOR_H
 #define OPERATOR_H
+
 #include "expression.h"
 #include "pile.h"
 #include "CompException.h"
@@ -11,7 +12,7 @@ using namespace std;
 namespace Engine {
     class Operator : public Expression {
         static size_t arrite;
-    public : 
+    public :
         size_t getArrite () {return arrite;}
     };
 
