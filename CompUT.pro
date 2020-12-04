@@ -3,7 +3,6 @@ QT += widgets
 SOURCES += \
     main.cpp \
     src/connector/connector.cpp \
-<<<<<<< HEAD
     src/engine/expression/expression.cpp \
     src/engine/expression/expressionmanager.cpp \
     src/interface/mainwindow.cpp \
