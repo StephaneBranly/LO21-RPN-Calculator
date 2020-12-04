@@ -12,13 +12,13 @@ namespace  Engine{
 class ExpressionManager{
 private:
     list<Expression*> exps;
-    vector<Expression> expressionsTypes;
+    vector<Expression*> expressionsTypes;
 public :
     ExpressionManager() = default;
-    void registerType(Expression& type);
+    void registerType(Expression* type);
     void evalCommandLine (const string str);
     vector<string> split(const string& text, char delimiter);
-    Expression* CreateExpressionFromString (const string s);
+    Expression* createExpressionFromString (const string s);
     ~ExpressionManager();
 };
 }

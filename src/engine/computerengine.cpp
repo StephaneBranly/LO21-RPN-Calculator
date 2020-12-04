@@ -1,12 +1,10 @@
 #include "computerengine.h"
 
-namespace Engine{
-ComputerEngine::Handler ComputerEngine::hand = ComputerEngine::Handler();
+Engine::ComputerEngine::Handler Engine::ComputerEngine::hand = Engine::ComputerEngine::Handler();
 
-ComputerEngine &ComputerEngine::getInstance()
+Engine::ComputerEngine& Engine::ComputerEngine::getInstance()
 {
     if (hand.instance == nullptr)
         hand.instance = new ComputerEngine;
     return *hand.instance;
 };
-}

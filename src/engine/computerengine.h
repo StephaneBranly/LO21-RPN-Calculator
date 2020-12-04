@@ -20,7 +20,7 @@ private:
     static Handler hand;
 
 public:
-    ComputerEngine();
+    ComputerEngine() = default;
 
     Stack getStack(){ return stack; }
     ExpressionManager getExpressionManager(){ return expressionManager; }

@@ -5,7 +5,7 @@
 
 #include <cstring>
 #include <stdio.h>
-#include <string.h>
+#include <string>
 #include <vector>
 #include <sstream>
 #include <algorithm>
@@ -26,19 +26,19 @@ vector<string> Engine::ExpressionManager::split(const string& cmd, char space) {
 void Engine::ExpressionManager::evalCommandLine(const string str){
     vector<string> tokens = ExpressionManager::split(str,' ');
     for (auto it = std::begin(tokens); it!=std::end(tokens); ++it){
-        exps.push_back(CreateExpressionFromString(*it));
+        exps.push_back(createExpressionFromString(*it));
     }
 }
 
-Engine::Expression* Engine::ExpressionManager::CreateExpressionFromString(const string s){
-    Expression* res = nullptr;
+Engine::Expression* Engine::ExpressionManager::createExpressionFromString(const string s){
+    Expression* res=nullptr;
     for(auto it = expressionsTypes.begin(); it!=expressionsTypes.end(); ++it){
-        if(it->isSameType(s))
+        if((*it)->isSameType(s))
         {
             if(!res)
             {
 
-                res = it->CreateExpressionFromString(s);
+                res = (*it)->createExpressionFromString(s);
                 qDebug() << "Type reconnu";
             }
             else
@@ -50,10 +50,10 @@ Engine::Expression* Engine::ExpressionManager::CreateExpressionFromString(const 
     return res;
 }
 
-void Engine::ExpressionManager::registerType(Expression& t)
+void Engine::ExpressionManager::registerType(Expression* t)
 {
     expressionsTypes.push_back(t);
-    qDebug() << "\nEnregistrement du type "<< QString::fromStdString(t.getType());
+    qDebug() << "\nEnregistrement du type ";/*<< QString::fromStdString(t->getType());*/
 }
 
 Engine::ExpressionManager::~ExpressionManager(){

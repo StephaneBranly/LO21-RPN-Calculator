@@ -16,8 +16,6 @@ SOURCES += \
     src/interface/widgets/variables/variables.cpp \
     src/observer/observer.cpp \
     src/observer/subject.cpp \
-    src/engine/expression/expression.cpp \
-    src/engine/expression/expressionmanager.cpp \
 
 FORMS += \
     src/interface/mainwindow.ui \

@@ -20,6 +20,7 @@ namespace Engine {
 
     class OperatorPlus : public Operator {
         size_t arrity=2;
+        std::string type = "OperatorPLUS";
     public :
         void eval()
         {
@@ -31,17 +32,18 @@ namespace Engine {
            Expression* L2 = p.top();
            p.pop();
            try {
-               Expression* result = Expression::createCopy(L1);
-               p.push(result);
+//               Expression* result = Expression::createCopy(L1);
+//               p.push(result);
            } catch (ComputerException e) {
                throw ComputerException(e);
            }
        }
-        std::string toString() const {return "+";}
+        const std::string toString() const {return "+";}
     };
 
     class OperatorMinus : public Operator {
         size_t arrity=2;
+        std::string type = "OperatorMINUS";
     public :
         void eval()
         {
@@ -53,17 +55,18 @@ namespace Engine {
            Expression* L2 = p.top();
            p.pop();
            try {
-               Expression* result = Expression::createCopy(L1);
-               p.push(result);
+//               Expression* result = Expression::createCopy(L1);
+//               p.push(result);
            } catch (ComputerException e) {
                throw ComputerException(e);
            }
        }
-        std::string toString() const {return "-";}
+        const std::string toString() const {return "-";}
     };
 
     class OperatorMult : public Operator {
         size_t arrity=2;
+        std::string type = "OperatorMULT";
     public :
         void eval()
         {
@@ -75,17 +78,18 @@ namespace Engine {
            Expression* L2 = p.top();
            p.pop();
            try {
-               Expression* result = Expression::createCopy(L1);
-               p.push(result);
+//               Expression* result = Expression::createCopy(L1);
+//               p.push(result);
            } catch (ComputerException e) {
                throw ComputerException(e);
            }
        }
-       std::string toString() const { return "*";}
+       const std::string toString() const { return "*";}
     };
 
     class OperatorDiv : public Operator {
         size_t arrity=2;
+        std::string type = "OperatorDIV";
     public :
         void eval()
         {
@@ -97,13 +101,13 @@ namespace Engine {
             Expression* L2 = p.top();
             p.pop();
             try {
-                Expression* result = Expression::createCopy(L1);
-                p.push(result);
+//                Expression* result = Expression::createCopy(L1);
+//                p.push(result);
             } catch (ComputerException e) {
             throw ComputerException(e);
             }
        }
-    std::string toString() const {return "/";}
+    const std::string toString() const {return "/";}
 };
 }
 #endif // OPERATOR_H
