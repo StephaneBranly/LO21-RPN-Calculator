@@ -30,7 +30,7 @@ void Engine::ExpressionManager::evalCommandLine(const string str){
         try {
             exps.push_back(createExpressionFromString(*it));
         }  catch (ComputerException e) {
-            qDebug() << "OUIN OUIN ERREUR:"<<QString::fromStdString(e.getInfo());
+            throw ComputerException("/!\\ EVAL :"+e.getInfo());
         }
 //
     }
@@ -52,7 +52,7 @@ Engine::Expression* Engine::ExpressionManager::createExpressionFromString(const 
         }
     }
     if(!res)
-        throw ComputerException("Type non reconnu");
+        throw ComputerException("Type non reconnu de "+s);
     return res;
 }
 

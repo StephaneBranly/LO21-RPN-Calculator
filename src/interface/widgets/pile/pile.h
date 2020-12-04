@@ -14,7 +14,7 @@ class Pile : public QWidget
 public:
     Pile(QWidget *parent = nullptr);
     ~Pile();
-
+    void setMessage(const QString m="");
 private:
     Ui::Pile *ui;
 };

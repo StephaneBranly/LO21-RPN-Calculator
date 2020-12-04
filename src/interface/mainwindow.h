@@ -25,6 +25,7 @@ public:
     Mainwindow(QWidget *parent = nullptr);
     ~Mainwindow();
     const QString getContentCommandLine() const { return commandline->getText(); }
+    void setMessage(const QString m){ pile->setMessage(m);}
 
 private:
     Ui::Mainwindow *ui;

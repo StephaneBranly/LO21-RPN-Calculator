@@ -13,3 +13,8 @@ Pile::~Pile()
     delete ui;
 }
 
+
+void Pile::setMessage(const QString m)
+{
+   this->ui->Message->setText(m);
+}

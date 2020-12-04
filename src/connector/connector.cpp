@@ -1,7 +1,7 @@
 #include "connector.h"
 #include "../interface/mainwindow.h"
 #include "../observer/observer.h"
-
+#include "../engine/exception/CompException.h"
 #include <QDebug>
 
 #include <string>
@@ -18,6 +18,7 @@ void Connector::notify(const std::string &message)
     if(message=="clickEval")
     {
         const std::string content = window.getContentCommandLine().toStdString();
-        engine.getExpressionManager().evalCommandLine(content);
+        try{engine.getExpressionManager().evalCommandLine(content);}
+        catch(Engine::ComputerException e){ window.setMessage(QString::fromStdString(e.getInfo()));}
     }
 };
