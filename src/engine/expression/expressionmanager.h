@@ -1,6 +1,7 @@
 #ifndef EXPRESSIONMANAGER_H
 #define EXPRESSIONMANAGER_H
 #include <string>
+#include "expression.h"
 
 namespace  Engine{
 class ExpressionManager{ //contient toutes les expressions, et le cycle de vie d'une expression
