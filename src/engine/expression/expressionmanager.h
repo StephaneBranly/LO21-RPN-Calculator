@@ -15,12 +15,11 @@ private:
     vector<Expression> expressionsTypes;
 public :
     ExpressionManager() = default;
-    ExpressionManager& operator<<(Expression& e);
-    void registerType(const Expression& type);
+    void registerType(Expression& type);
     void evalCommandLine (const string str);
     vector<string> split(const string& text, char delimiter);
     Expression* CreateExpressionFromString (const string s);
-    virtual ~ExpressionManager();
+    ~ExpressionManager();
 };
 }
 

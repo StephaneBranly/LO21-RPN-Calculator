@@ -2,6 +2,7 @@
 
 namespace Engine{
 ComputerEngine::Handler ComputerEngine::hand = ComputerEngine::Handler();
+
 ComputerEngine &ComputerEngine::getInstance()
 {
     if (hand.instance == nullptr)

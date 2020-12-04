@@ -4,6 +4,8 @@
 #include "../expression/expression.h"
 #include "../stack/stack.h"
 #include "../exception/CompException.h"
+#include "../computerengine.h"
+
 #include <iostream>
 #include <string>
 
@@ -21,7 +23,7 @@ namespace Engine {
     public :
         void eval()
         {
-           Stack p = Computer::getInstance().getStack();
+           Stack p = ComputerEngine::getInstance().getStack();
            if (p.size() < arrity)
                throw ComputerException ("La pile ne contient pas assez de valeurs à additioner");
            Expression* L1 = p.top();
@@ -29,13 +31,13 @@ namespace Engine {
            Expression* L2 = p.top();
            p.pop();
            try {
-               Expression* result = new Expression((*L1)+(*L2));
+               Expression* result = Expression::createCopy(L1);
                p.push(result);
            } catch (ComputerException e) {
                throw ComputerException(e);
            }
        }
-        string toString() {return "+";}
+        std::string toString() const {return "+";}
     };
 
     class OperatorMinus : public Operator {
@@ -43,7 +45,7 @@ namespace Engine {
     public :
         void eval()
         {
-           Stack p = Computer::getInstance().getStack();
+           Stack p = ComputerEngine::getInstance().getStack();
            if (p.size() < arrity)
                throw ComputerException ("La pile ne contient pas assez de valeurs à soustraire");
            Expression* L1 = p.top();
@@ -51,13 +53,13 @@ namespace Engine {
            Expression* L2 = p.top();
            p.pop();
            try {
-               Expression* result = new Expression((*L1)-(*L2));
+               Expression* result = Expression::createCopy(L1);
                p.push(result);
            } catch (ComputerException e) {
                throw ComputerException(e);
            }
        }
-        string toString() {return "-";}
+        std::string toString() const {return "-";}
     };
 
     class OperatorMult : public Operator {
@@ -65,7 +67,7 @@ namespace Engine {
     public :
         void eval()
         {
-           Stack p = Computer::getInstance().getStack();
+           Stack p = ComputerEngine::getInstance().getStack();
            if (p.size() < arrity)
                throw ComputerException ("La pile ne contient pas assez de valeurs à multiplier");
            Expression* L1 = p.top();
@@ -73,13 +75,13 @@ namespace Engine {
            Expression* L2 = p.top();
            p.pop();
            try {
-               Expression* result = new Expression((*L1)*(*L2));
+               Expression* result = Expression::createCopy(L1);
                p.push(result);
            } catch (ComputerException e) {
                throw ComputerException(e);
            }
        }
-        string toString() {return "*";}
+       std::string toString() const { return "*";}
     };
 
     class OperatorDiv : public Operator {
@@ -87,7 +89,7 @@ namespace Engine {
     public :
         void eval()
         {
-           Stack p = Computer::getInstance::getStack();
+           Stack p = ComputerEngine::getInstance().getStack();
            if (p.size() < arrity)
                throw ComputerException ("La pile ne contient pas assez de valeurs à diviser");
             Expression* L1 = p.top();
@@ -95,13 +97,13 @@ namespace Engine {
             Expression* L2 = p.top();
             p.pop();
             try {
-                Expression* result = new Expression((*L1)/(*L2));
+                Expression* result = Expression::createCopy(L1);
                 p.push(result);
             } catch (ComputerException e) {
             throw ComputerException(e);
             }
        }
-    string toString() {return "/";}
+    std::string toString() const {return "/";}
 };
 }
 #endif // OPERATOR_H

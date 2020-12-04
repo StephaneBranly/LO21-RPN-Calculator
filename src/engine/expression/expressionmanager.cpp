@@ -11,7 +11,9 @@
 #include <algorithm>
 #include <iterator>
 
-vector<string> split(const string& cmd, char space) {
+#include <QtDebug>
+
+vector<string> Engine::ExpressionManager::split(const string& cmd, char space) {
     string buf;
     vector<string> tokens;
     stringstream ss(cmd);
@@ -22,11 +24,11 @@ vector<string> split(const string& cmd, char space) {
 }
 
 void Engine::ExpressionManager::evalCommandLine(const string str){
-    vector<string> tokens = ExpressionManager::split(str,' '); //on a un les tokens
+    vector<string> tokens = ExpressionManager::split(str,' ');
     for (auto it = std::begin(tokens); it!=std::end(tokens); ++it){
         exps.push_back(CreateExpressionFromString(*it));
     }
-}//evalue la command line
+}
 
 Engine::Expression* Engine::ExpressionManager::CreateExpressionFromString(const string s){
     Expression* res = nullptr;
@@ -34,7 +36,11 @@ Engine::Expression* Engine::ExpressionManager::CreateExpressionFromString(const 
         if(it->isSameType(s))
         {
             if(!res)
+            {
+
                 res = it->CreateExpressionFromString(s);
+                qDebug() << "Type reconnu";
+            }
             else
                 throw ComputerException("Reconnu par plusieurs types");
         }
@@ -44,9 +50,10 @@ Engine::Expression* Engine::ExpressionManager::CreateExpressionFromString(const 
     return res;
 }
 
-void Engine::ExpressionManager::registerType(const Expression& type)
+void Engine::ExpressionManager::registerType(Expression& t)
 {
-    expressionsTypes.push_back(type);
+    expressionsTypes.push_back(t);
+    qDebug() << "\nEnregistrement du type "<< QString::fromStdString(t.getType());
 }
 
 Engine::ExpressionManager::~ExpressionManager(){
