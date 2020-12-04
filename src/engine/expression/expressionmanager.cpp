@@ -26,7 +26,13 @@ vector<string> Engine::ExpressionManager::split(const string& cmd, char space) {
 void Engine::ExpressionManager::evalCommandLine(const string str){
     vector<string> tokens = ExpressionManager::split(str,' ');
     for (auto it = std::begin(tokens); it!=std::end(tokens); ++it){
-        exps.push_back(createExpressionFromString(*it));
+        qDebug()<<"creation de expression pour :"<<QString::fromStdString(*it);
+        try {
+            exps.push_back(createExpressionFromString(*it));
+        }  catch (ComputerException e) {
+            qDebug() << "OUIN OUIN ERREUR:"<<QString::fromStdString(e.getInfo());
+        }
+//
     }
 }
 

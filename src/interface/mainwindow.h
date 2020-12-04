@@ -24,6 +24,7 @@ class Mainwindow : public QMainWindow, public Subject
 public:
     Mainwindow(QWidget *parent = nullptr);
     ~Mainwindow();
+    const QString getContentCommandLine() const { return commandline->getText(); }
 
 private:
     Ui::Mainwindow *ui;

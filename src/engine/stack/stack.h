@@ -7,10 +7,9 @@
 namespace  Engine {
 
 class Stack {
-
 public :
     Stack() = default;
-    ~Stack() {}
+    ~Stack() = default;
     void push(Expression* item){ items.push_back(item); }
     Expression* pop();
     bool isEmpty() const {return items.size()==0; }
@@ -19,9 +18,8 @@ public :
 
 private:
     std::vector<Expression*> items;
-    std::string message="";
-    void agrandissementCapacite();
 };
+
 }
 
 #endif // PILE_H

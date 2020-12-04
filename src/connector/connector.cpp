@@ -4,7 +4,9 @@
 
 #include <QDebug>
 
-Connector::Connector(Mainwindow& w) : window(w)
+#include <string>
+
+Connector::Connector(Mainwindow& w, Engine::ComputerEngine& e) : window(w), engine(e)
 {
     window.show();
     window.attach(this);
@@ -13,4 +15,9 @@ Connector::Connector(Mainwindow& w) : window(w)
 void Connector::notify(const std::string &message)
 {
     qDebug()<<"NOTIF recue sur le connector :" << QString::fromStdString(message) <<"\n";
+    if(message=="clickEval")
+    {
+        const std::string content = window.getContentCommandLine().toStdString();
+        engine.getExpressionManager().evalCommandLine(content);
+    }
 };
