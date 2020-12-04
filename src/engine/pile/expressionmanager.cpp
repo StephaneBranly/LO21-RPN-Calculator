@@ -8,10 +8,14 @@
 #include <sstream>
 #include <algorithm>
 #include <iterator>
-#include <regex>
 
+Engine::ExpressionManager& Engine::ExpressionManager::operator<<(Expression& e){
+    Expression* ex = e.createLitterale();
+    exps.push_back(&e);
+    return *this;
+}
 
-
+/*
 Engine::Expression& Engine::ExpressionManager::addExpression(Expression& e){
     if (nb==nbMax) agrandissementCapacite();
     exps[nb++]= new Expression(e);
@@ -28,16 +32,7 @@ void Engine::ExpressionManager::removeExpression(Expression& e){
         while(i<nb) exps[i]= exps[i+1]; i++;
     }throw Engine::ComputerException ("Aucune Expression exitante.");
 }//supprime une expression du tableau
-
-std::string Engine::ExpressionManager::gettype(const string& str)const{
-    if (regex_match (str, regex("^[0-9]+$"))) {return "entier";}
-    //int, reelle, operateur + - * /
-    if (regex_match) {return "reel";}
-    if (regex_match){return "operateur+";}
-    if (regex_match){return "operateur-";}
-    if (regex_match){return "operateur/";}
-    if (regex_match){return "operateur*";}
-} //détermine le type d'une expression
+*/
 
 vector<string> split(const string& cmd, char space) {
     string buf;
@@ -47,30 +42,37 @@ vector<string> split(const string& cmd, char space) {
         tokens.push_back(buf);
     }
     return tokens;
-}//ajouter le cas ou on a un / ... (penser à tous les cas)
+}
 
 void Engine::ExpressionManager::evalCommandLine(const string str){
     vector<string> tokens = ExpressionManager::split(str,' '); //on a un les tokens
     for (auto it = std::begin(tokens); it!=std::end(tokens); ++it){
-        addExpression(CreateExpressionFromString(*it));
+        exps<<CreateExpressionFromString(*it);
     }
 }//evalue la command line
 
-Engine::Expression& Engine::ExpressionManager::CreateExpressionFromString (const string s){
-    const std::string type = gettype(s);
-    if (type == "entier"){
-        //return new Lentier::Lentier(const_cast<integer>(str));
-    }else if (type == "reel"){
-        //return new Lreelle::Lreelle(const_cast<float>(str));
-
-    }else if (type == "operateur+") {
-        //return new Operateurplus::operateurplus(str);
-    }else if (type == "operateur-"){
-        //return new Operateurmoins::operateurmoins(str);
-    }else if (type == "operateur/") {
-        //return new Operateurdiv::operateurdiv(str);
-    }else if (type == "operateur*") {
-        //return new Operateurmult::operateurmult(str);
-    }else throw ComputerException("Erreur : Pas de type");
-
+Engine::Expression* Engine::ExpressionManager::CreateExpressionFromString(const string s){
+    Expression* res = nullptr;
+    for(auto e : expressionsTypes){
+        if(e->isSameType(s))
+        {if(!res)
+            {res = e->Expression::CreateExpression(s);}
+            else
+                throw ComputerException(s<<"reconnu par plusieurs types");
+        }
+    }
+    if(!res){
+        throw ComputerException(s << "de type non reconnu");
+        return res;
+    }
 }
+
+void Engine::ExpressionManager::registerType(const Expression& type){
+    expressionsTypes.push_back(type);
+    }
+
+Engine::ExpressionManager::~ExpressionManager(){
+    for(auto e : exps) {delete e;}
+}
+
+
