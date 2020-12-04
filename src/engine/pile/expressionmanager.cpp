@@ -9,11 +9,11 @@
 #include <algorithm>
 #include <iterator>
 
-Engine::ExpressionManager& Engine::ExpressionManager::operator<<(Expression& e){
-    Expression* ex = e.createLitterale();
-    exps.push_back(&e);
-    return *this;
-}
+//Engine::ExpressionManager& Engine::ExpressionManager::operator<<(Expression& e){
+//    Expression* ex = e.createLitterale();
+//    exps.push_back(&e);
+//    return *this;
+//}
 
 /*
 Engine::Expression& Engine::ExpressionManager::addExpression(Expression& e){
@@ -47,29 +47,30 @@ vector<string> split(const string& cmd, char space) {
 void Engine::ExpressionManager::evalCommandLine(const string str){
     vector<string> tokens = ExpressionManager::split(str,' '); //on a un les tokens
     for (auto it = std::begin(tokens); it!=std::end(tokens); ++it){
-        exps<<CreateExpressionFromString(*it);
+        exps.push_back(CreateExpressionFromString(*it));
     }
 }//evalue la command line
 
 Engine::Expression* Engine::ExpressionManager::CreateExpressionFromString(const string s){
     Expression* res = nullptr;
-    for(auto e : expressionsTypes){
-        if(e->isSameType(s))
-        {if(!res)
-            {res = e->Expression::CreateExpression(s);}
+    for(auto it = expressionsTypes.begin(); it!=expressionsTypes.end(); ++it){
+        if(it->isSameType(s))
+        {
+            if(!res)
+                res = it->CreateExpressionFromString(s);
             else
-                throw ComputerException(s<<"reconnu par plusieurs types");
+                throw ComputerException("Reconnu par plusieurs types");
         }
     }
-    if(!res){
-        throw ComputerException(s << "de type non reconnu");
-        return res;
-    }
+    if(!res)
+        throw ComputerException("Type non reconnu");
+    return res;
 }
 
-void Engine::ExpressionManager::registerType(const Expression& type){
+void Engine::ExpressionManager::registerType(const Expression& type)
+{
     expressionsTypes.push_back(type);
-    }
+}
 
 Engine::ExpressionManager::~ExpressionManager(){
     for(auto e : exps) {delete e;}

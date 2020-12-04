@@ -7,7 +7,8 @@
 namespace Engine {
 class Expression{//abstract class
 public:
-    virtual Expression* CreateExpression(std::string s) const =0 ;
+    virtual Expression* CreateExpressionFromString(const std::string s) const = 0 ;
+    virtual bool isSameType(const std::string s) const = 0;
     //création d'une expression en fonction de son type
     //reconnaissance de type dans les sous-classes.
     virtual void afficher(std::ostream& f = std::cout) const = 0;

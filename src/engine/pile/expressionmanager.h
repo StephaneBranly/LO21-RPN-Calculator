@@ -1,8 +1,11 @@
 #ifndef EXPRESSIONMANAGER_H
 #define EXPRESSIONMANAGER_H
 #include <string>
-#include "expression.h"
 #include <vector>
+#include <list>
+
+#include "expression.h"
+
 using namespace std;
 
 namespace  Engine{
@@ -28,12 +31,13 @@ public:
 */
 
 class ExpressionManager{
-    vector<Expression*> exps;
+private:
+    list<Expression*> exps;
     vector<Expression> expressionsTypes;
 public :
     ExpressionManager() = default;
     ExpressionManager& operator<<(Expression& e);
-    void registerType(const Expression* type);
+    void registerType(const Expression& type);
     void evalCommandLine (const string str);
     vector<string> split(const string& text, char delimiter);
     Expression* CreateExpressionFromString (const string s);
