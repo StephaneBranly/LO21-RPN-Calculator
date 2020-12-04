@@ -1,7 +1,7 @@
 #ifndef EXPRESSIONMANAGER_H
 #define EXPRESSIONMANAGER_H
 #include <string>
-#include <expression.h>
+#include "expression.h"
 
 namespace  Engine{
 class ExpressionManager{ //contient toutes les expressions, et le cycle de vie d'une expression
@@ -16,24 +16,6 @@ class ExpressionManager{ //contient toutes les expressions, et le cycle de vie d
 public:
     Expression& addExpression(Operande& op);
     void removeExpression(Expression& e);
-
-    litteral eval () {
-
-        size_t nb = getarrite();
-        Expression[]=0;
-        for(size_t i=0;i<nb;i++){
-            tab[i]=top();
-            pop();
-        }
-        switch (nb) {
-            case'0' :
-
-
-        }
-
-
-        }
-    }
 
     ExpressionManager& getInstance();
 
