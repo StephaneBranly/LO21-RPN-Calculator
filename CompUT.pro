@@ -3,6 +3,7 @@ QT += widgets
 SOURCES += \
     main.cpp \
     src/connector/connector.cpp \
+    src/engine/computerengine.cpp \
     src/engine/expression/expression.cpp \
     src/engine/expression/expressionmanager.cpp \
     src/interface/mainwindow.cpp \
@@ -28,6 +29,7 @@ FORMS += \
 
 HEADERS += \
     src/connector/connector.h \
+    src/engine/computerengine.h \
     src/engine/operator/operator.h \
     src/engine/exception/CompException.h \
     src/engine/expression/expression.h \
@@ -38,6 +40,7 @@ HEADERS += \
     src/interface/widgets/keyboardfunctions/keyboardfunctions.h \
     src/interface/widgets/keyboardnumeric/keyboardnumeric.h \
     src/interface/widgets/pile/pile.h \
-    src/interface/widgets/varsprogs/varsprogs.h \
+    src/interface/widgets/programmes/programmes.h \
+    src/interface/widgets/variables/variables.h \
     src/observer/observer.h \
     src/observer/subject.h
