@@ -5,9 +5,11 @@ SOURCES += \
     src/connector/connector.cpp \
     src/interface/mainwindow.cpp \
     src/interface/widgets/commandline/commandline.cpp \
-    src/interface/widgets/keyboard/keyboard.cpp \
+    src/interface/widgets/keyboardfunctions/keyboardfunctions.cpp \
+    src/interface/widgets/keyboardnumeric/keyboardnumeric.cpp \
     src/interface/widgets/pile/pile.cpp \
-    src/interface/widgets/varsprogs/varsprogs.cpp \
+    src/interface/widgets/programmes/programmes.cpp \
+    src/interface/widgets/variables/variables.cpp \
     src/observer/observer.cpp \
     src/observer/subject.cpp \
     src/engine/expression/expression.cpp \
@@ -16,9 +18,11 @@ SOURCES += \
 FORMS += \
     src/interface/mainwindow.ui \
     src/interface/widgets/commandline/commandline.ui \
-    src/interface/widgets/keyboard/keyboard.ui \
+    src/interface/widgets/keyboardfunctions/keyboardfunctions.ui \
+    src/interface/widgets/keyboardnumeric/keyboardnumeric.ui \
     src/interface/widgets/pile/pile.ui \
-    src/interface/widgets/varsprogs/varsprogs.ui \
+    src/interface/widgets/programmes/programmes.ui \
+    src/interface/widgets/variables/variables.ui \
 
 HEADERS += \
     src/connector/connector.h \
@@ -29,7 +33,8 @@ HEADERS += \
     src/engine/stack/stack.h \
     src/interface/mainwindow.h \
     src/interface/widgets/commandline/commandline.h \
-    src/interface/widgets/keyboard/keyboard.h \
+    src/interface/widgets/keyboardfunctions/keyboardfunctions.h \
+    src/interface/widgets/keyboardnumeric/keyboardnumeric.h \
     src/interface/widgets/pile/pile.h \
     src/interface/widgets/varsprogs/varsprogs.h \
     src/observer/observer.h \

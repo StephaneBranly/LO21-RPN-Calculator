@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>514</width>
     <height>300</height>
    </rect>
   </property>
@@ -29,17 +29,43 @@
    <item row="0" column="0">
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QLineEdit" name="Message">
-       <property name="cursor">
-        <cursorShape>ArrowCursor</cursorShape>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="minimumSize">
+        <size>
+         <width>512</width>
+         <height>0</height>
+        </size>
        </property>
-       <property name="readOnly">
-        <bool>true</bool>
+       <property name="title">
+        <string>Pile</string>
        </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLineEdit" name="Message">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>15</pointsize>
+           </font>
+          </property>
+          <property name="cursor">
+           <cursorShape>ArrowCursor</cursorShape>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="ContentTab"/>
+        </item>
+       </layout>
       </widget>
-     </item>
-     <item>
-      <widget class="QTableWidget" name="ContentTab"/>
      </item>
     </layout>
    </item>
