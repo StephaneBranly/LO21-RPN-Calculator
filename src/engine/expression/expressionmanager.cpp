@@ -1,6 +1,8 @@
 #include "expressionmanager.h"
 #include "expression.h"
 #include "../exception/CompException.h"
+#include "../computerengine.h"
+
 #include <cstring>
 #include <stdio.h>
 #include <string.h>

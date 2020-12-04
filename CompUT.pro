@@ -6,6 +6,7 @@ SOURCES += \
     src/engine/computerengine.cpp \
     src/engine/expression/expression.cpp \
     src/engine/expression/expressionmanager.cpp \
+    src/engine/stack/stack.cpp \
     src/interface/mainwindow.cpp \
     src/interface/widgets/commandline/commandline.cpp \
     src/interface/widgets/keyboardfunctions/keyboardfunctions.cpp \
