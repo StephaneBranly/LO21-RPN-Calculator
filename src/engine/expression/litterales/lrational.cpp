@@ -1,39 +1,39 @@
-#include "lrationnelle.h"
-#include "CompException"
+#include "lrational.h"
+#include "../CompException" //path?
+#include "linteger.h"
 #include <iostream>
 
-void Engine::Lrationnelle::simplification()
+void Engine::Lrational::simplify()
 {
         if(denominateur == 1){
             //création d'une littérale entiere, et destruction de la Lrationnelle.
-            setLentiere(numerateur);
+            Engine::Linteger::setLinteger(numerateur);//erreur
         }
         if (numerateur == 0) {
             //création de la littérale entiere nulle.
-            setLentiere(denominateur);
+            Engine::Linteger::setLinteger(denominateur);//erreur
         }
 }
 
-Engine::Lrationnelle::Lrationnelle(int n, int d){
-    setRationelle(n,d);
-}
 
-void Engine::Lrationnelle::setRationelle(int n, int d){
+void Engine::Lrational::setRational(int n, int d){
     numerateur=n;
     if (d==0) throw CompException ("Error : dénominateur invalide.");
     denominateur = d;
-    simplification();
+    simplify();
 }
 
-void Engine::Lrationnelle::setrationnelle(Lentiere& e1, Lentiere& e2){
+void Engine::Lrational::setRational(Linteger& e1, Linteger& e2){
     numerateur = e1.getvalue();
     if (e2.getvalue()==0) throw CompException ("Error : dénominateur invalide.");
     denominateur = e2.getvalue();
-    simplification();
+    simplify();
 }
 
-void Engine::Lrationnelle::afficher(){
+/*
+void Engine::Lrational::afficher(){
     std::cout<<numerateur<<"/"<<denominateur<<" ";
 }
+*/
 
 

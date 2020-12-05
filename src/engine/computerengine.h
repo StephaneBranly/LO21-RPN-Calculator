@@ -27,6 +27,8 @@ public:
     ExpressionManager& getExpressionManager(){ return expressionManager; }
 
     static ComputerEngine &getInstance();
+
+
 };
 }
 
