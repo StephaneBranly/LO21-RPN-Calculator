@@ -5,17 +5,23 @@
 #include "stdio.h"
 
 namespace Engine {
-class Expression{//abstract class
+
+class Expression{
+private:
+    static std::string type;
+
 public:
-    virtual Expression* CreateExpressionFromString(const std::string s) const = 0 ;
+    virtual Expression* createExpressionFromString(const std::string s) const = 0 ;
+    virtual Expression* createCopy(Expression* A){return A;}
     virtual bool isSameType(const std::string s) const = 0;
-    //création d'une expression en fonction de son type
-    //reconnaissance de type dans les sous-classes.
-    virtual void afficher(std::ostream& f = std::cout) const = 0;
-    //définition retardée au niveau des sous classes
     virtual void eval() = 0;
-    virtual std::string toString ();
-    virtual ~Expression();
+    virtual const std::string toString() const = 0;
+    const std::string& getType() const{ return type; }
+
+    Expression() = default;
+
+    virtual ~Expression(){};
 };
+
 }
 #endif // EXPRESSION_H

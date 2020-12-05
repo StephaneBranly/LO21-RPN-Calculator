@@ -3,8 +3,10 @@ QT += widgets
 SOURCES += \
     main.cpp \
     src/connector/connector.cpp \
+    src/engine/computerengine.cpp \
     src/engine/expression/expression.cpp \
     src/engine/expression/expressionmanager.cpp \
+    src/engine/stack/stack.cpp \
     src/interface/mainwindow.cpp \
     src/interface/widgets/commandline/commandline.cpp \
     src/interface/widgets/keyboardfunctions/keyboardfunctions.cpp \
@@ -14,8 +16,6 @@ SOURCES += \
     src/interface/widgets/variables/variables.cpp \
     src/observer/observer.cpp \
     src/observer/subject.cpp \
-    src/engine/expression/expression.cpp \
-    src/engine/expression/expressionmanager.cpp \
 
 FORMS += \
     src/interface/mainwindow.ui \
@@ -28,6 +28,7 @@ FORMS += \
 
 HEADERS += \
     src/connector/connector.h \
+    src/engine/computerengine.h \
     src/engine/operator/operator.h \
     src/engine/exception/CompException.h \
     src/engine/expression/expression.h \
@@ -38,6 +39,7 @@ HEADERS += \
     src/interface/widgets/keyboardfunctions/keyboardfunctions.h \
     src/interface/widgets/keyboardnumeric/keyboardnumeric.h \
     src/interface/widgets/pile/pile.h \
-    src/interface/widgets/varsprogs/varsprogs.h \
+    src/interface/widgets/programmes/programmes.h \
+    src/interface/widgets/variables/variables.h \
     src/observer/observer.h \
     src/observer/subject.h

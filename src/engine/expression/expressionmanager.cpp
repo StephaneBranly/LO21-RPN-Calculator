@@ -1,40 +1,19 @@
 #include "expressionmanager.h"
 #include "expression.h"
-#include "CompException.h"
+#include "../exception/CompException.h"
+#include "../computerengine.h"
+
 #include <cstring>
 #include <stdio.h>
-#include <string.h>
+#include <string>
 #include <vector>
 #include <sstream>
 #include <algorithm>
 #include <iterator>
 
-//Engine::ExpressionManager& Engine::ExpressionManager::operator<<(Expression& e){
-//    Expression* ex = e.createLitterale();
-//    exps.push_back(&e);
-//    return *this;
-//}
+#include <QtDebug>
 
-/*
-Engine::Expression& Engine::ExpressionManager::addExpression(Expression& e){
-    if (nb==nbMax) agrandissementCapacite();
-    exps[nb++]= new Expression(e);
-    return *exps[nb-1];
-}//ajoute une expression au tableau
-
-void Engine::ExpressionManager::removeExpression(Expression& e){
-    if (exps != nullptr){
-        size_t i = 0;
-        while (i<nb && exps[i]!= &e) i++;
-        if (i == nb) throw Engine::ComputerException ("Expression Inexistante");
-        delete exps[i];
-        nb--;
-        while(i<nb) exps[i]= exps[i+1]; i++;
-    }throw Engine::ComputerException ("Aucune Expression exitante.");
-}//supprime une expression du tableau
-*/
-
-vector<string> split(const string& cmd, char space) {
+vector<string> Engine::ExpressionManager::split(const string& cmd, char space) {
     string buf;
     vector<string> tokens;
     stringstream ss(cmd);
@@ -45,31 +24,42 @@ vector<string> split(const string& cmd, char space) {
 }
 
 void Engine::ExpressionManager::evalCommandLine(const string str){
-    vector<string> tokens = ExpressionManager::split(str,' '); //on a un les tokens
+    vector<string> tokens = ExpressionManager::split(str,' ');
     for (auto it = std::begin(tokens); it!=std::end(tokens); ++it){
-        exps.push_back(CreateExpressionFromString(*it));
+        qDebug()<<"creation de expression pour :"<<QString::fromStdString(*it);
+        try {
+            exps.push_back(createExpressionFromString(*it));
+        }  catch (ComputerException e) {
+            throw ComputerException("/!\\ EVAL :"+e.getInfo());
+        }
+//
     }
-}//evalue la command line
+}
 
-Engine::Expression* Engine::ExpressionManager::CreateExpressionFromString(const string s){
-    Expression* res = nullptr;
+Engine::Expression* Engine::ExpressionManager::createExpressionFromString(const string s){
+    Expression* res=nullptr;
     for(auto it = expressionsTypes.begin(); it!=expressionsTypes.end(); ++it){
-        if(it->isSameType(s))
+        if((*it)->isSameType(s))
         {
             if(!res)
-                res = it->CreateExpressionFromString(s);
+            {
+
+                res = (*it)->createExpressionFromString(s);
+                qDebug() << "Type reconnu";
+            }
             else
                 throw ComputerException("Reconnu par plusieurs types");
         }
     }
     if(!res)
-        throw ComputerException("Type non reconnu");
+        throw ComputerException("Type non reconnu de "+s);
     return res;
 }
 
-void Engine::ExpressionManager::registerType(const Expression& type)
+void Engine::ExpressionManager::registerType(Expression* t)
 {
-    expressionsTypes.push_back(type);
+    expressionsTypes.push_back(t);
+    qDebug() << "\nEnregistrement du type ";/*<< QString::fromStdString(t->getType());*/
 }
 
 Engine::ExpressionManager::~ExpressionManager(){
