@@ -1,5 +1,0 @@
-#include "lreelle.h"
-
-double lreelle::getValue() const{
-    return valeur;
-}
