@@ -6,6 +6,10 @@ SOURCES += \
     src/engine/computerengine.cpp \
     src/engine/expression/expression.cpp \
     src/engine/expression/expressionmanager.cpp \
+    src/engine/expression/litterales/lentiere.cpp \
+    src/engine/expression/litterales/lnumerique.cpp \
+    src/engine/expression/litterales/lrationnelle.cpp \
+    src/engine/expression/litterales/lreelle.cpp \
     src/engine/stack/stack.cpp \
     src/interface/mainwindow.cpp \
     src/interface/widgets/commandline/commandline.cpp \
@@ -29,6 +33,10 @@ FORMS += \
 HEADERS += \
     src/connector/connector.h \
     src/engine/computerengine.h \
+    src/engine/expression/litterales/lentiere.h \
+    src/engine/expression/litterales/lnumerique.h \
+    src/engine/expression/litterales/lrationnelle.h \
+    src/engine/expression/litterales/lreelle.h \
     src/engine/operator/operator.h \
     src/engine/exception/CompException.h \
     src/engine/expression/expression.h \
