@@ -16,6 +16,7 @@ SOURCES += \
     src/litteral/litteral.cpp \
     src/litteral/lnumerique.cpp \
     src/litteral/lrationelle.cpp \
+    src/litteral/lreelle.cpp \
     src/observer/observer.cpp \
     src/observer/subject.cpp
 
@@ -47,5 +48,6 @@ HEADERS += \
     src/litteral/litteral.h \
     src/litteral/lnumerique.h \
     src/litteral/lrationelle.h \
+    src/litteral/lreelle.h \
     src/observer/observer.h \
     src/observer/subject.h

@@ -1,11 +1,14 @@
 #ifndef LNUMERIQUE_H
 #define LNUMERIQUE_H
+#include "litteral.h"
 
 
-class Lnumerique
+template<class A>
+class lnumerique:public litteral
 {
 public:
-    Lnumerique();
+   virtual A getValue();
+    
 };
 
 #endif // LNUMERIQUE_H

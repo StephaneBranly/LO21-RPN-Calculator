@@ -2,16 +2,27 @@
 #define LRATIONELLE_H
 #include "lnumerique.h"
 
-class lrationelle : public lnumerique
+
+class lrationelle:public lnumerique
 {
 int numerator;
 int denominator;
 
 public:
+   lrationelle& simplifier();
    int getNumerator() const;
    void setNumerator(int n) ;
    int getDenominator() const;
    void setDenominator(int d);
+   int signe();
+   void memeDenominateur(lrationelle& F1,lrationelle& F2);
+   lrationelle& operator=(const lrationelle &F);
+   lrationelle& operator-(lrationelle& F1);
+   lrationelle& operator+(lrationelle& F1);
+   lrationelle& operator/(const lrationelle &F);
+   lrationelle& inverser();
+   lrationelle& operator*(const lrationelle &F);
+   int lrationelle::PGCD(int a, int b);
 };
 
 #endif // LRATIONELLE_H

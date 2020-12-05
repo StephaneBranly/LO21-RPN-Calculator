@@ -3,11 +3,12 @@
 #include "litteral.h"
 
 
-template<class A>
-class Lnumerique:public litteral
+
+class lnumerique:public litteral
 {
+    
 public:
-   virtual A getValue();
+    double getValue();
     
 };
 
