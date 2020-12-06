@@ -10,7 +10,7 @@ namespace Engine{
 class ComputerEngine: public Subject
 {
 private:
-//    Stack stack;
+    Engine::Stack stack;
     ExpressionManager expressionManager;
 
     struct Handler
@@ -23,7 +23,7 @@ private:
 public:
     ComputerEngine() = default;
 
-//    Stack getStack(){ return stack; }
+    Engine::Stack getStack(){ return stack; }
     ExpressionManager& getExpressionManager(){ return expressionManager; }
 
     static ComputerEngine &getInstance();

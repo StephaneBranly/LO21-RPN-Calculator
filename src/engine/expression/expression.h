@@ -11,7 +11,7 @@ private:
     static std::string type;
 
 public:
-    virtual Expression* createExpressionFromString(const std::string s) const = 0 ;
+    virtual Expression* createExpressionFromString(const std::string s) = 0 ;
     //virtual Expression* createCopy(Expression* A){return A;}
     virtual Expression* createCopy()const = 0;
     virtual bool isSameType(const std::string s) const = 0;

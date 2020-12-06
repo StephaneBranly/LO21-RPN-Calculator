@@ -5,7 +5,6 @@
 #include <vector>
 
 namespace  Engine {
-
 class Stack {
 public :
     Stack() = default;
@@ -19,7 +18,6 @@ public :
 private:
     std::vector<Expression*> items;
 };
-
 }
 
 #endif // PILE_H
