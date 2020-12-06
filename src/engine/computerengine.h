@@ -24,7 +24,7 @@ private:
 public:
     ComputerEngine();
 
-    Stack getStack(){ return stack; }
+    Stack getStack(){ notify("callstack"); return stack;}
     ExpressionManager& getExpressionManager(){ return expressionManager; }
 
     static ComputerEngine &getInstance();

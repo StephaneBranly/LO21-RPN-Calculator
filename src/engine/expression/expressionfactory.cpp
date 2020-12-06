@@ -12,7 +12,7 @@ Engine::Expression* Engine::ExpressionAbstractFactory::createExpressionFromStrin
             {
 
                 res = (*it)->createExpressionFromString(s);
-                qDebug() << "Type reconnu";
+                qDebug() << "Type reconnu : "+QString::fromStdString(res->getType());
             }
             else
                 throw ComputerException("Reconnu par plusieurs types");

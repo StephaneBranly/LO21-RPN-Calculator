@@ -5,17 +5,16 @@
 #include "stdio.h"
 
 namespace Engine {
-
 class Expression{
 protected:
-    std::string type="Expession";
+    std::string type="Expression";
 
 public:
     //virtual Expression* createCopy(Expression* A){return A;}
 //    virtual Expression* createCopy()const = 0;
     virtual void eval() = 0;
     virtual const std::string toString() const = 0;
-    const std::string& getType() const { return this->type; }
+    virtual const std::string getType() const { return this->type; }
 
     Expression() = default;
 

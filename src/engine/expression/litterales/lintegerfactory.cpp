@@ -7,7 +7,7 @@ bool Engine::LintegerFactory::isSameType(const std::string s) const
     std::regex str_expr ("^[0-9]+$");
     return (regex_match(s,str_expr));
 }
-Engine::Expression* Engine::LintegerFactory::createExpressionFromString(const std::string s)
+Engine::Linteger* Engine::LintegerFactory::createExpressionFromString(const std::string s)
 {
     return new Linteger(s);
 }

@@ -14,6 +14,7 @@ public:
     Lreal* setReal(float r);
 //    LReal* createCopy()const override{return new LReal(*this);}
     std::string const toString()const override{return std::to_string(real);}
+    const std::string getType() const override { return this->type; }
 };
 }
 #endif // LREELLE_H

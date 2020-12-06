@@ -9,7 +9,7 @@ class Stack {
 public :
     Stack() = default;
     ~Stack() = default;
-    void push(Expression* item){ items.push_back(item); }
+    void push(Expression* item);
     Expression* pop();
     bool isEmpty() const {return items.size()==0; }
     size_t size() const {return items.size();}

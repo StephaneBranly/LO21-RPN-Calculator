@@ -20,6 +20,7 @@ public:
     std::string const toString() const override {
        return std::to_string(numerateur) + "/" + std::to_string(denominateur) ;
     }
+    const std::string getType() const override { return this->type; }
 };
 }
 #endif // LRATIONNELLE_H

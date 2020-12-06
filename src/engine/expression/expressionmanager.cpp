@@ -23,15 +23,29 @@ vector<string> Engine::ExpressionManager::split(const string& cmd, char space) {
 }
 
 void Engine::ExpressionManager::evalCommandLine(const string str){
+    list<Expression*> commandLineExpressions;
+    Expression* current;
     vector<string> tokens = ExpressionManager::split(str,' ');
     for (auto it = std::begin(tokens); it!=std::end(tokens); ++it){
         qDebug()<<"creation de expression pour :"<<QString::fromStdString(*it);
         try {
-            exps.push_back(factory->createExpressionFromString(*it));
+            current = factory->createExpressionFromString(*it);
+            exps.push_back(current);
+            commandLineExpressions.push_back(current);
         }  catch (ComputerException e) {
             throw ComputerException("/!\\ EVAL :"+e.getInfo());
         }
 //
+    }
+    for(auto it = commandLineExpressions.begin(); it!=commandLineExpressions.end(); ++it)
+    {
+        qDebug()<<QString::fromStdString((*it)->toString());
+        try{
+            (*it)->eval();
+        }
+        catch (ComputerException e) {
+            throw ComputerException("/!\\ EVAL :"+e.getInfo());
+        }
     }
 }
 
