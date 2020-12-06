@@ -44,5 +44,6 @@ public slots:
     void addToCommandline(QString str);
     void updateTabDocks();
     void updateStack(const std::list<QString> m){ pile->updateContent(m);}
+    void clearCommandLine(){ commandline->clearText(); }
 };
 #endif // MAINWINDOW_H

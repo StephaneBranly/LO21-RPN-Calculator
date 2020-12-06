@@ -16,6 +16,7 @@ public:
     virtual const std::string getType() const { return this->type; }
 
     Expression() = default;
+    Expression(const std::string type): type(type){};
     virtual ~Expression(){};
 };
 

@@ -15,8 +15,6 @@ Engine::Expression* Engine::Stack::pop()
 void Engine::Stack::push(Expression* item)
 {
     items.push_back(item);
-    qDebug()<<"in function size contnt";
-    qDebug()<<size();
     ComputerEngine::getInstance().notify("stackChanged");
 }
 
@@ -24,14 +22,8 @@ void Engine::Stack::push(Expression* item)
 std::list<std::string> Engine::Stack::toStringList()
 {
     std::list<std::string> result;
-    qDebug()<<"creation contnt";
-    qDebug()<<size();
     for(auto it = items.begin(); it!=items.end(); ++it)
-       {
-              result.push_back((*it)->toString());
-              qDebug()<<
-                         "conversion to string item ";
-    }
+        result.push_back((*it)->toString());
 
     return result;
 }

@@ -20,7 +20,7 @@ void Connector::notify(const std::string &message)
     if(message=="clickEval")
     {
         const std::string content = window.getContentCommandLine().toStdString();
-        try{engine.getExpressionManager().evalCommandLine(content); window.setMessage("OK");}
+        try{engine.getExpressionManager().evalCommandLine(content); window.setMessage("OK"); window.clearCommandLine(); }
         catch(Engine::ComputerException e){ window.setMessage(QString::fromStdString(e.getInfo()));}
     }else if(message=="stackChanged")
     {

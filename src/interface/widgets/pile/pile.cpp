@@ -7,14 +7,12 @@ Pile::Pile(QWidget *parent)
 {
     ui->setupUi(this);
     ui->ContentTab->setColumnCount(1);
-    ui->ContentTab->setStyleSheet("background: darkcyan");
     ui->ContentTab->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    // suppression du header horizontal de la pile
     ui->ContentTab->horizontalHeader()->setVisible(false);
-
-    // ajuster la largeur des colonnes
+    ui->ContentTab->setAlternatingRowColors(true);
+    ui->ContentTab->setStyleSheet("alternate-background-color: rgba(0,0,0,0.1);background-color: rgba(255,255,255,0.1);");
     ui->ContentTab->horizontalHeader()->setStretchLastSection(true);
-    updateSize(5);
+    updateSize(10);
 }
 
 Pile::~Pile()
@@ -54,7 +52,6 @@ void Pile::updateSize(size_t t)
 
         // création de l'item de chaque ligne
         ui->ContentTab->setItem(i-1,0, new QTableWidgetItem(""));
-
     }
     ui->ContentTab->setVerticalHeaderLabels(labels);
     ui->ContentTab->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
