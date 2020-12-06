@@ -22,7 +22,7 @@ private:
     static Handler hand;
 
 public:
-    ComputerEngine() = default;
+    ComputerEngine();
 
     Stack getStack(){ return stack; }
     ExpressionManager& getExpressionManager(){ return expressionManager; }

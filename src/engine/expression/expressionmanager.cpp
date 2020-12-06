@@ -44,7 +44,7 @@ Engine::Expression* Engine::ExpressionManager::createExpressionFromString(const 
             {
 
                 res = (*it)->createExpressionFromString(s);
-                qDebug() << "Type reconnu";
+                qDebug() << "Type reconnu :"<<QString::fromStdString((*it)->getType());
             }
             else
                 throw ComputerException("Reconnu par plusieurs types");

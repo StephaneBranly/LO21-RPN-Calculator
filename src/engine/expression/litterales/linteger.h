@@ -7,9 +7,10 @@ namespace Engine {
 class Linteger : public Lnumerical
 {
     int value;
-
+protected:
+    std::string type="Linteger";
 public:
-    //Linteger();
+    Linteger()=default;
     Linteger(const Linteger&);
     Linteger* setLinteger(int v);
     int getvalue(){return value;}

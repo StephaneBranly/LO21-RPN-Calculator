@@ -9,6 +9,8 @@ class Lrational  : public Lnumerical
     int numerateur;
     int denominateur;
     void simplify();
+protected:
+    std::string type="Lrational";
 public:
     Lrational(int n, int d):numerateur(n),denominateur(d){};
     void setRational(int n, int d);
