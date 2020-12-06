@@ -13,8 +13,8 @@ public:
     Lreal()=default;
     Lreal* setReal(float r);
 //    LReal* createCopy()const override{return new LReal(*this);}
-    Lreal* createExpressionFromString(const std::string s) override;
-    bool isSameType(const std::string s) const override;
+    Lreal* createExpressionFromString(const std::string s) ;
+    bool isSameType(const std::string s) const ;
     std::string const toString()const override{return std::to_string(real);}
 };
 }

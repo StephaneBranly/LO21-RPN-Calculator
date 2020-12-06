@@ -27,38 +27,12 @@ void Engine::ExpressionManager::evalCommandLine(const string str){
     for (auto it = std::begin(tokens); it!=std::end(tokens); ++it){
         qDebug()<<"creation de expression pour :"<<QString::fromStdString(*it);
         try {
-            exps.push_back(createExpressionFromString(*it));
+            exps.push_back(factory->createExpressionFromString(*it));
         }  catch (ComputerException e) {
             throw ComputerException("/!\\ EVAL :"+e.getInfo());
         }
 //
     }
-}
-
-Engine::Expression* Engine::ExpressionManager::createExpressionFromString(const string s){
-    Expression* res=nullptr;
-    for(auto it = expressionsTypes.begin(); it!=expressionsTypes.end(); ++it){
-        if((*it)->isSameType(s))
-        {
-            if(!res)
-            {
-
-                res = (*it)->createExpressionFromString(s);
-                qDebug() << "Type reconnu :"<<QString::fromStdString((*it)->getType());
-            }
-            else
-                throw ComputerException("Reconnu par plusieurs types");
-        }
-    }
-    if(!res)
-        throw ComputerException("Type non reconnu de "+s);
-    return res;
-}
-
-void Engine::ExpressionManager::registerType(Expression* t)
-{
-    expressionsTypes.push_back(t);
-    qDebug() << "\nEnregistrement du type ";/*<< QString::fromStdString(t->getType());*/
 }
 
 Engine::ExpressionManager::~ExpressionManager(){

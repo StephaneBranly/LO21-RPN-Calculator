@@ -5,20 +5,20 @@
 #include <list>
 
 #include "expression.h"
-
+#include "expressionfactory.h"
 using namespace std;
 
 namespace  Engine{
 class ExpressionManager{
 private:
     list<Expression*> exps;
-    vector<Expression*> expressionsTypes;
+    ExpressionAbstractFactory* factory;
 public :
-    ExpressionManager() = default;
-    void registerType(Expression* type);
+    ExpressionManager(){ factory = new ExpressionAbstractFactory; };
     void evalCommandLine (const string str);
     vector<string> split(const string& text, char delimiter);
     Expression* createExpressionFromString (const string s);
+    ExpressionAbstractFactory* getFactory(){ return factory; }
     ~ExpressionManager();
 };
 }
