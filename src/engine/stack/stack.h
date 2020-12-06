@@ -1,5 +1,5 @@
-#ifndef PILE_H
-#define PILE_H
+#ifndef STACK_H
+#define STACK_H
 #include "../expression/expression.h"
 #include <string>
 #include <vector>
@@ -20,4 +20,4 @@ private:
 };
 }
 
-#endif // PILE_H
+#endif // STACK_H

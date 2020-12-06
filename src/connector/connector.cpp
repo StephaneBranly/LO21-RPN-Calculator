@@ -2,6 +2,7 @@
 #include "../interface/mainwindow.h"
 #include "../observer/observer.h"
 #include "../engine/exception/CompException.h"
+
 #include <QDebug>
 
 #include <string>

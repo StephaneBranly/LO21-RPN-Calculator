@@ -1,6 +1,7 @@
 #ifndef COMPUTERENGINE_H
 #define COMPUTERENGINE_H
 
+
 #include "../observer/subject.h"
 
 #include "expression/expressionmanager.h"
@@ -10,7 +11,7 @@ namespace Engine{
 class ComputerEngine: public Subject
 {
 private:
-    Engine::Stack stack;
+    Stack stack;
     ExpressionManager expressionManager;
 
     struct Handler
@@ -23,14 +24,13 @@ private:
 public:
     ComputerEngine() = default;
 
-    Engine::Stack getStack(){ return stack; }
+    Stack getStack(){ return stack; }
     ExpressionManager& getExpressionManager(){ return expressionManager; }
 
     static ComputerEngine &getInstance();
-
-
 };
 }
+
 
 
 #endif // COMPUTERENGINE_H

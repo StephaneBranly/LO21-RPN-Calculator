@@ -37,7 +37,7 @@ HEADERS += \
     src/engine/expression/litterales/lnumerical.h \
     src/engine/expression/litterales/lrational.h \
     src/engine/expression/litterales/lreal.h \
-    src/engine/operator/operator.h \
+    src/engine/expression/operator/operator.h \
     src/engine/exception/CompException.h \
     src/engine/expression/expression.h \
     src/engine/expression/expressionmanager.h \

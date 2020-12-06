@@ -1,12 +1,9 @@
 #include "stack.h"
 #include "../expression/expression.h"
 
-namespace Engine
+Engine::Expression* Engine::Stack::pop()
 {
-    Expression* Stack::pop()
-    {
-        Expression* item = this->top();
-        items.pop_back();
-        return item;
-    };
-}
+    Expression* item = this->top();
+    items.pop_back();
+    return item;
+};

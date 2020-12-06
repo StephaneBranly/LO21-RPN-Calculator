@@ -1,5 +1,4 @@
 #include "lnumerical.h"
-#include "../../stack/stack.h" //problème sur le path
 #include "../../computerengine.h"
 
 void Engine::Lnumerical::eval(){

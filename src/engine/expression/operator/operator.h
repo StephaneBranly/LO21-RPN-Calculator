@@ -1,10 +1,10 @@
 #ifndef OPERATOR_H
 #define OPERATOR_H
 
-#include "../expression/expression.h"
-#include "../stack/stack.h"
-#include "../exception/CompException.h"
-#include "../computerengine.h"
+#include "../expression.h"
+
+#include "../../exception/CompException.h"
+#include "../../computerengine.h"
 
 #include <iostream>
 #include <string>
