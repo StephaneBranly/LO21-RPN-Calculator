@@ -1,7 +1,7 @@
 #include "computerengine.h"
 
 #include "expression/litterales/lintegerfactory.h"
-#include "expression/litterales/lreal.h"
+#include "expression/litterales/lrealfactory.h"
 #include "expression/expression.h"
 
 Engine::ComputerEngine::Handler Engine::ComputerEngine::hand = Engine::ComputerEngine::Handler();
@@ -9,6 +9,7 @@ Engine::ComputerEngine::Handler Engine::ComputerEngine::hand = Engine::ComputerE
 Engine::ComputerEngine::ComputerEngine()
 {
     expressionManager.getFactory()->registerFactory(new LintegerFactory);
+    expressionManager.getFactory()->registerFactory(new LrealFactory);
 };
 
 Engine::ComputerEngine& Engine::ComputerEngine::getInstance()

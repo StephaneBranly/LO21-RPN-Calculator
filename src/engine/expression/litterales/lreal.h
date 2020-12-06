@@ -10,11 +10,9 @@ class Lreal : public Lnumerical
 protected:
     std::string type="Lreal";
 public:
-    Lreal()=default;
+    Lreal(const std::string s);
     Lreal* setReal(float r);
 //    LReal* createCopy()const override{return new LReal(*this);}
-    Lreal* createExpressionFromString(const std::string s) ;
-    bool isSameType(const std::string s) const ;
     std::string const toString()const override{return std::to_string(real);}
 };
 }

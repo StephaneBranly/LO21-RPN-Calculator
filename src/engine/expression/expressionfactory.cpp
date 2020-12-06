@@ -19,6 +19,6 @@ Engine::Expression* Engine::ExpressionAbstractFactory::createExpressionFromStrin
         }
     }
     if(!res)
-        throw ComputerException("Type non reconnu");
+        throw ComputerException("Type non reconnu de "+s);
     return res;
 }
