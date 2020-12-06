@@ -16,7 +16,6 @@ public:
     void setRational(int n, int d);
     void setRational(Linteger& e1, Linteger& e2);
 //    Lrational* createCopy()const override{return new Lrational(*this);}
-//    bool isSameType(const std::string s) const override{};
     std::string const toString() const override {
        return std::to_string(numerateur) + "/" + std::to_string(denominateur) ;
     }

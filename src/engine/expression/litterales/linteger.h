@@ -17,6 +17,7 @@ public:
 //    Linteger* createCopy()const override{return new Linteger(*this);}
     std::string const toString() const override{ return std::to_string(value); }
     const std::string getType() const override { return this->type; }
+
 };
 }
 #endif // LENTIERE_H

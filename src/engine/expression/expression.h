@@ -3,12 +3,11 @@
 #include <string>
 #include <iostream>
 #include "stdio.h"
-
+#include <QDebug>
 namespace Engine {
 class Expression{
 protected:
     std::string type="Expression";
-
 public:
     //virtual Expression* createCopy(Expression* A){return A;}
 //    virtual Expression* createCopy()const = 0;
@@ -17,7 +16,6 @@ public:
     virtual const std::string getType() const { return this->type; }
 
     Expression() = default;
-
     virtual ~Expression(){};
 };
 
