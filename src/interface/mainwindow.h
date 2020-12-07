@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QDockWidget>
+#include <list>
 
 #include "../observer/subject.h"
 
@@ -42,5 +43,7 @@ public slots:
     void clickEval();
     void addToCommandline(QString str);
     void updateTabDocks();
+    void updateStack(const std::list<QString> m){ pile->updateContent(m);}
+    void clearCommandLine(){ commandline->clearText(); }
 };
 #endif // MAINWINDOW_H

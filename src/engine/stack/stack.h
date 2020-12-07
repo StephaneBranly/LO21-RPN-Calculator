@@ -1,25 +1,24 @@
-#ifndef PILE_H
-#define PILE_H
+#ifndef STACK_H
+#define STACK_H
 #include "../expression/expression.h"
 #include <string>
 #include <vector>
+#include <list>
 
 namespace  Engine {
-
 class Stack {
 public :
     Stack() = default;
     ~Stack() = default;
-    void push(Expression* item){ items.push_back(item); }
+    void push(Expression* item);
     Expression* pop();
     bool isEmpty() const {return items.size()==0; }
     size_t size() const {return items.size();}
     Expression* top () const { return items.back(); }
-
+    std::list<std::string> toStringList();
 private:
     std::vector<Expression*> items;
 };
-
 }
 
-#endif // PILE_H
+#endif // STACK_H

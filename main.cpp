@@ -7,7 +7,7 @@
 int main(int argc, char *argv[]){
     QApplication a(argc, argv);
     Mainwindow& w = *(new Mainwindow);
-    Engine::ComputerEngine e;
+    Engine::ComputerEngine e = Engine::ComputerEngine::getInstance();
     Connector c(w,e);
     return a.exec();
 }

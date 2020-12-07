@@ -2,6 +2,8 @@
 #include "ui_commandline.h"
 
 #include <QtDebug>
+#include <QtGui>
+#include <qobject.h>
 
 Commandline::Commandline(QWidget *parent)
     : QWidget(parent)
@@ -9,6 +11,10 @@ Commandline::Commandline(QWidget *parent)
 {
     ui->setupUi(this);
     connect(ui->ButtonExe,SIGNAL(clicked()),parent,SLOT(clickEval()));
+
+    clock = new QTimer(this);
+    QObject::connect(clock, SIGNAL(timeout()), this, SLOT(toggleCursor()));
+    clock->start(300); //time specified in ms
 }
 
 Commandline::~Commandline()
@@ -19,17 +25,30 @@ Commandline::~Commandline()
 
 QString Commandline::getText() const
 {
-    return this->ui->TextEdit->text();
+    return textContent;
 }
 void Commandline::addText(const QString str)
 {
-    this->ui->TextEdit->insert(str);
+    textContent+=str;
+    updateText();
 }
 void Commandline::clearText()
 {
-    this->ui->TextEdit->clear();
+    textContent="";
+    updateText();
 }
 void Commandline::backspace()
 {
-    this->ui->TextEdit->backspace();
+    if(textContent.length())
+    {
+        textContent = textContent.chopped(1);
+        updateText();
+    }
+}
+void Commandline::updateText()
+{
+    this->ui->TextEdit->clear();
+    this->ui->TextEdit->insert(textContent);
+    if(cursor)
+        this->ui->TextEdit->insert("_");
 }

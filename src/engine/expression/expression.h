@@ -3,24 +3,20 @@
 #include <string>
 #include <iostream>
 #include "stdio.h"
-
+#include <QDebug>
 namespace Engine {
-
 class Expression{
-private:
-    static std::string type;
-
+protected:
+    std::string type="Expression";
 public:
-    virtual Expression* createExpressionFromString(const std::string s) const = 0 ;
     //virtual Expression* createCopy(Expression* A){return A;}
-    virtual Expression* createCopy()const = 0;
-    virtual bool isSameType(const std::string s) const = 0;
+//    virtual Expression* createCopy()const = 0;
     virtual void eval() = 0;
     virtual const std::string toString() const = 0;
-    const std::string& getType() const{ return type; }
+    virtual const std::string getType() const { return this->type; }
 
     Expression() = default;
-
+    Expression(const std::string type): type(type){};
     virtual ~Expression(){};
 };
 

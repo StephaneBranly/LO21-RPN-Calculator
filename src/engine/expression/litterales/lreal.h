@@ -4,20 +4,17 @@
 #include <string>
 
 namespace Engine {
-class LReal : public Lnumerical
+class Lreal : public Lnumerical
 {
     float real;
+protected:
+    std::string type="Lreal";
 public:
-    LReal();
-    LReal* setReal(float r);
-    LReal* createCopy()const override{return new LReal(*this);}
-    LReal* createExpressionFromString(const std::string s) const override {
-        //à définir
-    };
-    bool isSameType(const std::string s) const override{
-        //à définir
-    };
+    Lreal(const std::string s);
+    Lreal* setReal(float r);
+//    LReal* createCopy()const override{return new LReal(*this);}
     std::string const toString()const override{return std::to_string(real);}
+    const std::string getType() const override { return this->type; }
 };
 }
 #endif // LREELLE_H
