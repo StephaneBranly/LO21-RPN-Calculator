@@ -55,9 +55,10 @@ class Variables{
 
 QWidget <|-- Programmes
 QWidget <|-- KeyboardNumeric
-QWidget <|-- KeyboardFunction
+QWidget <|-- KeyboardFunctions
 QWidget <|-- Pile
-QWidget <|-- Variable
+QWidget <|-- Variables
+QWidget <|--Commandline
 
 @enduml
 
