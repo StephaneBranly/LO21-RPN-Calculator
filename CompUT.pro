@@ -7,6 +7,8 @@ SOURCES += \
     src/engine/expression/expression.cpp \
     src/engine/expression/expressionfactory.cpp \
     src/engine/expression/expressionmanager.cpp \
+    src/engine/expression/litterales/latom.cpp \
+    src/engine/expression/litterales/latomfactory.cpp \
     src/engine/expression/litterales/linteger.cpp \
     src/engine/expression/litterales/lintegerfactory.cpp \
     src/engine/expression/litterales/lnumerical.cpp \
@@ -37,6 +39,8 @@ HEADERS += \
     src/connector/connector.h \
     src/engine/computerengine.h \
     src/engine/expression/expressionfactory.h \
+    src/engine/expression/litterales/latom.h \
+    src/engine/expression/litterales/latomfactory.h \
     src/engine/expression/litterales/linteger.h \
     src/engine/expression/litterales/lintegerfactory.h \
     src/engine/expression/litterales/lnumerical.h \

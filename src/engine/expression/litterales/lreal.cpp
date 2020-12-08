@@ -5,7 +5,7 @@
 
 Engine::Lreal* Engine::Lreal::setReal(float r){
     real = r;
-    return this; //par sure
+    return this;
 }
 
 Engine::Lreal::Lreal(const std::string s){

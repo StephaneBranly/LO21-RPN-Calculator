@@ -12,8 +12,27 @@ void Engine::Lrational::simplify()
         if (numerateur == 0) {
             //création de la littérale entiere nulle.
 //            Engine::Linteger::setLinteger(denominateur);//erreur
+        }else {
+            int r;
+            r= PGCD(numerateur,denominateur);
+            numerateur = numerateur/r;
+            denominateur = denominateur/r;
+            if(denominateur<0){
+                numerateur = -numerateur;
+                denominateur = -denominateur;
+                    }
         }
 }
+
+
+int Engine::Lrational::PGCD(int a, int b){
+    while(b!=0){
+        int c=a%b;
+        a=b;
+        b=c;
+    }
+    return a;
+   }
 
 
 void Engine::Lrational::setRational(int n, int d){
