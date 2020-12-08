@@ -11,6 +11,7 @@ SOURCES += \
     src/engine/expression/litterales/latom.cpp \
     src/engine/expression/litterales/latomfactory.cpp \
     src/engine/expression/litterales/lexpression.cpp \
+    src/engine/expression/litterales/lexpressionfactory.cpp \
     src/engine/expression/litterales/linteger.cpp \
     src/engine/expression/litterales/lintegerfactory.cpp \
     src/engine/expression/litterales/lnumerical.cpp \
@@ -46,6 +47,7 @@ HEADERS += \
     src/engine/expression/litterales/latom.h \
     src/engine/expression/litterales/latomfactory.h \
     src/engine/expression/litterales/lexpression.h \
+    src/engine/expression/litterales/lexpressionfactory.h \
     src/engine/expression/litterales/linteger.h \
     src/engine/expression/litterales/lintegerfactory.h \
     src/engine/expression/litterales/lnumerical.h \
