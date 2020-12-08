@@ -17,6 +17,8 @@ public:
     const std::string getType() const override { return this->type; }
     void eval() override;
     std::string const toString() const override{return atom;}
+    bool isVarId();
+    bool isProgId();
 };
 }
 #endif // LATOM_H
