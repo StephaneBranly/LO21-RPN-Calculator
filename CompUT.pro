@@ -19,6 +19,8 @@ SOURCES += \
     src/engine/expression/litterales/lrealfactory.cpp \
     src/engine/expression/progmanager.cpp \
     src/engine/expression/userprog.cpp \
+    src/engine/expression/uservar.cpp \
+    src/engine/expression/varmanager.cpp \
     src/engine/stack/stack.cpp \
     src/interface/mainwindow.cpp \
     src/interface/widgets/commandline/commandline.cpp \
@@ -59,6 +61,8 @@ HEADERS += \
     src/engine/expression/expressionmanager.h \
     src/engine/expression/progmanager.h \
     src/engine/expression/userprog.h \
+    src/engine/expression/uservar.h \
+    src/engine/expression/varmanager.h \
     src/engine/stack/stack.h \
     src/interface/mainwindow.h \
     src/interface/widgets/commandline/commandline.h \

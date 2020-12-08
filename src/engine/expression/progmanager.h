@@ -8,10 +8,10 @@ namespace Engine {
 class ProgManager
 {
     std::vector<Latom*> programs;
-
 public:
     ProgManager();
-    Latom* getUserProg (std::string id);
+    std::vector<Latom*> getUserProg (){return programs;};
+    bool isProgId(std::string s);
 };
 }
 #endif // PROGMANAGER_H

@@ -12,6 +12,7 @@ Engine::ComputerEngine::ComputerEngine()
 {
     expressionManager.getFactory()->registerFactory(new LintegerFactory);
     expressionManager.getFactory()->registerFactory(new LrealFactory);
+
 };
 
 Engine::ComputerEngine& Engine::ComputerEngine::getInstance()

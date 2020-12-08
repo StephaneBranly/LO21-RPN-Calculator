@@ -11,7 +11,7 @@ class UserProg : public Engine::Expression
     Engine::Latom* id;
     Engine::Lprogram* programme;
     UserProg(Engine::Latom* i,Engine::Lprogram* p):id(i),programme(p){};
-    friend class Engine::ProgManager;
+    friend class ProgManager;
 public:
     Engine::Latom* getId() const {return id;}
     Engine::Lprogram* getProgramme () const {return programme;}
