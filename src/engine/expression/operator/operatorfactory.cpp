@@ -15,6 +15,7 @@ Engine::Expression* Engine::OperatorFactory::createExpressionFromString(const st
 
 void Engine::OperatorFactory::addOperator(const std::string name, Operator* ope)
 {
+    qDebug()<<"ajout de l'operateur " << QString::fromStdString(name);
     operators.insert(std::pair<std::string,Operator*>(name,ope));
 }
 

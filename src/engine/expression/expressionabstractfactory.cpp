@@ -5,8 +5,8 @@
 Engine::Expression* Engine::ExpressionAbstractFactory::createExpressionFromString(const std::string s)
 {
     Expression* res=nullptr;
-//    if(operatorFactory.isSameType(s))
-//        return operatorFactory.createExpressionFromString(s);
+    if(operatorFactory->isSameType(s))
+        return operatorFactory->createExpressionFromString(s);
     for(auto it = factories.begin(); it!=factories.end(); ++it){
         if((*it)->isSameType(s))
         {

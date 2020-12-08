@@ -10,11 +10,10 @@ using namespace std;
 
 namespace Engine {
     class Operator : public Expression {
-        static size_t arrity;
+        size_t arrity=0;
     public :
-        virtual void eval(){};
-        virtual size_t getArrity () const {return this->arrity;}
-        virtual Operator* getCopy();
+//        virtual size_t getArrity() const {return this->arrity;}
+        virtual Operator* getCopy() = 0;
     };
 }
 #endif // OPERATOR_H
