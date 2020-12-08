@@ -12,6 +12,7 @@ public :
     ~Stack() = default;
     void push(Expression* item);
     void clear();
+    void swap();
     Expression* pop();
     bool isEmpty() const {return items.size()==0; }
     size_t size() const {return items.size();}

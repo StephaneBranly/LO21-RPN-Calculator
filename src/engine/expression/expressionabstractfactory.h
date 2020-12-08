@@ -13,10 +13,7 @@ private:
     OperatorFactory* operatorFactory;
     std::list<ExpressionFactory*> factories;
 public:
-    ExpressionAbstractFactory(){
-        operatorFactory = new OperatorFactory;
-        Operator* a = new OperatorCLEAR;
-        operatorFactory->addOperator("CLEAR",a);}
+    ExpressionAbstractFactory();
     Expression* createExpressionFromString(const std::string s);
     void registerFactory(ExpressionFactory* factory){ factories.push_back(factory); }
     OperatorFactory* getOperatorFactory() const { return operatorFactory; }

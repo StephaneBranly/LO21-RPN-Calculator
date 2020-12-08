@@ -2,6 +2,14 @@
 #include "../exception/CompException.h"
 #include <QDebug>
 
+Engine::ExpressionAbstractFactory::ExpressionAbstractFactory()
+{
+    operatorFactory = new OperatorFactory;
+    operatorFactory->addOperator("CLEAR",new OperatorCLEAR);
+    operatorFactory->addOperator("SWAP",new OperatorSWAP);
+    operatorFactory->addOperator("DUP",new OperatorDUP);
+    operatorFactory->addOperator("DROP",new OperatorDROP);
+}
 Engine::Expression* Engine::ExpressionAbstractFactory::createExpressionFromString(const std::string s)
 {
     Expression* res=nullptr;

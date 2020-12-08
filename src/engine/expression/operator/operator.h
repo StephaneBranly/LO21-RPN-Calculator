@@ -12,8 +12,10 @@ namespace Engine {
     class Operator : public Expression {
         size_t arrity=0;
     public :
-//        virtual size_t getArrity() const {return this->arrity;}
-        virtual Operator* getCopy() = 0;
+        virtual size_t getArrity() const {return this->arrity;}
+        virtual void executeOpe() = 0;
+        void eval() override;
+        virtual Expression* getCopy() const override= 0;
     };
 }
 #endif // OPERATOR_H

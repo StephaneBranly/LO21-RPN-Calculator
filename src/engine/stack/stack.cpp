@@ -23,6 +23,13 @@ void Engine::Stack::clear()
     items.clear();
     ComputerEngine::getInstance().notify("stackChanged");
 }
+void Engine::Stack::swap()
+{
+    Expression* L1=pop();
+    Expression* L2=pop();
+    push(L1);
+    push(L2);
+}
 std::list<std::string> Engine::Stack::toStringList()
 {
     std::list<std::string> result;
