@@ -1,0 +1,68 @@
+@startuml
+
+class QWidget{}
+
+class Pile {
+    -ui:Pile*
+    -size=5:size_t 
+    +setMessage(m="":const QString )
+    +updateContent(content:const list<QString> )
+    +updateSize(t:size_t )
+}
+
+class Commandline{
+    -ui:Commandline*
+    -textContent: QString 
+    -clock: QTimer*
+    -cursor: bool 
+    +addText(str:const QString )
+    +clearText()
+    +backspace();
+    +updateText();
+    +getText() const : QString ;
+    }
+    
+    
+class KeyboardFunctions{
+   - ui:KeyboardFunctions*
+   -dock:QDockWidget*
+   -signalMapper :QDockWidget*
+    +getDock() const :QDockWidget* 
+    }
+    
+
+class KeyboardNumeric{
+   - ui:KeyboardNumeric*
+   -dock:QDockWidget*
+   -signalMapper :QDockWidget*
+    +getDock() const :QDockWidget* 
+    }
+    
+    
+class Programmes{
+  -ui:Programmes*
+  -dock:QDockWidget* 
+  +getDock() const :QDockWidget*
+  }
+  
+  
+class Variables{ 
+  -ui:Programmes*
+  -dock:QDockWidget* 
+  +getDock() const :QDockWidget*
+  }
+
+
+QWidget <|-- Programmes
+QWidget <|-- KeyboardNumeric
+QWidget <|-- KeyboardFunction
+QWidget <|-- Pile
+QWidget <|-- Variable
+
+@enduml
+
+
+
+
+ 
+ 
