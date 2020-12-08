@@ -1,18 +1,21 @@
 #include "atommanager.h"
-
+#include "../exception/CompException.h";
 
 bool Engine::AtomManager::alreadyExists(const std::string name)
 {
-    if(atoms.at(name)) return true;
-    return false;
+    return atoms.find(name) != atoms.end();
 }
 Engine::Expression* Engine::AtomManager::getExpressionFromAtom(const Latom* a)
 {
-    return atoms.at(a->getValue());
+    if(alreadyExists(a->getValue()))
+        return atoms.at(a->getValue());
+    throw ComputerException("Il n'existe pas d'atom "+a->getValue());
 }
 Engine::Expression* Engine::AtomManager::getExpressionFromString(const std::string s)
 {
-    return atoms.at(s);
+    if(alreadyExists(s))
+        return atoms.at(s);
+    throw ComputerException("Il n'existe pas d'atom "+s);
 }
 void Engine::AtomManager::removeAtom(const std::string name)
 {
