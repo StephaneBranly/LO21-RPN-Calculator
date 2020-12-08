@@ -14,7 +14,7 @@ public:
     Lexpression(const std::string s);
     Lexpression(const Lexpression&);
     Lexpression* setLatom(const std::string s);
-    std::string getvalue(){return expression;}
+    std::string getValue(){return expression;}
     const std::string getType() const override { return this->type; }
     void eval() override;
     std::string const toString() const override{return expression;}

@@ -4,6 +4,7 @@ SOURCES += \
     main.cpp \
     src/connector/connector.cpp \
     src/engine/computerengine.cpp \
+    src/engine/expression/atommanager.cpp \
     src/engine/expression/expression.cpp \
     src/engine/expression/expressionfactory.cpp \
     src/engine/expression/expressionmanager.cpp \
@@ -17,10 +18,6 @@ SOURCES += \
     src/engine/expression/litterales/lrational.cpp \
     src/engine/expression/litterales/lreal.cpp \
     src/engine/expression/litterales/lrealfactory.cpp \
-    src/engine/expression/progmanager.cpp \
-    src/engine/expression/userprog.cpp \
-    src/engine/expression/uservar.cpp \
-    src/engine/expression/varmanager.cpp \
     src/engine/stack/stack.cpp \
     src/interface/mainwindow.cpp \
     src/interface/widgets/commandline/commandline.cpp \
@@ -44,6 +41,7 @@ FORMS += \
 HEADERS += \
     src/connector/connector.h \
     src/engine/computerengine.h \
+    src/engine/expression/atommanager.h \
     src/engine/expression/expressionfactory.h \
     src/engine/expression/litterales/latom.h \
     src/engine/expression/litterales/latomfactory.h \
@@ -59,10 +57,6 @@ HEADERS += \
     src/engine/exception/CompException.h \
     src/engine/expression/expression.h \
     src/engine/expression/expressionmanager.h \
-    src/engine/expression/progmanager.h \
-    src/engine/expression/userprog.h \
-    src/engine/expression/uservar.h \
-    src/engine/expression/varmanager.h \
     src/engine/stack/stack.h \
     src/interface/mainwindow.h \
     src/interface/widgets/commandline/commandline.h \
