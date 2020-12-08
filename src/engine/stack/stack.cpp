@@ -18,7 +18,11 @@ void Engine::Stack::push(Expression* item)
     ComputerEngine::getInstance().notify("stackChanged");
 }
 
-
+void Engine::Stack::clear()
+{
+    items.clear();
+    ComputerEngine::getInstance().notify("stackChanged");
+}
 std::list<std::string> Engine::Stack::toStringList()
 {
     std::list<std::string> result;
