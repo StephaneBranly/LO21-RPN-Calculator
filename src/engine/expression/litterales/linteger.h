@@ -12,11 +12,13 @@ protected:
 public:
     Linteger(const std::string s);
     Linteger(const Linteger&);
+    Linteger(int v): value(v){};
     Linteger* setLinteger(int v);
     int getvalue(){return value;}
 //    Linteger* createCopy()const override{return new Linteger(*this);}
     std::string const toString() const override{ return std::to_string(value); }
     const std::string getType() const override { return this->type; }
+    Expression* getCopy() const override { return new Linteger(value); }
 };
 }
 #endif // LENTIERE_H

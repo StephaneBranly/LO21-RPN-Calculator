@@ -21,6 +21,7 @@ public:
        return std::to_string(numerateur) + "/" + std::to_string(denominateur) ;
     }
     const std::string getType() const override { return this->type; }
+    Expression* getCopy() const override { return new Lrational(numerateur,denominateur); }
 };
 }
 #endif // LRATIONNELLE_H
