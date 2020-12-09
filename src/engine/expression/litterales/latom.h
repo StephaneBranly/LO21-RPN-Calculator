@@ -17,6 +17,7 @@ public:
     const std::string getType() const override { return this->type; }
     void eval() override;
     const std::string toString() const override{return atom;}
+    Expression* getCopy() const override { return new Latom(atom); }
 };
 }
 #endif // LATOM_H

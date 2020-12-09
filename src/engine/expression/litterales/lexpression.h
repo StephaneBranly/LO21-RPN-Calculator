@@ -18,6 +18,7 @@ public:
     const std::string getType() const override { return this->type; }
     void eval() override;
     std::string const toString() const override{return "'"+expression+"'";}
+    Expression* getCopy() const override { return new Lexpression(expression); }
 };
 }
 #endif // LEXPRESSION_H
