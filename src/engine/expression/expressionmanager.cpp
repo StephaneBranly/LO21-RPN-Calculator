@@ -28,14 +28,16 @@ void Engine::ExpressionManager::evalCommandLine(const string str){
     vector<string> tokens = ExpressionManager::split(str,' ');
     for (auto it = std::begin(tokens); it!=std::end(tokens); ++it){
         qDebug()<<"creation de expression pour :"<<QString::fromStdString(*it);
-        try {
-            current = factory->createExpressionFromString(*it);
-            exps.push_back(current);
-            commandLineExpressions.push_back(current);
-        }  catch (ComputerException e) {
-            throw ComputerException("/!\\ EVAL :"+e.getInfo());
+        if(*it!=" "&&*it!="")
+        {
+            try {
+                current = factory->createExpressionFromString(*it);
+                exps.push_back(current);
+                commandLineExpressions.push_back(current);
+            }  catch (ComputerException e) {
+                throw ComputerException(e.getInfo());
+            }
         }
-//
     }
     for(auto it = commandLineExpressions.begin(); it!=commandLineExpressions.end(); ++it)
     {
@@ -44,7 +46,7 @@ void Engine::ExpressionManager::evalCommandLine(const string str){
             (*it)->eval();
         }
         catch (ComputerException e) {
-            throw ComputerException("/!\\ EVAL :"+e.getInfo());
+            throw ComputerException(e.getInfo());
         }
     }
 }
