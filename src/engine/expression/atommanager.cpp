@@ -1,5 +1,5 @@
 #include "atommanager.h"
-#include "../exception/CompException.h";
+#include "../exception/CompException.h"
 
 bool Engine::AtomManager::alreadyExists(const std::string name)
 {
