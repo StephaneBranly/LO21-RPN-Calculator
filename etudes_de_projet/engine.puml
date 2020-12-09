@@ -1,0 +1,156 @@
+@startuml
+package Engine {
+
+class ComputerEngine {
+  - stack : Stack
+  - expressionManager : ExpressionManager
+  - atomManager : AtomManager
+  - {static} hand : Handler
+  + ComputerEngine()
+  + getStack() : Stack&
+  + getExpressionManager() : ExpressionManager&
+  + getAtomManager() : AtomManager&
+  + {static} getInstance() : ComputerEngine&
+} 
+
+
+class Handler{
+  + instance : ComputerEngine*
+  + ~Handler()
+}
+
+class Stack {
+  - items : vector<Expression*>
+  + Stack()
+  + ~Stack()
+  + push(item : Expression*)
+  + clear()
+  + swap()
+  + pop() : Expression*
+  + isEmpty() const : bool
+  + size() const : size_t
+  + top() const : Expression*
+  + toStringList : list<string>
+}
+
+
+class ExpressionManager {
+  - exps : list<Expression*>
+  - factory : ExpressionAbstractFactory*
+  + ExpressionManager()
+  + evalCommandLine(str : const string)
+  + split(text : const string&, delimiter : char) : vector<string>
+  + createExpressionFromString (s : const string) : Expression*
+  + getFactory() : ExpressionAbstractFactory*
+  + ~ExpressionManager()
+}
+
+class ExpressionFactory {
+  + ExpressionFactory
+  + {virtual} isSameType(s : const string) const : bool
+  + {virtual} createExpressionFromString(s : const string) : Expression*
+}
+
+class ExpressionAbstractFactory {
+  - operatorFactory : OperatorFactory*
+  - factories : list<ExpressionFactory*>
+  + ExpressionAbstractFactory()
+  + createExpressionFromString(s : const string)
+  + registerFactory(factory : ExpressionFactory*)
+  + getOperatorFactory() const : OperatorFactory*
+}
+
+class Expression {
+  # type : string
+  + {virtual} eval()
+  + {virtual} toString() const : const string 
+  + {virtual} getType() const : const string
+  + {virtual} getCopy() const : Expression*
+  + Expression()
+  + Expression(type : const string)
+  + {virtual} ~Expression()
+}
+
+class AtomManager {
+  - atoms : map<string, Expression*> 
+  + alreadyExists(name : const string) : bool
+  + getExpressionFromAtom(a : const Latom*) : Expression*
+  + getExpressionFromString(s : const string) : Expression*
+  + removeAtom(name : const string)
+  + addAtom(name : const string, expression : Expression*)
+}
+
+class Operator {
+  - arrity : size_t
+  + {virtual} getArrity() const : size_t
+  + {virtual} executeOpe()
+  + eval()
+  + {virtual} getCopy() const : Expression*
+}
+
+class OperatorFactory {
+  - operators : map<string, Operator*>
+  + isSameType(s : const string) const : bool
+  + createExpressionFromString(s : const string) : Expression*
+  + addOperator(name : const string, ope : Operator*)
+  + removeOperator(name : const string)
+}
+
+class OperatorCLEAR {
+  - arrity : size_t
+  - type : string
+  + getArrity() const : size_t
+  + executeOpe()
+  + getType() const : const string
+  + toString() const : const string
+  + getCopy() const : Expression*
+}
+
+class OperatorSWAP {
+  - arrity : size_t
+  - type : string
+  + getArrity() const : size_t
+  + executeOpe()
+  + getType() const : const string
+  + toString() const : const string
+  + getCopy() const : Expression*
+}
+
+class OperatorDROP {
+  - arrity : size_t
+  - type : string
+  + getArrity () const : size_t
+  + void executeOpe()
+  + getType() const : const string
+  + toString() const : const string
+  + getCopy() const : Expression*
+}
+
+class OperatorDUP {
+  - arrity : size_t
+  - type : string
+  + getArrity() const : size_t
+  + executeOpe()
+  + getType() const : const string
+  + toString() const : const string
+  + getCopy() const : Expression* 
+}
+
+
+
+
+
+
+
+
+Subject <|-- ComputerEngine
+Expression <|-- Operator
+ExpressionFactory <|-- OperatorFactory
+Operator <|-- OperatorCLEAR
+Operator <|-- OperatorSWAP
+Operator <|-- OperatorDROP
+Operator <|-- OperatorDUP
+
+ComputerEngine o-- Handler
+}
+@enduml
