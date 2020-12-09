@@ -9,6 +9,7 @@ class Lrational  : public Lnumerical
     int numerateur;
     int denominateur;
     void simplify();
+    int PGCD(int a, int b);
 protected:
     std::string type="Lrational";
 public:

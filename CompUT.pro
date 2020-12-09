@@ -4,13 +4,19 @@ SOURCES += \
     main.cpp \
     src/connector/connector.cpp \
     src/engine/computerengine.cpp \
+    src/engine/expression/atommanager.cpp \
     src/engine/expression/expression.cpp \
     src/engine/expression/expressionabstractfactory.cpp \
     src/engine/expression/expressionfactory.cpp \
     src/engine/expression/expressionmanager.cpp \
+    src/engine/expression/litterales/latom.cpp \
+    src/engine/expression/litterales/latomfactory.cpp \
+    src/engine/expression/litterales/lexpression.cpp \
+    src/engine/expression/litterales/lexpressionfactory.cpp \
     src/engine/expression/litterales/linteger.cpp \
     src/engine/expression/litterales/lintegerfactory.cpp \
     src/engine/expression/litterales/lnumerical.cpp \
+    src/engine/expression/litterales/lprogram.cpp \
     src/engine/expression/litterales/lrational.cpp \
     src/engine/expression/litterales/lreal.cpp \
     src/engine/expression/litterales/lrealfactory.cpp \
@@ -40,11 +46,17 @@ FORMS += \
 HEADERS += \
     src/connector/connector.h \
     src/engine/computerengine.h \
+    src/engine/expression/atommanager.h \
     src/engine/expression/expressionabstractfactory.h \
     src/engine/expression/expressionfactory.h \
+    src/engine/expression/litterales/latom.h \
+    src/engine/expression/litterales/latomfactory.h \
+    src/engine/expression/litterales/lexpression.h \
+    src/engine/expression/litterales/lexpressionfactory.h \
     src/engine/expression/litterales/linteger.h \
     src/engine/expression/litterales/lintegerfactory.h \
     src/engine/expression/litterales/lnumerical.h \
+    src/engine/expression/litterales/lprogram.h \
     src/engine/expression/litterales/lrational.h \
     src/engine/expression/litterales/lreal.h \
     src/engine/expression/litterales/lrealfactory.h \

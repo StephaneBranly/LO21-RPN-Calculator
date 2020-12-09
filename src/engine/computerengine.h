@@ -1,7 +1,7 @@
 #ifndef COMPUTERENGINE_H
 #define COMPUTERENGINE_H
 
-
+#include "expression/atommanager.h"
 #include "../observer/subject.h"
 
 #include "expression/expressionmanager.h"
@@ -13,6 +13,7 @@ class ComputerEngine: public Subject
 private:
     Stack stack;
     ExpressionManager expressionManager;
+    AtomManager atomManager;
 
     struct Handler
     {
@@ -26,6 +27,7 @@ public:
 
     Stack& getStack(){ return stack;}
     ExpressionManager& getExpressionManager(){ return expressionManager; }
+    AtomManager& getAtomManager() { return atomManager; }
     static ComputerEngine &getInstance();
 };
 }
