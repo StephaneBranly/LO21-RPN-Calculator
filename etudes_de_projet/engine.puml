@@ -1,5 +1,18 @@
 @startuml
+
+class Subject {
+
+}
+
 package Engine {
+
+package Exception {
+class ComputerException {
+  - info : string
+  + ComputerException(str : const string&)
+  + getInfo() const : string
+}
+}
 
 class ComputerEngine {
   - stack : Stack
@@ -11,7 +24,7 @@ class ComputerEngine {
   + getExpressionManager() : ExpressionManager&
   + getAtomManager() : AtomManager&
   + {static} getInstance() : ComputerEngine&
-} 
+}
 
 class Handler{
   + instance : ComputerEngine*
@@ -30,7 +43,7 @@ class Stack {
   + isEmpty() const : bool
   + size() const : size_t
   + top() const : Expression*
-  + toStringList : list<string>
+  + toStringList() : list<string>
 }
 }
 
@@ -46,8 +59,8 @@ class ExpressionManager {
   + ~ExpressionManager()
 }
 
-class ExpressionFactory {
-  + ExpressionFactory
+abstract class ExpressionFactory {
+  + ExpressionFactory()
   + {virtual} isSameType(s : const string) const : bool
   + {virtual} createExpressionFromString(s : const string) : Expression*
 }
@@ -61,10 +74,10 @@ class ExpressionAbstractFactory {
   + getOperatorFactory() const : OperatorFactory*
 }
 
-class Expression {
+abstract class Expression {
   # type : string
   + {virtual} eval()
-  + {virtual} toString() const : const string 
+  + {virtual} toString() const : const string
   + {virtual} getType() const : const string
   + {virtual} getCopy() const : Expression*
   + Expression()
@@ -73,7 +86,7 @@ class Expression {
 }
 
 class AtomManager {
-  - atoms : map<string, Expression*> 
+  - atoms : map<string, Expression*>
   + alreadyExists(name : const string) : bool
   + getExpressionFromAtom(a : const Latom*) : Expression*
   + getExpressionFromString(s : const string) : Expression*
@@ -82,7 +95,7 @@ class AtomManager {
 }
 
 package Operator {
-class Operator {
+abstract class Operator {
   - arrity : size_t
   + {virtual} getArrity() const : size_t
   + {virtual} executeOpe()
@@ -135,7 +148,7 @@ class OperatorDUP {
   + executeOpe()
   + getType() const : const string
   + toString() const : const string
-  + getCopy() const : Expression* 
+  + getCopy() const : Expression*
 }
 }
 
@@ -149,7 +162,7 @@ class Latom {
   + getValue() const : string
   + getType() const : const string
   + eval()
-  + toString() const : const string 
+  + toString() const : const string
   + getCopy() const : Expression*
 }
 
@@ -173,6 +186,20 @@ class Lexpression {
 class LexpressionFactory {
   + isSameType(s : const string) const : bool
   + createExpressionFromString(s : const string) : Lexpression*
+}
+
+class Lrational {
+  - numerateur : int
+  - denominateur : int
+  - simplify()
+  - PGCD(a : int, b : int) : int
+  # type : string
+  + Lrational(n : int, d : int)
+  + setRational(n : int, d : int)
+  + setRational(e1 : Linteger&, e2 : Linteger&)
+  + toString() const : const string
+  + getType() const : const string
+  + getCopy() const : Expression*
 }
 
 class Linteger {
@@ -201,20 +228,6 @@ class Lprogram {
   + Lprogram()
 }
 
-class Lrational {
-  - numerateur : int
-  - denominateur : int
-  - simplify()
-  - PGCD(a : int, b : int) : int
-  # type : string
-  + Lrational(n : int, d : int)
-  + setRational(n : int, d : int)
-  + setRational(e1 : Linteger&, e2 : Linteger&)
-  + toString() const : const string
-  + getType() const : const string
-  + getCopy() const : Expression*
-}
-
 class Lreal {
   - real : float
   # type : string
@@ -233,13 +246,7 @@ class LrealFactory {
 }
 }
 
-package Exception {
-class ComputerException {
-  - info : string
-  + ComputerException(str : const string&)
-  + getInfo() const : string
-}
-}
+
 
 
 
@@ -252,20 +259,32 @@ Expression <|-- Lprogram
 ExpressionFactory <|- OperatorFactory
 ExpressionFactory <|- LatomFactory
 ExpressionFactory <|- LexpressionFactory
-ExpressionFactory <|-- LintegerFactory 
+ExpressionFactory <|-- LintegerFactory
 ExpressionFactory <|-- LrealFactory
 Operator <|-- OperatorCLEAR
 Operator <|-- OperatorSWAP
 Operator <|-- OperatorDROP
 Operator <|-- OperatorDUP
-Lnumerical <|-- Linteger
 Lnumerical <|-- Lrational
+Lnumerical <|-- Linteger
 Lnumerical <|-- Lreal
 
 
 
-ComputerEngine o-- Handler
-
-
+ComputerEngine *-left- Handler
+ComputerEngine *-- ExpressionManager
+ComputerEngine *-- AtomManager
+ComputerEngine *-right- Stack
+Stack "1" -- "*" Expression
+ExpressionManager "1" -- "*" Expression
+ExpressionManager "1" -- "1" ExpressionAbstractFactory
+ExpressionAbstractFactory "1" -- "1" OperatorFactory
+ExpressionAbstractFactory "1" -- "*" ExpressionFactory
+OperatorFactory "1" -- "*" Operator
+AtomManager "1" -- "*" Expression
+Lreal "*" -- "1" LrealFactory
+Linteger "*" -- "1" LintegerFactory
+Lexpression "*" -- "1" LexpressionFactory
+Latom "*" -- "1" LatomFactory
 }
 @enduml
