@@ -13,12 +13,12 @@ class ComputerEngine {
   + {static} getInstance() : ComputerEngine&
 } 
 
-
 class Handler{
   + instance : ComputerEngine*
   + ~Handler()
 }
 
+package Stack {
 class Stack {
   - items : vector<Expression*>
   + Stack()
@@ -32,8 +32,9 @@ class Stack {
   + top() const : Expression*
   + toStringList : list<string>
 }
+}
 
-
+package Expression {
 class ExpressionManager {
   - exps : list<Expression*>
   - factory : ExpressionAbstractFactory*
@@ -80,6 +81,7 @@ class AtomManager {
   + addAtom(name : const string, expression : Expression*)
 }
 
+package Operator {
 class Operator {
   - arrity : size_t
   + {virtual} getArrity() const : size_t
@@ -135,22 +137,135 @@ class OperatorDUP {
   + toString() const : const string
   + getCopy() const : Expression* 
 }
+}
 
+package Litterales {
+class Latom {
+  - atom : string
+  # type : string
+  + Latom(s : const string)
+  + Latom(const Latom&)
+  + setLatom(s : const string) : Latom*
+  + getValue() const : string
+  + getType() const : const string
+  + eval()
+  + toString() const : const string 
+  + getCopy() const : Expression*
+}
 
+class LatomFactory {
+  + isSameType(s : const string) const : bool
+  + createExpressionFromString(s : const string) : Latom*
+}
 
+class Lexpression {
+  - expression : string
+  # type : string
+  + Lexpression(s : const string)
+  + setLatom(s : const string) : Lexpression*
+  + getValue() : string
+  + getType() const : const string
+  + eval()
+  + toString() const : const string
+  + getCopy() const : Expression*
+}
 
+class LexpressionFactory {
+  + isSameType(s : const string) const : bool
+  + createExpressionFromString(s : const string) : Lexpression*
+}
 
+class Linteger {
+  - value : int
+  # type : string
+  + Linteger(s : const string)
+  + Linteger(const Linteger&)
+  + Linteger(v : int)
+  + setLinteger(v : int) : Linteger*
+  + getvalue() : int
+  + toString() const : const string
+  + getType() const : const string
+  + getCopy() const : Expression*
+}
+
+class LintegerFactory {
+  + isSameType(s : const string) const : bool
+  + createExpressionFromString(s : const string) : Linteger*
+}
+
+abstract class Lnumerical {
+  + eval()
+}
+
+class Lprogram {
+  + Lprogram()
+}
+
+class Lrational {
+  - numerateur : int
+  - denominateur : int
+  - simplify()
+  - PGCD(a : int, b : int) : int
+  # type : string
+  + Lrational(n : int, d : int)
+  + setRational(n : int, d : int)
+  + setRational(e1 : Linteger&, e2 : Linteger&)
+  + toString() const : const string
+  + getType() const : const string
+  + getCopy() const : Expression*
+}
+
+class Lreal {
+  - real : float
+  # type : string
+  + Lreal(s : const string)
+  + Lreal(r : float)
+  + setReal(r : float) : Lreal*
+  + toString() const : const string
+  + getType() const : const string
+  + getCopy() const : Expression*
+}
+
+class LrealFactory {
+  + isSameType(s : const string) const : bool
+  + createExpressionFromString(s : const string) : Lreal*
+}
+}
+}
+
+package Exception {
+class ComputerException {
+  - info : string
+  + ComputerException(str : const string&)
+  + getInfo() const : string
+}
+}
 
 
 
 Subject <|-- ComputerEngine
 Expression <|-- Operator
-ExpressionFactory <|-- OperatorFactory
+Expression <|-- Latom
+Expression <|-- Lexpression
+Expression <|-- Lnumerical
+Expression <|-- Lprogram
+ExpressionFactory <|- OperatorFactory
+ExpressionFactory <|- LatomFactory
+ExpressionFactory <|- LexpressionFactory
+ExpressionFactory <|-- LintegerFactory 
+ExpressionFactory <|-- LrealFactory
 Operator <|-- OperatorCLEAR
 Operator <|-- OperatorSWAP
 Operator <|-- OperatorDROP
 Operator <|-- OperatorDUP
+Lnumerical <|-- Linteger
+Lnumerical <|-- Lrational
+Lnumerical <|-- Lreal
+
+
 
 ComputerEngine o-- Handler
+
+
 }
 @enduml
