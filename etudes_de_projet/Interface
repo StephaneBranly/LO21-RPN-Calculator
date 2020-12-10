@@ -1,5 +1,5 @@
 @startuml
-
+package Interface <<Folder>>{
 class QWidget{}
 
 class Pile {
@@ -52,6 +52,20 @@ class Variables{
   +getDock() const :QDockWidget*
   }
 
+class Mainwindow{
+    -ui:Mainwindow*
+    -commandline:Commandline* 
+    -pile:Pile* 
+    -keyboardnumeric:KeyboardNumeric* 
+    -keyboardFunctions:KeyboardFunctions* 
+    -programmes:Programmes* 
+    -variables:Variables* 
+    +getContentCommandLine() const:const QString
+    +setMessage(m:const QString)
+    }
+    
+class QMainWindow{}
+
 
 QWidget <|-- Programmes
 QWidget <|-- KeyboardNumeric
@@ -59,7 +73,11 @@ QWidget <|-- KeyboardFunctions
 QWidget <|-- Pile
 QWidget <|-- Variables
 QWidget <|--Commandline
+Mainwindow "1" *-- "0..*" QWidget
+QMainWindow <|-- Mainwindow
 
+
+}
 @enduml
 
 
