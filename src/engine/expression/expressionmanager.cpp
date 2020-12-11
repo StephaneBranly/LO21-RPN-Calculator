@@ -67,7 +67,6 @@ void Engine::ExpressionManager::evalCommandLine(const string str){
         throw ComputerException("Crochet ] manquant...");
     for(auto it = commandLineExpressions.begin(); it!=commandLineExpressions.end(); ++it)
     {
-        qDebug()<<QString::fromStdString((*it)->toString());
         try{
             (*it)->eval();
         }

@@ -101,11 +101,16 @@ void Mainwindow::keyPressEvent(QKeyEvent *ev)
 void Mainwindow::updateAtoms(const std::list<std::tuple<QString,QString,QString>> l)
 {
     std::list<QString> vars;
-    for(auto it = l.begin(); it!=l.end(); ++it) {
-        qDebug()<<std::get<0>(*it);
+    std::list<QString> progs;
+    for(auto it = l.begin(); it!=l.end(); ++it)
+    {
         if(std::get<2>(*it)!="Lprogram")
             vars.push_back(std::get<0>(*it));
+        else
+            progs.push_back(std::get<0>(*it));
     }
     vars.sort();
+    progs.sort();
     variables->updateVars(vars);
+    programmes->updateProgs(progs);
 }

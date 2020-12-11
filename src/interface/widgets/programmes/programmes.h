@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QMainWindow>
+#include <QPushButton>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Programmes; }
@@ -16,10 +17,12 @@ public:
     Programmes(QMainWindow *parent = nullptr);
     ~Programmes();
     QDockWidget* getDock() const {return dock;}
+    void updateProgs(const std::list<QString> li);
 
 private:
     Ui::Programmes *ui;
     QDockWidget* dock;
+    std::list<QPushButton*> progs;
 
 public slots:
     void toggleDock(bool b);

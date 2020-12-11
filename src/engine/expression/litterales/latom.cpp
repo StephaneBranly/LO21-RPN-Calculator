@@ -31,11 +31,8 @@ void Engine::Latom::eval(){
     }
     else
     {
-        qDebug() << "Here";
         Stack& s = ComputerEngine::getInstance().getStack();
-        qDebug() << "Here2";
         Lexpression* e = new Lexpression(atom);
-        qDebug() << "Here3";
         s.push(e);
     }
 }

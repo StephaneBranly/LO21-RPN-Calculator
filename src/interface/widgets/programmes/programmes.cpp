@@ -26,3 +26,21 @@ void Programmes::toggleDock(bool b)
 {
         dock->setHidden(!b);
 }
+
+void Programmes::updateProgs(const std::list<QString> li)
+{
+    for(auto it = progs.begin(); it != progs.end(); ++it)
+    {
+        ui->containerProgs->removeWidget(*it);
+        delete *it;
+    }
+    progs.clear();
+    QPushButton* b;
+    for(auto it = li.begin(); it != li.end(); ++it)
+    {
+        b = new QPushButton();
+        b->setText(*it);
+        progs.push_back(b);
+        ui->containerProgs->addWidget(b);
+    }
+}
