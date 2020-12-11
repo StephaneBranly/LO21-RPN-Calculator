@@ -47,6 +47,17 @@ public:
     const std::string toString() const override{ return "DUP"; }
     Expression* getCopy() const override { return new OperatorDUP; }
 };
+
+class OperatorEVAL : public Operator {
+    size_t arrity=1;
+    std::string type = "OperatorEVAL";
+public:
+    size_t getArrity () const override { return arrity; }
+    void executeOpe() override;
+    const std::string getType() const override { return this->type; }
+    const std::string toString() const override{ return "EVAL"; }
+    Expression* getCopy() const override { return new OperatorEVAL; }
+};
 }
 
 #endif // OPERATORSDEFINITION_H

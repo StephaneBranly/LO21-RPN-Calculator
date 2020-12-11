@@ -9,7 +9,9 @@ Engine::ExpressionAbstractFactory::ExpressionAbstractFactory()
     operatorFactory->addOperator("SWAP",new OperatorSWAP);
     operatorFactory->addOperator("DUP",new OperatorDUP);
     operatorFactory->addOperator("DROP",new OperatorDROP);
+    operatorFactory->addOperator("EVAL",new OperatorEVAL);
 }
+
 Engine::Expression* Engine::ExpressionAbstractFactory::createExpressionFromString(const std::string s)
 {
     Expression* res=nullptr;
