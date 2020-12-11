@@ -67,7 +67,7 @@
     <addaction name="a_programs"/>
     <addaction name="separator"/>
     <addaction name="separator"/>
-    <addaction name="actionSettings"/>
+    <addaction name="actionParametres"/>
    </widget>
    <addaction name="menuInterface"/>
   </widget>
@@ -116,8 +116,16 @@
    </property>
   </action>
   <action name="actionSettings">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
-    <string>Settings</string>
+    <string>Settingsa</string>
+   </property>
+  </action>
+  <action name="actionParametres">
+   <property name="text">
+    <string>Parametres</string>
    </property>
   </action>
  </widget>

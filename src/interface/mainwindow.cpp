@@ -30,11 +30,11 @@ Mainwindow::Mainwindow(QWidget *parent)
     connect(ui->a_keyboardfunctions, SIGNAL(toggled(bool)),keyboardfunctions,SLOT(toggleDock(bool)));
     connect(ui->a_programs, SIGNAL(toggled(bool)),programmes,SLOT(toggleDock(bool)));
     connect(ui->a_vars, SIGNAL(toggled(bool)),variables,SLOT(toggleDock(bool)));
-    connect(ui->actionSettings, SIGNAL(changed()), this, SLOT(openSettingsWindow()));
+    connect(ui->actionParametres, SIGNAL(triggered()), this, SLOT(openSettingsWindow()));
     ui->mainLayout->addWidget(pile);
+    setFocusPolicy(Qt::StrongFocus);
     ui->mainLayout->addWidget(commandline);
 
-    setFocusPolicy(Qt::StrongFocus);
 }
 
 Mainwindow::~Mainwindow()
@@ -100,5 +100,10 @@ void Mainwindow::keyPressEvent(QKeyEvent *ev)
 
 void Mainwindow::openSettingsWindow()
 {
-        settings->show();
+    settings->show();
+}
+void Mainwindow::updateSizeStack(int s)
+{
+    pile->updateSize(s);
+    notify("stackChanged");
 }

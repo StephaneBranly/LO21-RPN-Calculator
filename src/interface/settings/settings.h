@@ -18,6 +18,10 @@ public:
 
 private:
     Ui::Settings *ui;
+private slots:
+    void acceptedChanges();
+signals:
+    void stackSizeChanged(int newValue);
 };
 
 #endif // SETTINGS_H

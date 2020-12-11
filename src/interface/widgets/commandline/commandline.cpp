@@ -15,6 +15,8 @@ Commandline::Commandline(QWidget *parent)
     clock = new QTimer(this);
     QObject::connect(clock, SIGNAL(timeout()), this, SLOT(toggleCursor()));
     clock->start(300); //time specified in ms
+
+    ui->TextEdit->setFocusPolicy(Qt::StrongFocus);
 }
 
 Commandline::~Commandline()
