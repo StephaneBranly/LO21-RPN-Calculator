@@ -10,6 +10,8 @@ Engine::ExpressionAbstractFactory::ExpressionAbstractFactory()
     operatorFactory->addOperator("DUP",new OperatorDUP);
     operatorFactory->addOperator("DROP",new OperatorDROP);
     operatorFactory->addOperator("EVAL",new OperatorEVAL);
+    operatorFactory->addOperator("STO",new OperatorSTO);
+    operatorFactory->addOperator("FORGET",new OperatorFORGET);
 }
 
 Engine::Expression* Engine::ExpressionAbstractFactory::createExpressionFromString(const std::string s)

@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QMainWindow>
+#include <QPushButton>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Variables; }
@@ -16,10 +17,12 @@ public:
     Variables(QMainWindow *parent = nullptr);
     ~Variables();
     QDockWidget* getDock() const {return dock;}
+    void updateVars(const std::list<QString> li);
 
 private:
     Ui::Variables *ui;
     QDockWidget* dock;
+    std::list<QPushButton*> vars;
 
 public slots:
     void toggleDock(bool b);

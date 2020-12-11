@@ -29,5 +29,16 @@ void Connector::notify(const std::string &message)
         for(auto it = items.begin(); it!=items.end(); ++it)
             forStack.push_back(QString::fromStdString(*it));
         window.updateStack(forStack);
+    }else if(message=="atomsChanged")
+    {
+        std::list<std::tuple<std::string,std::string,std::string>> list = engine.getInstance().getAtomManager().toTupleStringList();
+        std::tuple<QString,QString,QString> tu;
+        std::list<std::tuple<QString,QString,QString>> listQstring;
+        for(auto it = list.begin(); it!=list.end();++it)
+        {
+            tu = make_tuple(QString::fromStdString(std::get<0>(*it)),QString::fromStdString(std::get<1>(*it)),QString::fromStdString(std::get<2>(*it)));
+            listQstring.push_back(tu);
+        }
+        window.updateAtoms(listQstring);
     }
 };

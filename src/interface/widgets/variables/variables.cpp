@@ -26,3 +26,20 @@ void Variables::toggleDock(bool b)
 {
         dock->setHidden(!b);
 }
+
+
+void Variables::updateVars(const std::list<QString> li)
+{
+////    vars.clear();
+//    while(!ui->containerVars->isEmpty()) {
+//      delete ui->containerVars->takeAt(0);
+//    }
+//    QPushButton* b;
+//    for(auto it = li.begin(); it != li.end(); ++it)
+//    {
+//        b = new QPushButton(this);
+//        b->setText(*it);
+//        vars.push_back(b);
+//        ui->containerVars->addWidget(b);
+//    }
+}

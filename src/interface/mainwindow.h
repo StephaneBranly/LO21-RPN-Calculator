@@ -27,7 +27,7 @@ public:
     ~Mainwindow();
     const QString getContentCommandLine() const { return commandline->getText(); }
     void setMessage(const QString m){ pile->setMessage(m);}
-
+    void updateAtoms(const std::list<std::tuple<QString,QString,QString>> l);
 private:
     Ui::Mainwindow *ui;
     Commandline* commandline;

@@ -5,6 +5,7 @@
 #include "../atommanager.h"
 #include "../../stack/stack.h"
 #include "lexpression.h"
+#include "lprogram.h"
 #include "../../computerengine.h"
 
 Engine::Latom* Engine::Latom::setLatom(std::string s){
@@ -20,7 +21,8 @@ void Engine::Latom::eval(){
         Expression* e = a.getExpressionFromAtom(this);
         if(e->getType()=="Lprogram")
         {
-            // execute program
+            Lprogram* prog = dynamic_cast<Lprogram*>(e);
+            prog->explicitEval();
         }
         else if(1)
         {
