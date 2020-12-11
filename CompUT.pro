@@ -25,6 +25,7 @@ SOURCES += \
     src/engine/expression/operator/operatorsdefinition.cpp \
     src/engine/stack/stack.cpp \
     src/interface/mainwindow.cpp \
+    src/interface/settings/settings.cpp \
     src/interface/widgets/commandline/commandline.cpp \
     src/interface/widgets/keyboardfunctions/keyboardfunctions.cpp \
     src/interface/widgets/keyboardnumeric/keyboardnumeric.cpp \
@@ -36,6 +37,7 @@ SOURCES += \
 
 FORMS += \
     src/interface/mainwindow.ui \
+    src/interface/settings/settings.ui \
     src/interface/widgets/commandline/commandline.ui \
     src/interface/widgets/keyboardfunctions/keyboardfunctions.ui \
     src/interface/widgets/keyboardnumeric/keyboardnumeric.ui \
@@ -68,6 +70,7 @@ HEADERS += \
     src/engine/expression/operator/operatorsdefinition.h \
     src/engine/stack/stack.h \
     src/interface/mainwindow.h \
+    src/interface/settings/settings.h \
     src/interface/widgets/commandline/commandline.h \
     src/interface/widgets/keyboardfunctions/keyboardfunctions.h \
     src/interface/widgets/keyboardnumeric/keyboardnumeric.h \

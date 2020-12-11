@@ -50,11 +50,14 @@
           </property>
           <property name="font">
            <font>
-            <pointsize>15</pointsize>
+            <pointsize>13</pointsize>
            </font>
           </property>
           <property name="cursor">
            <cursorShape>ArrowCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(255, 95, 0);</string>
           </property>
           <property name="readOnly">
            <bool>true</bool>

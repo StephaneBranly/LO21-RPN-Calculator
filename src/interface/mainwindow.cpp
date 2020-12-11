@@ -24,12 +24,13 @@ Mainwindow::Mainwindow(QWidget *parent)
     programmes = new Programmes(this);
     variables = new Variables(this);
     keyboardnumeric = new KeyboardNumeric(this);
+    settings = new Settings(this);
 
     connect(ui->a_keyboardnumeric, SIGNAL(toggled(bool)),keyboardnumeric,SLOT(toggleDock(bool)));
     connect(ui->a_keyboardfunctions, SIGNAL(toggled(bool)),keyboardfunctions,SLOT(toggleDock(bool)));
-    connect(ui->a_programmes, SIGNAL(toggled(bool)),programmes,SLOT(toggleDock(bool)));
-    connect(ui->a_variables, SIGNAL(toggled(bool)),variables,SLOT(toggleDock(bool)));
-
+    connect(ui->a_programs, SIGNAL(toggled(bool)),programmes,SLOT(toggleDock(bool)));
+    connect(ui->a_vars, SIGNAL(toggled(bool)),variables,SLOT(toggleDock(bool)));
+    connect(ui->actionSettings, SIGNAL(changed()), this, SLOT(openSettingsWindow()));
     ui->mainLayout->addWidget(pile);
     ui->mainLayout->addWidget(commandline);
 
@@ -51,8 +52,8 @@ void Mainwindow::updateTabDocks()
 {
     ui->a_keyboardfunctions->setChecked(!keyboardfunctions->getDock()->isHidden());
     ui->a_keyboardnumeric->setChecked(!keyboardnumeric->getDock()->isHidden());
-    ui->a_programmes->setChecked(!programmes->getDock()->isHidden());
-    ui->a_variables->setChecked(!variables->getDock()->isHidden());
+    ui->a_programs->setChecked(!programmes->getDock()->isHidden());
+    ui->a_vars->setChecked(!variables->getDock()->isHidden());
 }
 
 void Mainwindow::addToCommandline(QString str)
@@ -97,3 +98,7 @@ void Mainwindow::keyPressEvent(QKeyEvent *ev)
     }
 }
 
+void Mainwindow::openSettingsWindow()
+{
+        settings->show();
+}

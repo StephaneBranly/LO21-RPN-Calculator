@@ -63,47 +63,14 @@
     </property>
     <addaction name="a_keyboardnumeric"/>
     <addaction name="a_keyboardfunctions"/>
-    <addaction name="a_variables"/>
-    <addaction name="a_programmes"/>
-    <addaction name="actionOptions_pile"/>
+    <addaction name="a_vars"/>
+    <addaction name="a_programs"/>
+    <addaction name="separator"/>
+    <addaction name="separator"/>
+    <addaction name="actionSettings"/>
    </widget>
    <addaction name="menuInterface"/>
   </widget>
-  <action name="actionOuvrir_contexte">
-   <property name="text">
-    <string>Ouvrir contexte</string>
-   </property>
-  </action>
-  <action name="actionSauvegarder_contexte">
-   <property name="text">
-    <string>Sauvegarder contexte</string>
-   </property>
-  </action>
-  <action name="actionProgramme">
-   <property name="text">
-    <string>Programme</string>
-   </property>
-  </action>
-  <action name="actionContexte_2">
-   <property name="text">
-    <string>Contexte</string>
-   </property>
-  </action>
-  <action name="actionOuvrir">
-   <property name="text">
-    <string>Ouvrir</string>
-   </property>
-  </action>
-  <action name="actionProgramme_2">
-   <property name="text">
-    <string>Programme</string>
-   </property>
-  </action>
-  <action name="actionContexte_3">
-   <property name="text">
-    <string>Contexte</string>
-   </property>
-  </action>
   <action name="a_keyboardnumeric">
    <property name="checkable">
     <bool>true</bool>
@@ -115,7 +82,7 @@
     <string>Clavier numerique</string>
    </property>
   </action>
-  <action name="a_variables">
+  <action name="a_vars">
    <property name="checkable">
     <bool>true</bool>
    </property>
@@ -126,7 +93,7 @@
     <string>Variables</string>
    </property>
   </action>
-  <action name="a_programmes">
+  <action name="a_programs">
    <property name="checkable">
     <bool>true</bool>
    </property>
@@ -135,11 +102,6 @@
    </property>
    <property name="text">
     <string>Programmes</string>
-   </property>
-  </action>
-  <action name="actionOptions_pile">
-   <property name="text">
-    <string>Options pile</string>
    </property>
   </action>
   <action name="a_keyboardfunctions">
@@ -151,6 +113,11 @@
    </property>
    <property name="text">
     <string>Clavier des fonctions</string>
+   </property>
+  </action>
+  <action name="actionSettings">
+   <property name="text">
+    <string>Settings</string>
    </property>
   </action>
  </widget>

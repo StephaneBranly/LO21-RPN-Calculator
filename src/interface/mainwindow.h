@@ -14,6 +14,8 @@
 #include "widgets/variables/variables.h"
 #include "widgets/programmes/programmes.h"
 
+#include "settings/settings.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class Mainwindow; }
 QT_END_NAMESPACE
@@ -36,6 +38,7 @@ private:
     KeyboardFunctions* keyboardfunctions;
     Programmes* programmes;
     Variables* variables;
+    Settings* settings;
 protected:
     void keyPressEvent(QKeyEvent *ev);
 
@@ -45,5 +48,6 @@ public slots:
     void updateTabDocks();
     void updateStack(const std::list<QString> m){ pile->updateContent(m);}
     void clearCommandLine(){ commandline->clearText(); }
+    void openSettingsWindow();
 };
 #endif // MAINWINDOW_H
