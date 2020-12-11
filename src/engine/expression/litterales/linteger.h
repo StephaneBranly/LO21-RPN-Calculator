@@ -14,7 +14,7 @@ public:
     Linteger(const Linteger&);
     Linteger(const int v): value(v){};
     Linteger* setLinteger(int v);
-    int getValue(){return value;}
+    double getValue() override {return value;}
 //    Linteger* createCopy()const override{return new Linteger(*this);}
     std::string const toString() const override{ return std::to_string(value); }
     const std::string getType() const override { return this->type; }

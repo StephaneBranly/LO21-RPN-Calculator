@@ -2,10 +2,48 @@
 #include "../../computerengine.h"
 #include "../../exception/CompException.h"
 #include "../litterales/linteger.h"
+#include "../litterales/lreal.h"
+#include "../litterales/lrational.h"
 
+//Constructeurs des opérateurs
+//opérateur +
 Engine::OperatorPLUS::OperatorPLUS()
 {
+    //9 actions à implémenter
     registerAction("Linteger", "Linteger", new SumIntInt);
+    registerAction("Linteger", "Lreal", new SumIntReal);
+    registerAction("Lreal", "Linteger", new SumIntReal);
+    registerAction("Lreal", "Lreal", new SumIntReal);
+}
+
+//opérateur -
+Engine::OperatorMINUS::OperatorMINUS()
+{
+    //9 actions à implémenter
+    registerAction("Linteger", "Linteger", new SubIntInt);
+    registerAction("Linteger", "Lreal", new SubIntReal);
+    registerAction("Lreal", "Linteger", new SubIntReal);
+    registerAction("Lreal", "Lreal", new SubIntReal);
+}
+
+//opérateur *
+Engine::OperatorMUL::OperatorMUL()
+{
+    //9 actions à implémenter
+    registerAction("Linteger", "Linteger", new MulIntInt);
+    registerAction("Linteger", "Lreal", new MulIntReal);
+    registerAction("Lreal", "Linteger", new MulIntReal);
+    registerAction("Lreal", "Lreal", new MulIntReal);
+}
+
+//opérateur /
+Engine::OperatorDIV::OperatorDIV()
+{
+    //9 actions à implémenter
+    registerAction("Linteger", "Linteger", new DivIntInt);
+    registerAction("Linteger", "Lreal", new DivIntReal);
+    registerAction("Lreal", "Linteger", new DivIntReal);
+    registerAction("Lreal", "Lreal", new DivIntReal);
 }
 
 void Engine::OperatorArithmetic::registerAction(std::string type1, std::string type2, Action *a)
@@ -33,7 +71,49 @@ void Engine::OperatorArithmetic::executeOpe()
     }
 }
 
+//Redéfinition de la méthode pour chaque action
+//Operator +
 Engine::Expression* Engine::SumIntInt::executeAction(Expression* L1,Expression* L2)
 {
     return (new Linteger(dynamic_cast<Linteger*>(L1)->getValue()+dynamic_cast<Linteger*>(L2)->getValue()));
 }
+
+Engine::Expression* Engine::SumIntReal::executeAction(Expression* L1,Expression* L2)
+{
+    return (new Lreal(dynamic_cast<Lnumerical*>(L1)->getValue()+dynamic_cast<Lnumerical*>(L2)->getValue()));
+}
+
+//Operator -
+Engine::Expression* Engine::SubIntInt::executeAction(Expression* L1,Expression* L2)
+{
+    return (new Linteger(dynamic_cast<Linteger*>(L1)->getValue()-dynamic_cast<Linteger*>(L2)->getValue()));
+}
+
+Engine::Expression* Engine::SubIntReal::executeAction(Expression* L1,Expression* L2)
+{
+    return (new Lreal(dynamic_cast<Lnumerical*>(L1)->getValue()-dynamic_cast<Lnumerical*>(L2)->getValue()));
+}
+
+//Operator *
+Engine::Expression* Engine::MulIntInt::executeAction(Expression* L1,Expression* L2)
+{
+    return (new Linteger(dynamic_cast<Linteger*>(L1)->getValue()*dynamic_cast<Linteger*>(L2)->getValue()));
+}
+
+Engine::Expression* Engine::MulIntReal::executeAction(Expression* L1,Expression* L2)
+{
+    return (new Lreal(dynamic_cast<Lnumerical*>(L1)->getValue()*dynamic_cast<Lnumerical*>(L2)->getValue()));
+}
+
+//Operator /
+Engine::Expression* Engine::DivIntInt::executeAction(Expression* L1,Expression* L2)
+{
+    return (new Lrational(dynamic_cast<Linteger*>(L1)->getValue(),dynamic_cast<Linteger*>(L2)->getValue()));
+}
+
+Engine::Expression* Engine::DivIntReal::executeAction(Expression* L1,Expression* L2)
+{
+    return (new Lreal(dynamic_cast<Lnumerical*>(L1)->getValue()/dynamic_cast<Lnumerical*>(L2)->getValue()));
+}
+
+

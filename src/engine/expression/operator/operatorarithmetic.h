@@ -13,9 +13,42 @@ public:
     virtual Expression* executeAction(Expression* L1, Expression* L2) = 0;
 };
 
+//définitions des actions possibles
+//opératorPLUS
 class SumIntInt : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
-}; //pour chaque
+};
+
+class SumIntReal : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
+//OperatorMINUS
+class SubIntInt : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
+class SubIntReal : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
+//OperatorMUL
+class MulIntInt : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
+class MulIntReal : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
+//OperatorDIV
+class DivIntInt : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
+class DivIntReal : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
 
 class OperatorArithmetic :public Operator
 {
@@ -36,6 +69,39 @@ class OperatorPLUS : public OperatorArithmetic {
         const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return "+"; }
         Expression* getCopy() const override { return new OperatorPLUS; }
+};
+
+class OperatorMINUS : public OperatorArithmetic {
+        size_t arrity=2;
+        std::string type = "OperatorMINUS";
+    public:
+        OperatorMINUS();
+        size_t getArrity () const override { return arrity; }
+        const std::string getType() const override { return this->type; }
+        const std::string toString() const override{ return "-"; }
+        Expression* getCopy() const override { return new OperatorMINUS; }
+};
+
+class OperatorMUL : public OperatorArithmetic {
+        size_t arrity=2;
+        std::string type = "OperatorMUL";
+    public:
+        OperatorMUL();
+        size_t getArrity () const override { return arrity; }
+        const std::string getType() const override { return this->type; }
+        const std::string toString() const override{ return "*"; }
+        Expression* getCopy() const override { return new OperatorMUL; }
+};
+
+class OperatorDIV : public OperatorArithmetic {
+        size_t arrity=2;
+        std::string type = "OperatorDIV";
+    public:
+        OperatorDIV();
+        size_t getArrity () const override { return arrity; }
+        const std::string getType() const override { return this->type; }
+        const std::string toString() const override{ return "/"; }
+        Expression* getCopy() const override { return new OperatorDIV; }
 };
 
 }

@@ -11,6 +11,9 @@ Engine::ExpressionAbstractFactory::ExpressionAbstractFactory()
     operatorFactory->addOperator("DUP",new OperatorDUP);
     operatorFactory->addOperator("DROP",new OperatorDROP);
     operatorFactory->addOperator("+",new OperatorPLUS);
+    operatorFactory->addOperator("-",new OperatorMINUS);
+    operatorFactory->addOperator("*",new OperatorMUL);
+    operatorFactory->addOperator("/",new OperatorDIV);
 }
 Engine::Expression* Engine::ExpressionAbstractFactory::createExpressionFromString(const std::string s)
 {

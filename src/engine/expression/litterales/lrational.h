@@ -16,6 +16,7 @@ public:
     Lrational(int n, int d):numerateur(n),denominateur(d){};
     void setRational(int n, int d);
     void setRational(Linteger& e1, Linteger& e2);
+    double getValue() override {return numerateur/denominateur;}
 //    Lrational* createCopy()const override{return new Lrational(*this);}
     std::string const toString() const override {
        return std::to_string(numerateur) + "/" + std::to_string(denominateur) ;
