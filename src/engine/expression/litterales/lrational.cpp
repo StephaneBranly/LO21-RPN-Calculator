@@ -43,8 +43,8 @@ void Engine::Lrational::setRational(int n, int d){
 }
 
 void Engine::Lrational::setRational(Linteger& e1, Linteger& e2){
-    numerateur = e1.getvalue();
-    if (e2.getvalue()==0) throw ComputerException("Error : dénominateur invalide.");
-    denominateur = e2.getvalue();
+    numerateur = e1.getValue();
+    if (e2.getValue()==0) throw ComputerException("Error : dénominateur invalide.");
+    denominateur = e2.getValue();
     simplify();
 }

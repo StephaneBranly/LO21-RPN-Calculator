@@ -1,5 +1,6 @@
 #include "expressionabstractfactory.h"
 #include "../exception/CompException.h"
+#include "operator/operatorarithmetic.h"
 #include <QDebug>
 
 Engine::ExpressionAbstractFactory::ExpressionAbstractFactory()
