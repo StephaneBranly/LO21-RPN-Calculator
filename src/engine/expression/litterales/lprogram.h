@@ -6,7 +6,7 @@
 #include <string>
 #include <list>
 namespace Engine {
-class Lprogram : public Expression
+class Lprogram : public Expression, public ExplicitEval
 {
     std::list<Expression*> content;
 protected:
@@ -18,7 +18,7 @@ public:
     void eval() override;
     const std::string toString() const override;
     Expression* getCopy() const override { return new Lprogram(*this); }
-    void explicitEval();
+    void explicitEval() override;
     void push_back(Expression* e){ content.push_back(e); }
 };
 }

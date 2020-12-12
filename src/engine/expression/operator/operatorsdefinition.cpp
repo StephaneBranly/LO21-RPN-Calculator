@@ -34,17 +34,13 @@ void Engine::OperatorEVAL::executeOpe()
 {
     Stack& p = ComputerEngine::getInstance().getStack();
     Expression* L1 = p.pop();
-    if(L1->getType()=="Lprogram")
+    ExplicitEval* isEvaluable = dynamic_cast<ExplicitEval*>(L1);
+    if(isEvaluable)
     {
-        Lprogram* L = dynamic_cast<Lprogram*>(L1);
-        L->explicitEval();
-    }else if(L1->getType()=="Lexpression")
-    {
-        Lexpression* L = dynamic_cast<Lexpression*>(L1);
-//        L->explicitEval();
+        isEvaluable->explicitEval();
     }
     else
-        throw ComputerException(L1->getType()+" ne peut pas être évalué de façon explicite.");
+        throw ComputerException(L1->toString()+" ne peut pas être évalué de façon explicite.");
 }
 
 void Engine::OperatorSTO::executeOpe()
