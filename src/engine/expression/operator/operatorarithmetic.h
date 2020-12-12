@@ -23,12 +23,20 @@ class SumIntReal : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
 };
 
+class SumIntRat : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
 //OperatorMINUS
 class SubIntInt : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
 };
 
 class SubIntReal : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
+class SubIntRat : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
 };
 
@@ -41,12 +49,20 @@ class MulIntReal : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
 };
 
+class MulIntRat : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
 //OperatorDIV
 class DivIntInt : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
 };
 
 class DivIntReal : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
+class DivIntRat : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
 };
 

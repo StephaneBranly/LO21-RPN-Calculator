@@ -14,6 +14,9 @@ Engine::OperatorPLUS::OperatorPLUS()
     registerAction("Linteger", "Lreal", new SumIntReal);
     registerAction("Lreal", "Linteger", new SumIntReal);
     registerAction("Lreal", "Lreal", new SumIntReal);
+    registerAction("Linteger", "Lrational", new SumIntRat);
+    registerAction("Lrational", "Linteger", new SumIntRat);
+
 }
 
 //opérateur -
@@ -24,6 +27,8 @@ Engine::OperatorMINUS::OperatorMINUS()
     registerAction("Linteger", "Lreal", new SubIntReal);
     registerAction("Lreal", "Linteger", new SubIntReal);
     registerAction("Lreal", "Lreal", new SubIntReal);
+    registerAction("Linteger", "Lrational", new SubIntRat);
+    registerAction("Lrational", "Linteger", new SubIntRat);
 }
 
 //opérateur *
@@ -34,6 +39,9 @@ Engine::OperatorMUL::OperatorMUL()
     registerAction("Linteger", "Lreal", new MulIntReal);
     registerAction("Lreal", "Linteger", new MulIntReal);
     registerAction("Lreal", "Lreal", new MulIntReal);
+    registerAction("Linteger", "Lrational", new MulIntRat);
+    registerAction("Lrational", "Linteger", new MulIntRat);
+
 }
 
 //opérateur /
@@ -44,6 +52,9 @@ Engine::OperatorDIV::OperatorDIV()
     registerAction("Linteger", "Lreal", new DivIntReal);
     registerAction("Lreal", "Linteger", new DivIntReal);
     registerAction("Lreal", "Lreal", new DivIntReal);
+    registerAction("Linteger", "Lrational", new DivIntRat);
+    registerAction("Lrational", "Linteger", new DivIntRat);
+
 }
 
 void Engine::OperatorArithmetic::registerAction(std::string type1, std::string type2, Action *a)
@@ -63,7 +74,7 @@ void Engine::OperatorArithmetic::executeOpe()
     tuple<string,string> t = make_tuple(L1->getType(),L2->getType());
     if (opes.find(t) != opes.end())
     {
-        p.push(opes.at(t)->executeAction(L1,L2));
+        p.push(opes.at(t)->executeAction(L2,L1));
     }
     else
     {
@@ -83,6 +94,14 @@ Engine::Expression* Engine::SumIntReal::executeAction(Expression* L1,Expression*
     return (new Lreal(dynamic_cast<Lnumerical*>(L1)->getValue()+dynamic_cast<Lnumerical*>(L2)->getValue()));
 }
 
+Engine::Expression* Engine::SumIntRat::executeAction(Expression* L1,Expression* L2)
+{
+    //Test d'abord si c'est L1 le rationnel, sinon c'est L2
+    if (L1->getType()=="Lrational")
+        return (new Lrational((dynamic_cast<Lrational*>(L1)->getNumerator()+dynamic_cast<Lnumerical*>(L2)->getValue()*dynamic_cast<Lrational*>(L1)->getDenominator()),dynamic_cast<Lrational*>(L1)->getDenominator()));
+    return (new Lrational((dynamic_cast<Lrational*>(L2)->getNumerator()+dynamic_cast<Lnumerical*>(L1)->getValue()*dynamic_cast<Lrational*>(L2)->getDenominator()),dynamic_cast<Lrational*>(L2)->getDenominator()));
+}
+
 //Operator -
 Engine::Expression* Engine::SubIntInt::executeAction(Expression* L1,Expression* L2)
 {
@@ -92,6 +111,16 @@ Engine::Expression* Engine::SubIntInt::executeAction(Expression* L1,Expression* 
 Engine::Expression* Engine::SubIntReal::executeAction(Expression* L1,Expression* L2)
 {
     return (new Lreal(dynamic_cast<Lnumerical*>(L1)->getValue()-dynamic_cast<Lnumerical*>(L2)->getValue()));
+}
+
+Engine::Expression* Engine::SubIntRat::executeAction(Expression* L1,Expression* L2)
+{
+    //Test d'abord si c'est L1 le rationnel, sinon c'est L2
+    //Si L1 rationnel(a/b), L2(c), retourne (a-b*c,b)
+    if (L1->getType()=="Lrational")
+        return (new Lrational((dynamic_cast<Lrational*>(L1)->getNumerator()-dynamic_cast<Lnumerical*>(L2)->getValue()*dynamic_cast<Lrational*>(L1)->getDenominator()),dynamic_cast<Lrational*>(L1)->getDenominator()));
+    //Si L1 entier (c), L2 rationnel (a/b), retourne (c*b-a,b)
+    return (new Lrational((dynamic_cast<Lnumerical*>(L1)->getValue()*dynamic_cast<Lrational*>(L2)->getDenominator()-dynamic_cast<Lrational*>(L2)->getNumerator()),dynamic_cast<Lrational*>(L2)->getDenominator()));
 }
 
 //Operator *
@@ -105,6 +134,16 @@ Engine::Expression* Engine::MulIntReal::executeAction(Expression* L1,Expression*
     return (new Lreal(dynamic_cast<Lnumerical*>(L1)->getValue()*dynamic_cast<Lnumerical*>(L2)->getValue()));
 }
 
+Engine::Expression* Engine::MulIntRat::executeAction(Expression* L1,Expression* L2)
+{
+    //Test d'abord si c'est L1 le rationnel, sinon c'est L2
+    //Si L1 rationnel(a/b), L2(c), retourne (a*c,b)
+    if (L1->getType()=="Lrational")
+        return (new Lrational((dynamic_cast<Lrational*>(L1)->getNumerator()*dynamic_cast<Lnumerical*>(L2)->getValue()),dynamic_cast<Lrational*>(L1)->getDenominator()));
+    //Si L1 entier (c), L2 rationnel (a/b), retourne (c*a,b)
+    return (new Lrational((dynamic_cast<Lnumerical*>(L1)->getValue()*dynamic_cast<Lrational*>(L2)->getNumerator()),dynamic_cast<Lrational*>(L2)->getDenominator()));
+}
+
 //Operator /
 Engine::Expression* Engine::DivIntInt::executeAction(Expression* L1,Expression* L2)
 {
@@ -114,6 +153,16 @@ Engine::Expression* Engine::DivIntInt::executeAction(Expression* L1,Expression* 
 Engine::Expression* Engine::DivIntReal::executeAction(Expression* L1,Expression* L2)
 {
     return (new Lreal(dynamic_cast<Lnumerical*>(L1)->getValue()/dynamic_cast<Lnumerical*>(L2)->getValue()));
+}
+
+Engine::Expression* Engine::DivIntRat::executeAction(Expression* L1,Expression* L2)
+{
+    //Test d'abord si c'est L1 le rationnel, sinon c'est L2
+    //Si L1 rationnel(a/b), L2(c), retourne (a,b*c)
+    if (L1->getType()=="Lrational")
+        return (new Lrational(dynamic_cast<Lrational*>(L1)->getNumerator(),(dynamic_cast<Lrational*>(L1)->getDenominator()*dynamic_cast<Lnumerical*>(L2)->getValue())));
+    //Si L1 entier (c), L2 rationnel (a/b), retourne (c*a,b)
+    return (new Lrational((dynamic_cast<Lnumerical*>(L1)->getValue()*dynamic_cast<Lrational*>(L2)->getDenominator()),dynamic_cast<Lrational*>(L2)->getNumerator()));
 }
 
 

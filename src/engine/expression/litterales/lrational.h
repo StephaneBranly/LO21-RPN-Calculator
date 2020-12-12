@@ -6,23 +6,25 @@
 namespace Engine {
 class Lrational  : public Lnumerical
 {
-    int numerateur;
-    int denominateur;
+    int numerator;
+    int denominator;
     void simplify();
     int PGCD(int a, int b);
 protected:
     std::string type="Lrational";
 public:
-    Lrational(int n, int d):numerateur(n),denominateur(d){};
+    Lrational(int n, int d):numerator(n),denominator(d){simplify();};
     void setRational(int n, int d);
     void setRational(Linteger& e1, Linteger& e2);
-    double getValue() override {return numerateur/denominateur;}
+    double getValue() override {return numerator/denominator;}
 //    Lrational* createCopy()const override{return new Lrational(*this);}
     std::string const toString() const override {
-       return std::to_string(numerateur) + "/" + std::to_string(denominateur) ;
+       return std::to_string(numerator) + "/" + std::to_string(denominator) ;
     }
     const std::string getType() const override { return this->type; }
-    Expression* getCopy() const override { return new Lrational(numerateur,denominateur); }
+    Expression* getCopy() const override { return new Lrational(numerator,denominator); }
+    int getNumerator () {return numerator;}
+    int getDenominator () {return denominator;}
 };
 }
 #endif // LRATIONNELLE_H
