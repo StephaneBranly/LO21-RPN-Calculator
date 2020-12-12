@@ -8,6 +8,7 @@ class Lnumerical : public Expression
 {
 public:
     void eval(); //les sous classes héritent de l'interface et du comportement
+    virtual double getValue() =0;
 };
 }
 #endif // LNUMERIQUE_H

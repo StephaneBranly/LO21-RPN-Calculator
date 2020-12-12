@@ -17,3 +17,4 @@ namespace Engine {
     };
 }
 #endif // OPERATORFACTORY_H
+
