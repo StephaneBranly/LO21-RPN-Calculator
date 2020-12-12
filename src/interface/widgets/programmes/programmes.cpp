@@ -16,6 +16,7 @@ Programmes::Programmes(QMainWindow *parent)
 
     connect(dock, SIGNAL(visibilityChanged(bool)), parent, SLOT(updateTabDocks()));
     connect(this, SIGNAL(readyToEval(QString)), parent, SLOT(execute(QString)));
+    connect(this, SIGNAL(editAtom(QString)), parent, SLOT(editAtom(QString)));
 }
 
 Programmes::~Programmes()
@@ -44,13 +45,37 @@ void Programmes::updateProgs(const std::list<QString> li)
         delete *it;
     }
     progs.clear();
-    QPushButton* b;
+    Program* p;
     for(auto it = li.begin(); it != li.end(); ++it)
     {
-        b = new QPushButton();
-        b->setText(*it);
-        connect(b,SIGNAL(clicked()),this,SLOT(evalProg()));
-        progs.push_back(b);
-        ui->containerProgs->addWidget(b);
+        p = new Program(this,(*it));
+        progs.push_back(p);
+        ui->containerProgs->addWidget(p);
     }
+}
+
+
+void Programmes::editProg(const QString s)
+{
+    emit editAtom(s);
+}
+
+Program::Program(Programmes* v,const QString name):parent(v), name(name)
+{
+    layout = new QHBoxLayout();
+
+    setLayout(layout);
+    button = new QPushButton();
+    button->setText(name);
+
+    editLabel = new ClickableLabel();
+    editLabel->setText("Editer");
+    editLabel->setRefName(name);
+    editLabel->installEventFilter(this);
+
+    connect(button,SIGNAL(clicked()),parent,SLOT(evalProg()));
+    layout->addWidget(button);
+    connect(editLabel,SIGNAL(clicked(QString)),parent, SLOT(editProg(QString)));
+
+    layout->addWidget(editLabel);
 }

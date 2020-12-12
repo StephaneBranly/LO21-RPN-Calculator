@@ -48,7 +48,6 @@ void Variables::updateVars(const std::list<QString> li)
     for(auto it = li.begin(); it != li.end(); ++it)
     {
         v = new Variable(this,(*it));
-
         vars.push_back(v);
         ui->containerVars->addWidget(v);
     }

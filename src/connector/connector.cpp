@@ -42,13 +42,14 @@ void Connector::notify(const std::string &message)
     }else if(message=="executeBuffer")
     {
         const std::string buffer = window.getBuffer().toStdString();
-        try{engine.getExpressionManager().evalCommandLine(buffer); }
+        try{engine.getExpressionManager().evalCommandLine(buffer); window.setMessage("OK");  }
         catch(Engine::ComputerException e){ window.setMessage(QString::fromStdString(e.getInfo()));}
     }else if(message=="needAtomValue"){
         const std::string atomName = window.getBuffer().toStdString();
         try{
             string s = engine.getInstance().getAtomManager().getExpressionFromString(atomName)->toString();
             window.setBuffer(QString::fromStdString(s));
+            window.setMessage("OK");
         }
         catch(Engine::ComputerException e){ window.setMessage(QString::fromStdString(e.getInfo()));}
     }
