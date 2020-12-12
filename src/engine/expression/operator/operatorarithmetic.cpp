@@ -20,6 +20,7 @@ Engine::OperatorPLUS::OperatorPLUS()
     registerAction("Lrational", "Linteger", new SumIntRat);
     registerAction("Lreal", "Lrational", new SumRealRat);
     registerAction("Lrational", "Lreal", new SumRealRat);
+    registerAction("Lrational", "Lrational", new SumRatRat);
 
 }
 
@@ -35,6 +36,7 @@ Engine::OperatorMINUS::OperatorMINUS()
     registerAction("Lrational", "Linteger", new SubIntRat);
     registerAction("Lreal", "Lrational", new SubRealRat);
     registerAction("Lrational", "Lreal", new SubRealRat);
+    registerAction("Lrational", "Lrational", new SubRatRat);
 }
 
 //opérateur *
@@ -49,6 +51,7 @@ Engine::OperatorMUL::OperatorMUL()
     registerAction("Lrational", "Linteger", new MulIntRat);
     registerAction("Lreal", "Lrational", new MulRealRat);
     registerAction("Lrational", "Lreal", new MulRealRat);
+    registerAction("Lrational", "Lrational", new MulRatRat);
 
 }
 
@@ -64,6 +67,8 @@ Engine::OperatorDIV::OperatorDIV()
     registerAction("Lrational", "Linteger", new DivIntRat);
     registerAction("Lreal", "Lrational", new DivRealRat);
     registerAction("Lrational", "Lreal", new DivRealRat);
+    registerAction("Lrational", "Lrational", new DivRatRat);
+
 
 }
 
@@ -120,6 +125,13 @@ Engine::Expression* Engine::SumRealRat::executeAction(Expression* L1,Expression*
     return (new Lreal((float)(dynamic_cast<Lrational*>(L2)->getNumerator()/(float)dynamic_cast<Lrational*>(L2)->getDenominator())+dynamic_cast<Lnumerical*>(L1)->getValue()));
 }
 
+Engine::Expression* Engine::SumRatRat::executeAction(Expression* L1,Expression* L2)
+{
+    int num = dynamic_cast<Lrational*>(L1)->getNumerator()*dynamic_cast<Lrational*>(L2)->getDenominator()+dynamic_cast<Lrational*>(L2)->getNumerator()*dynamic_cast<Lrational*>(L1)->getDenominator();
+    int den = dynamic_cast<Lrational*>(L1)->getDenominator()*dynamic_cast<Lrational*>(L2)->getDenominator();
+    return (new Lrational(num,den));
+}
+
 //Operator -
 Engine::Expression* Engine::SubIntInt::executeAction(Expression* L1,Expression* L2)
 {
@@ -149,6 +161,13 @@ Engine::Expression* Engine::SubRealRat::executeAction(Expression* L1,Expression*
         return (new Lreal((float)(dynamic_cast<Lrational*>(L1)->getNumerator()/(float)dynamic_cast<Lrational*>(L1)->getDenominator())-dynamic_cast<Lnumerical*>(L2)->getValue()));
     //Si L1 réel (c), L2 rationnel (a/b), retourne (c-(a/b))
     return (new Lreal(dynamic_cast<Lnumerical*>(L1)->getValue()-((float)dynamic_cast<Lrational*>(L2)->getNumerator()/(float)dynamic_cast<Lrational*>(L2)->getDenominator())));
+}
+
+Engine::Expression* Engine::SubRatRat::executeAction(Expression* L1,Expression* L2)
+{
+    int num = dynamic_cast<Lrational*>(L1)->getNumerator()*dynamic_cast<Lrational*>(L2)->getDenominator()-dynamic_cast<Lrational*>(L2)->getNumerator()*dynamic_cast<Lrational*>(L1)->getDenominator();
+    int den = dynamic_cast<Lrational*>(L1)->getDenominator()*dynamic_cast<Lrational*>(L2)->getDenominator();
+    return (new Lrational(num,den));
 }
 
 //Operator *
@@ -182,6 +201,13 @@ Engine::Expression* Engine::MulRealRat::executeAction(Expression* L1,Expression*
     return (new Lreal(((float)dynamic_cast<Lnumerical*>(L1)->getValue()*(float)dynamic_cast<Lrational*>(L2)->getNumerator())/(float)dynamic_cast<Lrational*>(L2)->getDenominator()));
 }
 
+Engine::Expression* Engine::MulRatRat::executeAction(Expression* L1,Expression* L2)
+{
+    int num = dynamic_cast<Lrational*>(L1)->getNumerator()*dynamic_cast<Lrational*>(L2)->getNumerator();
+    int den = dynamic_cast<Lrational*>(L1)->getDenominator()*dynamic_cast<Lrational*>(L2)->getDenominator();
+    return (new Lrational(num,den));
+}
+
 //Operator /
 Engine::Expression* Engine::DivIntInt::executeAction(Expression* L1,Expression* L2)
 {
@@ -213,3 +239,9 @@ Engine::Expression* Engine::DivRealRat::executeAction(Expression* L1,Expression*
     return (new Lreal(((float)dynamic_cast<Lnumerical*>(L1)->getValue()*(float)dynamic_cast<Lrational*>(L2)->getDenominator())/(float)dynamic_cast<Lrational*>(L2)->getNumerator()));
 }
 
+Engine::Expression* Engine::DivRatRat::executeAction(Expression* L1,Expression* L2)
+{
+    int num = dynamic_cast<Lrational*>(L1)->getNumerator()*dynamic_cast<Lrational*>(L2)->getDenominator();
+    int den = dynamic_cast<Lrational*>(L1)->getDenominator()*dynamic_cast<Lrational*>(L2)->getNumerator();
+    return (new Lrational(num,den));
+}
