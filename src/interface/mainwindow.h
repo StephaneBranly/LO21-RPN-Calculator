@@ -26,8 +26,9 @@ public:
     Mainwindow(QWidget *parent = nullptr);
     ~Mainwindow();
     const QString getContentCommandLine() const { return commandline->getText(); }
+    const QString getAtomToEval(){ return atomToEvalName; }
     void setMessage(const QString m){ pile->setMessage(m);}
-    void updateAtoms(const std::list<std::tuple<QString,QString,QString>> l);
+    void updateAtoms(const std::list<std::tuple<QString,QString,QString>> l);   
 private:
     Ui::Mainwindow *ui;
     Commandline* commandline;
@@ -36,14 +37,16 @@ private:
     KeyboardFunctions* keyboardfunctions;
     Programmes* programmes;
     Variables* variables;
+    QString atomToEvalName;
 protected:
     void keyPressEvent(QKeyEvent *ev);
 
 public slots:
     void clickEval();
-    void addToCommandline(QString str);
+    void addToCommandline(const QString str);
     void updateTabDocks();
     void updateStack(const std::list<QString> m){ pile->updateContent(m);}
     void clearCommandLine(){ commandline->clearText(); }
+    void atomToEval(const QString a);
 };
 #endif // MAINWINDOW_H

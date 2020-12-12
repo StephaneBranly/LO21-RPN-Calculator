@@ -15,6 +15,7 @@ Variables::Variables(QMainWindow *parent)
     parent->addDockWidget(Qt::RightDockWidgetArea, dock);
 
     connect(dock, SIGNAL(visibilityChanged(bool)), parent, SLOT(updateTabDocks()));
+    connect(this, SIGNAL(readyToPush(QString)), parent, SLOT(atomToEval(QString)));
 }
 
 Variables::~Variables()
@@ -27,12 +28,18 @@ void Variables::toggleDock(bool b)
         dock->setHidden(!b);
 }
 
+void Variables::pushVar()
+{
+    QPushButton* s = (QPushButton*)sender();
+    emit readyToPush(s->text());
+}
 
 void Variables::updateVars(const std::list<QString> li)
 {
     for(auto it = vars.begin(); it != vars.end(); ++it)
     {
         ui->containerVars->removeWidget(*it);
+        (*it)->disconnect(this);
         delete *it;
     }
     vars.clear();
@@ -41,6 +48,7 @@ void Variables::updateVars(const std::list<QString> li)
     {
         b = new QPushButton();
         b->setText(*it);
+        connect(b,SIGNAL(clicked()),this,SLOT(pushVar()));
         vars.push_back(b);
         ui->containerVars->addWidget(b);
     }

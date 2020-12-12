@@ -26,6 +26,9 @@ private:
 
 public slots:
     void toggleDock(bool b);
+    void pushVar();
+signals:
+    void readyToPush(QString a);
 };
 
 #endif // VARIABLES_H

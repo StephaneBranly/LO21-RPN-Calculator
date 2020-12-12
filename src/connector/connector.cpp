@@ -39,5 +39,10 @@ void Connector::notify(const std::string &message)
             listQstring.push_back(tu);
         }
         window.updateAtoms(listQstring);
+    }else if(message=="atomToEval")
+    {
+        const std::string atomName = window.getAtomToEval().toStdString();
+        try{engine.getExpressionManager().evalCommandLine(atomName); }
+        catch(Engine::ComputerException e){ window.setMessage(QString::fromStdString(e.getInfo()));}
     }
 };

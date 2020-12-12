@@ -15,6 +15,7 @@ Programmes::Programmes(QMainWindow *parent)
     parent->addDockWidget(Qt::RightDockWidgetArea, dock);
 
     connect(dock, SIGNAL(visibilityChanged(bool)), parent, SLOT(updateTabDocks()));
+    connect(this, SIGNAL(readyToEval(QString)), parent, SLOT(atomToEval(QString)));
 }
 
 Programmes::~Programmes()
@@ -27,11 +28,19 @@ void Programmes::toggleDock(bool b)
         dock->setHidden(!b);
 }
 
+
+void Programmes::evalProg()
+{
+    QPushButton* s = (QPushButton*)sender();
+    emit readyToEval(s->text());
+}
+
 void Programmes::updateProgs(const std::list<QString> li)
 {
     for(auto it = progs.begin(); it != progs.end(); ++it)
     {
         ui->containerProgs->removeWidget(*it);
+        (*it)->disconnect(this);
         delete *it;
     }
     progs.clear();
@@ -40,6 +49,7 @@ void Programmes::updateProgs(const std::list<QString> li)
     {
         b = new QPushButton();
         b->setText(*it);
+        connect(b,SIGNAL(clicked()),this,SLOT(evalProg()));
         progs.push_back(b);
         ui->containerProgs->addWidget(b);
     }

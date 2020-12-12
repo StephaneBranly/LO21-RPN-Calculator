@@ -55,7 +55,7 @@ void Mainwindow::updateTabDocks()
     ui->a_variables->setChecked(!variables->getDock()->isHidden());
 }
 
-void Mainwindow::addToCommandline(QString str)
+void Mainwindow::addToCommandline(const QString str)
 {
     QString c = commandline->getText();
     if(!c.endsWith(" ",Qt::CaseInsensitive))
@@ -113,4 +113,10 @@ void Mainwindow::updateAtoms(const std::list<std::tuple<QString,QString,QString>
     progs.sort();
     variables->updateVars(vars);
     programmes->updateProgs(progs);
+}
+
+void Mainwindow::atomToEval(const QString a)
+{
+    atomToEvalName = a;
+    notify("atomToEval");
 }

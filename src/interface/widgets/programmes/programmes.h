@@ -26,6 +26,9 @@ private:
 
 public slots:
     void toggleDock(bool b);
+    void evalProg();
+signals:
+    void readyToEval(QString a);
 };
 
 #endif // PROGRAMMES_H
