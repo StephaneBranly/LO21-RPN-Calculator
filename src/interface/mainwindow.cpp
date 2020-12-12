@@ -131,9 +131,10 @@ void Mainwindow::editAtom(const QString s)
     notify("needAtomValue");
     editAtomDialog->setAtomValue(buffer);
     editAtomDialog->show();
-
+}
 void Mainwindow::openSettingsWindow()
 {
+    settings->setInputValue(pile->getSize());
     settings->show();
 }
 void Mainwindow::updateSizeStack(int s)

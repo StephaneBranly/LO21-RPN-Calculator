@@ -15,7 +15,7 @@ class Settings : public QDialog
 public:
     explicit Settings(QWidget *parent = 0);
     ~Settings();
-
+    void setInputValue(const size_t s);
 private:
     Ui::Settings *ui;
 private slots:
