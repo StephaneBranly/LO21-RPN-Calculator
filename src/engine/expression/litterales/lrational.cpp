@@ -5,21 +5,21 @@
 
 void Engine::Lrational::simplify()
 {
-        if(denominateur == 1){
+        if(denominator == 1){
             //création d'une littérale entiere, et destruction de la Lrationnelle.
-//            Engine::Linteger::setLinteger(numerateur);//erreur
+//            Engine::Linteger::setLinteger(numerator);//erreur
         }
-        if (numerateur == 0) {
+        if (numerator == 0) {
             //création de la littérale entiere nulle.
-//            Engine::Linteger::setLinteger(denominateur);//erreur
+//            Engine::Linteger::setLinteger(denominator);//erreur
         }else {
             int r;
-            r= PGCD(numerateur,denominateur);
-            numerateur = numerateur/r;
-            denominateur = denominateur/r;
-            if(denominateur<0){
-                numerateur = -numerateur;
-                denominateur = -denominateur;
+            r= PGCD(numerator,denominator);
+            numerator = numerator/r;
+            denominator = denominator/r;
+            if(denominator<0){
+                numerator = -numerator;
+                denominator = -denominator;
                     }
         }
 }
@@ -36,15 +36,15 @@ int Engine::Lrational::PGCD(int a, int b){
 
 
 void Engine::Lrational::setRational(int n, int d){
-    numerateur=n;
+    numerator=n;
     if (d==0) throw ComputerException("Error : dénominateur invalide.");
-    denominateur = d;
+    denominator = d;
     simplify();
 }
 
 void Engine::Lrational::setRational(Linteger& e1, Linteger& e2){
-    numerateur = e1.getvalue();
-    if (e2.getvalue()==0) throw ComputerException("Error : dénominateur invalide.");
-    denominateur = e2.getvalue();
+    numerator = e1.getValue();
+    if (e2.getValue()==0) throw ComputerException("Error : dénominateur invalide.");
+    denominator = e2.getValue();
     simplify();
 }

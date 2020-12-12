@@ -47,6 +47,7 @@ public:
     const std::string toString() const override{ return "DUP"; }
     Expression* getCopy() const override { return new OperatorDUP; }
 };
+
 }
 
 #endif // OPERATORSDEFINITION_H

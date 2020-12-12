@@ -13,6 +13,7 @@ public:
     Lreal(const std::string s);
     Lreal(float r): real(r){};
     Lreal* setReal(float r);
+    double getValue() override {return real;}
 //    LReal* createCopy()const override{return new LReal(*this);}
     std::string const toString()const override{return std::to_string(real);}
     const std::string getType() const override { return this->type; }
