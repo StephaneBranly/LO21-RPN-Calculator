@@ -39,10 +39,17 @@ void Connector::notify(const std::string &message)
             listQstring.push_back(tu);
         }
         window.updateAtoms(listQstring);
-    }else if(message=="atomToEval")
+    }else if(message=="executeBuffer")
     {
-        const std::string atomName = window.getAtomToEval().toStdString();
-        try{engine.getExpressionManager().evalCommandLine(atomName); }
+        const std::string buffer = window.getBuffer().toStdString();
+        try{engine.getExpressionManager().evalCommandLine(buffer); }
+        catch(Engine::ComputerException e){ window.setMessage(QString::fromStdString(e.getInfo()));}
+    }else if(message=="needAtomValue"){
+        const std::string atomName = window.getBuffer().toStdString();
+        try{
+            string s = engine.getInstance().getAtomManager().getExpressionFromString(atomName)->toString();
+            window.setBuffer(QString::fromStdString(s));
+        }
         catch(Engine::ComputerException e){ window.setMessage(QString::fromStdString(e.getInfo()));}
     }
 };

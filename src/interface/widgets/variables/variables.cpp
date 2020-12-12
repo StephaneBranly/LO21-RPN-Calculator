@@ -15,7 +15,8 @@ Variables::Variables(QMainWindow *parent)
     parent->addDockWidget(Qt::RightDockWidgetArea, dock);
 
     connect(dock, SIGNAL(visibilityChanged(bool)), parent, SLOT(updateTabDocks()));
-    connect(this, SIGNAL(readyToPush(QString)), parent, SLOT(atomToEval(QString)));
+    connect(this, SIGNAL(readyToPush(QString)), parent, SLOT(execute(QString)));
+    connect(this, SIGNAL(editAtom(QString)), parent, SLOT(editAtom(QString)));
 }
 
 Variables::~Variables()
@@ -43,13 +44,38 @@ void Variables::updateVars(const std::list<QString> li)
         delete *it;
     }
     vars.clear();
-    QPushButton* b;
+    Variable* v;
     for(auto it = li.begin(); it != li.end(); ++it)
     {
-        b = new QPushButton();
-        b->setText(*it);
-        connect(b,SIGNAL(clicked()),this,SLOT(pushVar()));
-        vars.push_back(b);
-        ui->containerVars->addWidget(b);
+        v = new Variable(this,(*it));
+
+        vars.push_back(v);
+        ui->containerVars->addWidget(v);
     }
+}
+
+
+void Variables::editVar(const QString s)
+{
+    emit editAtom(s);
+}
+
+Variable::Variable(Variables* v,const QString name):parent(v), name(name)
+{
+    layout = new QHBoxLayout();
+
+    setLayout(layout);
+    button = new QPushButton();
+    button->setText(name);
+
+    editLabel = new ClickableLabel();
+    editLabel->setText("Editer");
+    editLabel->setRefName(name);
+    editLabel->installEventFilter(this);
+
+    connect(button,SIGNAL(clicked()),parent,SLOT(pushVar()));
+    layout->addWidget(button);
+    connect(editLabel,SIGNAL(clicked(QString)),parent, SLOT(editVar(QString)));
+
+    layout->addWidget(editLabel);
 }

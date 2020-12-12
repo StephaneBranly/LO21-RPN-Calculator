@@ -15,7 +15,7 @@ Programmes::Programmes(QMainWindow *parent)
     parent->addDockWidget(Qt::RightDockWidgetArea, dock);
 
     connect(dock, SIGNAL(visibilityChanged(bool)), parent, SLOT(updateTabDocks()));
-    connect(this, SIGNAL(readyToEval(QString)), parent, SLOT(atomToEval(QString)));
+    connect(this, SIGNAL(readyToEval(QString)), parent, SLOT(execute(QString)));
 }
 
 Programmes::~Programmes()

@@ -24,6 +24,7 @@ Mainwindow::Mainwindow(QWidget *parent)
     programmes = new Programmes(this);
     variables = new Variables(this);
     keyboardnumeric = new KeyboardNumeric(this);
+    editAtomDialog = new EditAtom(this);
 
     connect(ui->a_keyboardnumeric, SIGNAL(toggled(bool)),keyboardnumeric,SLOT(toggleDock(bool)));
     connect(ui->a_keyboardfunctions, SIGNAL(toggled(bool)),keyboardfunctions,SLOT(toggleDock(bool)));
@@ -115,8 +116,17 @@ void Mainwindow::updateAtoms(const std::list<std::tuple<QString,QString,QString>
     programmes->updateProgs(progs);
 }
 
-void Mainwindow::atomToEval(const QString a)
+void Mainwindow::execute(const QString a)
 {
-    atomToEvalName = a;
-    notify("atomToEval");
+    buffer = a;
+    notify("executeBuffer");
+}
+
+void Mainwindow::editAtom(const QString s)
+{
+    editAtomDialog->setAtomName(s);
+    buffer = s;
+    notify("needAtomValue");
+    editAtomDialog->setAtomValue(buffer);
+    editAtomDialog->show();
 }
