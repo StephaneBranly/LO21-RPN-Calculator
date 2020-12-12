@@ -27,6 +27,11 @@ class SumIntRat : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
 };
 
+class SumRealRat : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
+
 //OperatorMINUS
 class SubIntInt : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
@@ -37,6 +42,10 @@ class SubIntReal : public Action {
 };
 
 class SubIntRat : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
+class SubRealRat : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
 };
 
@@ -53,6 +62,10 @@ class MulIntRat : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
 };
 
+class MulRealRat : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
 //OperatorDIV
 class DivIntInt : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
@@ -63,6 +76,10 @@ class DivIntReal : public Action {
 };
 
 class DivIntRat : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
+class DivRealRat : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
 };
 
