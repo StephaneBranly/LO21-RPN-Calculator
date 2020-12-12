@@ -1,6 +1,7 @@
 #include "expressionabstractfactory.h"
 #include "../exception/CompException.h"
 #include "operator/operatorarithmetic.h"
+#include "operator/operatorlogic.h"
 #include <QDebug>
 
 Engine::ExpressionAbstractFactory::ExpressionAbstractFactory()
@@ -13,7 +14,15 @@ Engine::ExpressionAbstractFactory::ExpressionAbstractFactory()
     operatorFactory->addOperator("+",new OperatorPLUS);
     operatorFactory->addOperator("-",new OperatorMINUS);
     operatorFactory->addOperator("*",new OperatorMUL);
-    operatorFactory->addOperator("/",new OperatorDIV);
+    operatorFactory->addOperator("AND",new OperatorAnd);
+    operatorFactory->addOperator("OR",new OperatorOr);
+    //operatorFactory->addOperator("NOT",new OperatorNot);
+    operatorFactory->addOperator("==",new OperatorEq);
+    operatorFactory->addOperator("!=",new OperatorDiff);
+    operatorFactory->addOperator(">",new OperatorGt);
+    operatorFactory->addOperator("<",new OperatorLt);
+    operatorFactory->addOperator(">=",new OperatorGeq);
+    operatorFactory->addOperator("=<",new OperatorLeq);
 }
 Engine::Expression* Engine::ExpressionAbstractFactory::createExpressionFromString(const std::string s)
 {

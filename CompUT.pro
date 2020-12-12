@@ -23,6 +23,7 @@ SOURCES += \
     src/engine/expression/operator/operator.cpp \
     src/engine/expression/operator/operatorarithmetic.cpp \
     src/engine/expression/operator/operatorfactory.cpp \
+    src/engine/expression/operator/operatorlogic.cpp \
     src/engine/expression/operator/operatorsdefinition.cpp \
     src/engine/stack/stack.cpp \
     src/interface/mainwindow.cpp \
@@ -67,6 +68,7 @@ HEADERS += \
     src/engine/expression/expressionmanager.h \
     src/engine/expression/operator/operatorarithmetic.h \
     src/engine/expression/operator/operatorfactory.h \
+    src/engine/expression/operator/operatorlogic.h \
     src/engine/expression/operator/operatorsdefinition.h \
     src/engine/stack/stack.h \
     src/interface/mainwindow.h \
