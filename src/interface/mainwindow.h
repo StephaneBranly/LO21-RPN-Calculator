@@ -14,6 +14,8 @@
 #include "widgets/variables/variables.h"
 #include "widgets/programmes/programmes.h"
 
+#include "settings/settings.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class Mainwindow; }
 QT_END_NAMESPACE
@@ -27,7 +29,7 @@ public:
     ~Mainwindow();
     const QString getContentCommandLine() const { return commandline->getText(); }
     void setMessage(const QString m){ pile->setMessage(m);}
-
+    void updateStack(const std::list<QString> m){ pile->updateContent(m);}
 private:
     Ui::Mainwindow *ui;
     Commandline* commandline;
@@ -36,14 +38,15 @@ private:
     KeyboardFunctions* keyboardfunctions;
     Programmes* programmes;
     Variables* variables;
+    Settings* settings;
 protected:
     void keyPressEvent(QKeyEvent *ev);
-
 public slots:
     void clickEval();
     void addToCommandline(QString str);
     void updateTabDocks();
-    void updateStack(const std::list<QString> m){ pile->updateContent(m);}
+    void updateSizeStack(int s);
     void clearCommandLine(){ commandline->clearText(); }
+    void openSettingsWindow();
 };
 #endif // MAINWINDOW_H
