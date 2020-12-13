@@ -61,9 +61,14 @@
            <x>0</x>
            <y>0</y>
            <width>386</width>
-           <height>271</height>
+           <height>267</height>
           </rect>
          </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <layout class="QVBoxLayout" name="containerVars"/>
+          </item>
+         </layout>
         </widget>
        </widget>
       </item>

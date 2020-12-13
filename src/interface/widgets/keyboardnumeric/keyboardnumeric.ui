@@ -38,6 +38,18 @@
       <layout class="QVBoxLayout" name="V1">
        <item>
         <widget class="QPushButton" name="Button7">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="text">
           <string>7</string>
          </property>
@@ -48,6 +60,18 @@
        </item>
        <item>
         <widget class="QPushButton" name="Button4">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="text">
           <string>4</string>
          </property>
@@ -58,6 +82,18 @@
        </item>
        <item>
         <widget class="QPushButton" name="Button1">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="text">
           <string>1</string>
          </property>
@@ -68,6 +104,18 @@
        </item>
        <item>
         <widget class="QPushButton" name="Button0">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="text">
           <string>0</string>
          </property>
@@ -82,6 +130,18 @@
       <layout class="QVBoxLayout" name="V2">
        <item>
         <widget class="QPushButton" name="Button8">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="text">
           <string>8</string>
          </property>
@@ -92,6 +152,18 @@
        </item>
        <item>
         <widget class="QPushButton" name="Button5">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="text">
           <string>5</string>
          </property>
@@ -102,6 +174,18 @@
        </item>
        <item>
         <widget class="QPushButton" name="Button2">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="text">
           <string>2</string>
          </property>
@@ -112,8 +196,20 @@
        </item>
        <item>
         <widget class="QPushButton" name="ButtonEval">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(64, 79, 255);</string>
+          <string notr="true">color: rgb(0, 131, 204);</string>
          </property>
          <property name="text">
           <string>EVAL</string>
@@ -126,6 +222,18 @@
       <layout class="QVBoxLayout" name="V3">
        <item>
         <widget class="QPushButton" name="Button9">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="text">
           <string>9</string>
          </property>
@@ -136,6 +244,18 @@
        </item>
        <item>
         <widget class="QPushButton" name="Button6">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="text">
           <string>6</string>
          </property>
@@ -146,6 +266,18 @@
        </item>
        <item>
         <widget class="QPushButton" name="Button3">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="text">
           <string>3</string>
          </property>
@@ -156,8 +288,20 @@
        </item>
        <item>
         <widget class="QPushButton" name="ButtonPoint">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(64, 79, 200);</string>
+          <string notr="true">color: rgb(0, 131, 204);</string>
          </property>
          <property name="text">
           <string>.</string>
@@ -173,8 +317,20 @@
       <layout class="QVBoxLayout" name="V4">
        <item>
         <widget class="QPushButton" name="ButtonPlus">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(64, 79, 200);</string>
+          <string notr="true">color: rgb(0, 131, 204);</string>
          </property>
          <property name="text">
           <string>+</string>
@@ -186,8 +342,20 @@
        </item>
        <item>
         <widget class="QPushButton" name="ButtonMoins">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(64, 79, 200);</string>
+          <string notr="true">color: rgb(0, 131, 204);</string>
          </property>
          <property name="text">
           <string>-</string>
@@ -199,8 +367,20 @@
        </item>
        <item>
         <widget class="QPushButton" name="ButtonMult">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(64, 79, 200);</string>
+          <string notr="true">color: rgb(0, 131, 204);</string>
          </property>
          <property name="text">
           <string>*</string>
@@ -212,8 +392,20 @@
        </item>
        <item>
         <widget class="QPushButton" name="ButtonDiv">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(64, 79, 200);</string>
+          <string notr="true">color: rgb(0, 131, 204);</string>
          </property>
          <property name="text">
           <string>/</string>

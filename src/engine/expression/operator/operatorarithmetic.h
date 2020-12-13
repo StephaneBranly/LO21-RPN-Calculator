@@ -23,12 +23,36 @@ class SumIntReal : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
 };
 
+class SumIntRat : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
+class SumRealRat : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
+class SumRatRat : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
 //OperatorMINUS
 class SubIntInt : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
 };
 
 class SubIntReal : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
+class SubIntRat : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
+class SubRealRat : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
+class SubRatRat : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
 };
 
@@ -41,12 +65,38 @@ class MulIntReal : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
 };
 
+
+class MulIntRat : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
+class MulRealRat : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
+class MulRatRat : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
 //OperatorDIV
 class DivIntInt : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
 };
 
 class DivIntReal : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
+
+class DivIntRat : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
+class DivRealRat : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
+class DivRatRat : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
 };
 

@@ -24,16 +24,18 @@ Mainwindow::Mainwindow(QWidget *parent)
     programmes = new Programmes(this);
     variables = new Variables(this);
     keyboardnumeric = new KeyboardNumeric(this);
+    editAtomDialog = new EditAtom(this);
+    settings = new Settings(this);
 
     connect(ui->a_keyboardnumeric, SIGNAL(toggled(bool)),keyboardnumeric,SLOT(toggleDock(bool)));
     connect(ui->a_keyboardfunctions, SIGNAL(toggled(bool)),keyboardfunctions,SLOT(toggleDock(bool)));
-    connect(ui->a_programmes, SIGNAL(toggled(bool)),programmes,SLOT(toggleDock(bool)));
-    connect(ui->a_variables, SIGNAL(toggled(bool)),variables,SLOT(toggleDock(bool)));
-
+    connect(ui->a_programs, SIGNAL(toggled(bool)),programmes,SLOT(toggleDock(bool)));
+    connect(ui->a_vars, SIGNAL(toggled(bool)),variables,SLOT(toggleDock(bool)));
+    connect(ui->actionParametres, SIGNAL(triggered()), this, SLOT(openSettingsWindow()));
     ui->mainLayout->addWidget(pile);
+    setFocusPolicy(Qt::StrongFocus);
     ui->mainLayout->addWidget(commandline);
 
-    setFocusPolicy(Qt::StrongFocus);
 }
 
 Mainwindow::~Mainwindow()
@@ -51,11 +53,11 @@ void Mainwindow::updateTabDocks()
 {
     ui->a_keyboardfunctions->setChecked(!keyboardfunctions->getDock()->isHidden());
     ui->a_keyboardnumeric->setChecked(!keyboardnumeric->getDock()->isHidden());
-    ui->a_programmes->setChecked(!programmes->getDock()->isHidden());
-    ui->a_variables->setChecked(!variables->getDock()->isHidden());
+    ui->a_programs->setChecked(!programmes->getDock()->isHidden());
+    ui->a_vars->setChecked(!variables->getDock()->isHidden());
 }
 
-void Mainwindow::addToCommandline(QString str)
+void Mainwindow::addToCommandline(const QString str)
 {
     QString c = commandline->getText();
     if(!c.endsWith(" ",Qt::CaseInsensitive))
@@ -97,3 +99,46 @@ void Mainwindow::keyPressEvent(QKeyEvent *ev)
     }
 }
 
+
+
+void Mainwindow::updateAtoms(const std::list<std::tuple<QString,QString,QString>> l)
+{
+    std::list<QString> vars;
+    std::list<QString> progs;
+    for(auto it = l.begin(); it!=l.end(); ++it)
+    {
+        if(std::get<2>(*it)!="Lprogram")
+            vars.push_back(std::get<0>(*it));
+        else
+            progs.push_back(std::get<0>(*it));
+    }
+    vars.sort();
+    progs.sort();
+    variables->updateVars(vars);
+    programmes->updateProgs(progs);
+}
+
+void Mainwindow::execute(const QString a)
+{
+    buffer = a;
+    notify("executeBuffer");
+}
+
+void Mainwindow::editAtom(const QString s)
+{
+    editAtomDialog->setAtomName(s);
+    buffer = s;
+    notify("needAtomValue");
+    editAtomDialog->setAtomValue(buffer);
+    editAtomDialog->show();
+}
+void Mainwindow::openSettingsWindow()
+{
+    settings->setInputValue(pile->getSize());
+    settings->show();
+}
+void Mainwindow::updateSizeStack(int s)
+{
+    pile->updateSize(s);
+    notify("stackChanged");
+}
