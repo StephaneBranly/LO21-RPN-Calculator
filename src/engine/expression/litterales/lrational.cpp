@@ -25,6 +25,7 @@ Engine::Expression* Engine::Lrational::simplifyType()
             if(denominator<0){
                 numerator = -numerator;
                 denominator = -denominator;
+
                     }
         }
 }
