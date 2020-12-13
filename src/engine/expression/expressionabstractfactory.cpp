@@ -16,8 +16,8 @@ Engine::ExpressionAbstractFactory::ExpressionAbstractFactory()
     operatorFactory->addOperator("*",new OperatorMUL);
     operatorFactory->addOperator("AND",new OperatorAnd);
     operatorFactory->addOperator("OR",new OperatorOr);
-    //operatorFactory->addOperator("NOT",new OperatorNot);
-    operatorFactory->addOperator("==",new OperatorEq);
+    operatorFactory->addOperator("NOT",new OperatorNot);
+    operatorFactory->addOperator("=",new OperatorEq);
     operatorFactory->addOperator("!=",new OperatorDiff);
     operatorFactory->addOperator(">",new OperatorGt);
     operatorFactory->addOperator("<",new OperatorLt);
