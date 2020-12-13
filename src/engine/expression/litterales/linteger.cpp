@@ -11,5 +11,5 @@ Engine::Linteger::Linteger(const std::string s){
 
 Engine::Linteger* Engine::Linteger::setLinteger(int v){
     value = v;
-    return this; //je suis pas certaine la dessus.
+    return this;
 }
