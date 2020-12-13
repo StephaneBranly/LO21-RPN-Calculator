@@ -27,6 +27,7 @@ Engine::Expression* Engine::Lrational::simplifyType()
                 denominator = -denominator;
 
                     }
+            return this;
         }
 }
 
