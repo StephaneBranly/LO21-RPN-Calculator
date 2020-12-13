@@ -5,7 +5,6 @@
 #include "../litterales/lreal.h"
 #include "../litterales/lrational.h"
 #include "../litterales/lnumerical.h"
-#include <float.h>
 
 
 //Constructeurs des opérateurs
@@ -22,7 +21,6 @@ Engine::OperatorPLUS::OperatorPLUS()
     registerAction("Lreal", "Lrational", new SumRealRat);
     registerAction("Lrational", "Lreal", new SumRealRat);
     registerAction("Lrational", "Lrational", new SumRatRat);
-
 }
 
 //opérateur -
@@ -53,7 +51,6 @@ Engine::OperatorMUL::OperatorMUL()
     registerAction("Lreal", "Lrational", new MulRealRat);
     registerAction("Lrational", "Lreal", new MulRealRat);
     registerAction("Lrational", "Lrational", new MulRatRat);
-
 }
 
 //opérateur /
@@ -69,8 +66,6 @@ Engine::OperatorDIV::OperatorDIV()
     registerAction("Lreal", "Lrational", new DivRealRat);
     registerAction("Lrational", "Lreal", new DivRealRat);
     registerAction("Lrational", "Lrational", new DivRatRat);
-
-
 }
 
 void Engine::OperatorArithmetic::registerAction(std::string type1, std::string type2, Action *a)
@@ -110,6 +105,7 @@ Engine::Expression* Engine::SumIntReal::executeAction(Expression* L1,Expression*
     return (new Lreal(dynamic_cast<Lnumerical*>(L1)->getValue()+dynamic_cast<Lnumerical*>(L2)->getValue()));
 }
 
+
 Engine::Expression* Engine::SumIntRat::executeAction(Expression* L1,Expression* L2)
 {
     //Test d'abord si c'est L1 le rationnel, sinon c'est L2
@@ -143,6 +139,7 @@ Engine::Expression* Engine::SubIntReal::executeAction(Expression* L1,Expression*
 {
     return (new Lreal(dynamic_cast<Lnumerical*>(L1)->getValue()-dynamic_cast<Lnumerical*>(L2)->getValue()));
 }
+
 
 Engine::Expression* Engine::SubIntRat::executeAction(Expression* L1,Expression* L2)
 {
@@ -219,6 +216,7 @@ Engine::Expression* Engine::DivIntReal::executeAction(Expression* L1,Expression*
 {
     return (new Lreal(dynamic_cast<Lnumerical*>(L1)->getValue()/dynamic_cast<Lnumerical*>(L2)->getValue()));
 }
+
 
 Engine::Expression* Engine::DivIntRat::executeAction(Expression* L1,Expression* L2)
 {

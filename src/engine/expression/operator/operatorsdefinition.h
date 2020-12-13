@@ -48,6 +48,7 @@ public:
     Expression* getCopy() const override { return new OperatorDUP; }
 };
 
+
 class OperatorEVAL : public Operator {
     size_t arrity=1;
     std::string type = "OperatorEVAL";

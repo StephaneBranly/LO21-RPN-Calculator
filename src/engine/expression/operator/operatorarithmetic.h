@@ -35,7 +35,6 @@ class SumRatRat : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
 };
 
-
 //OperatorMINUS
 class SubIntInt : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
@@ -66,6 +65,7 @@ class MulIntReal : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
 };
 
+
 class MulIntRat : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
 };
@@ -86,6 +86,7 @@ class DivIntInt : public Action {
 class DivIntReal : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
 };
+
 
 class DivIntRat : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
