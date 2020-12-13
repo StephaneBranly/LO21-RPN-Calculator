@@ -9,19 +9,19 @@
 bool Engine::OperatorAnd::test(Expression* E1, Expression* E2) const {
     Lnumerical* a=dynamic_cast<Lnumerical*>(E1);
     Lnumerical* b=dynamic_cast<Lnumerical*>(E2);
-    return(a->getValue()&&b->getValue());
+    return(b->getValue()&&a->getValue());
 }
 
 bool Engine::OperatorOr::test(Expression* E1, Expression* E2) const {
     Lnumerical* a=dynamic_cast<Lnumerical*>(E1);
     Lnumerical* b=dynamic_cast<Lnumerical*>(E2);
-     return(a->getValue() || b->getValue());
+     return(b->getValue() || a->getValue());
 }
 
 bool Engine::OperatorEq::test(Expression* E1, Expression* E2) const {
     Lnumerical* a=dynamic_cast<Lnumerical*>(E1);
     Lnumerical* b=dynamic_cast<Lnumerical*>(E2);
-     return(a->getValue()==b->getValue());
+     return(b->getValue()==a->getValue());
 }
 
 bool Engine::OperatorNot::test(Expression* E1, Expression* E2) const {
@@ -32,31 +32,31 @@ bool Engine::OperatorNot::test(Expression* E1, Expression* E2) const {
 bool Engine::OperatorGeq::test(Expression* E1, Expression* E2) const {
     Lnumerical* a=dynamic_cast<Lnumerical*>(E1);
     Lnumerical* b=dynamic_cast<Lnumerical*>(E2);
-    return(a->getValue()>=b->getValue());
+    return(b->getValue()>=a->getValue());
 }
 
 bool Engine::OperatorGt::test(Expression* E1, Expression* E2) const {
     Lnumerical* a=dynamic_cast<Lnumerical*>(E1);
     Lnumerical* b=dynamic_cast<Lnumerical*>(E2);
-     return(a->getValue()>b->getValue());
+     return(b->getValue()>a->getValue());
 }
 
 bool Engine::OperatorLt::test(Expression* E1, Expression* E2) const {
     Lnumerical* a=dynamic_cast<Lnumerical*>(E1);
     Lnumerical* b=dynamic_cast<Lnumerical*>(E2);
-    return(a->getValue()<b->getValue());
+    return(b->getValue()<a->getValue());
 }
 
 bool Engine::OperatorDiff::test(Expression* E1, Expression* E2) const {
     Lnumerical* a=dynamic_cast<Lnumerical*>(E1);
     Lnumerical* b=dynamic_cast<Lnumerical*>(E2);
-     return(a->getValue()!=b->getValue());
+     return(b->getValue()!=a->getValue());
 }
 
 bool Engine::OperatorLeq::test(Expression* E1, Expression* E2) const {
     Lnumerical* a=dynamic_cast<Lnumerical*>(E1);
     Lnumerical* b=dynamic_cast<Lnumerical*>(E2);
-    return(a<=b);
+    return(b->getValue()<=a->getValue());
 }
 
 void Engine::OperatorLogic::executeOpe()
@@ -68,7 +68,6 @@ void Engine::OperatorLogic::executeOpe()
     if(getArrity()==2) p.pop();
     if(test(L1,L2)) p.push(new Linteger(1));
     else p.push(new Linteger(0));
-
 }
 
 
