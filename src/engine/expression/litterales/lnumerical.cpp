@@ -2,7 +2,7 @@
 #include "../../computerengine.h"
 
 void Engine::Lnumerical::eval(){
-    Engine::ComputerEngine::getInstance().getStack().push(this);
+    Engine::ComputerEngine::getInstance().getStack().push(this->simplifyType());
 }
 
 
