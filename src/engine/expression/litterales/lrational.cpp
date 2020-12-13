@@ -3,17 +3,19 @@
 #include <iostream>
 #include "../../exception/CompException.h"
 
-Engine::Linteger* Engine::Lrational::simplifyType()
+Engine::Expression* Engine::Lrational::simplifyType()
 {
         if(denominator == 1){
             //création d'une littérale entiere, et destruction de la Lrationnelle.
-            return new Linteger(numerator);
+            int n = numerator;
             delete this;
+            return new Linteger(n);
         }
         if (numerator == 0) {
             //création de la littérale entiere nulle.
-            return new Linteger(numerator);
+            int n = numerator;
             delete this;
+            return new Linteger(n);
 
         }else {
             int r;

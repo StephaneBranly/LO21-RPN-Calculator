@@ -14,7 +14,8 @@ Engine::Lreal::Lreal(const std::string s){
     real = stod(s);
 }
 
-Engine::Linteger* Engine::Lreal::simplifyType(){
-    if (roundf(this->getfloatvalue()) == this->getfloatvalue())
-        return new Linteger(roundf(this->getfloatvalue()));
+Engine::Expression* Engine::Lreal::simplifyType(){
+    if (roundf(this->real) == this->real)
+        return new Linteger(roundf(this->real));
+    else return this;
 }

@@ -33,7 +33,7 @@ public:
     Expression* getCopy() const override { return new Lrational(numerator,denominator); }
     int getNumerator () {return numerator;}
     int getDenominator () {return denominator;}
-    Linteger* simplifyType() override;
+    Expression* simplifyType() override;
 };
 }
 #endif // LRATIONNELLE_H
