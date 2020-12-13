@@ -18,6 +18,7 @@ public:
     void setMessage(const QString m="");
     void updateContent(const std::list<QString> content);
     void updateSize(size_t t);
+    size_t getSize() const { return size; }
 private:
     Ui::Pile *ui;
     size_t size=5;

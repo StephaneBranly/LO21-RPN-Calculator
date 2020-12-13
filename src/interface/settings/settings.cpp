@@ -22,3 +22,7 @@ void Settings::acceptedChanges()
     int size = ui->spinBox->value();
     emit stackSizeChanged(size);
 }
+void Settings::setInputValue(const size_t s)
+{
+    ui->spinBox->setValue(s);
+}

@@ -5,7 +5,7 @@
 #include <string>
 
 namespace Engine {
-class Lexpression: public Expression
+class Lexpression: public Expression, public ExplicitEval
 {
     std::string expression;
 protected:
@@ -19,6 +19,7 @@ public:
     void eval() override;
     std::string const toString() const override{return "'"+expression+"'";}
     Expression* getCopy() const override { return new Lexpression(expression); }
+    void explicitEval() override;
 };
 }
 #endif // LEXPRESSION_H

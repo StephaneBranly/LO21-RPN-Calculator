@@ -5,7 +5,7 @@
 #include "expression.h"
 #include <map>
 #include <string>
-
+#include <string>
 namespace Engine {
 class AtomManager
 {
@@ -16,6 +16,7 @@ public:
     Expression* getExpressionFromString(const std::string s);
     void removeAtom(const std::string name);
     void addAtom(const std::string name, Expression* expression);
+    std::list<std::tuple<std::string,std::string,std::string>> toTupleStringList();
 };
 }
 #endif // USERVAR_H

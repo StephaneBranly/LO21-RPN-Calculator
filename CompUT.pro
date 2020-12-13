@@ -25,7 +25,9 @@ SOURCES += \
     src/engine/expression/operator/operatorfactory.cpp \
     src/engine/expression/operator/operatorsdefinition.cpp \
     src/engine/stack/stack.cpp \
+    src/interface/editAtom/editatom.cpp \
     src/interface/mainwindow.cpp \
+    src/interface/widgets/clickablelabel/clickablelabel.cpp \
     src/interface/settings/settings.cpp \
     src/interface/widgets/commandline/commandline.cpp \
     src/interface/widgets/keyboardfunctions/keyboardfunctions.cpp \
@@ -37,6 +39,7 @@ SOURCES += \
     src/observer/subject.cpp \
 
 FORMS += \
+    src/interface/editAtom/editatom.ui \
     src/interface/mainwindow.ui \
     src/interface/settings/settings.ui \
     src/interface/widgets/commandline/commandline.ui \
@@ -71,7 +74,9 @@ HEADERS += \
     src/engine/expression/operator/operatorfactory.h \
     src/engine/expression/operator/operatorsdefinition.h \
     src/engine/stack/stack.h \
+    src/interface/editAtom/editatom.h \
     src/interface/mainwindow.h \
+    src/interface/widgets/clickablelabel/clickablelabel.h \
     src/interface/settings/settings.h \
     src/interface/widgets/commandline/commandline.h \
     src/interface/widgets/keyboardfunctions/keyboardfunctions.h \

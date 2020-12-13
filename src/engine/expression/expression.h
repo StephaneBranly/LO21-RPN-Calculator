@@ -20,5 +20,10 @@ public:
     virtual ~Expression(){};
 };
 
+class ExplicitEval{
+public:
+    virtual void explicitEval() = 0;
+};
+
 }
 #endif // EXPRESSION_H
