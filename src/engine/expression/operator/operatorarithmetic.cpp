@@ -4,8 +4,7 @@
 #include "../litterales/linteger.h"
 #include "../litterales/lreal.h"
 #include "../litterales/lrational.h"
-
-#include <float.h>
+#include "../litterales/lnumerical.h"
 
 
 //Constructeurs des opérateurs
@@ -86,7 +85,7 @@ void Engine::OperatorArithmetic::executeOpe()
     tuple<string,string> t = make_tuple(L1->getType(),L2->getType());
     if (opes.find(t) != opes.end())
     {
-        p.push(opes.at(t)->executeAction(L2,L1));
+        p.push(dynamic_cast<Lnumerical*>(opes.at(t)->executeAction(L2,L1))->simplifyType());
     }
     else
     {

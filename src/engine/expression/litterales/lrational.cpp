@@ -3,15 +3,20 @@
 #include <iostream>
 #include "../../exception/CompException.h"
 
-void Engine::Lrational::simplify()
+Engine::Expression* Engine::Lrational::simplifyType()
 {
         if(denominator == 1){
             //création d'une littérale entiere, et destruction de la Lrationnelle.
-//            Engine::Linteger::setLinteger(numerator);//erreur
+            int n = numerator;
+            delete this;
+            return new Linteger(n);
         }
         if (numerator == 0) {
             //création de la littérale entiere nulle.
-//            Engine::Linteger::setLinteger(denominator);//erreur
+            int n = numerator;
+            delete this;
+            return new Linteger(n);
+
         }else {
             int r;
             r= PGCD(numerator,denominator);
@@ -20,7 +25,9 @@ void Engine::Lrational::simplify()
             if(denominator<0){
                 numerator = -numerator;
                 denominator = -denominator;
+
                     }
+            return this;
         }
 }
 
@@ -39,12 +46,10 @@ void Engine::Lrational::setRational(int n, int d){
     numerator=n;
     if (d==0) throw ComputerException("Error : dénominateur invalide.");
     denominator = d;
-    simplify();
 }
 
 void Engine::Lrational::setRational(Linteger& e1, Linteger& e2){
     numerator = e1.getValue();
     if (e2.getValue()==0) throw ComputerException("Error : dénominateur invalide.");
     denominator = e2.getValue();
-    simplify();
 }

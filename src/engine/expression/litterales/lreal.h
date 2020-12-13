@@ -2,6 +2,7 @@
 #define LREELLE_H
 #include "lnumerical.h"
 #include <string>
+#include "linteger.h"
 
 namespace Engine {
 class Lreal : public Lnumerical
@@ -18,6 +19,7 @@ public:
     std::string const toString()const override{return std::to_string(real);}
     const std::string getType() const override { return this->type; }
     Expression* getCopy() const override { return new Lreal(real); }
+    Expression* simplifyType() override;
 };
 }
 #endif // LREELLE_H
