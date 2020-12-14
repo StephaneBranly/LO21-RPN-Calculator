@@ -5,10 +5,9 @@
 
 namespace Engine {
 class OperatorCLEAR : public Operator {
-    size_t arrity=0;
     std::string type = "OperatorCLEAR";
 public:
-    size_t getArrity () const override { return arrity; }
+    OperatorCLEAR(): Operator(0){}
     void executeOpe(vector<Expression*> e) override;
     const std::string getType() const override { return this->type; }
     const std::string toString() const override{ return "CLEAR"; }
@@ -16,10 +15,9 @@ public:
 };
 
 class OperatorSWAP : public Operator {
-    size_t arrity=2;
     std::string type = "OperatorSWAP";
 public:
-    size_t getArrity () const override { return arrity; }
+    OperatorSWAP(): Operator(2){}
     void executeOpe(vector<Expression*> e) override;
     const std::string getType() const override { return this->type; }
     const std::string toString() const override{ return "SWAP"; }
@@ -27,10 +25,9 @@ public:
 };
 
 class OperatorDROP : public Operator {
-    size_t arrity=1;
     std::string type = "OperatorDROP";
 public:
-    size_t getArrity () const override { return arrity; }
+    OperatorDROP(): Operator(1){}
     void executeOpe(vector<Expression*> e) override;
     const std::string getType() const override { return this->type; }
     const std::string toString() const override{ return "DROP"; }
@@ -38,10 +35,9 @@ public:
 };
 
 class OperatorDUP : public Operator {
-    size_t arrity=1;
     std::string type = "OperatorDUP";
 public:
-    size_t getArrity () const override { return arrity; }
+    OperatorDUP(): Operator(1){}
     void executeOpe(vector<Expression*> e) override;
     const std::string getType() const override { return this->type; }
     const std::string toString() const override{ return "DUP"; }
@@ -50,10 +46,9 @@ public:
 
 
 class OperatorEVAL : public Operator {
-    size_t arrity=1;
     std::string type = "OperatorEVAL";
 public:
-    size_t getArrity () const override { return arrity; }
+    OperatorEVAL(): Operator(1){}
     void executeOpe(vector<Expression*> e) override;
     const std::string getType() const override { return this->type; }
     const std::string toString() const override{ return "EVAL"; }
@@ -61,10 +56,9 @@ public:
 };
 
 class OperatorSTO : public Operator {
-    size_t arrity=2;
     std::string type = "OperatorSTO";
 public:
-    size_t getArrity () const override { return arrity; }
+    OperatorSTO(): Operator(2){}
     void executeOpe(vector<Expression*> e) override;
     const std::string getType() const override { return this->type; }
     const std::string toString() const override{ return "STO"; }
@@ -73,10 +67,9 @@ public:
 
 
 class OperatorFORGET : public Operator {
-    size_t arrity=1;
     std::string type = "OperatorFORGET";
 public:
-    size_t getArrity () const override { return arrity; }
+    OperatorFORGET(): Operator(1){}
     void executeOpe(vector<Expression*> e) override;
     const std::string getType() const override { return this->type; }
     const std::string toString() const override{ return "FORGET"; }

@@ -105,50 +105,42 @@ class OperatorArithmetic :public Operator
 private:
     std::map<std::tuple<std::string,std::string>,Action*> opes;
 public:
+    OperatorArithmetic(): Operator(2){}
     void registerAction(std::string type1,std::string type2,Action* a);
-    virtual size_t getArrity () const =0;
     void executeOpe(vector<Expression*> e);
 };
 
 class OperatorPLUS : public OperatorArithmetic {
-        size_t arrity=2;
         std::string type = "OperatorPLUS";
     public:
         OperatorPLUS();
-        size_t getArrity () const override { return arrity; }
         const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return "+"; }
         Expression* getCopy() const override { return new OperatorPLUS; }
 };
 
 class OperatorMINUS : public OperatorArithmetic {
-        size_t arrity=2;
         std::string type = "OperatorMINUS";
     public:
         OperatorMINUS();
-        size_t getArrity () const override { return arrity; }
         const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return "-"; }
         Expression* getCopy() const override { return new OperatorMINUS; }
 };
 
 class OperatorMUL : public OperatorArithmetic {
-        size_t arrity=2;
         std::string type = "OperatorMUL";
     public:
         OperatorMUL();
-        size_t getArrity () const override { return arrity; }
         const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return "*"; }
         Expression* getCopy() const override { return new OperatorMUL; }
 };
 
 class OperatorDIV : public OperatorArithmetic {
-        size_t arrity=2;
         std::string type = "OperatorDIV";
     public:
         OperatorDIV();
-        size_t getArrity () const override { return arrity; }
         const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return "/"; }
         Expression* getCopy() const override { return new OperatorDIV; }

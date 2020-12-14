@@ -9,9 +9,10 @@ using namespace std;
 
 namespace Engine {
     class Operator : public Expression {
-        size_t arrity=0;
+        size_t arrity;
     public :
-        virtual size_t getArrity() const {return this->arrity;}
+        Operator(const size_t arrity):arrity(arrity){}
+        size_t getArrity() const {return arrity;}
         virtual void executeOpe(vector<Expression*> e) = 0;
         void eval() override;
         virtual Expression* getCopy() const override= 0;
