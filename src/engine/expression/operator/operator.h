@@ -2,7 +2,6 @@
 #define OPERATOR_H
 
 #include "../expression.h"
-//#include "../../computerengine.h"
 #include <iostream>
 #include <string>
 
@@ -13,7 +12,7 @@ namespace Engine {
         size_t arrity=0;
     public :
         virtual size_t getArrity() const {return this->arrity;}
-        virtual void executeOpe() = 0;
+        virtual void executeOpe(vector<Expression*> e) = 0;
         void eval() override;
         virtual Expression* getCopy() const override= 0;
     };

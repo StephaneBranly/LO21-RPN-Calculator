@@ -2,6 +2,7 @@
 #define OPERATORLOGIC_H
 
 #include "operator.h"
+#include "../litterales/lnumerical.h"
 
 namespace Engine{
 
@@ -9,8 +10,8 @@ class OperatorLogic :public Operator
 {
 public:
     virtual size_t getArrity () const =0;
-    void executeOpe();
-    virtual bool test(Expression* E1, Expression* E2) const=0;
+    void executeOpe(vector<Expression*> e);
+    virtual bool test(Lnumerical* E1, Lnumerical* E2) const=0;
 };
 
 
@@ -19,7 +20,7 @@ class OperatorAnd : public OperatorLogic {
         std::string type = "AND";
     public:
 
-        bool test(Expression* E1, Expression* E2) const override;
+        bool test(Lnumerical* E1, Lnumerical* E2) const override;
         size_t getArrity () const override { return arrity; }
         const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return "AND"; }
@@ -31,7 +32,7 @@ class OperatorOr : public OperatorLogic {
         std::string type = "OperatorOr";
     public:
 
-        bool test(Expression* E1, Expression* E2) const override;        size_t getArrity () const override { return arrity; }
+        bool test(Lnumerical* E1, Lnumerical* E2) const override;        size_t getArrity () const override { return arrity; }
         const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return "OR"; }
         Expression* getCopy() const override { return new OperatorOr; }
@@ -42,7 +43,7 @@ class OperatorNot : public OperatorLogic {
         std::string type = "OperatorNot";
     public:
 
-        bool test(Expression* E1, Expression* E2=nullptr) const override ;
+        bool test(Lnumerical* E1, Lnumerical* E2=nullptr) const override ;
         size_t getArrity () const override { return arrity; }
         const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return "NOT"; }
@@ -54,7 +55,7 @@ class OperatorEq : public OperatorLogic {
         std::string type = "OperatorEq";
     public:
 
-        bool test(Expression* E1, Expression* E2) const override;
+        bool test(Lnumerical* E1, Lnumerical* E2) const override;
         size_t getArrity () const override { return arrity; }
         const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return "="; }
@@ -67,7 +68,7 @@ class OperatorGeq : public OperatorLogic {
     public:
 
 
-        bool test(Expression* E1, Expression* E2) const override;
+        bool test(Lnumerical* E1, Lnumerical* E2) const override;
         size_t getArrity () const override { return arrity; }
         const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return ">="; }
@@ -79,7 +80,7 @@ class OperatorLeq : public OperatorLogic {
         std::string type = "OperatorLeq";
     public:
 
-        bool test(Expression* E1, Expression* E2) const override;
+        bool test(Lnumerical* E1, Lnumerical* E2) const override;
         size_t getArrity () const override { return arrity; }
         const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return "=<"; }
@@ -90,7 +91,7 @@ class OperatorGt : public OperatorLogic {
         std::string type = "OperatorGt";
     public:
 
-       bool test(Expression* E1, Expression* E2) const override;
+       bool test(Lnumerical* E1, Lnumerical* E2) const override;
         size_t getArrity () const override { return arrity; }
         const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return ">"; }
@@ -102,7 +103,7 @@ class OperatorLt : public OperatorLogic {
         std::string type = "OperatorLt";
     public:
 
-        bool test(Expression* E1, Expression* E2) const override;
+        bool test(Lnumerical* E1, Lnumerical* E2) const override;
         size_t getArrity () const override { return arrity; }
         const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return "<"; }
@@ -114,7 +115,7 @@ class OperatorDiff : public OperatorLogic {
         std::string type = "OperatorDiff";
     public:
 
-        bool test(Expression* E1, Expression* E2) const override;
+        bool test(Lnumerical* E1, Lnumerical* E2) const override;
         size_t getArrity () const override { return arrity; }
         const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return "!="; }

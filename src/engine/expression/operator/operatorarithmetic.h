@@ -107,7 +107,7 @@ private:
 public:
     void registerAction(std::string type1,std::string type2,Action* a);
     virtual size_t getArrity () const =0;
-    void executeOpe();
+    void executeOpe(vector<Expression*> e);
 };
 
 class OperatorPLUS : public OperatorArithmetic {

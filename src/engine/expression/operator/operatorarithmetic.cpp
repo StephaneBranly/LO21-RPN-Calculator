@@ -74,13 +74,11 @@ void Engine::OperatorArithmetic::registerAction(std::string type1, std::string t
     opes.insert(make_pair(t,a));
 }
 
-void Engine::OperatorArithmetic::executeOpe()
+void Engine::OperatorArithmetic::executeOpe(vector<Expression*> e)
 {
-    Stack& p=ComputerEngine::getInstance().getStack();
-    Expression* L1=p.top();
-    p.pop();
-    Expression* L2=p.top();
-    p.pop();
+    Stack& p = ComputerEngine::getInstance().getStack();
+    Expression* L1=e[0];
+    Expression* L2=e[1];
 
     tuple<string,string> t = make_tuple(L1->getType(),L2->getType());
     if (opes.find(t) != opes.end())
