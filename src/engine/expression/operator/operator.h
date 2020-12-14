@@ -11,7 +11,7 @@ namespace Engine {
     class Operator : public Expression {
         size_t arrity;
     public :
-        Operator(const size_t arrity):arrity(arrity){}
+        Operator(const std::string type, const size_t arrity): Expression(type),arrity(arrity){}
         size_t getArrity() const {return arrity;}
         virtual void executeOpe(vector<Expression*> e) = 0;
         void eval() override;

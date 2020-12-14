@@ -14,7 +14,7 @@ void Engine::Operator::eval()
             executeOpe(l);
             for(auto it=l.begin();it!=l.end();++it) delete (*it);
         }  catch (ComputerException c) {
-            for(auto it=l.begin();it!=l.end();++it) p.push(*it);
+            for(auto it=l.rbegin();it!=l.rend();++it) p.push(*it);
             throw ComputerException(c.getInfo());
         }
     }

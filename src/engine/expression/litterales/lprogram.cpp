@@ -2,7 +2,7 @@
 #include "../../computerengine.h"
 #include "../../exception/CompException.h"
 
-Engine::Lprogram::Lprogram(const Lprogram& p)
+Engine::Lprogram::Lprogram(const Lprogram& p): Expression("Lprogram")
 {
     for(auto it = p.content.begin(); it!=p.content.end();++it)
     {

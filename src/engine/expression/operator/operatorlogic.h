@@ -9,97 +9,79 @@ namespace Engine{
 class OperatorLogic :public Operator
 {
 public:
-    OperatorLogic(const size_t arrity): Operator(arrity){}
+    OperatorLogic(const std::string t, const size_t arrity): Operator(t,arrity){}
     void executeOpe(vector<Expression*> e);
     virtual bool test(Lnumerical* E1, Lnumerical* E2) const=0;
 };
 
 
 class OperatorAnd : public OperatorLogic {
-        std::string type = "AND";
     public:
-        OperatorAnd(): OperatorLogic(2){}
+        OperatorAnd(): OperatorLogic("OperatorAND",2){}
         bool test(Lnumerical* E1, Lnumerical* E2) const override;
-        const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return "AND"; }
         Expression* getCopy() const override { return new OperatorAnd; }
 };
 
 class OperatorOr : public OperatorLogic {
-        std::string type = "OperatorOr";
     public:
-        OperatorOr(): OperatorLogic(2){}
+        OperatorOr(): OperatorLogic("OperatorOR",2){}
         bool test(Lnumerical* E1, Lnumerical* E2) const override;
-        const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return "OR"; }
         Expression* getCopy() const override { return new OperatorOr; }
 };
 
 class OperatorNot : public OperatorLogic {
-        std::string type = "OperatorNot";
     public:
-        OperatorNot(): OperatorLogic(1){}
+        OperatorNot(): OperatorLogic("OperatorNOT",1){}
         bool test(Lnumerical* E1, Lnumerical* E2=nullptr) const override ;
-        const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return "NOT"; }
         Expression* getCopy() const override { return new OperatorNot; }
 };
 
 class OperatorEq : public OperatorLogic {
-        std::string type = "OperatorEq";
     public:
-        OperatorEq(): OperatorLogic(2){}
+        OperatorEq(): OperatorLogic("OperatorEq",2){}
         bool test(Lnumerical* E1, Lnumerical* E2) const override;
-        const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return "="; }
         Expression* getCopy() const override { return new OperatorEq; }
 };
 
 class OperatorGeq : public OperatorLogic {
-        std::string type = "OperatorGeq";
     public:
-        OperatorGeq(): OperatorLogic(2){}
+        OperatorGeq(): OperatorLogic("OperatorGeq",2){}
         bool test(Lnumerical* E1, Lnumerical* E2) const override;
-        const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return ">="; }
         Expression* getCopy() const override { return new OperatorGeq; }
 };
 
 class OperatorLeq : public OperatorLogic {
-        std::string type = "OperatorLeq";
     public:
-        OperatorLeq(): OperatorLogic(2){}
+        OperatorLeq(): OperatorLogic("OperatorLeq",2){}
         bool test(Lnumerical* E1, Lnumerical* E2) const override;
-        const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return "=<"; }
         Expression* getCopy() const override { return new OperatorLeq; }
 };
 class OperatorGt : public OperatorLogic {
-        std::string type = "OperatorGt";
     public:
-        OperatorGt(): OperatorLogic(2){}
+        OperatorGt(): OperatorLogic("OperatorGt",2){}
         bool test(Lnumerical* E1, Lnumerical* E2) const override;
-        const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return ">"; }
         Expression* getCopy() const override { return new OperatorGt; }
 };
 
 class OperatorLt : public OperatorLogic {
-        std::string type = "OperatorLt";
     public:
-        OperatorLt(): OperatorLogic(2){}
+        OperatorLt(): OperatorLogic("OperatorLt",2){}
         bool test(Lnumerical* E1, Lnumerical* E2) const override;
-        const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return "<"; }
         Expression* getCopy() const override { return new OperatorLt; }
 };
 
 class OperatorDiff : public OperatorLogic {
-        std::string type = "OperatorDiff";
     public:
-        OperatorDiff(): OperatorLogic(2){}
+        OperatorDiff(): OperatorLogic("OperatorDiff",2){}
         bool test(Lnumerical* E1, Lnumerical* E2) const override;
-        const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return "!="; }
         Expression* getCopy() const override { return new OperatorDiff; }
 };

@@ -105,43 +105,35 @@ class OperatorArithmetic :public Operator
 private:
     std::map<std::tuple<std::string,std::string>,Action*> opes;
 public:
-    OperatorArithmetic(): Operator(2){}
+    OperatorArithmetic(const std::string t): Operator(t,2){}
     void registerAction(std::string type1,std::string type2,Action* a);
     void executeOpe(vector<Expression*> e);
 };
 
 class OperatorPLUS : public OperatorArithmetic {
-        std::string type = "OperatorPLUS";
     public:
         OperatorPLUS();
-        const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return "+"; }
         Expression* getCopy() const override { return new OperatorPLUS; }
 };
 
 class OperatorMINUS : public OperatorArithmetic {
-        std::string type = "OperatorMINUS";
     public:
         OperatorMINUS();
-        const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return "-"; }
         Expression* getCopy() const override { return new OperatorMINUS; }
 };
 
 class OperatorMUL : public OperatorArithmetic {
-        std::string type = "OperatorMUL";
     public:
         OperatorMUL();
-        const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return "*"; }
         Expression* getCopy() const override { return new OperatorMUL; }
 };
 
 class OperatorDIV : public OperatorArithmetic {
-        std::string type = "OperatorDIV";
     public:
         OperatorDIV();
-        const std::string getType() const override { return this->type; }
         const std::string toString() const override{ return "/"; }
         Expression* getCopy() const override { return new OperatorDIV; }
 };

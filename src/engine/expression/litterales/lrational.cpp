@@ -3,6 +3,16 @@
 #include <iostream>
 #include "../../exception/CompException.h"
 
+Engine::Lrational::Lrational(int n, int d):Lnumerical("Lrational"),numerator(n),denominator(d){
+    if (d==0)
+        throw ComputerException("Error : dénominateur invalide.");
+};
+Engine::Lrational::Lrational(Linteger& e1, Linteger& e2):Lnumerical("Lrational"){
+    numerator = e1.getValue();
+    if (e2.getValue()==0) throw ComputerException("Error : dénominateur invalide.");
+    denominator = e2.getValue();
+};
+
 Engine::Expression* Engine::Lrational::simplifyType()
 {
         if(denominator == 1){
