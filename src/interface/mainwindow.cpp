@@ -16,7 +16,6 @@ Mainwindow::Mainwindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Mainwindow)
 {
-    setFocusPolicy(Qt::StrongFocus);
     ui->setupUi(this);
     pile = new Pile(this);
     commandline = new Commandline(this);
@@ -33,8 +32,9 @@ Mainwindow::Mainwindow(QWidget *parent)
     connect(ui->a_vars, SIGNAL(toggled(bool)),variables,SLOT(toggleDock(bool)));
     connect(ui->actionParametres, SIGNAL(triggered()), this, SLOT(openSettingsWindow()));
     ui->mainLayout->addWidget(pile);
-    setFocusPolicy(Qt::StrongFocus);
+
     ui->mainLayout->addWidget(commandline);
+    setFocusPolicy(Qt::StrongFocus);
 
 }
 
