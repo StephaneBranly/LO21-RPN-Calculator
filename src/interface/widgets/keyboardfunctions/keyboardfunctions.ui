@@ -44,6 +44,9 @@
          <layout class="QHBoxLayout" name="horizontalLayout_5">
           <item>
            <widget class="QPushButton" name="ButtonFORGET">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">color: rgb(255, 69, 0);</string>
             </property>
@@ -54,6 +57,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="ButtonSTO">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">color: rgb(43, 156, 0);</string>
             </property>
@@ -77,6 +83,9 @@
          <layout class="QHBoxLayout" name="horizontalLayout_19">
           <item>
            <widget class="QPushButton" name="ButtonEQ">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">color: rgb(43, 156, 0);</string>
             </property>
@@ -90,6 +99,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="ButtonL">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="text">
              <string>&lt;</string>
             </property>
@@ -100,6 +112,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="ButtonG">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="text">
              <string>&gt;</string>
             </property>
@@ -114,6 +129,9 @@
          <layout class="QHBoxLayout" name="horizontalLayout_20">
           <item>
            <widget class="QPushButton" name="ButtonDif">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">color: rgb(255, 69, 0);</string>
             </property>
@@ -124,6 +142,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="ButtonLE">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="text">
              <string>=&lt;</string>
             </property>
@@ -131,6 +152,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="ButtonQE">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="text">
              <string>&gt;=</string>
             </property>
@@ -142,6 +166,9 @@
          <layout class="QHBoxLayout" name="horizontalLayout_18">
           <item>
            <widget class="QPushButton" name="ButtonAND">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="text">
              <string>AND</string>
             </property>
@@ -149,6 +176,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="ButtonOR">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="text">
              <string>OR</string>
             </property>
@@ -156,6 +186,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="ButtonNOT">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">color: rgb(255, 69, 0);</string>
             </property>
@@ -182,6 +215,9 @@
           </property>
           <item>
            <widget class="QPushButton" name="ButtonDUP">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="text">
              <string>DUP</string>
             </property>
@@ -189,6 +225,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="ButtonSWAP">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="text">
              <string>SWAP</string>
             </property>
@@ -198,6 +237,9 @@
            <widget class="QPushButton" name="ButtonUNDO">
             <property name="enabled">
              <bool>false</bool>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="text">
              <string>UNDO</string>
@@ -210,6 +252,9 @@
          <layout class="QHBoxLayout" name="horizontalLayout_8">
           <item>
            <widget class="QPushButton" name="ButtonCLEAR">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">color: rgb(255, 69, 0);</string>
             </property>
@@ -220,6 +265,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="ButtonDROP">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">color: rgb(255, 130, 90);</string>
             </property>
@@ -232,6 +280,9 @@
            <widget class="QPushButton" name="ButtonREDO">
             <property name="enabled">
              <bool>false</bool>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="text">
              <string>REDO</string>
@@ -253,6 +304,9 @@
          <layout class="QHBoxLayout" name="horizontalLayout_9">
           <item>
            <widget class="QPushButton" name="ButtonIFT">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="text">
              <string>IFT</string>
             </property>
@@ -263,6 +317,9 @@
             <property name="enabled">
              <bool>false</bool>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="text">
              <string>IFTE</string>
             </property>
@@ -272,6 +329,9 @@
            <widget class="QPushButton" name="ButtonWHILE">
             <property name="enabled">
              <bool>false</bool>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="text">
              <string>WHILE</string>
@@ -303,6 +363,9 @@
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
            <widget class="QPushButton" name="ButtonLC">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">color: rgb(43, 156, 0);</string>
             </property>
@@ -316,6 +379,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="ButtonRC">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">color: rgb(43, 156, 0);</string>
             </property>
@@ -333,6 +399,9 @@
          <layout class="QHBoxLayout" name="horizontalLayout_14">
           <item>
            <widget class="QPushButton" name="ButtonAp">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">color: rgb(148, 0, 255);</string>
             </property>
@@ -346,6 +415,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="ButtonNEG">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">color: rgb(255, 69, 0);</string>
             </property>
@@ -360,6 +432,9 @@
          <layout class="QHBoxLayout" name="horizontalLayout_7">
           <item>
            <widget class="QPushButton" name="ButtonDIV">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="text">
              <string>DIV</string>
             </property>
@@ -367,6 +442,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="ButtonMOD">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="text">
              <string>MOD</string>
             </property>
@@ -380,6 +458,9 @@
            <widget class="QPushButton" name="ButtonNUM">
             <property name="enabled">
              <bool>false</bool>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="text">
              <string>NUM</string>
@@ -397,6 +478,9 @@
             <property name="enabled">
              <bool>false</bool>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="text">
              <string>DEN</string>
             </property>
@@ -411,6 +495,9 @@
             <property name="enabled">
              <bool>false</bool>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="text">
              <string>SQRT</string>
             </property>
@@ -420,6 +507,9 @@
            <widget class="QPushButton" name="ButtonPOW">
             <property name="enabled">
              <bool>false</bool>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="text">
              <string>POW</string>
@@ -438,6 +528,9 @@
             <property name="enabled">
              <bool>false</bool>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="text">
              <string>LN</string>
             </property>
@@ -447,6 +540,9 @@
            <widget class="QPushButton" name="ButtonEXP">
             <property name="enabled">
              <bool>false</bool>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="text">
              <string>EXP</string>
@@ -471,6 +567,9 @@
             <property name="enabled">
              <bool>false</bool>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="text">
              <string>SIN</string>
             </property>
@@ -481,6 +580,9 @@
             <property name="enabled">
              <bool>false</bool>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="text">
              <string>COS</string>
             </property>
@@ -490,6 +592,9 @@
            <widget class="QPushButton" name="ButtonTAN">
             <property name="enabled">
              <bool>false</bool>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="text">
              <string>TAN</string>
@@ -505,6 +610,9 @@
             <property name="enabled">
              <bool>false</bool>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="text">
              <string>ARCCOS</string>
             </property>
@@ -515,6 +623,9 @@
             <property name="enabled">
              <bool>false</bool>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="text">
              <string>ARCSIN</string>
             </property>
@@ -524,6 +635,9 @@
            <widget class="QPushButton" name="ButtonARCTAN">
             <property name="enabled">
              <bool>false</bool>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="text">
              <string>ARCTAN</string>
