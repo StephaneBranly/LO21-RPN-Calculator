@@ -10,7 +10,7 @@ Engine::Expression* Engine::OperatorFactory::createExpressionFromString(const st
 {
     if(isSameType(s))
         return operators.at(s)->getCopy();
-    throw ComputerException("Il n'existe pas d'operator "+s);
+    throw ComputerException("Il n'existe pas d'operator "+s+".");
 }
 
 void Engine::OperatorFactory::addOperator(const std::string name, Operator* ope)

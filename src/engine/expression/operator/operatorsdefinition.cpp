@@ -57,7 +57,7 @@ void Engine::OperatorSTO::executeOpe(vector<Expression*> e)
         a.addAtom(Lexp->getValue(),L2->getCopy());
     }
     else
-        throw ComputerException(L2->toString()+" ne peut pas être sauvegardée.");
+        throw ComputerException(L2->toString()+" ne peut pas être sauvegardée dans "+L1->toString()+".");
 }
 
 void Engine::OperatorFORGET::executeOpe(vector<Expression*> e)
@@ -71,4 +71,11 @@ void Engine::OperatorFORGET::executeOpe(vector<Expression*> e)
     }
     else
         throw ComputerException(L1->toString()+" n'est pas un identifiant.");
+}
+
+void Engine::OperatorTYPE::executeOpe(vector<Expression*> e)
+{
+    Stack& p = ComputerEngine::getInstance().getStack();
+    p.push(e[0]->getCopy());
+    p.push(new Lexpression(e[0]->getType()));
 }

@@ -6,7 +6,7 @@ void Engine::Operator::eval()
 {
     Stack& p = ComputerEngine::getInstance().getStack();
     if(p.size()<getArrity())
-        throw ComputerException("Il n'y a pas assez d'items pour executer "+toString());
+        throw ComputerException("Il n'y a pas assez d'items pour executer "+toString()+".");
     else{
         vector<Expression*> l;
         for(size_t i=0;i<getArrity();i++) l.push_back(p.pop());

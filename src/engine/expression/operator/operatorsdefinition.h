@@ -61,6 +61,14 @@ public:
     const std::string toString() const override{ return "FORGET"; }
     Expression* getCopy() const override { return new OperatorFORGET; }
 };
+
+class OperatorTYPE : public Operator {
+public:
+    OperatorTYPE(): Operator("OperatorTYPE",1){}
+    void executeOpe(vector<Expression*> e) override;
+    const std::string toString() const override{ return "TYPE"; }
+    Expression* getCopy() const override { return new OperatorTYPE; }
+};
 }
 
 #endif // OPERATORSDEFINITION_H

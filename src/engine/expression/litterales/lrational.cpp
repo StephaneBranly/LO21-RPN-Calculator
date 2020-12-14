@@ -15,6 +15,15 @@ Engine::Lrational::Lrational(Linteger& e1, Linteger& e2):Lnumerical("Lrational")
 
 Engine::Expression* Engine::Lrational::simplifyType()
 {
+        int r;
+        r= PGCD(numerator,denominator);
+        numerator = numerator/r;
+        denominator = denominator/r;
+        if(denominator<0)
+        {
+            numerator = -numerator;
+            denominator = -denominator;
+        }
         if(denominator == 1){
             //création d'une littérale entiere, et destruction de la Lrationnelle.
             int n = numerator;
@@ -28,15 +37,6 @@ Engine::Expression* Engine::Lrational::simplifyType()
             return new Linteger(n);
 
         }else {
-            int r;
-            r= PGCD(numerator,denominator);
-            numerator = numerator/r;
-            denominator = denominator/r;
-            if(denominator<0){
-                numerator = -numerator;
-                denominator = -denominator;
-
-                    }
             return this;
         }
 }

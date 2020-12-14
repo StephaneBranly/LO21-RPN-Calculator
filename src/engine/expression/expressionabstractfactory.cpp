@@ -28,7 +28,7 @@ Engine::ExpressionAbstractFactory::ExpressionAbstractFactory()
     operatorFactory->addOperator("-",new OperatorMINUS);
     operatorFactory->addOperator("*",new OperatorMUL);
     operatorFactory->addOperator("/",new OperatorDIV);
-
+    operatorFactory->addOperator("TYPE",new OperatorTYPE);
 }
 
 Engine::Expression* Engine::ExpressionAbstractFactory::createExpressionFromString(const std::string s)
