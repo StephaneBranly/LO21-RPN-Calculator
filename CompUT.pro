@@ -21,7 +21,8 @@ SOURCES += \
     src/engine/expression/litterales/lreal.cpp \
     src/engine/expression/litterales/lrealfactory.cpp \
     src/engine/expression/operator/operator.cpp \
-    src/engine/expression/operator/operatorarithmetic.cpp \
+    src/engine/expression/operator/operatoraritbinary.cpp \
+    src/engine/expression/operator/operatoraritunary.cpp \
     src/engine/expression/operator/operatorfactory.cpp \
     src/engine/expression/operator/operatorlogic.cpp \
     src/engine/expression/operator/operatorsdefinition.cpp \
@@ -71,7 +72,8 @@ HEADERS += \
     src/engine/exception/CompException.h \
     src/engine/expression/expression.h \
     src/engine/expression/expressionmanager.h \
-    src/engine/expression/operator/operatorarithmetic.h \
+    src/engine/expression/operator/operatoraritbinary.h \
+    src/engine/expression/operator/operatoraritunary.h \
     src/engine/expression/operator/operatorfactory.h \
     src/engine/expression/operator/operatorlogic.h \
     src/engine/expression/operator/operatorsdefinition.h \

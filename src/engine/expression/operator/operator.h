@@ -17,5 +17,6 @@ namespace Engine {
         void eval() override;
         virtual Expression* getCopy() const override= 0;
     };
+
 }
 #endif // OPERATOR_H

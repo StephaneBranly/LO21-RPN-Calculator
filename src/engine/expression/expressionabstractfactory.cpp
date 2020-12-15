@@ -1,6 +1,7 @@
 #include "expressionabstractfactory.h"
 #include "../exception/CompException.h"
-#include "operator/operatorarithmetic.h"
+#include "operator/operatoraritbinary.h"
+#include "operator/operatoraritunary.h"
 #include "operator/operatorlogic.h"
 
 #include <QDebug>
@@ -28,6 +29,9 @@ Engine::ExpressionAbstractFactory::ExpressionAbstractFactory()
     operatorFactory->addOperator("-",new OperatorMINUS);
     operatorFactory->addOperator("*",new OperatorMUL);
     operatorFactory->addOperator("/",new OperatorDIV);
+    operatorFactory->addOperator("DIV",new OperatorDIVINT);
+    operatorFactory->addOperator("MOD",new OperatorMOD);
+    operatorFactory->addOperator("NEG",new OperatorNEG);
     operatorFactory->addOperator("TYPE",new OperatorTYPE);
 }
 
