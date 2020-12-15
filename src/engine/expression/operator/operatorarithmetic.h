@@ -100,6 +100,16 @@ class DivRatRat : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
 };
 
+//OperatorDIVINT pour la division entière
+class DivintIntInt : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
+//Operator MOD
+class ModIntInt : public Action {
+    Expression* executeAction(Expression* L1,Expression* L2);
+};
+
 class OperatorArithmetic :public Operator
 {
 private:
@@ -138,18 +148,23 @@ class OperatorDIV : public OperatorArithmetic {
         Expression* getCopy() const override { return new OperatorDIV; }
 };
 
+class OperatorDIVINT : public OperatorArithmetic {
+    public:
+        OperatorDIVINT();
+        const std::string toString() const override{ return "DIV"; }
+        Expression* getCopy() const override { return new OperatorDIVINT; }
+};
+
+class OperatorMOD : public OperatorArithmetic {
+    public:
+        OperatorMOD();
+        const std::string toString() const override{ return "MOD"; }
+        Expression* getCopy() const override { return new OperatorMOD; }
+};
+
 }
 
 #endif // OPERATORARITHMETIC_H
 
 
 
-//<Lreal,Linteger>  | sum(TypeL1*,TypeL2*)
-
-
-
-//<int,real>  | sum(TypeL2*,TypeL1*)
-
-
-//actionSumIntReal
-//actionSumIntInt

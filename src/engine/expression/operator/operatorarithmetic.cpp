@@ -68,6 +68,17 @@ Engine::OperatorDIV::OperatorDIV(): OperatorArithmetic("OperatorDIV")
     registerAction("Lrational", "Lrational", new DivRatRat);
 }
 
+Engine::OperatorDIVINT::OperatorDIVINT(): OperatorArithmetic("OperatorDIVINT")
+{
+    registerAction("Linteger", "Linteger", new DivintIntInt);
+}
+
+Engine::OperatorMOD::OperatorMOD(): OperatorArithmetic("OperatorMOD")
+{
+    registerAction("Linteger", "Linteger", new ModIntInt);
+}
+
+
 void Engine::OperatorArithmetic::registerAction(std::string type1, std::string type2, Action *a)
 {
     tuple<string, string> t = make_tuple(type1,type2);
@@ -241,4 +252,16 @@ Engine::Expression* Engine::DivRatRat::executeAction(Expression* L1,Expression* 
     int num = dynamic_cast<Lrational*>(L1)->getNumerator()*dynamic_cast<Lrational*>(L2)->getDenominator();
     int den = dynamic_cast<Lrational*>(L1)->getDenominator()*dynamic_cast<Lrational*>(L2)->getNumerator();
     return (new Lrational(num,den));
+}
+
+//Operator DIV
+Engine::Expression* Engine::DivintIntInt::executeAction(Expression* L1,Expression* L2)
+{
+    return (new Linteger(dynamic_cast<Linteger*>(L1)->getValue()/dynamic_cast<Linteger*>(L2)->getValue()));
+}
+
+//Operator MOD
+Engine::Expression* Engine::ModIntInt::executeAction(Expression* L1,Expression* L2)
+{
+    return (new Linteger((int)dynamic_cast<Linteger*>(L1)->getValue()%(int)dynamic_cast<Linteger*>(L2)->getValue()));
 }
