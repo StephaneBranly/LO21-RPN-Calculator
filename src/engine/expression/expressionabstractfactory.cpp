@@ -28,8 +28,8 @@ Engine::ExpressionAbstractFactory::ExpressionAbstractFactory()
     operatorFactory->addOperator("-",new OperatorMINUS);
     operatorFactory->addOperator("*",new OperatorMUL);
     operatorFactory->addOperator("/",new OperatorDIV);
-    operatorFactory->addOperator("*",new OperatorDIVINT);
-    operatorFactory->addOperator("/",new OperatorMOD);
+    operatorFactory->addOperator("DIV",new OperatorDIVINT);
+    operatorFactory->addOperator("MOD",new OperatorMOD);
     operatorFactory->addOperator("TYPE",new OperatorTYPE);
 }
 
