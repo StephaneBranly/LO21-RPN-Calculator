@@ -265,3 +265,20 @@ Engine::Expression* Engine::ModIntInt::executeAction(Expression* L1,Expression* 
 {
     return (new Linteger((int)dynamic_cast<Linteger*>(L1)->getValue()%(int)dynamic_cast<Linteger*>(L2)->getValue()));
 }
+
+//Operator NEG
+void Engine::OperatorNEG::executeOpe(vector<Expression*> e)
+{
+    Stack& p = ComputerEngine::getInstance().getStack();
+    Lnumerical* n = dynamic_cast<Lnumerical*>(e[0]);
+    if (n != nullptr)
+    {
+        p.push(e[0]);
+        p.push(new Linteger(-1));
+        Expression* o  = new OperatorMUL;
+        o->eval();
+
+    }
+    else
+        throw ComputerException("Type "+e[0]->getType()+" incorrect");
+}

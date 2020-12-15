@@ -30,6 +30,7 @@ Engine::ExpressionAbstractFactory::ExpressionAbstractFactory()
     operatorFactory->addOperator("/",new OperatorDIV);
     operatorFactory->addOperator("DIV",new OperatorDIVINT);
     operatorFactory->addOperator("MOD",new OperatorMOD);
+    operatorFactory->addOperator("NEG",new OperatorNEG);
     operatorFactory->addOperator("TYPE",new OperatorTYPE);
 }
 

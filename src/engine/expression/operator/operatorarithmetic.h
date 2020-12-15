@@ -162,6 +162,14 @@ class OperatorMOD : public OperatorArithmetic {
         Expression* getCopy() const override { return new OperatorMOD; }
 };
 
+class OperatorNEG : public Operator {
+public:
+    OperatorNEG(): Operator("OperatorNEG",1){}
+    void executeOpe(vector<Expression*> e) override;
+    const std::string toString() const override{ return "NEG"; }
+    Expression* getCopy() const override { return new OperatorNEG; }
+};
+
 }
 
 #endif // OPERATORARITHMETIC_H
