@@ -12,13 +12,13 @@ bool Engine::AtomManager::alreadyExists(const std::string name)
 Engine::Expression* Engine::AtomManager::getExpressionFromAtom(const Latom* a)
 {
     if(alreadyExists(a->getValue()))
-        return atoms.at(a->getValue());
+        return atoms.at(a->getValue())->getCopy();
     throw ComputerException("Il n'existe pas d'atom "+a->getValue());
 }
 Engine::Expression* Engine::AtomManager::getExpressionFromString(const std::string s)
 {
     if(alreadyExists(s))
-        return atoms.at(s);
+        return atoms.at(s)->getCopy();
     throw ComputerException("Il n'existe pas d'atom "+s);
 }
 void Engine::AtomManager::removeAtom(const std::string s)

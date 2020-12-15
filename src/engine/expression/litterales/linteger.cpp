@@ -3,9 +3,9 @@
 #include <regex>
 #include "../../exception/CompException.h"
 
-Engine::Linteger::Linteger(const Linteger& li):value(li.value){}
+Engine::Linteger::Linteger(const Linteger& li): Lnumerical("Linteger"),value(li.value){}
 
-Engine::Linteger::Linteger(const std::string s){
+Engine::Linteger::Linteger(const std::string s): Lnumerical("Linteger"){
     value = std::stoi(s,nullptr,10);
 }
 

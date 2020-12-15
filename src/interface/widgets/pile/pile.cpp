@@ -13,6 +13,8 @@ Pile::Pile(QWidget *parent)
     ui->ContentTab->setStyleSheet("alternate-background-color: rgba(0,0,0,0.1);background-color: rgba(255,255,255,0.1);");
     ui->ContentTab->horizontalHeader()->setStretchLastSection(true);
     updateSize(10);
+
+
 }
 
 Pile::~Pile()

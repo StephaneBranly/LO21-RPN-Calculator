@@ -9,7 +9,7 @@
 
 //Constructeurs des opérateurs
 //opérateur +
-Engine::OperatorPLUS::OperatorPLUS()
+Engine::OperatorPLUS::OperatorPLUS(): OperatorArithmetic("OperatorPLUS")
 {
     //9 actions à implémenter
     registerAction("Linteger", "Linteger", new SumIntInt);
@@ -24,7 +24,7 @@ Engine::OperatorPLUS::OperatorPLUS()
 }
 
 //opérateur -
-Engine::OperatorMINUS::OperatorMINUS()
+Engine::OperatorMINUS::OperatorMINUS(): OperatorArithmetic("OperatorMOINS")
 {
     //9 actions à implémenter
     registerAction("Linteger", "Linteger", new SubIntInt);
@@ -39,7 +39,7 @@ Engine::OperatorMINUS::OperatorMINUS()
 }
 
 //opérateur *
-Engine::OperatorMUL::OperatorMUL()
+Engine::OperatorMUL::OperatorMUL(): OperatorArithmetic("OperatorMUL")
 {
     //9 actions à implémenter
     registerAction("Linteger", "Linteger", new MulIntInt);
@@ -54,7 +54,7 @@ Engine::OperatorMUL::OperatorMUL()
 }
 
 //opérateur /
-Engine::OperatorDIV::OperatorDIV()
+Engine::OperatorDIV::OperatorDIV(): OperatorArithmetic("OperatorDIV")
 {
     //9 actions à implémenter
     registerAction("Linteger", "Linteger", new DivIntInt);
@@ -74,13 +74,11 @@ void Engine::OperatorArithmetic::registerAction(std::string type1, std::string t
     opes.insert(make_pair(t,a));
 }
 
-void Engine::OperatorArithmetic::executeOpe()
+void Engine::OperatorArithmetic::executeOpe(vector<Expression*> e)
 {
-    Stack& p=ComputerEngine::getInstance().getStack();
-    Expression* L1=p.top();
-    p.pop();
-    Expression* L2=p.top();
-    p.pop();
+    Stack& p = ComputerEngine::getInstance().getStack();
+    Expression* L1=e[0];
+    Expression* L2=e[1];
 
     tuple<string,string> t = make_tuple(L1->getType(),L2->getType());
     if (opes.find(t) != opes.end())

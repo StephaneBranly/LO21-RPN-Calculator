@@ -77,7 +77,7 @@ void Engine::ExpressionManager::evalCommandLine(const string str){
 }
 
 Engine::ExpressionManager::~ExpressionManager(){
-    for(auto e : exps) {delete e;}
+//    for(auto e : exps) {delete e;}
 }
 
 

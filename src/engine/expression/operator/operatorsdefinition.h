@@ -5,82 +5,69 @@
 
 namespace Engine {
 class OperatorCLEAR : public Operator {
-    size_t arrity=0;
-    std::string type = "OperatorCLEAR";
 public:
-    size_t getArrity () const override { return arrity; }
-    void executeOpe() override;
-    const std::string getType() const override { return this->type; }
+    OperatorCLEAR(): Operator("OperatorCLEAR",0){}
+    void executeOpe(vector<Expression*> e) override;
     const std::string toString() const override{ return "CLEAR"; }
     Expression* getCopy() const override { return new OperatorCLEAR; }
 };
 
 class OperatorSWAP : public Operator {
-    size_t arrity=2;
-    std::string type = "OperatorSWAP";
 public:
-    size_t getArrity () const override { return arrity; }
-    void executeOpe() override;
-    const std::string getType() const override { return this->type; }
+    OperatorSWAP(): Operator("OperatorSWAP",2){}
+    void executeOpe(vector<Expression*> e) override;
     const std::string toString() const override{ return "SWAP"; }
     Expression* getCopy() const override { return new OperatorSWAP; }
 };
 
 class OperatorDROP : public Operator {
-    size_t arrity=1;
-    std::string type = "OperatorDROP";
 public:
-    size_t getArrity () const override { return arrity; }
-    void executeOpe() override;
-    const std::string getType() const override { return this->type; }
+    OperatorDROP(): Operator("OperatorDROP",1){}
+    void executeOpe(vector<Expression*> e) override;
     const std::string toString() const override{ return "DROP"; }
     Expression* getCopy() const override { return new OperatorDROP; }
 };
 
 class OperatorDUP : public Operator {
-    size_t arrity=1;
-    std::string type = "OperatorDUP";
 public:
-    size_t getArrity () const override { return arrity; }
-    void executeOpe() override;
-    const std::string getType() const override { return this->type; }
+    OperatorDUP(): Operator("OperatorDUP",1){}
+    void executeOpe(vector<Expression*> e) override;
     const std::string toString() const override{ return "DUP"; }
     Expression* getCopy() const override { return new OperatorDUP; }
 };
 
 
 class OperatorEVAL : public Operator {
-    size_t arrity=1;
-    std::string type = "OperatorEVAL";
 public:
-    size_t getArrity () const override { return arrity; }
-    void executeOpe() override;
-    const std::string getType() const override { return this->type; }
+    OperatorEVAL(): Operator("OperatorEVAL",1){}
+    void executeOpe(vector<Expression*> e) override;
     const std::string toString() const override{ return "EVAL"; }
     Expression* getCopy() const override { return new OperatorEVAL; }
 };
 
 class OperatorSTO : public Operator {
-    size_t arrity=2;
-    std::string type = "OperatorSTO";
 public:
-    size_t getArrity () const override { return arrity; }
-    void executeOpe() override;
-    const std::string getType() const override { return this->type; }
+    OperatorSTO(): Operator("OperatorSTO",2){}
+    void executeOpe(vector<Expression*> e) override;
     const std::string toString() const override{ return "STO"; }
     Expression* getCopy() const override { return new OperatorSTO; }
 };
 
 
 class OperatorFORGET : public Operator {
-    size_t arrity=1;
-    std::string type = "OperatorFORGET";
 public:
-    size_t getArrity () const override { return arrity; }
-    void executeOpe() override;
-    const std::string getType() const override { return this->type; }
+    OperatorFORGET(): Operator("OperatorFORGET",1){}
+    void executeOpe(vector<Expression*> e) override;
     const std::string toString() const override{ return "FORGET"; }
     Expression* getCopy() const override { return new OperatorFORGET; }
+};
+
+class OperatorTYPE : public Operator {
+public:
+    OperatorTYPE(): Operator("OperatorTYPE",1){}
+    void executeOpe(vector<Expression*> e) override;
+    const std::string toString() const override{ return "TYPE"; }
+    Expression* getCopy() const override { return new OperatorTYPE; }
 };
 }
 

@@ -56,6 +56,9 @@
           <property name="cursor">
            <cursorShape>ArrowCursor</cursorShape>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
           <property name="styleSheet">
            <string notr="true">color: rgb(255, 95, 0);</string>
           </property>
@@ -65,7 +68,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QTableWidget" name="ContentTab"/>
+         <widget class="QTableWidget" name="ContentTab">
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>

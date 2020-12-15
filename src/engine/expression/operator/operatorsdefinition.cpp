@@ -5,35 +5,34 @@
 #include "../litterales/lexpression.h"
 #include "../litterales/lnumerical.h"
 
-void Engine::OperatorCLEAR::executeOpe()
+void Engine::OperatorCLEAR::executeOpe(vector<Expression*> e)
 {
     Stack& p = ComputerEngine::getInstance().getStack();
     p.clear();
 }
 
-void Engine::OperatorSWAP::executeOpe()
+void Engine::OperatorSWAP::executeOpe(vector<Expression*> e)
 {
     Stack& p = ComputerEngine::getInstance().getStack();
-    p.swap();
+    p.push(e[0]->getCopy());
+    p.push(e[1]->getCopy());
 }
 
-void Engine::OperatorDROP::executeOpe()
+void Engine::OperatorDROP::executeOpe(vector<Expression*> e)
 {
-    Stack& p = ComputerEngine::getInstance().getStack();
-    p.pop();
+
 }
 
-void Engine::OperatorDUP::executeOpe()
+void Engine::OperatorDUP::executeOpe(vector<Expression*> e)
 {
     Stack& p = ComputerEngine::getInstance().getStack();
-    Expression* copy = p.top()->getCopy();
-    p.push(copy);
+    p.push(e[0]->getCopy());
+    p.push(e[0]->getCopy());
 }
 
-void Engine::OperatorEVAL::executeOpe()
+void Engine::OperatorEVAL::executeOpe(vector<Expression*> e)
 {
-    Stack& p = ComputerEngine::getInstance().getStack();
-    Expression* L1 = p.pop();
+    Expression* L1 = e[0];
     ExplicitEval* isEvaluable = dynamic_cast<ExplicitEval*>(L1);
     if(isEvaluable)
     {
@@ -43,11 +42,10 @@ void Engine::OperatorEVAL::executeOpe()
         throw ComputerException(L1->toString()+" ne peut pas être évalué de façon explicite.");
 }
 
-void Engine::OperatorSTO::executeOpe()
+void Engine::OperatorSTO::executeOpe(vector<Expression*> e)
 {
-    Stack& p = ComputerEngine::getInstance().getStack();
-    Expression* L1 = p.pop();
-    Expression* L2 = p.pop();
+    Expression* L1 = e[0];
+    Expression* L2 = e[1];
     Lnumerical* isNumerical = dynamic_cast<Lnumerical*>(L2);
     if(L1->getType()=="Lexpression" && (isNumerical!=nullptr || L2->getType()=="Lprogram"))
     {
@@ -56,16 +54,15 @@ void Engine::OperatorSTO::executeOpe()
         Lexpression* Lexp = dynamic_cast<Lexpression*>(L1);
         if(ComputerEngine::getInstance().getExpressionManager().getFactory()->getOperatorFactory()->isSameType(Lexp->getValue()))
             throw ComputerException(Lexp->getValue()+" est déja prédéfini.");
-        a.addAtom(Lexp->getValue(),L2);
+        a.addAtom(Lexp->getValue(),L2->getCopy());
     }
     else
-        throw ComputerException(L2->toString()+" ne peut pas être sauvegardée.");
+        throw ComputerException(L2->toString()+" ne peut pas être sauvegardée dans "+L1->toString()+".");
 }
 
-void Engine::OperatorFORGET::executeOpe()
+void Engine::OperatorFORGET::executeOpe(vector<Expression*> e)
 {
-    Stack& p = ComputerEngine::getInstance().getStack();
-    Expression* L1 = p.pop();
+    Expression* L1 = e[0];
     if(L1->getType()=="Lexpression")
     {
         AtomManager& a = ComputerEngine::getInstance().getAtomManager();
@@ -74,4 +71,11 @@ void Engine::OperatorFORGET::executeOpe()
     }
     else
         throw ComputerException(L1->toString()+" n'est pas un identifiant.");
+}
+
+void Engine::OperatorTYPE::executeOpe(vector<Expression*> e)
+{
+    Stack& p = ComputerEngine::getInstance().getStack();
+    p.push(e[0]->getCopy());
+    p.push(new Lexpression(e[0]->getType()));
 }

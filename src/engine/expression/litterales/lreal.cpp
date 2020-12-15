@@ -10,7 +10,7 @@ Engine::Lreal* Engine::Lreal::setReal(float r){
     return this;
 }
 
-Engine::Lreal::Lreal(const std::string s){
+Engine::Lreal::Lreal(const std::string s):  Lnumerical("Lreal"){
     real = stod(s);
 }
 
