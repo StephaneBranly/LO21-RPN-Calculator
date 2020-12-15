@@ -1,6 +1,7 @@
 #include "expressionabstractfactory.h"
 #include "../exception/CompException.h"
-#include "operator/operatorarithmetic.h"
+#include "operator/operatoraritbinary.h"
+#include "operator/operatoraritunary.h"
 #include "operator/operatorlogic.h"
 
 #include <QDebug>

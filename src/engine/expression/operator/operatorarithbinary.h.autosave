@@ -1,5 +1,5 @@
-#ifndef OPERATORARITHMETIC_H
-#define OPERATORARITHMETIC_H
+#ifndef OperatorAritBinary_H
+#define OperatorAritBinary_H
 
 #include "operator.h"
 #include <map>
@@ -7,13 +7,19 @@
 
 namespace Engine {
 
-
-class Action{
+//Définition de la classe des opérateurs binaires
+class OperatorAritBinary :public Operator
+{
+private:
+    std::map<std::tuple<std::string,std::string>,Action*> opes;
 public:
-    virtual Expression* executeAction(Expression* L1, Expression* L2) = 0;
+    OperatorAritBinary(const std::string t): Operator(t,2){}
+    void registerAction(std::string type1,std::string type2,Action* a);
+    void executeOpe(vector<Expression*> e);
 };
 
-//définitions des actions possibles
+
+//Définitions des actions possibles avec les opérateurs binaires
 //opératorPLUS
 class SumIntInt : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
@@ -110,69 +116,52 @@ class ModIntInt : public Action {
     Expression* executeAction(Expression* L1,Expression* L2);
 };
 
-class OperatorArithmetic :public Operator
-{
-private:
-    std::map<std::tuple<std::string,std::string>,Action*> opes;
-public:
-    OperatorArithmetic(const std::string t): Operator(t,2){}
-    void registerAction(std::string type1,std::string type2,Action* a);
-    void executeOpe(vector<Expression*> e);
-};
 
-class OperatorPLUS : public OperatorArithmetic {
+//Définitions classes opérateurs binaires
+class OperatorPLUS : public OperatorAritBinary {
     public:
         OperatorPLUS();
         const std::string toString() const override{ return "+"; }
         Expression* getCopy() const override { return new OperatorPLUS; }
 };
 
-class OperatorMINUS : public OperatorArithmetic {
+class OperatorMINUS : public OperatorAritBinary {
     public:
         OperatorMINUS();
         const std::string toString() const override{ return "-"; }
         Expression* getCopy() const override { return new OperatorMINUS; }
 };
 
-class OperatorMUL : public OperatorArithmetic {
+class OperatorMUL : public OperatorAritBinary {
     public:
         OperatorMUL();
         const std::string toString() const override{ return "*"; }
         Expression* getCopy() const override { return new OperatorMUL; }
 };
 
-class OperatorDIV : public OperatorArithmetic {
+class OperatorDIV : public OperatorAritBinary {
     public:
         OperatorDIV();
         const std::string toString() const override{ return "/"; }
         Expression* getCopy() const override { return new OperatorDIV; }
 };
 
-class OperatorDIVINT : public OperatorArithmetic {
+class OperatorDIVINT : public OperatorAritBinary {
     public:
         OperatorDIVINT();
         const std::string toString() const override{ return "DIV"; }
         Expression* getCopy() const override { return new OperatorDIVINT; }
 };
 
-class OperatorMOD : public OperatorArithmetic {
+class OperatorMOD : public OperatorAritBinary {
     public:
         OperatorMOD();
         const std::string toString() const override{ return "MOD"; }
         Expression* getCopy() const override { return new OperatorMOD; }
 };
-
-class OperatorNEG : public Operator {
-public:
-    OperatorNEG(): Operator("OperatorNEG",1){}
-    void executeOpe(vector<Expression*> e) override;
-    const std::string toString() const override{ return "NEG"; }
-    Expression* getCopy() const override { return new OperatorNEG; }
-};
-
 }
 
-#endif // OPERATORARITHMETIC_H
+#endif // OperatorAritBinary_H
 
 
 
