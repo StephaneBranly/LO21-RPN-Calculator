@@ -32,6 +32,8 @@ Engine::ExpressionAbstractFactory::ExpressionAbstractFactory()
     operatorFactory->addOperator("DIV",new OperatorDIVINT);
     operatorFactory->addOperator("MOD",new OperatorMOD);
     operatorFactory->addOperator("NEG",new OperatorNEG);
+    operatorFactory->addOperator("NUM",new OperatorNUM);
+    operatorFactory->addOperator("DEN",new OperatorDEN);
     operatorFactory->addOperator("TYPE",new OperatorTYPE);
 }
 

@@ -36,6 +36,20 @@ Engine::OperatorNEG::OperatorNEG(): OperatorAritUnary("OperatorNEG")
     registerActionUnary("Lrational", new NegRat);
 }
 
+//Opérateur NUM
+Engine::OperatorNUM::OperatorNUM(): OperatorAritUnary("OperatorNUM")
+{
+    registerActionUnary("Linteger", new NumInt);
+    registerActionUnary("Lrational", new NumRat);
+}
+
+//Opérateur DEN
+Engine::OperatorDEN::OperatorDEN(): OperatorAritUnary("OperatorDEN")
+{
+    registerActionUnary("Linteger", new DenInt);
+    registerActionUnary("Lrational", new DenRat);
+}
+
 //Redéfinition de la méthode pour chaque ActionUnary
 //Opérator NEG
 Engine::Expression* Engine::NegInt::executeActionUnary(Expression* L)
@@ -51,4 +65,26 @@ Engine::Expression* Engine::NegReal::executeActionUnary(Expression* L)
 Engine::Expression* Engine::NegRat::executeActionUnary(Expression* L)
 {
     return (new Lrational(-1*dynamic_cast<Lrational*>(L)->getNumerator(), dynamic_cast<Lrational*>(L)->getDenominator()));
+}
+
+//Opérateur NUM
+Engine::Expression* Engine::NumInt::executeActionUnary(Expression* L)
+{
+    return (new Linteger(dynamic_cast<Linteger*>(L)->getValue()));
+}
+
+Engine::Expression* Engine::NumRat::executeActionUnary(Expression* L)
+{
+    return (new Linteger(dynamic_cast<Lrational*>(L)->getNumerator()));
+}
+
+//Opérateur DEN
+Engine::Expression* Engine::DenInt::executeActionUnary(Expression* L)
+{
+    return (new Linteger(1));
+}
+
+Engine::Expression* Engine::DenRat::executeActionUnary(Expression* L)
+{
+    return (new Linteger(dynamic_cast<Lrational*>(L)->getDenominator()));
 }
