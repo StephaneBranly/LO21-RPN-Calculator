@@ -67,6 +67,12 @@ class OperatorMOD : public OperatorAritBinary {
         Expression* getCopy() const override { return new OperatorMOD; }
 };
 
+class OperatorPOW : public OperatorAritBinary {
+    public:
+        OperatorPOW();
+        const std::string toString() const override{ return "POW"; }
+        Expression* getCopy() const override { return new OperatorPOW; }
+};
 
 //Définitions des ActionBinarys possibles avec les opérateurs binaires
 //opératorPLUS
@@ -163,6 +169,20 @@ class DivintIntInt : public ActionBinary {
 class ModIntInt : public ActionBinary {
     Expression* executeActionBinary(Expression* L1,Expression* L2);
 };
+
+//Operator POW
+class PowIntInt : public ActionBinary {
+    Expression* executeActionBinary(Expression* L1,Expression* L2);
+};
+
+class PowRealInt : public ActionBinary {
+    Expression* executeActionBinary(Expression* L1,Expression* L2);
+};
+
+class PowRatInt : public ActionBinary {
+    Expression* executeActionBinary(Expression* L1,Expression* L2);
+};
+
 }
 
 

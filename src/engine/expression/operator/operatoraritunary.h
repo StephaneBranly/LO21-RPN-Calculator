@@ -31,6 +31,20 @@ class OperatorNEG : public OperatorAritUnary {
         Expression* getCopy() const override { return new OperatorNEG; }
 };
 
+class OperatorNUM : public OperatorAritUnary {
+    public:
+        OperatorNUM();
+        const std::string toString() const override{ return "NUM"; }
+        Expression* getCopy() const override { return new OperatorNUM; }
+};
+
+class OperatorDEN : public OperatorAritUnary {
+    public:
+        OperatorDEN();
+        const std::string toString() const override{ return "DEN"; }
+        Expression* getCopy() const override { return new OperatorDEN; }
+};
+
 //Définitions des actions possibles avec les opérateurs binaires
 //opératorNEG
 class NegInt : public ActionUnary {
@@ -45,5 +59,23 @@ class NegRat : public ActionUnary {
     Expression * executeActionUnary(Expression *L) override;
 };
 
+//opéraotrNUM
+class NumInt : public ActionUnary {
+    Expression * executeActionUnary(Expression *L) override;
+};
+
+class NumRat : public ActionUnary {
+    Expression * executeActionUnary(Expression *L) override;
+};
+
+//OpératorDEN
+//opéraotrNUM
+class DenInt : public ActionUnary {
+    Expression * executeActionUnary(Expression *L) override;
+};
+
+class DenRat : public ActionUnary {
+    Expression * executeActionUnary(Expression *L) override;
+};
 }
 #endif // OPERATORARITUNARY_H
