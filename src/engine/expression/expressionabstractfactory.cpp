@@ -34,6 +34,7 @@ Engine::ExpressionAbstractFactory::ExpressionAbstractFactory()
     operatorFactory->addOperator("NEG",new OperatorNEG);
     operatorFactory->addOperator("NUM",new OperatorNUM);
     operatorFactory->addOperator("DEN",new OperatorDEN);
+    operatorFactory->addOperator("POW",new OperatorPOW);
     operatorFactory->addOperator("TYPE",new OperatorTYPE);
 }
 

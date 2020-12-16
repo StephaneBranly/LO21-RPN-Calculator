@@ -1,10 +1,11 @@
-#include "operatoraritbinary.h"
+﻿#include "operatoraritbinary.h"
 #include "../../computerengine.h"
 #include "../../exception/CompException.h"
 #include "../litterales/linteger.h"
 #include "../litterales/lreal.h"
 #include "../litterales/lrational.h"
 #include "../litterales/lnumerical.h"
+#include <math.h>
 
 
 //Définition de registerActionBinary et executeOpe
@@ -102,6 +103,15 @@ Engine::OperatorDIVINT::OperatorDIVINT(): OperatorAritBinary("OperatorDIVINT")
 Engine::OperatorMOD::OperatorMOD(): OperatorAritBinary("OperatorMOD")
 {
     registerActionBinary("Linteger", "Linteger", new ModIntInt);
+}
+
+//Operator POW
+Engine::OperatorPOW::OperatorPOW(): OperatorAritBinary("OperatorPOW")
+{
+    registerActionBinary("Linteger", "Linteger", new PowIntInt);
+    registerActionBinary("Linteger", "Lreal", new PowRealInt);
+    registerActionBinary("Linteger", "Lrational", new PowRatInt);
+
 }
 
 //Redéfinition de la méthode pour chaque ActionBinary
@@ -228,7 +238,6 @@ Engine::Expression* Engine::DivIntReal::executeActionBinary(Expression* L1,Expre
     return (new Lreal(dynamic_cast<Lnumerical*>(L1)->getValue()/dynamic_cast<Lnumerical*>(L2)->getValue()));
 }
 
-
 Engine::Expression* Engine::DivIntRat::executeActionBinary(Expression* L1,Expression* L2)
 {
     //Test d'abord si c'est L1 le rationnel, sinon c'est L2
@@ -268,3 +277,21 @@ Engine::Expression* Engine::ModIntInt::executeActionBinary(Expression* L1,Expres
     return (new Linteger((int)dynamic_cast<Linteger*>(L1)->getValue()%(int)dynamic_cast<Linteger*>(L2)->getValue()));
 }
 
+//Operator POW
+Engine::Expression* Engine::PowIntInt::executeActionBinary(Expression* L1,Expression* L2)
+{
+    return (new Linteger(pow((int)dynamic_cast<Linteger*>(L1)->getValue(),dynamic_cast<Linteger*>(L2)->getValue())));
+}
+
+Engine::Expression* Engine::PowRealInt::executeActionBinary(Expression* L1,Expression* L2)
+{
+    return (new Lreal(pow(dynamic_cast<Lreal*>(L1)->getValue(),dynamic_cast<Linteger*>(L2)->getValue())));
+}
+
+Engine::Expression* Engine::PowRatInt::executeActionBinary(Expression* L1,Expression* L2)
+{
+    int num = pow(dynamic_cast<Lrational*>(L1)->getNumerator(),dynamic_cast<Linteger*>(L2)->getValue());
+    int den = pow(dynamic_cast<Lrational*>(L1)->getDenominator(),dynamic_cast<Linteger*>(L2)->getValue());
+    return (new Lrational(num,den));
+
+}
