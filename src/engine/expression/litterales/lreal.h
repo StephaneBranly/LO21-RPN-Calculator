@@ -5,7 +5,7 @@
 #include "linteger.h"
 
 namespace Engine {
-class Lreal : public Lnumerical
+class Lreal : public Lnumerical, public R1value
 {
     float real;
 public:
