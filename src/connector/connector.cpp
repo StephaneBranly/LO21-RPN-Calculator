@@ -20,7 +20,7 @@ void Connector::notify(const std::string &message)
     {
         const std::string content = window.getContentCommandLine().toStdString();
         try{engine.getExpressionManager().evalCommandLine(content); window.setMessage("OK"); window.clearCommandLine(); }
-        catch(Engine::ComputerException e){ window.setMessage(QString::fromStdString(e.getInfo()));}
+        catch(Engine::ComputerException e){ window.setMessage(QString::fromStdString(e.what()));}
     }else if(message=="stackChanged")
     {
         const std::list<std::string> items = engine.getInstance().getStack().toStringList();
@@ -43,7 +43,7 @@ void Connector::notify(const std::string &message)
     {
         const std::string buffer = window.getBuffer().toStdString();
         try{engine.getExpressionManager().evalCommandLine(buffer); window.setMessage("OK");  }
-        catch(Engine::ComputerException e){ window.setMessage(QString::fromStdString(e.getInfo()));}
+        catch(Engine::ComputerException e){ window.setMessage(QString::fromStdString(e.what()));}
     }else if(message=="needAtomValue"){
         const std::string atomName = window.getBuffer().toStdString();
         try{
@@ -51,6 +51,6 @@ void Connector::notify(const std::string &message)
             window.setBuffer(QString::fromStdString(s));
             window.setMessage("OK");
         }
-        catch(Engine::ComputerException e){ window.setMessage(QString::fromStdString(e.getInfo()));}
+        catch(Engine::ComputerException e){ window.setMessage(QString::fromStdString(e.what()));}
     }
 };

@@ -33,7 +33,7 @@ void Engine::Lprogram::explicitEval()
         try {
             (*it)->eval();
         }  catch (ComputerException e) {
-            throw ComputerException(e.getInfo());
+            throw ComputerException(e.what());
         }
     }
 }

@@ -58,7 +58,7 @@ void Engine::ExpressionManager::evalCommandLine(const string str){
                         prof.back()->push_back(current);
 
                 }  catch (ComputerException e) {
-                    throw ComputerException(e.getInfo());
+                    throw ComputerException(e.what());
                 }
             }
         }
@@ -71,7 +71,7 @@ void Engine::ExpressionManager::evalCommandLine(const string str){
             (*it)->eval();
         }
         catch (ComputerException e) {
-            throw ComputerException(e.getInfo());
+            throw ComputerException(e.what());
         }
     }
 }

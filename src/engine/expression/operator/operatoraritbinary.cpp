@@ -113,7 +113,7 @@ Engine::Expression* Engine::SumIntInt::executeActionBinary(Expression* L1,Expres
 
 Engine::Expression* Engine::SumIntReal::executeActionBinary(Expression* L1,Expression* L2)
 {
-    return (new Lreal(dynamic_cast<Lnumerical*>(L1)->getValue()+dynamic_cast<Lnumerical*>(L2)->getValue()));
+    return (new Lreal(dynamic_cast<R1value*>(L1)->getValue()+dynamic_cast<R1value*>(L2)->getValue()));
 }
 
 
@@ -121,16 +121,16 @@ Engine::Expression* Engine::SumIntRat::executeActionBinary(Expression* L1,Expres
 {
     //Test d'abord si c'est L1 le rationnel, sinon c'est L2
     if (L1->getType()=="Lrational")
-        return (new Lrational((dynamic_cast<Lrational*>(L1)->getNumerator()+dynamic_cast<Lnumerical*>(L2)->getValue()*dynamic_cast<Lrational*>(L1)->getDenominator()),dynamic_cast<Lrational*>(L1)->getDenominator()));
-    return (new Lrational((dynamic_cast<Lrational*>(L2)->getNumerator()+dynamic_cast<Lnumerical*>(L1)->getValue()*dynamic_cast<Lrational*>(L2)->getDenominator()),dynamic_cast<Lrational*>(L2)->getDenominator()));
+        return (new Lrational((dynamic_cast<Lrational*>(L1)->getNumerator()+dynamic_cast<R1value*>(L2)->getValue()*dynamic_cast<Lrational*>(L1)->getDenominator()),dynamic_cast<Lrational*>(L1)->getDenominator()));
+    return (new Lrational((dynamic_cast<Lrational*>(L2)->getNumerator()+dynamic_cast<R1value*>(L1)->getValue()*dynamic_cast<Lrational*>(L2)->getDenominator()),dynamic_cast<Lrational*>(L2)->getDenominator()));
 }
 
 Engine::Expression* Engine::SumRealRat::executeActionBinary(Expression* L1,Expression* L2)
 {
     //Test d'abord si c'est L1 le rationnel, sinon c'est L2
     if (L1->getType()=="Lrational")
-        return (new Lreal((float)(dynamic_cast<Lrational*>(L1)->getNumerator()/(float)dynamic_cast<Lrational*>(L1)->getDenominator())+dynamic_cast<Lnumerical*>(L2)->getValue()));
-    return (new Lreal((float)(dynamic_cast<Lrational*>(L2)->getNumerator()/(float)dynamic_cast<Lrational*>(L2)->getDenominator())+dynamic_cast<Lnumerical*>(L1)->getValue()));
+        return (new Lreal((float)(dynamic_cast<Lrational*>(L1)->getNumerator()/(float)dynamic_cast<Lrational*>(L1)->getDenominator())+dynamic_cast<R1value*>(L2)->getValue()));
+    return (new Lreal((float)(dynamic_cast<Lrational*>(L2)->getNumerator()/(float)dynamic_cast<Lrational*>(L2)->getDenominator())+dynamic_cast<R1value*>(L1)->getValue()));
 }
 
 Engine::Expression* Engine::SumRatRat::executeActionBinary(Expression* L1,Expression* L2)
@@ -148,7 +148,7 @@ Engine::Expression* Engine::SubIntInt::executeActionBinary(Expression* L1,Expres
 
 Engine::Expression* Engine::SubIntReal::executeActionBinary(Expression* L1,Expression* L2)
 {
-    return (new Lreal(dynamic_cast<Lnumerical*>(L1)->getValue()-dynamic_cast<Lnumerical*>(L2)->getValue()));
+    return (new Lreal(dynamic_cast<R1value*>(L1)->getValue()-dynamic_cast<R1value*>(L2)->getValue()));
 }
 
 
@@ -157,9 +157,9 @@ Engine::Expression* Engine::SubIntRat::executeActionBinary(Expression* L1,Expres
     //Test d'abord si c'est L1 le rationnel, sinon c'est L2
     //Si L1 rationnel(a/b), L2(c), retourne (a-b*c,b)
     if (L1->getType()=="Lrational")
-        return (new Lrational((dynamic_cast<Lrational*>(L1)->getNumerator()-dynamic_cast<Lnumerical*>(L2)->getValue()*dynamic_cast<Lrational*>(L1)->getDenominator()),dynamic_cast<Lrational*>(L1)->getDenominator()));
+        return (new Lrational((dynamic_cast<Lrational*>(L1)->getNumerator()-dynamic_cast<R1value*>(L2)->getValue()*dynamic_cast<Lrational*>(L1)->getDenominator()),dynamic_cast<Lrational*>(L1)->getDenominator()));
     //Si L1 entier (c), L2 rationnel (a/b), retourne (c*b-a,b)
-    return (new Lrational((dynamic_cast<Lnumerical*>(L1)->getValue()*dynamic_cast<Lrational*>(L2)->getDenominator()-dynamic_cast<Lrational*>(L2)->getNumerator()),dynamic_cast<Lrational*>(L2)->getDenominator()));
+    return (new Lrational((dynamic_cast<R1value*>(L1)->getValue()*dynamic_cast<Lrational*>(L2)->getDenominator()-dynamic_cast<Lrational*>(L2)->getNumerator()),dynamic_cast<Lrational*>(L2)->getDenominator()));
 }
 
 Engine::Expression* Engine::SubRealRat::executeActionBinary(Expression* L1,Expression* L2)
@@ -167,9 +167,9 @@ Engine::Expression* Engine::SubRealRat::executeActionBinary(Expression* L1,Expre
     //Test d'abord si c'est L1 le rationnel, sinon c'est L2
     //Si L1 rationnel(a/b), L2 réel (c), retourne ((a/b)-c)
     if (L1->getType()=="Lrational")
-        return (new Lreal((float)(dynamic_cast<Lrational*>(L1)->getNumerator()/(float)dynamic_cast<Lrational*>(L1)->getDenominator())-dynamic_cast<Lnumerical*>(L2)->getValue()));
+        return (new Lreal((float)(dynamic_cast<Lrational*>(L1)->getNumerator()/(float)dynamic_cast<Lrational*>(L1)->getDenominator())-dynamic_cast<R1value*>(L2)->getValue()));
     //Si L1 réel (c), L2 rationnel (a/b), retourne (c-(a/b))
-    return (new Lreal(dynamic_cast<Lnumerical*>(L1)->getValue()-((float)dynamic_cast<Lrational*>(L2)->getNumerator()/(float)dynamic_cast<Lrational*>(L2)->getDenominator())));
+    return (new Lreal(dynamic_cast<R1value*>(L1)->getValue()-((float)dynamic_cast<Lrational*>(L2)->getNumerator()/(float)dynamic_cast<Lrational*>(L2)->getDenominator())));
 }
 
 Engine::Expression* Engine::SubRatRat::executeActionBinary(Expression* L1,Expression* L2)
@@ -187,7 +187,7 @@ Engine::Expression* Engine::MulIntInt::executeActionBinary(Expression* L1,Expres
 
 Engine::Expression* Engine::MulIntReal::executeActionBinary(Expression* L1,Expression* L2)
 {
-    return (new Lreal(dynamic_cast<Lnumerical*>(L1)->getValue()*dynamic_cast<Lnumerical*>(L2)->getValue()));
+    return (new Lreal(dynamic_cast<R1value*>(L1)->getValue()*dynamic_cast<R1value*>(L2)->getValue()));
 }
 
 Engine::Expression* Engine::MulIntRat::executeActionBinary(Expression* L1,Expression* L2)
@@ -195,9 +195,9 @@ Engine::Expression* Engine::MulIntRat::executeActionBinary(Expression* L1,Expres
     //Test d'abord si c'est L1 le rationnel, sinon c'est L2
     //Si L1 rationnel(a/b), L2(c), retourne (a*c,b)
     if (L1->getType()=="Lrational")
-        return (new Lrational((dynamic_cast<Lrational*>(L1)->getNumerator()*dynamic_cast<Lnumerical*>(L2)->getValue()),dynamic_cast<Lrational*>(L1)->getDenominator()));
+        return (new Lrational((dynamic_cast<Lrational*>(L1)->getNumerator()*dynamic_cast<R1value*>(L2)->getValue()),dynamic_cast<Lrational*>(L1)->getDenominator()));
     //Si L1 entier (c), L2 rationnel (a/b), retourne (c*a,b)
-    return (new Lrational((dynamic_cast<Lnumerical*>(L1)->getValue()*dynamic_cast<Lrational*>(L2)->getNumerator()),dynamic_cast<Lrational*>(L2)->getDenominator()));
+    return (new Lrational((dynamic_cast<R1value*>(L1)->getValue()*dynamic_cast<Lrational*>(L2)->getNumerator()),dynamic_cast<Lrational*>(L2)->getDenominator()));
 }
 
 Engine::Expression* Engine::MulRealRat::executeActionBinary(Expression* L1,Expression* L2)
@@ -205,9 +205,9 @@ Engine::Expression* Engine::MulRealRat::executeActionBinary(Expression* L1,Expre
     //Test d'abord si c'est L1 le rationnel, sinon c'est L2
     //Si L1 rationnel(a/b), L2(c), retourne (a*c/b)
     if (L1->getType()=="Lrational")
-        return (new Lreal(((float)dynamic_cast<Lnumerical*>(L2)->getValue()*(float)dynamic_cast<Lrational*>(L1)->getNumerator())/(float)dynamic_cast<Lrational*>(L1)->getDenominator()));
+        return (new Lreal(((float)dynamic_cast<R1value*>(L2)->getValue()*(float)dynamic_cast<Lrational*>(L1)->getNumerator())/(float)dynamic_cast<Lrational*>(L1)->getDenominator()));
     //Si L1 entier (c), L2 rationnel (a/b), retourne (c*a/b)
-    return (new Lreal(((float)dynamic_cast<Lnumerical*>(L1)->getValue()*(float)dynamic_cast<Lrational*>(L2)->getNumerator())/(float)dynamic_cast<Lrational*>(L2)->getDenominator()));
+    return (new Lreal(((float)dynamic_cast<R1value*>(L1)->getValue()*(float)dynamic_cast<Lrational*>(L2)->getNumerator())/(float)dynamic_cast<Lrational*>(L2)->getDenominator()));
 }
 
 Engine::Expression* Engine::MulRatRat::executeActionBinary(Expression* L1,Expression* L2)
@@ -225,7 +225,7 @@ Engine::Expression* Engine::DivIntInt::executeActionBinary(Expression* L1,Expres
 
 Engine::Expression* Engine::DivIntReal::executeActionBinary(Expression* L1,Expression* L2)
 {
-    return (new Lreal(dynamic_cast<Lnumerical*>(L1)->getValue()/dynamic_cast<Lnumerical*>(L2)->getValue()));
+    return (new Lreal(dynamic_cast<R1value*>(L1)->getValue()/dynamic_cast<R1value*>(L2)->getValue()));
 }
 
 
@@ -234,9 +234,9 @@ Engine::Expression* Engine::DivIntRat::executeActionBinary(Expression* L1,Expres
     //Test d'abord si c'est L1 le rationnel, sinon c'est L2
     //Si L1 rationnel(a/b), L2(c), retourne (a,b*c)
     if (L1->getType()=="Lrational")
-        return (new Lrational(dynamic_cast<Lrational*>(L1)->getNumerator(),(dynamic_cast<Lrational*>(L1)->getDenominator()*dynamic_cast<Lnumerical*>(L2)->getValue())));
+        return (new Lrational(dynamic_cast<Lrational*>(L1)->getNumerator(),(dynamic_cast<Lrational*>(L1)->getDenominator()*dynamic_cast<R1value*>(L2)->getValue())));
     //Si L1 entier (c), L2 rationnel (a/b), retourne (c*b,a)
-    return (new Lrational((dynamic_cast<Lnumerical*>(L1)->getValue()*dynamic_cast<Lrational*>(L2)->getDenominator()),dynamic_cast<Lrational*>(L2)->getNumerator()));
+    return (new Lrational((dynamic_cast<R1value*>(L1)->getValue()*dynamic_cast<Lrational*>(L2)->getDenominator()),dynamic_cast<Lrational*>(L2)->getNumerator()));
 }
 
 Engine::Expression* Engine::DivRealRat::executeActionBinary(Expression* L1,Expression* L2)
@@ -244,9 +244,9 @@ Engine::Expression* Engine::DivRealRat::executeActionBinary(Expression* L1,Expre
     //Test d'abord si c'est L1 le rationnel, sinon c'est L2
     //Si L1 rationnel(a/b), L2(c), retourne (a/(b*c))
     if (L1->getType()=="Lrational")
-        return (new Lreal((float)dynamic_cast<Lrational*>(L1)->getNumerator()/((float)dynamic_cast<Lnumerical*>(L2)->getValue()*(float)dynamic_cast<Lrational*>(L1)->getDenominator())));
+        return (new Lreal((float)dynamic_cast<Lrational*>(L1)->getNumerator()/((float)dynamic_cast<R1value*>(L2)->getValue()*(float)dynamic_cast<Lrational*>(L1)->getDenominator())));
     //Si L1 entier (c), L2 rationnel (a/b), retourne ((c*b)/a)
-    return (new Lreal(((float)dynamic_cast<Lnumerical*>(L1)->getValue()*(float)dynamic_cast<Lrational*>(L2)->getDenominator())/(float)dynamic_cast<Lrational*>(L2)->getNumerator()));
+    return (new Lreal(((float)dynamic_cast<R1value*>(L1)->getValue()*(float)dynamic_cast<Lrational*>(L2)->getDenominator())/(float)dynamic_cast<Lrational*>(L2)->getNumerator()));
 }
 
 Engine::Expression* Engine::DivRatRat::executeActionBinary(Expression* L1,Expression* L2)

@@ -5,7 +5,7 @@
 #include <numeric>
 #include <cmath>
 
-Engine::Lreal* Engine::Lreal::setReal(float r){
+Engine::Lreal* Engine::Lreal::setReal(double r){
     real = r;
     return this;
 }

@@ -4,7 +4,7 @@
 #include "../../exception/CompException.h"
 
 namespace Engine {
-class Lrational  : public Lnumerical
+class Lrational  : public Lnumerical, public R1value
 {
     int numerator;
     int denominator;

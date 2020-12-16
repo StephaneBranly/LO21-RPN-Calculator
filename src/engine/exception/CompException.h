@@ -1,14 +1,17 @@
 #ifndef COMPEXCEPTION_H
 #define COMPEXCEPTION_H
 #include <string>
+#include <exception>
 
 namespace Engine {
 
-class ComputerException{
+class ComputerException : public std::exception {
     std::string info;
 public :
     ComputerException(const std::string& str):info(str){}
-    std::string getInfo() const {return info;}
+    const char* what() const noexcept {
+           return info.c_str();
+        }
 };
 
 }

@@ -4,7 +4,7 @@
 #include <string>
 
 namespace Engine {
-class Linteger : public Lnumerical
+class Linteger : public Lnumerical, public R1value
 {
     int value;
 public:

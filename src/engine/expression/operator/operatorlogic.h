@@ -6,87 +6,121 @@
 
 namespace Engine{
 
-class OperatorLogic :public Operator
+class LogicTest;
+
+class OperatorLogic : public Operator
 {
+    std::map<std::tuple<std::string,std::string>,LogicTest*> tests;
 public:
     OperatorLogic(const std::string t, const size_t arrity): Operator(t,arrity){}
     void executeOpe(vector<Expression*> e);
-    virtual bool test(Lnumerical* E1, Lnumerical* E2) const=0;
+    void registerTest(std::string type1,std::string type2,LogicTest* t);
 };
 
+class LogicTest{
+public:
+    virtual bool test(Expression* E1, Expression* E2) const=0;
+};
 
 class OperatorAnd : public OperatorLogic {
     public:
-        OperatorAnd(): OperatorLogic("OperatorAND",2){}
-        bool test(Lnumerical* E1, Lnumerical* E2) const override;
+        OperatorAnd();
         const std::string toString() const override{ return "AND"; }
         Expression* getCopy() const override { return new OperatorAnd; }
 };
 
 class OperatorOr : public OperatorLogic {
     public:
-        OperatorOr(): OperatorLogic("OperatorOR",2){}
-        bool test(Lnumerical* E1, Lnumerical* E2) const override;
+        OperatorOr();
         const std::string toString() const override{ return "OR"; }
         Expression* getCopy() const override { return new OperatorOr; }
 };
 
 class OperatorNot : public OperatorLogic {
     public:
-        OperatorNot(): OperatorLogic("OperatorNOT",1){}
-        bool test(Lnumerical* E1, Lnumerical* E2=nullptr) const override ;
+        OperatorNot();
         const std::string toString() const override{ return "NOT"; }
         Expression* getCopy() const override { return new OperatorNot; }
 };
 
 class OperatorEq : public OperatorLogic {
     public:
-        OperatorEq(): OperatorLogic("OperatorEq",2){}
-        bool test(Lnumerical* E1, Lnumerical* E2) const override;
+        OperatorEq();
         const std::string toString() const override{ return "="; }
         Expression* getCopy() const override { return new OperatorEq; }
 };
 
 class OperatorGeq : public OperatorLogic {
     public:
-        OperatorGeq(): OperatorLogic("OperatorGeq",2){}
-        bool test(Lnumerical* E1, Lnumerical* E2) const override;
+        OperatorGeq();
         const std::string toString() const override{ return ">="; }
         Expression* getCopy() const override { return new OperatorGeq; }
 };
 
 class OperatorLeq : public OperatorLogic {
     public:
-        OperatorLeq(): OperatorLogic("OperatorLeq",2){}
-        bool test(Lnumerical* E1, Lnumerical* E2) const override;
+        OperatorLeq();
         const std::string toString() const override{ return "=<"; }
         Expression* getCopy() const override { return new OperatorLeq; }
 };
 class OperatorGt : public OperatorLogic {
     public:
-        OperatorGt(): OperatorLogic("OperatorGt",2){}
-        bool test(Lnumerical* E1, Lnumerical* E2) const override;
+        OperatorGt();
         const std::string toString() const override{ return ">"; }
         Expression* getCopy() const override { return new OperatorGt; }
 };
 
 class OperatorLt : public OperatorLogic {
     public:
-        OperatorLt(): OperatorLogic("OperatorLt",2){}
-        bool test(Lnumerical* E1, Lnumerical* E2) const override;
+        OperatorLt();
         const std::string toString() const override{ return "<"; }
         Expression* getCopy() const override { return new OperatorLt; }
 };
 
 class OperatorDiff : public OperatorLogic {
     public:
-        OperatorDiff(): OperatorLogic("OperatorDiff",2){}
-        bool test(Lnumerical* E1, Lnumerical* E2) const override;
+        OperatorDiff();
         const std::string toString() const override{ return "!="; }
         Expression* getCopy() const override { return new OperatorDiff; }
 };
 
+class R1testAND : public LogicTest
+{
+    bool test(Expression* E1, Expression* E2) const override { return dynamic_cast<R1value*>(E2)->getValue() && dynamic_cast<R1value*>(E1)->getValue() ; }
+};
+class R1testOR : public LogicTest
+{
+    bool test(Expression* E1, Expression* E2) const override { return dynamic_cast<R1value*>(E2)->getValue() || dynamic_cast<R1value*>(E1)->getValue() ; }
+};
+class R1testEQ : public LogicTest
+{
+    bool test(Expression* E1, Expression* E2) const override { return dynamic_cast<R1value*>(E2)->getValue() == dynamic_cast<R1value*>(E1)->getValue() ; }
+};
+class R1testNOT : public LogicTest
+{
+    bool test(Expression* E1, Expression* E2) const override { return dynamic_cast<R1value*>(E1)->getValue() == 0 ; }
+};
 
+class R1testGEQ : public LogicTest
+{
+    bool test(Expression* E1, Expression* E2) const override { return dynamic_cast<R1value*>(E2)->getValue() >= dynamic_cast<R1value*>(E1)->getValue() ; }
+};
+class R1testLEQ : public LogicTest
+{
+    bool test(Expression* E1, Expression* E2) const override { return dynamic_cast<R1value*>(E2)->getValue() <= dynamic_cast<R1value*>(E1)->getValue() ; }
+};
+class R1testLT : public LogicTest
+{
+    bool test(Expression* E1, Expression* E2) const override { return dynamic_cast<R1value*>(E2)->getValue() < dynamic_cast<R1value*>(E1)->getValue() ; }
+};
+class R1testGT : public LogicTest
+{
+    bool test(Expression* E1, Expression* E2) const override { return dynamic_cast<R1value*>(E2)->getValue() > dynamic_cast<R1value*>(E1)->getValue() ; }
+};
+class R1testDIFF : public LogicTest
+{
+    bool test(Expression* E1, Expression* E2) const override { return dynamic_cast<R1value*>(E2)->getValue() != dynamic_cast<R1value*>(E1)->getValue() ; }
+};
 }
 
 
