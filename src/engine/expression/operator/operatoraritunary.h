@@ -45,6 +45,48 @@ class OperatorDEN : public OperatorAritUnary {
         Expression* getCopy() const override { return new OperatorDEN; }
 };
 
+class OperatorSIN : public OperatorAritUnary {
+    public:
+        OperatorSIN();
+        const std::string toString() const override{ return "SIN"; }
+        Expression* getCopy() const override { return new OperatorSIN; }
+};
+
+class OperatorCOS : public OperatorAritUnary {
+    public:
+        OperatorCOS();
+        const std::string toString() const override{ return "COS"; }
+        Expression* getCopy() const override { return new OperatorCOS; }
+};
+
+class OperatorTAN : public OperatorAritUnary {
+    public:
+        OperatorTAN();
+        const std::string toString() const override{ return "TAN"; }
+        Expression* getCopy() const override { return new OperatorTAN; }
+};
+
+class OperatorARCSIN : public OperatorAritUnary {
+    public:
+        OperatorARCSIN();
+        const std::string toString() const override{ return "ARCSIN"; }
+        Expression* getCopy() const override { return new OperatorARCSIN; }
+};
+
+class OperatorARCCOS : public OperatorAritUnary {
+    public:
+        OperatorARCCOS();
+        const std::string toString() const override{ return "ARCCOS"; }
+        Expression* getCopy() const override { return new OperatorARCCOS; }
+};
+
+class OperatorARCTAN : public OperatorAritUnary {
+    public:
+        OperatorARCTAN();
+        const std::string toString() const override{ return "ARCTAN"; }
+        Expression* getCopy() const override { return new OperatorARCTAN; }
+};
+
 //Définitions des actions possibles avec les opérateurs binaires
 //opératorNEG
 class NegInt : public ActionUnary {
@@ -69,7 +111,6 @@ class NumRat : public ActionUnary {
 };
 
 //OpératorDEN
-//opéraotrNUM
 class DenInt : public ActionUnary {
     Expression * executeActionUnary(Expression *L) override;
 };
@@ -77,5 +118,36 @@ class DenInt : public ActionUnary {
 class DenRat : public ActionUnary {
     Expression * executeActionUnary(Expression *L) override;
 };
+
+//OpératorSIN
+class SinR1 : public ActionUnary {
+    Expression * executeActionUnary(Expression *L) override;
+};
+
+//OpératorCOS
+class CosR1 : public ActionUnary {
+    Expression * executeActionUnary(Expression *L) override;
+};
+
+//OpératorTAN
+class TanR1 : public ActionUnary {
+    Expression * executeActionUnary(Expression *L) override;
+};
+
+//OpératorARCSIN
+class ArcsinR1 : public ActionUnary {
+    Expression * executeActionUnary(Expression *L) override;
+};
+
+//OpératorARCCOS
+class ArccosR1 : public ActionUnary {
+    Expression * executeActionUnary(Expression *L) override;
+};
+
+//OpératorARCTAN
+class ArctanR1 : public ActionUnary {
+    Expression * executeActionUnary(Expression *L) override;
+};
+
 }
 #endif // OPERATORARITUNARY_H

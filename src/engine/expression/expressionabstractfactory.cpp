@@ -35,6 +35,12 @@ Engine::ExpressionAbstractFactory::ExpressionAbstractFactory()
     operatorFactory->addOperator("NUM",new OperatorNUM);
     operatorFactory->addOperator("DEN",new OperatorDEN);
     operatorFactory->addOperator("POW",new OperatorPOW);
+    operatorFactory->addOperator("SIN",new OperatorSIN);
+    operatorFactory->addOperator("COS",new OperatorCOS);
+    operatorFactory->addOperator("TAN",new OperatorTAN);
+    operatorFactory->addOperator("ARCSIN",new OperatorARCSIN);
+    operatorFactory->addOperator("ARCCOS",new OperatorARCCOS);
+    operatorFactory->addOperator("ARCTAN",new OperatorARCTAN);
     operatorFactory->addOperator("TYPE",new OperatorTYPE);
 }
 
