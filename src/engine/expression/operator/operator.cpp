@@ -18,6 +18,6 @@ void Engine::Operator::eval()
             throw ComputerException(c.what());
         }
     }
-
+    delete this;
 }
 
