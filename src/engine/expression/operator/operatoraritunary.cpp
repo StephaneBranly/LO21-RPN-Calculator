@@ -160,18 +160,27 @@ Engine::Expression* Engine::TanR1::executeActionUnary(Expression* L)
 //Opérateur ARCSIN
 Engine::Expression* Engine::ArcsinR1::executeActionUnary(Expression* L)
 {
-    return (new Lreal(asin(dynamic_cast<R1value*>(L)->getValue())));
+    double r = dynamic_cast<R1value*>(L)->getValue();
+    if (r<(-1) || r>1 )
+        throw ComputerException("Arcsin n'est pas défini pour cette valeur");
+    return (new Lreal(asin(r)));
 }
 
 //Opérateur ARCCOS
 Engine::Expression* Engine::ArccosR1::executeActionUnary(Expression* L)
 {
-    return (new Lreal(acos(dynamic_cast<R1value*>(L)->getValue())));
+    double r = dynamic_cast<R1value*>(L)->getValue();
+    if (r<(-1) || r>1 )
+        throw ComputerException("Arccos n'est pas défini pour cette valeur");
+    return (new Lreal(acos(r)));
 }
 
 //Opérateur ARCTAN
 Engine::Expression* Engine::ArctanR1::executeActionUnary(Expression* L)
 {
+    double r = dynamic_cast<R1value*>(L)->getValue();
+    if (r<(-M_PI/2) || r>(M_PI/2) )
+        throw ComputerException("Arctan n'est pas défini pour cette valeur");
     return (new Lreal(atan(dynamic_cast<R1value*>(L)->getValue())));
 }
 
