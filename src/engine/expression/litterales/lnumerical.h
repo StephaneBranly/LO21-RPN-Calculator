@@ -7,6 +7,7 @@ namespace Engine {
 class Lnumerical : public Expression
 {
 public:
+    Lnumerical();
     Lnumerical(const std::string type): Expression(type){}
     void eval(); //les sous classes héritent de l'interface et du comportement
     virtual Expression* simplifyType() = 0;
