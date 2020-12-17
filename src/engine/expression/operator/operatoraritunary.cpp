@@ -100,6 +100,30 @@ Engine::OperatorARCTAN::OperatorARCTAN(): OperatorAritUnary("OperatorARCTAN")
     registerActionUnary("Lrational", new ArctanR1);
 }
 
+//Opérateur SQRT
+Engine::OperatorSQRT::OperatorSQRT(): OperatorAritUnary("OperatorSQRT")
+{
+    registerActionUnary("Linteger", new SqrtR1);
+    registerActionUnary("Lreal", new SqrtR1);
+    registerActionUnary("Lrational", new SqrtR1);
+}
+
+//Opérateur EXP
+Engine::OperatorEXP::OperatorEXP(): OperatorAritUnary("OperatorEXP")
+{
+    registerActionUnary("Linteger", new ExpR1);
+    registerActionUnary("Lreal", new ExpR1);
+    registerActionUnary("Lrational", new ExpR1);
+}
+
+//Opérateur LN
+Engine::OperatorLN::OperatorLN(): OperatorAritUnary("OperatorLN")
+{
+    registerActionUnary("Linteger", new LnR1);
+    registerActionUnary("Lreal", new LnR1);
+    registerActionUnary("Lrational", new LnR1);
+}
+
 //Redéfinition de la méthode pour chaque ActionUnary
 //Opérator NEG
 Engine::Expression* Engine::NegInt::executeActionUnary(Expression* L)
@@ -160,29 +184,59 @@ Engine::Expression* Engine::TanR1::executeActionUnary(Expression* L)
 //Opérateur ARCSIN
 Engine::Expression* Engine::ArcsinR1::executeActionUnary(Expression* L)
 {
-    double r = dynamic_cast<R1value*>(L)->getValue();
-    if (r<(-1) || r>1 )
+    double v = dynamic_cast<R1value*>(L)->getValue();
+    if (v<(-1) || v>1 )
         throw ComputerException("Arcsin n'est pas défini pour cette valeur");
-    return (new Lreal(asin(r)));
+    return (new Lreal(asin(v)));
 }
 
 //Opérateur ARCCOS
 Engine::Expression* Engine::ArccosR1::executeActionUnary(Expression* L)
 {
-    double r = dynamic_cast<R1value*>(L)->getValue();
-    if (r<(-1) || r>1 )
+    double v = dynamic_cast<R1value*>(L)->getValue();
+    if (v<(-1) || v>1 )
         throw ComputerException("Arccos n'est pas défini pour cette valeur");
-    return (new Lreal(acos(r)));
+    return (new Lreal(acos(v)));
 }
 
 //Opérateur ARCTAN
 Engine::Expression* Engine::ArctanR1::executeActionUnary(Expression* L)
 {
-    double r = dynamic_cast<R1value*>(L)->getValue();
-    if (r<(-M_PI/2) || r>(M_PI/2) )
+    double v = dynamic_cast<R1value*>(L)->getValue();
+    if (v<(-M_PI/2) || v>(M_PI/2) )
         throw ComputerException("Arctan n'est pas défini pour cette valeur");
-    return (new Lreal(atan(dynamic_cast<R1value*>(L)->getValue())));
+    return (new Lreal(atan(v)));
 }
+
+//Opérateur SQRT
+Engine::Expression* Engine::SqrtR1::executeActionUnary(Expression* L)
+{
+    double v = dynamic_cast<R1value*>(L)->getValue();
+    if (v<0)
+        throw ComputerException("Sqrt n'est pas défini pour cette valeur");
+    return (new Lreal(sqrt(v)));
+}
+
+//Opérateur EXP
+Engine::Expression* Engine::ExpR1::executeActionUnary(Expression* L)
+{
+    return (new Lreal(exp(dynamic_cast<R1value*>(L)->getValue())));
+}
+
+//Opérateur LN
+Engine::Expression* Engine::LnR1::executeActionUnary(Expression* L)
+{
+    double v = dynamic_cast<R1value*>(L)->getValue();
+    if (v<=0)
+        throw ComputerException("Ln n'est pas défini pour cette valeur");
+    return (new Lreal(log(v)));
+}
+
+
+
+
+
+
 
 
 
