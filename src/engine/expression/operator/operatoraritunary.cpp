@@ -5,6 +5,7 @@
 #include "../litterales/lreal.h"
 #include "../litterales/lrational.h"
 #include "../litterales/lnumerical.h"
+#include <math.h>
 
 
 void Engine::OperatorAritUnary::registerActionUnary(std::string type, ActionUnary *a)
@@ -50,6 +51,55 @@ Engine::OperatorDEN::OperatorDEN(): OperatorAritUnary("OperatorDEN")
     registerActionUnary("Lrational", new DenRat);
 }
 
+//Opérateur SIN
+Engine::OperatorSIN::OperatorSIN(): OperatorAritUnary("OperatorSIN")
+{
+    registerActionUnary("Linteger", new SinR1);
+    registerActionUnary("Lreal", new SinR1);
+    registerActionUnary("Lrational", new SinR1);
+
+}
+
+//Opérateur COS
+Engine::OperatorCOS::OperatorCOS(): OperatorAritUnary("OperatorCOS")
+{
+    registerActionUnary("Linteger", new CosR1);
+    registerActionUnary("Lreal", new CosR1);
+    registerActionUnary("Lrational", new CosR1);
+}
+
+//Opérateur TAN
+Engine::OperatorTAN::OperatorTAN(): OperatorAritUnary("OperatorTAN")
+{
+    registerActionUnary("Linteger", new TanR1);
+    registerActionUnary("Lreal", new TanR1);
+    registerActionUnary("Lrational", new TanR1);
+}
+
+//Opérateur ARCSIN
+Engine::OperatorARCSIN::OperatorARCSIN(): OperatorAritUnary("OperatorARCSIN")
+{
+    registerActionUnary("Linteger", new ArcsinR1);
+    registerActionUnary("Lreal", new ArcsinR1);
+    registerActionUnary("Lrational", new ArcsinR1);
+}
+
+//Opérateur ARCCOS
+Engine::OperatorARCCOS::OperatorARCCOS(): OperatorAritUnary("OperatorARCCOS")
+{
+    registerActionUnary("Linteger", new ArccosR1);
+    registerActionUnary("Lreal", new ArccosR1);
+    registerActionUnary("Lrational", new ArccosR1);
+}
+
+//Opérateur ARCTAN
+Engine::OperatorARCTAN::OperatorARCTAN(): OperatorAritUnary("OperatorARCTAN")
+{
+    registerActionUnary("Linteger", new ArctanR1);
+    registerActionUnary("Lreal", new ArctanR1);
+    registerActionUnary("Lrational", new ArctanR1);
+}
+
 //Redéfinition de la méthode pour chaque ActionUnary
 //Opérator NEG
 Engine::Expression* Engine::NegInt::executeActionUnary(Expression* L)
@@ -88,3 +138,51 @@ Engine::Expression* Engine::DenRat::executeActionUnary(Expression* L)
 {
     return (new Linteger(dynamic_cast<Lrational*>(L)->getDenominator()));
 }
+
+//Opérateur SIN
+Engine::Expression* Engine::SinR1::executeActionUnary(Expression* L)
+{
+    return (new Lreal(sin(dynamic_cast<R1value*>(L)->getValue())));
+}
+
+//Opérateur COS
+Engine::Expression* Engine::CosR1::executeActionUnary(Expression* L)
+{
+    return (new Lreal(cos(dynamic_cast<R1value*>(L)->getValue())));
+}
+
+//Opérateur TAN
+Engine::Expression* Engine::TanR1::executeActionUnary(Expression* L)
+{
+    return (new Lreal(tan(dynamic_cast<R1value*>(L)->getValue())));
+}
+
+//Opérateur ARCSIN
+Engine::Expression* Engine::ArcsinR1::executeActionUnary(Expression* L)
+{
+    double r = dynamic_cast<R1value*>(L)->getValue();
+    if (r<(-1) || r>1 )
+        throw ComputerException("Arcsin n'est pas défini pour cette valeur");
+    return (new Lreal(asin(r)));
+}
+
+//Opérateur ARCCOS
+Engine::Expression* Engine::ArccosR1::executeActionUnary(Expression* L)
+{
+    double r = dynamic_cast<R1value*>(L)->getValue();
+    if (r<(-1) || r>1 )
+        throw ComputerException("Arccos n'est pas défini pour cette valeur");
+    return (new Lreal(acos(r)));
+}
+
+//Opérateur ARCTAN
+Engine::Expression* Engine::ArctanR1::executeActionUnary(Expression* L)
+{
+    double r = dynamic_cast<R1value*>(L)->getValue();
+    if (r<(-M_PI/2) || r>(M_PI/2) )
+        throw ComputerException("Arctan n'est pas défini pour cette valeur");
+    return (new Lreal(atan(dynamic_cast<R1value*>(L)->getValue())));
+}
+
+
+
