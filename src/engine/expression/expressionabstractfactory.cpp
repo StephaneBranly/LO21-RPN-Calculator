@@ -41,6 +41,10 @@ Engine::ExpressionAbstractFactory::ExpressionAbstractFactory()
     operatorFactory->addOperator("ARCSIN",new OperatorARCSIN);
     operatorFactory->addOperator("ARCCOS",new OperatorARCCOS);
     operatorFactory->addOperator("ARCTAN",new OperatorARCTAN);
+    operatorFactory->addOperator("SQRT",new OperatorSQRT);
+    operatorFactory->addOperator("EXP",new OperatorEXP);
+    operatorFactory->addOperator("LN",new OperatorLN);
+
     operatorFactory->addOperator("TYPE",new OperatorTYPE);
 }
 

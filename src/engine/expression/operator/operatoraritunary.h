@@ -87,6 +87,30 @@ class OperatorARCTAN : public OperatorAritUnary {
         Expression* getCopy() const override { return new OperatorARCTAN; }
 };
 
+
+class OperatorSQRT : public OperatorAritUnary {
+    public:
+        OperatorSQRT();
+        const std::string toString() const override{ return "SQRT"; }
+        Expression* getCopy() const override { return new OperatorSQRT; }
+};
+
+
+class OperatorEXP : public OperatorAritUnary {
+    public:
+        OperatorEXP();
+        const std::string toString() const override{ return "EXP"; }
+        Expression* getCopy() const override { return new OperatorEXP; }
+};
+
+
+class OperatorLN : public OperatorAritUnary {
+    public:
+        OperatorLN();
+        const std::string toString() const override{ return "LN"; }
+        Expression* getCopy() const override { return new OperatorLN; }
+};
+
 //Définitions des actions possibles avec les opérateurs binaires
 //opératorNEG
 class NegInt : public ActionUnary {
@@ -149,5 +173,19 @@ class ArctanR1 : public ActionUnary {
     Expression * executeActionUnary(Expression *L) override;
 };
 
+//OpératorSQRT
+class SqrtR1 : public ActionUnary {
+    Expression * executeActionUnary(Expression *L) override;
+};
+
+//OpératorEXP
+class ExpR1 : public ActionUnary {
+    Expression * executeActionUnary(Expression *L) override;
+};
+
+//OpératorLN
+class LnR1 : public ActionUnary {
+    Expression * executeActionUnary(Expression *L) override;
+};
 }
 #endif // OPERATORARITUNARY_H
