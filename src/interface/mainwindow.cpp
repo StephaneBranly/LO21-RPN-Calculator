@@ -11,6 +11,7 @@
 #include <QDebug>
 #include <QDockWidget>
 #include <QKeyEvent>
+#include <QFileDialog>
 
 Mainwindow::Mainwindow(QWidget *parent)
     : QMainWindow(parent)
@@ -33,6 +34,7 @@ Mainwindow::Mainwindow(QWidget *parent)
     connect(ui->a_vars, SIGNAL(toggled(bool)),variables,SLOT(toggleDock(bool)));
     connect(ui->actionParametres, SIGNAL(triggered()), this, SLOT(openSettingsWindow()));
     connect(ui->actionA_propos, SIGNAL(triggered()), this, SLOT(openAboutWindow()));
+    connect(ui->actionOuvrir, SIGNAL(triggered()), this, SLOT(loadFiles()));
     ui->mainLayout->addWidget(pile);
 
     ui->mainLayout->addWidget(commandline);
@@ -157,4 +159,34 @@ void Mainwindow::updateSizeStack(int s)
 {
     pile->updateSize(s);
     notify("stackChanged");
+}
+void Mainwindow::loadFiles()
+{
+    QFileDialog dialog(this);
+    dialog.setNameFilter(tr("Programs (*.txt *.comput)"));
+    dialog.setViewMode(QFileDialog::Detail);
+    dialog.setFileMode(QFileDialog::ExistingFiles);
+
+    if ( QDialog::Accepted == dialog.exec() )
+    {
+        QStringList filenames = dialog.selectedFiles();
+        QStringList::const_iterator it = filenames.begin();
+        QStringList::const_iterator eIt = filenames.end();
+        while ( it != eIt )
+        {
+            QString fileName = *it++;
+            if ( !fileName.isEmpty() )
+            {
+                QFile file(fileName);
+               if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+                   return;
+               buffer = "";
+               while (!file.atEnd()) {
+                   QByteArray line = file.readLine();
+                   buffer += line;
+               }
+               notify("executeBuffer");
+            }
+        }
+    }
 }

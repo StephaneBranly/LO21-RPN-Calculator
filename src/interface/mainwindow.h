@@ -59,5 +59,6 @@ public slots:
     void editAtom(const QString a);
     void openSettingsWindow();
     void openAboutWindow();
+    void loadFiles();
 };
 #endif // MAINWINDOW_H
