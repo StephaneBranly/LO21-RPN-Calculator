@@ -100,7 +100,12 @@ void Mainwindow::keyPressEvent(QKeyEvent *ev)
                 addToCommandline(" ");
                 break;
             default:
-                qDebug()<<"\nTouche non geree\n";
+                break;
+        }
+        if(ev->matches(QKeySequence::Paste))
+        {
+            QClipboard *clip = QApplication::clipboard();
+            addToCommandline(clip->text());
         }
     }
 }
