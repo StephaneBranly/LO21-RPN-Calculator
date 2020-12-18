@@ -25,12 +25,14 @@ Mainwindow::Mainwindow(QWidget *parent)
     keyboardnumeric = new KeyboardNumeric(this);
     editAtomDialog = new EditAtom(this);
     settings = new Settings(this);
+    about = new About(this);
 
     connect(ui->a_keyboardnumeric, SIGNAL(toggled(bool)),keyboardnumeric,SLOT(toggleDock(bool)));
     connect(ui->a_keyboardfunctions, SIGNAL(toggled(bool)),keyboardfunctions,SLOT(toggleDock(bool)));
     connect(ui->a_programs, SIGNAL(toggled(bool)),programmes,SLOT(toggleDock(bool)));
     connect(ui->a_vars, SIGNAL(toggled(bool)),variables,SLOT(toggleDock(bool)));
     connect(ui->actionParametres, SIGNAL(triggered()), this, SLOT(openSettingsWindow()));
+    connect(ui->actionA_propos, SIGNAL(triggered()), this, SLOT(openAboutWindow()));
     ui->mainLayout->addWidget(pile);
 
     ui->mainLayout->addWidget(commandline);
@@ -146,6 +148,10 @@ void Mainwindow::openSettingsWindow()
 {
     settings->setInputValue(pile->getSize());
     settings->show();
+}
+void Mainwindow::openAboutWindow()
+{
+    about->show();
 }
 void Mainwindow::updateSizeStack(int s)
 {
