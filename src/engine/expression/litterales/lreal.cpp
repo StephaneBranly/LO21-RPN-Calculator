@@ -15,8 +15,7 @@ Engine::Lreal::Lreal(const std::string s):  Lnumerical("Lreal"){
 }
 
 Engine::Expression* Engine::Lreal::simplifyType(){
-//    if (roundf(this->real) == this->real)
-//        return new Linteger(roundf(this->real));
-//    else return this;
-    return this;
+    if (roundf(this->real) == this->real)
+        return new Linteger(roundf(this->real));
+    else return this;
 }
