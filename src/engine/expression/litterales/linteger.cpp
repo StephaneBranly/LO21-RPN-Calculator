@@ -10,14 +10,14 @@ Engine::Linteger::Linteger(const std::string s): Lnumerical("Linteger"){
         value = std::stoi(s);
     }
     catch (const std::invalid_argument& ia) {
-        throw ComputerException("Error, argument invalide.");
+        throw ComputerException("Argument invalide.");
     }
     catch (const std::out_of_range& oor){
-        throw ComputerException("Error, valeur trop grande.");
+        throw ComputerException("Valeur trop grande.");
     }
     catch (const ComputerException& e )
     {
-        throw ComputerException("Error");
+        throw ComputerException("Erreur lors de la converstion string vers int...");
     }
 }
 
