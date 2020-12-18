@@ -87,28 +87,28 @@ class SumIntInt : public ActionBinary {
 
 class SumIntReal : public ActionBinary {
     Expression* executeActionBinary(Expression* L1,Expression* L2) override;
-    ActionBinary* getCopy() const override { return new SumIntInt; }
+    ActionBinary* getCopy() const override { return new SumIntReal; }
 };
 
 class SumIntRat : public ActionBinary {
     Expression* executeActionBinary(Expression* L1,Expression* L2) override;
-    ActionBinary* getCopy() const override { return new SumIntInt; }
+    ActionBinary* getCopy() const override { return new SumIntRat; }
 };
 
 class SumRealRat : public ActionBinary {
     Expression* executeActionBinary(Expression* L1,Expression* L2) override;
-    ActionBinary* getCopy() const override { return new SumIntInt; }
+    ActionBinary* getCopy() const override { return new SumRealRat; }
 };
 
 class SumRatRat : public ActionBinary {
     Expression* executeActionBinary(Expression* L1,Expression* L2) override;
-    ActionBinary* getCopy() const override { return new SumIntInt; }
+    ActionBinary* getCopy() const override { return new SumRatRat; }
 };
 
 //OperatorMINUS
 class SubIntInt : public ActionBinary {
     Expression* executeActionBinary(Expression* L1,Expression* L2) override;
-    ActionBinary* getCopy() const override { return new SumIntInt; }
+    ActionBinary* getCopy() const override { return new SubIntInt; }
 };
 
 class SubIntReal : public ActionBinary {
