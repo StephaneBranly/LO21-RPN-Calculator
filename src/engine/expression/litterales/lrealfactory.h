@@ -10,7 +10,7 @@ namespace Engine {
     {
     public:
         bool isSameType(const std::string s) const;
-        Lreal* createExpressionFromString(const std::string s);
+        Lreal* createExpressionFromString(const std::string s) const;
     };
 }
 

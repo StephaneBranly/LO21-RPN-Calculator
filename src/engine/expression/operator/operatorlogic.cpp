@@ -6,6 +6,18 @@
 #include "../litterales/lrational.h"
 
 
+Engine::OperatorLogic::~OperatorLogic()
+{
+    for(auto it = tests.begin(); it!=tests.end(); ++it)
+        delete (*it).second;
+}
+
+Engine::OperatorLogic::OperatorLogic(const OperatorLogic & o) : Operator(o.getType(),2)
+{
+    for(auto it = o.tests.begin() ; it!= o.tests.end() ; ++it)
+        registerTest(get<0>((*it).first),get<1>((*it).first),(*it).second->getCopy());
+};
+
 void Engine::OperatorLogic::registerTest(std::string type1,std::string type2,LogicTest* t)
 {
     tuple<string, string> p = make_tuple(type1,type2);
@@ -81,7 +93,11 @@ Engine::OperatorNot::OperatorNot(): OperatorLogic("OperatorNOT",1)
     registerTest("Lreal","",new R1testNOT);
     registerTest("Lrational","",new R1testNOT);
 };
-
+Engine::OperatorNot::OperatorNot(const OperatorNot & o): OperatorLogic("OperatorNOT",1)
+{
+    for(auto it = o.tests.begin() ; it!= o.tests.end() ; ++it)
+        registerTest(get<0>((*it).first),get<1>((*it).first),(*it).second->getCopy());
+};
 Engine::OperatorGeq::OperatorGeq(): OperatorLogic("OperatorGEQ",2)
 {
     registerTest("Linteger","Linteger",new R1testGEQ);

@@ -15,6 +15,7 @@ public:
     void eval() override;
     const std::string toString() const override{return atom;}
     Expression* getCopy() const override { return new Latom(atom); }
+    ~Latom() = default;
 };
 }
 #endif // LATOM_H

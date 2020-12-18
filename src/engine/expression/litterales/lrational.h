@@ -22,6 +22,7 @@ public:
     int getNumerator () {return numerator;}
     int getDenominator () {return denominator;}
     Expression* simplifyType() override;
+    ~Lrational() = default;
 };
 }
 #endif // LRATIONNELLE_H

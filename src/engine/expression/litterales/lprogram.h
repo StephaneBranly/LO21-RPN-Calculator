@@ -17,6 +17,7 @@ public:
     Expression* getCopy() const override { return new Lprogram(*this); }
     void explicitEval() override;
     void push_back(Expression* e){ content.push_back(e); }
+    ~Lprogram();
 };
 }
 

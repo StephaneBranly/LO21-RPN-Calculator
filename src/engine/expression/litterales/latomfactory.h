@@ -10,7 +10,7 @@ namespace Engine {
     {
     public:
         bool isSameType(const std::string s) const;
-        Latom* createExpressionFromString(const std::string s);
+        Latom* createExpressionFromString(const std::string s) const;
     };
 }
 #endif // LATOMFACTORY_H

@@ -14,7 +14,11 @@ void Engine::OperatorAritBinary::registerActionBinary(std::string type1, std::st
     tuple<string, string> t = make_tuple(type1,type2);
     opes.insert(make_pair(t,a));
 }
-
+Engine::OperatorAritBinary::OperatorAritBinary(const OperatorAritBinary & o) : Operator(o.getType(),2)
+{
+    for(auto it = o.opes.begin() ; it!= o.opes.end() ; ++it)
+        registerActionBinary(get<0>((*it).first),get<1>((*it).first),(*it).second->getCopy());
+};
 void Engine::OperatorAritBinary::executeOpe(vector<Expression*> e)
 {
     Stack& p = ComputerEngine::getInstance().getStack();
@@ -24,12 +28,24 @@ void Engine::OperatorAritBinary::executeOpe(vector<Expression*> e)
     tuple<string,string> t = make_tuple(L1->getType(),L2->getType());
     if (opes.find(t) != opes.end())
     {
-        p.push(dynamic_cast<Lnumerical*>(opes.at(t)->executeActionBinary(L2,L1))->simplifyType());
+        Expression* exp = opes.at(t)->executeActionBinary(L2,L1);
+        Lnumerical* L = dynamic_cast<Lnumerical*>(exp);
+        if(L!=nullptr)
+            p.push(L->simplifyType());
+        else
+            p.push(exp);
     }
     else
     {
         throw ComputerException("Action "+toString()+" impossible entre "+L1->getType()+" et "+L2->getType());
     }
+}
+
+//Destructeur des operateurs binaires
+Engine::OperatorAritBinary::~OperatorAritBinary()
+{
+    for(auto it = opes.begin(); it!=opes.end(); ++it)
+        delete (*it).second;
 }
 
 //Constructeurs des opérateurs binaire
@@ -47,7 +63,6 @@ Engine::OperatorPLUS::OperatorPLUS(): OperatorAritBinary("OperatorPLUS")
     registerActionBinary("Lrational", "Lreal", new SumRealRat);
     registerActionBinary("Lrational", "Lrational", new SumRatRat);
 }
-
 //opérateur -
 Engine::OperatorMINUS::OperatorMINUS(): OperatorAritBinary("OperatorMOINS")
 {

@@ -19,7 +19,7 @@ void Connector::notify(const std::string &message)
     if(message=="clickEval")
     {
         const std::string content = window.getContentCommandLine().toStdString();
-        try{engine.getExpressionManager().evalCommandLine(content); window.setMessage("OK"); window.clearCommandLine(); }
+        try{engine.getInstance().getExpressionManager().evalCommandLine(content); window.setMessage("OK"); window.clearCommandLine(); }
         catch(Engine::ComputerException e){ window.setMessage(QString::fromStdString(e.what()));}
     }else if(message=="stackChanged")
     {
@@ -52,5 +52,11 @@ void Connector::notify(const std::string &message)
             window.setMessage("OK");
         }
         catch(Engine::ComputerException e){ window.setMessage(QString::fromStdString(e.what()));}
+    }else if(message=="updateCommandLine")
+    {
+        string s = engine.getInstance().getExpressionManager().getContentEval();
+        window.clearCommandLine();
+        window.addToCommandline(QString::fromStdString(s));
     }
+
 };

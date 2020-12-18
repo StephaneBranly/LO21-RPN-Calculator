@@ -3,6 +3,8 @@
 #include "../exception/CompException.h"
 #include "litterales/lprogram.h"
 
+#include "../computerengine.h"
+
 #include <cstring>
 #include <stdio.h>
 #include <string>
@@ -28,6 +30,7 @@ void Engine::ExpressionManager::evalCommandLine(const string str){
     list<Lprogram*> prof;
     Expression* current;
     vector<string> tokens = ExpressionManager::split(str,' ');
+
     for (auto it = std::begin(tokens); it!=std::end(tokens); ++it){
         if(*it!=" "&&*it!="")
         {
@@ -65,12 +68,20 @@ void Engine::ExpressionManager::evalCommandLine(const string str){
     }
     if(!prof.empty())
         throw ComputerException("Crochet ] manquant...");
+
     for(auto it = commandLineExpressions.begin(); it!=commandLineExpressions.end(); ++it)
     {
-        try{
+        try{      
             (*it)->eval();
         }
         catch (ComputerException e) {
+            contentEval = "";
+            for(auto itC = it; itC!=commandLineExpressions.end(); ++itC)
+            {
+                contentEval += (*itC)->toString()+" ";
+                delete (*itC);
+            }
+            ComputerEngine::getInstance().notify("updateCommandLine");
             throw ComputerException(e.what());
         }
     }

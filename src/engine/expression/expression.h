@@ -14,7 +14,7 @@ public:
     virtual const std::string toString() const = 0;
     const std::string getType() const { return type; }
     virtual Expression* getCopy() const = 0;    
-    virtual ~Expression(){};
+    virtual ~Expression() = default;
 };
 
 class ExplicitEval{

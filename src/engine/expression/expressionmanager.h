@@ -13,9 +13,11 @@ class ExpressionManager{
 private:
     list<Expression*> exps;
     ExpressionAbstractFactory* factory;
+    std::string contentEval;
 public :
     ExpressionManager(){ factory = new ExpressionAbstractFactory; };
     void evalCommandLine (const string str);
+    const std::string getContentEval() const { return contentEval; }
     vector<string> split(const string& text, char delimiter);
     Expression* createExpressionFromString (const string s);
     ExpressionAbstractFactory* getFactory(){ return factory; }

@@ -13,8 +13,6 @@ Pile::Pile(QWidget *parent)
     ui->ContentTab->setStyleSheet("alternate-background-color: rgba(0,0,0,0.1);background-color: rgba(255,255,255,0.1);");
     ui->ContentTab->horizontalHeader()->setStretchLastSection(true);
     updateSize(10);
-
-
 }
 
 Pile::~Pile()
@@ -34,7 +32,7 @@ void Pile::updateContent(const std::list<QString> content)
         ui->ContentTab->item(i,0)->setText("");
 
     size_t nb=0;
-    for(auto it=content.begin(); it!=content.end()  && nb<size; ++it)
+    for(auto it=content.rbegin(); it!=content.rend()  && nb<size; ++it)
     {
         ui->ContentTab->item(size-nb-1,0)->setText(*it);
         nb++;

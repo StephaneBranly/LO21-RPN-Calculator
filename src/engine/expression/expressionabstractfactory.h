@@ -14,7 +14,7 @@ private:
     std::list<ExpressionFactory*> factories;
 public:
     ExpressionAbstractFactory();
-    Expression* createExpressionFromString(const std::string s);
+    Expression* createExpressionFromString(const std::string s) const;
     void registerFactory(ExpressionFactory* factory){ factories.push_back(factory); }
     OperatorFactory* getOperatorFactory() const { return operatorFactory; }
 };

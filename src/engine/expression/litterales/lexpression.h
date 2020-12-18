@@ -19,6 +19,7 @@ public:
     std::string const toString() const override{return "'"+expression+"'";} //implémentation de l'affichage spécifié pour une littérale expression. Définition de la méthode héritée de Expression.
     Expression* getCopy() const override {return new Lexpression(expression);} //retourne une copie de l'instance, définition de la méthode héritée de Expression.
     void explicitEval() override; //évaluation d'un expression, définition non inline, méthode héritée de Expression.
+    ~Lexpression() = default;
 };
 }
 #endif // LEXPRESSION_H

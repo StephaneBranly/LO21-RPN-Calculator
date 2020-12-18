@@ -12,7 +12,11 @@ void Engine::OperatorAritUnary::registerActionUnary(std::string type, ActionUnar
 {
     opes.insert(make_pair(type,a));
 }
-
+Engine::OperatorAritUnary::OperatorAritUnary(const OperatorAritUnary & o) : Operator(o.getType(),1)
+{
+    for(auto it = o.opes.begin() ; it!= o.opes.end() ; ++it)
+        registerActionUnary((*it).first,(*it).second->getCopy());
+};
 void Engine::OperatorAritUnary::executeOpe(vector<Expression*> e)
 {
     Stack& p = ComputerEngine::getInstance().getStack();
@@ -20,12 +24,24 @@ void Engine::OperatorAritUnary::executeOpe(vector<Expression*> e)
     string t = L->getType();
     if (opes.find(t) != opes.end())
     {
-        p.push(dynamic_cast<Lnumerical*>(opes.at(t)->executeActionUnary(L))->simplifyType());
+        Expression* exp = opes.at(t)->executeActionUnary(L);
+        Lnumerical* L = dynamic_cast<Lnumerical*>(exp);
+        if(L!=nullptr)
+            p.push(L->simplifyType());
+        else
+            p.push(exp);
     }
     else
     {
         throw ComputerException("Action "+toString()+" impossible avec "+L->getType());
     }
+}
+
+//Destructeur des operateurs binaires
+Engine::OperatorAritUnary::~OperatorAritUnary()
+{
+    for(auto it = opes.begin(); it!=opes.end(); ++it)
+        delete (*it).second;
 }
 
 //Constructeurs des opérateurs unaires
