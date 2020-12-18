@@ -28,6 +28,13 @@ void Engine::OperatorAritUnary::executeOpe(vector<Expression*> e)
     }
 }
 
+//Destructeur des operateurs binaires
+Engine::OperatorAritUnary::~OperatorAritUnary()
+{
+    for(auto it = opes.begin(); it!=opes.end(); ++it)
+        delete (*it).second;
+}
+
 //Constructeurs des opérateurs unaires
 //opéteur NEG
 Engine::OperatorNEG::OperatorNEG(): OperatorAritUnary("OperatorNEG")

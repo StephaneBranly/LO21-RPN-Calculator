@@ -16,11 +16,13 @@ public:
     OperatorAritUnary(const std::string t): Operator(t,1){}
     void registerActionUnary(std::string type,ActionUnary* a);
     void executeOpe(vector<Expression*> e);
+    ~OperatorAritUnary();
 };
 
 class ActionUnary{
 public:
     virtual Expression* executeActionUnary(Expression* L) = 0;
+    virtual ~ActionUnary() = default;
 };
 
 //Définitions des classes opérateurs unaires

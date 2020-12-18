@@ -16,11 +16,13 @@ public:
     OperatorAritBinary(const std::string t): Operator(t,2){}
     void registerActionBinary(std::string type1,std::string type2,ActionBinary* a);
     void executeOpe(vector<Expression*> e);
+    ~OperatorAritBinary();
 };
 
 class ActionBinary{
 public:
     virtual Expression* executeActionBinary(Expression* L1, Expression* L2) = 0;
+    virtual ~ActionBinary() = default;
 };
 
 

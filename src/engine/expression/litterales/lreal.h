@@ -16,6 +16,7 @@ public:
     std::string const toString()const override{return std::to_string(real);}
     Expression* getCopy() const override { return new Lreal(real); }
     Expression* simplifyType() override;
+    ~Lreal() = default;
 };
 }
 #endif // LREELLE_H

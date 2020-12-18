@@ -6,6 +6,13 @@
 #include "../litterales/lrational.h"
 
 
+Engine::OperatorLogic::~OperatorLogic()
+{
+    for(auto it = tests.begin(); it!=tests.end(); ++it)
+        delete (*it).second;
+}
+
+
 void Engine::OperatorLogic::registerTest(std::string type1,std::string type2,LogicTest* t)
 {
     tuple<string, string> p = make_tuple(type1,type2);

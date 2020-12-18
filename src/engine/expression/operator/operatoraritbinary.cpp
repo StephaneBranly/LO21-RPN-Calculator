@@ -32,6 +32,13 @@ void Engine::OperatorAritBinary::executeOpe(vector<Expression*> e)
     }
 }
 
+//Destructeur des operateurs binaires
+Engine::OperatorAritBinary::~OperatorAritBinary()
+{
+    for(auto it = opes.begin(); it!=opes.end(); ++it)
+        delete (*it).second;
+}
+
 //Constructeurs des opérateurs binaire
 //opérateur +
 Engine::OperatorPLUS::OperatorPLUS(): OperatorAritBinary("OperatorPLUS")

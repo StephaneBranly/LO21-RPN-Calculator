@@ -18,6 +18,7 @@ public:
     std::string const toString() const override{ return std::to_string(value); }
     Expression* getCopy() const override { return new Linteger(value); }
     Expression* simplifyType () override { return this; }
+    ~Linteger() = default;
 };
 }
 #endif // LENTIERE_H

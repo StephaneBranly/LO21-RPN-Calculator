@@ -37,3 +37,11 @@ void Engine::Lprogram::explicitEval()
         }
     }
 }
+
+Engine::Lprogram::~Lprogram()
+{
+    for(auto it = content.begin(); it!=content.end();++it)
+    {
+        delete (*it);
+    }
+}

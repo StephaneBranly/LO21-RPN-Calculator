@@ -15,11 +15,13 @@ public:
     OperatorLogic(const std::string t, const size_t arrity): Operator(t,arrity){}
     void executeOpe(vector<Expression*> e);
     void registerTest(std::string type1,std::string type2,LogicTest* t);
+    ~OperatorLogic();
 };
 
 class LogicTest{
 public:
     virtual bool test(Expression* E1, Expression* E2) const=0;
+    virtual ~LogicTest() = default;
 };
 
 class OperatorAnd : public OperatorLogic {
