@@ -60,6 +60,7 @@ void Mainwindow::updateTabDocks()
 void Mainwindow::addToCommandline(const QString str)
 {
     QString c = commandline->getText();
+
     if(!c.endsWith(" ",Qt::CaseInsensitive))
     {
         if(str.contains(QRegExp("[!=<>\\d.\' ]")))
@@ -69,6 +70,11 @@ void Mainwindow::addToCommandline(const QString str)
     }
     else if(!str.contains(QRegExp(" ")))
         commandline->addText(str);
+    qDebug()<<"\n"<<c;
+    if(str.contains(QRegExp("[-*+/]$")))
+    {
+        notify("clickEval");
+    }
 }
 
 void Mainwindow::keyPressEvent(QKeyEvent *ev)
