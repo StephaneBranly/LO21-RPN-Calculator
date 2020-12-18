@@ -70,7 +70,6 @@ void Mainwindow::addToCommandline(const QString str)
     }
     else if(!str.contains(QRegExp(" ")))
         commandline->addText(str);
-    qDebug()<<"\n"<<c;
     if(str.contains(QRegExp("[-*+/]$")))
     {
         notify("clickEval");
