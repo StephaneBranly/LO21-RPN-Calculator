@@ -10,7 +10,7 @@ class LexpressionFactory : public ExpressionFactory
     {
     public:
         bool isSameType(const std::string s) const;
-        Lexpression* createExpressionFromString(const std::string s);
+        Lexpression* createExpressionFromString(const std::string s) const;
     };
 };
 

@@ -11,7 +11,8 @@ namespace Engine {
         std::map<std::string, Operator*> operators;
     public:
         bool isSameType(const std::string s) const;
-        Expression* createExpressionFromString(const std::string s);
+        Expression* createExpressionFromString(const std::string s) const;
+        Expression* getOriginalOperatorFromString(const std::string s);
         void addOperator(const std::string name, Operator* ope);
         void removeOperator(const std::string name);
     };

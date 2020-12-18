@@ -10,7 +10,7 @@ namespace Engine {
     {
     public:
         bool isSameType(const std::string s) const;
-        Linteger* createExpressionFromString(const std::string s);
+        Linteger* createExpressionFromString(const std::string s) const;
     };
 }
 

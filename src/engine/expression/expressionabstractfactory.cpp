@@ -48,7 +48,7 @@ Engine::ExpressionAbstractFactory::ExpressionAbstractFactory()
     operatorFactory->addOperator("TYPE",new OperatorTYPE);
 }
 
-Engine::Expression* Engine::ExpressionAbstractFactory::createExpressionFromString(const std::string s)
+Engine::Expression* Engine::ExpressionAbstractFactory::createExpressionFromString(const std::string s) const
 {
     Expression* res=nullptr;
     if(operatorFactory->isSameType(s))

@@ -11,7 +11,7 @@ class ExpressionFactory
 public:
     ExpressionFactory()=default;
     virtual bool isSameType(const std::string s) const = 0;
-    virtual Expression* createExpressionFromString(const std::string s) = 0 ;
+    virtual Expression* createExpressionFromString(const std::string s) const = 0 ;
 };
 }
 
