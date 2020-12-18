@@ -27,6 +27,7 @@ SOURCES += \
     src/engine/expression/operator/operatorlogic.cpp \
     src/engine/expression/operator/operatorsdefinition.cpp \
     src/engine/stack/stack.cpp \
+    src/interface/about/about.cpp \
     src/interface/editAtom/editatom.cpp \
     src/interface/mainwindow.cpp \
     src/interface/widgets/clickablelabel/clickablelabel.cpp \
@@ -41,6 +42,7 @@ SOURCES += \
     src/observer/subject.cpp \
 
 FORMS += \
+    src/interface/about/about.ui \
     src/interface/editAtom/editatom.ui \
     src/interface/mainwindow.ui \
     src/interface/settings/settings.ui \
@@ -78,6 +80,7 @@ HEADERS += \
     src/engine/expression/operator/operatorlogic.h \
     src/engine/expression/operator/operatorsdefinition.h \
     src/engine/stack/stack.h \
+    src/interface/about/about.h \
     src/interface/editAtom/editatom.h \
     src/interface/mainwindow.h \
     src/interface/widgets/clickablelabel/clickablelabel.h \

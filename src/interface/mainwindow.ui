@@ -69,7 +69,14 @@
     <addaction name="separator"/>
     <addaction name="actionParametres"/>
    </widget>
+   <widget class="QMenu" name="menuA_propos">
+    <property name="title">
+     <string>Autres</string>
+    </property>
+    <addaction name="actionA_propos"/>
+   </widget>
    <addaction name="menuInterface"/>
+   <addaction name="menuA_propos"/>
   </widget>
   <action name="a_keyboardnumeric">
    <property name="checkable">
@@ -126,6 +133,11 @@
   <action name="actionParametres">
    <property name="text">
     <string>Parametres</string>
+   </property>
+  </action>
+  <action name="actionA_propos">
+   <property name="text">
+    <string>A propos</string>
    </property>
   </action>
  </widget>
