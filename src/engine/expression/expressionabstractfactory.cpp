@@ -3,7 +3,7 @@
 #include "operator/operatoraritbinary.h"
 #include "operator/operatoraritunary.h"
 #include "operator/operatorlogic.h"
-
+#include "operator/operatorcond.h"
 #include <QDebug>
 
 Engine::ExpressionAbstractFactory::ExpressionAbstractFactory()
@@ -44,6 +44,7 @@ Engine::ExpressionAbstractFactory::ExpressionAbstractFactory()
     operatorFactory->addOperator("SQRT",new OperatorSQRT);
     operatorFactory->addOperator("EXP",new OperatorEXP);
     operatorFactory->addOperator("LN",new OperatorLN);
+    operatorFactory->addOperator("IFT",new OperatorIFT);
 
     operatorFactory->addOperator("TYPE",new OperatorTYPE);
 }
