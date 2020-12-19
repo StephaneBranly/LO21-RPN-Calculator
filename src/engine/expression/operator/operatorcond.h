@@ -17,7 +17,14 @@ class OperatorIFT : public Operator {
 
     };
 
+class OperatorIFTE : public Operator {
+    public:
+        OperatorIFTE():Operator("OperatorIFT",3){}
+        const std::string toString() const override{ return "IFTE"; }
+        Expression* getCopy() const override { return new OperatorIFTE; }
+        void executeOpe(vector<Expression*> e) override;
 
+    };
 
 
 

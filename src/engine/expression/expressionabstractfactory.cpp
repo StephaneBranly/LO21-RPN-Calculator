@@ -45,6 +45,7 @@ Engine::ExpressionAbstractFactory::ExpressionAbstractFactory()
     operatorFactory->addOperator("EXP",new OperatorEXP);
     operatorFactory->addOperator("LN",new OperatorLN);
     operatorFactory->addOperator("IFT",new OperatorIFT);
+    operatorFactory->addOperator("IFTE",new OperatorIFTE);
 
     operatorFactory->addOperator("TYPE",new OperatorTYPE);
 }
