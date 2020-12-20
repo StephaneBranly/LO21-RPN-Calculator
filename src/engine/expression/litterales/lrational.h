@@ -4,7 +4,7 @@
 #include "../../exception/CompException.h"
 
 namespace Engine {
-class Lrational  : public Lnumerical, public R1value
+class Lrational  : public Lnumerical, public R1value, public editString
 {
     int numerator;
     int denominator;
@@ -22,6 +22,7 @@ public:
     int getNumerator () {return numerator;}
     int getDenominator () {return denominator;}
     Expression* simplifyType() override;
+    const std::string toEditString() const override { return std::to_string(numerator)+" "+std::to_string(denominator)+" /"; }
     ~Lrational() = default;
 };
 }
