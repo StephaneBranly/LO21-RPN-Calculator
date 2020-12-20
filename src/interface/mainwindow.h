@@ -15,6 +15,7 @@
 #include "widgets/programmes/programmes.h"
 #include "editAtom/editatom.h"
 #include "about/about.h"
+#include "saveWindow/savewindow.h"
 
 #include "settings/settings.h"
 
@@ -47,6 +48,7 @@ private:
     QString buffer;
     Settings* settings;
     About* about;
+    SaveWindow* saveW;
 protected:
     void keyPressEvent(QKeyEvent *ev);
 public slots:
@@ -59,6 +61,8 @@ public slots:
     void editAtom(const QString a);
     void openSettingsWindow();
     void openAboutWindow();
+    void openSaveWindow();
     void loadFiles();
+    void getAtomEditValueToSave();
 };
 #endif // MAINWINDOW_H

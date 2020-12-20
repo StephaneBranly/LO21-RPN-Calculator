@@ -30,6 +30,7 @@ SOURCES += \
     src/interface/about/about.cpp \
     src/interface/editAtom/editatom.cpp \
     src/interface/mainwindow.cpp \
+    src/interface/saveWindow/savewindow.cpp \
     src/interface/widgets/clickablelabel/clickablelabel.cpp \
     src/interface/settings/settings.cpp \
     src/interface/widgets/commandline/commandline.cpp \
@@ -45,6 +46,7 @@ FORMS += \
     src/interface/about/about.ui \
     src/interface/editAtom/editatom.ui \
     src/interface/mainwindow.ui \
+    src/interface/saveWindow/savewindow.ui \
     src/interface/settings/settings.ui \
     src/interface/widgets/commandline/commandline.ui \
     src/interface/widgets/keyboardfunctions/keyboardfunctions.ui \
@@ -83,6 +85,7 @@ HEADERS += \
     src/interface/about/about.h \
     src/interface/editAtom/editatom.h \
     src/interface/mainwindow.h \
+    src/interface/saveWindow/savewindow.h \
     src/interface/widgets/clickablelabel/clickablelabel.h \
     src/interface/settings/settings.h \
     src/interface/widgets/commandline/commandline.h \

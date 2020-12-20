@@ -62,13 +62,13 @@ void Programmes::editProg(const QString s)
 
 Program::Program(Programmes* v,const QString name):parent(v), name(name)
 {
-    layout = new QHBoxLayout();
+    layout = new QHBoxLayout(this);
 
     setLayout(layout);
-    button = new QPushButton();
+    button = new QPushButton(this);
     button->setText(name);
 
-    editLabel = new ClickableLabel();
+    editLabel = new ClickableLabel(this);
     editLabel->setText("Editer");
     editLabel->setRefName(name);
     editLabel->installEventFilter(this);

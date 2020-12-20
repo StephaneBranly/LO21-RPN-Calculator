@@ -27,6 +27,7 @@ Mainwindow::Mainwindow(QWidget *parent)
     editAtomDialog = new EditAtom(this);
     settings = new Settings(this);
     about = new About(this);
+    saveW = new SaveWindow(this);
 
     connect(ui->a_keyboardnumeric, SIGNAL(toggled(bool)),keyboardnumeric,SLOT(toggleDock(bool)));
     connect(ui->a_keyboardfunctions, SIGNAL(toggled(bool)),keyboardfunctions,SLOT(toggleDock(bool)));
@@ -35,6 +36,7 @@ Mainwindow::Mainwindow(QWidget *parent)
     connect(ui->actionParametres, SIGNAL(triggered()), this, SLOT(openSettingsWindow()));
     connect(ui->actionA_propos, SIGNAL(triggered()), this, SLOT(openAboutWindow()));
     connect(ui->actionOuvrir, SIGNAL(triggered()), this, SLOT(loadFiles()));
+    connect(ui->actionSauvegarder, SIGNAL(triggered()), this, SLOT(openSaveWindow()));
     ui->mainLayout->addWidget(pile);
 
     ui->mainLayout->addWidget(commandline);
@@ -130,6 +132,7 @@ void Mainwindow::updateAtoms(const std::list<std::tuple<QString,QString,QString>
     progs.sort();
     variables->updateVars(vars);
     programmes->updateProgs(progs);
+    saveW->updateAtoms(progs,vars);
 }
 
 void Mainwindow::execute(const QString a)
@@ -146,6 +149,12 @@ void Mainwindow::editAtom(const QString s)
     editAtomDialog->setAtomValue(buffer);
     editAtomDialog->show();
 }
+void Mainwindow::getAtomEditValueToSave()
+{
+    buffer = saveW->getBuffer();
+    notify("needAtomValue");
+    saveW->setBuffer(buffer);
+}
 void Mainwindow::openSettingsWindow()
 {
     settings->setInputValue(pile->getSize());
@@ -154,6 +163,11 @@ void Mainwindow::openSettingsWindow()
 void Mainwindow::openAboutWindow()
 {
     about->show();
+}
+
+void Mainwindow::openSaveWindow()
+{
+    saveW->show();
 }
 void Mainwindow::updateSizeStack(int s)
 {
@@ -183,7 +197,7 @@ void Mainwindow::loadFiles()
                buffer = "";
                while (!file.atEnd()) {
                    QByteArray line = file.readLine();
-                   buffer += line;
+                   buffer += " "+line.trimmed()+" ";
                }
                notify("executeBuffer");
             }
