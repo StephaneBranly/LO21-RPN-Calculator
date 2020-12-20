@@ -14,17 +14,30 @@ class OperatorIFT : public Operator {
         const std::string toString() const override{ return "IFT"; }
         Expression* getCopy() const override { return new OperatorIFT; }
         void executeOpe(vector<Expression*> e) override;
-
     };
 
 class OperatorIFTE : public Operator {
     public:
-        OperatorIFTE():Operator("OperatorIFT",3){}
+        OperatorIFTE():Operator("OperatorIFTE",3){}
         const std::string toString() const override{ return "IFTE"; }
         Expression* getCopy() const override { return new OperatorIFTE; }
         void executeOpe(vector<Expression*> e) override;
-
     };
+
+class OperatorWHILE : public Operator {
+private:
+    unsigned int deepLimit = 1000;
+    public:
+        OperatorWHILE():Operator("OperatorWHILE",2){}
+        void setDeepLimit(const unsigned int i){ deepLimit = i; }
+        const std::string toString() const override{ return "WHILE"; }
+        Expression* getCopy() const override { return new OperatorWHILE; }
+        void executeOpe(vector<Expression*> e) override;
+    };
+
+
+
+
 
 
 

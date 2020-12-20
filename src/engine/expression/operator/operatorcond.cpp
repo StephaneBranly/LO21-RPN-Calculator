@@ -7,40 +7,78 @@
 
 
 void::Engine::OperatorIFT::executeOpe(vector<Expression*> e){
-
-    Stack& p = ComputerEngine::getInstance().getStack();
     R1value* a=dynamic_cast<R1value*>(e[1]);
 
-    if(a->getValue()!=0){
-        Engine::OperatorEVAL* opE= new Engine::OperatorEVAL();
-        opE->Engine::OperatorEVAL::executeOpe(e);
-
+    if(a!=nullptr)
+    {
+        if(a->getValue()!=0)
+        {
+            ExplicitEval* toEval = dynamic_cast<ExplicitEval*>(e[0]);
+            if(toEval!=nullptr)
+                toEval->explicitEval();
+            else
+                e[0]->eval();
+       }
     }
-    else if(a->getValue()==0) {
-
-        throw  ComputerException("Le resultat du test est faux");
-    }
-
-
+    else
+        throw ComputerException(e[1]->toString()+" n'est pas le résultat d'un test logique...");
 }
 
 void::Engine::OperatorIFTE::executeOpe(vector<Expression*> e){
-
-    Stack& p = ComputerEngine::getInstance().getStack();
     R1value* a=dynamic_cast<R1value*>(e[2]);
 
-    if(a->getValue()!=0){
-        Engine::OperatorIFT* opI= new Engine::OperatorIFT();
-        opI->Engine::OperatorIFT::executeOpe(e);
+    if(a!=nullptr)
+    {
+        Expression* exp = nullptr;
+        if(a->getValue()!=0)
+            exp = e[1];
+        else
+            exp = e[0];
 
+        ExplicitEval* toEval = dynamic_cast<ExplicitEval*>(exp);
+        if(toEval!=nullptr)
+            toEval->explicitEval();
+        else
+            exp->eval();
     }
-    else if(a->getValue()==0) {
+    else
+        throw ComputerException(e[2]->toString()+" n'est pas le résultat d'un test logique...");
+}
 
-        throw  ComputerException("Le resultat du test est faux");
+void::Engine::OperatorWHILE::executeOpe(vector<Expression*> e){
+    Stack& p = ComputerEngine::getInstance().getStack();
 
-    }
+    R1value* a=dynamic_cast<R1value*>(e[1]);
+    Expression* exp = e[0];
+    ExplicitEval* toEval = dynamic_cast<ExplicitEval*>(exp);
+    unsigned int boucle = 0;
+    do
+    {
+        if(a!=nullptr)
+        {
+            qDebug()<<"Valeur";
+            qDebug()<<(int)a->getValue();
+            if(a->getValue()!=0)
+            {
+                qDebug()<<QString::fromStdString(exp->toString())+" A EXECUTER";
 
+                if(toEval!=nullptr)
+                    dynamic_cast<ExplicitEval*>(exp->getCopy())->explicitEval();
+                else
+                    exp->getCopy()->eval();
+                qDebug()<<p.size();
+                if(p.size()>0)
+                    a = dynamic_cast<R1value*>(p.pop());
+                else
+                    throw ComputerException("Il manque la valeur du test logique.");
+                boucle++;
+            }
+        }
+        else
+            throw ComputerException(e[1]->toString()+" n'est pas le résultat d'un test logique.");
+    }while(boucle<deepLimit && a!=nullptr && a->getValue()!=0);
 
+    if(boucle>=deepLimit) throw ComputerException("Limite de boucles atteinte.");
 }
 
 
