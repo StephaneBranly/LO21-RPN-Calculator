@@ -14,24 +14,31 @@ abstract class Operator {
   + {virtual} executeOpe(e : vector<Expression*>)
   + eval()
   + {virtual} getCopy() const : Expression*
+  + {virtual} ~Operator()
 }
 Expression <|-down- Operator
 
 class OperatorAritBinary{
   - opes : map<tuple<string, string>, ActionBinary*>
   + OperatorAritBinary(t : const string)
+  + OperatorAritBinary(o : const OperatorAritBinary&)
   + registerActionBinary(type1 : string, type2 : string, a: ActionBinary*)
   + executeOpe(e : vector<Expression*>)
+  + ~OperatorAritBinary()
 }
-Operator <|-right- OperatorAritBinary
+Operator <|------- OperatorAritBinary
+OperatorAritBinary ---- ActionBinary
 
 class OperatorAritUnary {
   - opes : map<string, ActionUnary*>
   + OperatorAritUnary(t : const string)
+  + OperatorAritUnary(o : const OperatorAritUnary&)
   + registerActionUnary(type : string, a : ActionUnary*)
   + executeOpe(e : vector<Expression*>)
+  + ~OperatorAritUnary()
 }
 Operator <|-left- OperatorAritUnary
+OperatorAritUnary --- ActionUnary
 
 class OperatorPLUS {
   + OperatorPLUS()
@@ -103,10 +110,100 @@ class OperatorDEN {
 }
 OperatorAritUnary<|-up- OperatorDEN
 
+class OperatorSIN {
+  + OperatorSIN()
+  + toString() const : const string
+  + getCopy() const : Expression*
+}
+OperatorAritUnary<|-up- OperatorSIN
+
+class OperatorCOS {
+  + OperatorCOS()
+  + toString() const : const string
+  + getCopy() const : Expression*
+}
+OperatorAritUnary<|-up- OperatorCOS
+
+class OperatorTAN {
+  + OperatorTAN()
+  + toString() const : const string
+  + getCopy() const : Expression*
+}
+OperatorAritUnary<|-down- OperatorTAN
+
+class OperatorARCSIN {
+  + OperatorARCSIN()
+  + toString() const : const string
+  + getCopy() const : Expression*
+}
+OperatorAritUnary<|-down- OperatorARCSIN
+
+class OperatorARCCOS {
+  + OperatorARCCOS()
+  + toString() const : const string
+  + getCopy() const : Expression*
+}
+OperatorAritUnary<|-right- OperatorARCCOS
+
+class OperatorARCTAN {
+  + OperatorARCTAN()
+  + toString() const : const string
+  + getCopy() const : Expression*
+}
+OperatorAritUnary<|-down- OperatorARCTAN
+
+class OperatorSQRT {
+  + OperatorSQRT()
+  + toString() const : const string
+  + getCopy() const : Expression*
+}
+OperatorAritUnary<|-left- OperatorSQRT
+
+class OperatorEXP {
+  + OperatorEXP()
+  + toString() const : const string
+  + getCopy() const : Expression*
+}
+OperatorAritUnary<|-left- OperatorEXP
+
+class OperatorLN {
+  + OperatorLN()
+  + toString() const : const string
+  + getCopy() const : Expression*
+}
+OperatorAritUnary<|-- OperatorLN
+
+class OperatorIFT {
+  + OperatorIFT()
+  + toString() const : const string
+  + getCopy() const : Expression*
+  + executeOpe(e : vector<Expression*>)
+}
+Operator <|-up- OperatorIFT
+
+class OperatorIFTE {
+  + OperatorIFTE()
+  + toString() const : const string
+  + getCopy() const : Expression*
+  + executeOpe(e : vector<Expression*>)
+}
+Operator <|-up- OperatorIFTE
+
+class OperatorWHILE {
+  - deepLimit : unsigned int = 1000
+  + OperatorWHILE()
+  + setDeepLimit(i : const unsigned int)
+  + toString() const : const string
+  + getCopy() const : Expression*
+  + executeOpe(e : vector<Expression*>) 
+}
+Operator <|-- OperatorWHILE
+
 class OperatorFactory {
   - operators : map<string, Operator*>
   + isSameType(s : const string) const : bool
-  + createExpressionFromString(s : const string) : Expression*
+  + createExpressionFromString(s : const string) const : Expression*
+  + getOriginalOperatorFromString(s : const string) : Expression*
   + addOperator(name : const string, ope : Operator*)
   + removeOperator(name : const string)
 }
@@ -116,38 +213,41 @@ OperatorFactory "1" -- "*" Operator
 class OperatorLogic {
   - tests : map<tuple<string, string>, LogicTest*>
   + OperatorLogic(t : const string, arrity : const size_t)
+  + OperatorLogic(o : const OperatorLogic&)
   + executeOpe(e : vector<Expression*>)
   + registerTest(type1 : string, type2 : string, t : LogicTest*)
+  + ~OperatorLogic()
 }
-Operator <|----- OperatorLogic
+Operator <|------ OperatorLogic
+OperatorLogic -- LogicTest
 
 class OperatorAnd {
   + OperatorAnd()
   + toString() const : const string
   + getCopy() const : Expression*
 }
-OperatorLogic <|-- OperatorAnd
+OperatorLogic <|-right- OperatorAnd
 
 class OperatorOr {
   + OperatorOr()
   + toString() const : const string
   + getCopy() const : Expression*
 }
-OperatorLogic <|-- OperatorOr
+OperatorLogic <|-right- OperatorOr
 
 class OperatorNot {
   + OperatorNot()
   + toString() const : const string
   + getCopy() const : Expression*
 }
-OperatorLogic <|-- OperatorNot
+OperatorLogic <|-left- OperatorNot
 
 class OperatorEq {
   + OperatorEq()
   + toString() const : const string
   + getCopy() const : Expression*
 }
-OperatorLogic <|-- OperatorEq
+OperatorLogic <|-left- OperatorEq
 
 class OperatorGeq {
   + OperatorGeq()
