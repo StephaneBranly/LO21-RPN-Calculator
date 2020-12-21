@@ -11,11 +11,11 @@ Engine::Lreal* Engine::Lreal::setReal(double r){
 }
 
 Engine::Lreal::Lreal(const std::string s):  Lnumerical("Lreal"){
-    real = stod(s);
+    real = stod(s); // Conversion de String vers Double
 }
 
 Engine::Expression* Engine::Lreal::simplifyType(){
-    if (roundf(this->real) == this->real)
+    if (roundf(this->real) == this->real) // On regarde s'il la partie decimale est nulle
         return new Linteger(roundf(this->real));
     else return this;
 }

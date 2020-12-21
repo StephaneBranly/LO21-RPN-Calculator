@@ -21,8 +21,11 @@ SaveWindow::~SaveWindow()
 
 void SaveWindow::acceptedChanges()
 {
+    // Sauvegarde dans le fichier
     QString pathname = ui->path->text();
     QString toSave = "";
+
+    // Creation du contenu du fichier en regardant les atoms a sauvegarder (isChecked())
     for(auto it = atoms.begin(); it!=atoms.end(); ++it)
     {
         if((*it)->isChecked())

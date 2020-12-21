@@ -29,8 +29,9 @@ void Engine::ExpressionManager::evalCommandLine(const string str){
     list<Expression*> commandLineExpressions;
     list<Lprogram*> prof;
     Expression* current;
-    vector<string> tokens = ExpressionManager::split(str,' ');
+    vector<string> tokens = ExpressionManager::split(str,' '); // On split suivant les ' ' pour n'avoir que les Expressions
 
+    // Etape 1, on cree toutes les Expressions (s'occupe de la profondeur des Lprograms)
     for (auto it = std::begin(tokens); it!=std::end(tokens); ++it){
         if(*it!=" "&&*it!="")
         {
@@ -52,7 +53,7 @@ void Engine::ExpressionManager::evalCommandLine(const string str){
             {
                 try {
                     current = factory->createExpressionFromString(*it);
-                    if(prof.empty())
+                    if(prof.empty()) // On push l'expression soit a la racine, soit dans le Lprogram
                     {
                         commandLineExpressions.push_back(current);
                         exps.push_back(current);
@@ -66,15 +67,20 @@ void Engine::ExpressionManager::evalCommandLine(const string str){
             }
         }
     }
+
+    // On verifie que les programs sont bien fermes
     if(!prof.empty())
         throw ComputerException("Crochet ] manquant...");
 
+    // Etape 2, on evalue toutes les Expression
     for(auto it = commandLineExpressions.begin(); it!=commandLineExpressions.end(); ++it)
     {
         try{      
             (*it)->eval();
         }
         catch (ComputerException e) {
+            // En cas d'erreur, on mets a jour la command Line, on efface les Expressions non exploitees
+            // et on throw une erreur
             contentEval = "";
             for(auto itC = it; itC!=commandLineExpressions.end(); ++itC)
             {
@@ -86,9 +92,4 @@ void Engine::ExpressionManager::evalCommandLine(const string str){
         }
     }
 }
-
-Engine::ExpressionManager::~ExpressionManager(){
-//    for(auto e : exps) {delete e;}
-}
-
 

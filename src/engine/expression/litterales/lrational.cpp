@@ -13,6 +13,7 @@ Engine::Lrational::Lrational(Linteger& e1, Linteger& e2):Lnumerical("Lrational")
     denominator = e2.getValue();
 };
 
+// Simplification du Lrationnal
 Engine::Expression* Engine::Lrational::simplifyType()
 {
         int r;

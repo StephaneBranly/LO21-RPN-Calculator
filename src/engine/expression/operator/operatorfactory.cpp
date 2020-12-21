@@ -12,6 +12,7 @@ Engine::Expression* Engine::OperatorFactory::createExpressionFromString(const st
         return operators.at(s)->getCopy();
     throw ComputerException("Il n'existe pas d'operator "+s+".");
 }
+
 Engine::Expression* Engine::OperatorFactory::getOriginalOperatorFromString(const std::string s)
 {
     if(isSameType(s))
@@ -19,6 +20,7 @@ Engine::Expression* Engine::OperatorFactory::getOriginalOperatorFromString(const
     throw ComputerException("Il n'existe pas d'operator "+s+".");
 }
 
+// Ajout d'un operateur en creant la paire nom, operateur
 void Engine::OperatorFactory::addOperator(const std::string name, Operator* ope)
 {
     operators.insert(std::pair<std::string,Operator*>(name,ope));

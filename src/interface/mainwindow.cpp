@@ -82,7 +82,7 @@ void Mainwindow::addToCommandline(const QString str)
     }
 }
 
-void Mainwindow::keyPressEvent(QKeyEvent *ev)
+void Mainwindow::keyPressEvent(QKeyEvent *ev) // Gestions des differentes touches
 {
     QString text = ev->text();
     if(text.contains(QRegExp("^[A-Za-z]+$")))
@@ -174,7 +174,7 @@ void Mainwindow::updateSizeStack(int s)
     pile->updateSize(s);
     notify("stackChanged");
 }
-void Mainwindow::loadFiles()
+void Mainwindow::loadFiles() // Permet de charger des fichiers
 {
     QFileDialog dialog(this);
     dialog.setNameFilter(tr("Programs (*.txt *.comput)"));
@@ -191,7 +191,7 @@ void Mainwindow::loadFiles()
             QString fileName = *it++;
             if ( !fileName.isEmpty() )
             {
-                QFile file(fileName);
+               QFile file(fileName);
                if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
                    return;
                buffer = "";

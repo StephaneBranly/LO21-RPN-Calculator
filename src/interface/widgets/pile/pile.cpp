@@ -28,11 +28,11 @@ void Pile::setMessage(const QString m)
 
 void Pile::updateContent(const std::list<QString> content)
 {
-    for(size_t i=0; i<size; i++)
+    for(size_t i=0; i<size; i++) // On remet a "" tous les items de la pile
         ui->ContentTab->item(i,0)->setText("");
 
     size_t nb=0;
-    for(auto it=content.rbegin(); it!=content.rend()  && nb<size; ++it)
+    for(auto it=content.rbegin(); it!=content.rend()  && nb<size; ++it) // On modifie le contenu des items non nuls
     {
         ui->ContentTab->item(size-nb-1,0)->setText(*it);
         nb++;

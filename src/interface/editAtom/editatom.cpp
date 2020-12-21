@@ -31,6 +31,7 @@ void EditAtom::acceptedChanges()
 {
     QString newName = ui->inputID->text().toUpper();
     QString newValue = ui->inputValue->text();
+    // Le changement la valeur d'un Latom se fait par l'evaluation d'une suite d'expressions qui FORGET puis STO la nouvelle valeur
     QString maj = "'"+oldName+"' FORGET "+newValue+" '"+newName+"' STO";
     emit updateAtom(maj);
 }

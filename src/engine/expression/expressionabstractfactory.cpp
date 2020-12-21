@@ -53,19 +53,19 @@ Engine::ExpressionAbstractFactory::ExpressionAbstractFactory()
 Engine::Expression* Engine::ExpressionAbstractFactory::createExpressionFromString(const std::string s) const
 {
     Expression* res=nullptr;
-    if(operatorFactory->isSameType(s))
+    if(operatorFactory->isSameType(s)) // On regarde si ce n'est pas un operateur
         return operatorFactory->createExpressionFromString(s);
-    for(auto it = factories.begin(); it!=factories.end(); ++it){
+    for(auto it = factories.begin(); it!=factories.end(); ++it){ // Sinon, on parcours toutes les autres factories pour savoir si le type est reconnu
         if((*it)->isSameType(s))
         {
             if(!res)
                 res = (*it)->createExpressionFromString(s);
 
             else
-                throw ComputerException("Reconnu par plusieurs types");
+                throw ComputerException("Reconnu par plusieurs types"); // Si des Regex sont valides pour plusieurs types, un message est throw
         }
     }
     if(!res)
-        throw ComputerException("Type non reconnu de "+s);
+        throw ComputerException("Type non reconnu de "+s); // Si jamais le type est non reconnu, un message est throw
     return res;
 }

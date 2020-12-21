@@ -16,7 +16,7 @@ KeyboardFunctions::KeyboardFunctions(QMainWindow *parent)
     parent->addDockWidget(Qt::LeftDockWidgetArea, dock);
 
     signalMapper = new QSignalMapper(this);
-    foreach(QObject *obj, children())
+    foreach(QObject *obj, children()) // Automatisation de la connexion des boutons a l'ajout de leur nom dans la command Line
     {
         if(obj->metaObject()->className() == ui->groupBox->metaObject()->className() )
         {

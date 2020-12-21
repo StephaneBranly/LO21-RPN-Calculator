@@ -2,6 +2,7 @@
 #include <regex>
 #include "linteger.h"
 
+// Les Linteger sont une suite d'au moins un chiffre
 bool Engine::LintegerFactory::isSameType(const std::string s) const
 {
     std::regex str_expr ("^[0-9]+$");

@@ -2,6 +2,7 @@
 #include <regex>
 #include "lreal.h"
 
+// Reconnaissance des Lreal
 bool Engine::LrealFactory::isSameType(const std::string s) const
 {
     std::regex str_expr1("[0-9]*\\.[0-9]+");

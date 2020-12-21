@@ -14,7 +14,7 @@ Commandline::Commandline(QWidget *parent)
 
     clock = new QTimer(this);
     QObject::connect(clock, SIGNAL(timeout()), this, SLOT(toggleCursor()));
-    clock->start(500); //time specified in ms
+    clock->start(500); //time specified in ms,  vitesse de clignotement du curseur
 }
 
 Commandline::~Commandline()
@@ -49,6 +49,6 @@ void Commandline::updateText()
 {
     this->ui->TextEdit->clear();
     this->ui->TextEdit->insert(textContent);
-    if(cursor)
+    if(cursor) // Permet de faire clignoter le curseur
         this->ui->TextEdit->insert("_");
 }
