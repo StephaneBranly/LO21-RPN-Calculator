@@ -47,7 +47,12 @@ void Connector::notify(const std::string &message)
     }else if(message=="needAtomValue"){
         const std::string atomName = window.getBuffer().toStdString();
         try{
-            string s = engine.getInstance().getAtomManager().getExpressionFromString(atomName)->toString();
+            Engine::Expression* exp = engine.getInstance().getAtomManager().getExpressionFromString(atomName);
+            string s = "";
+            if(dynamic_cast<Engine::editString*>(exp)==nullptr)
+                s = exp->toString();
+            else
+                s = dynamic_cast<Engine::editString*>(exp)->toEditString();
             window.setBuffer(QString::fromStdString(s));
             window.setMessage("OK");
         }

@@ -75,8 +75,16 @@
     </property>
     <addaction name="actionA_propos"/>
    </widget>
+   <widget class="QMenu" name="menuFichier">
+    <property name="title">
+     <string>Fichier</string>
+    </property>
+    <addaction name="actionOuvrir"/>
+    <addaction name="actionSauvegarder"/>
+   </widget>
    <addaction name="menuInterface"/>
    <addaction name="menuA_propos"/>
+   <addaction name="menuFichier"/>
   </widget>
   <action name="a_keyboardnumeric">
    <property name="checkable">
@@ -138,6 +146,16 @@
   <action name="actionA_propos">
    <property name="text">
     <string>A propos</string>
+   </property>
+  </action>
+  <action name="actionOuvrir">
+   <property name="text">
+    <string>Ouvrir</string>
+   </property>
+  </action>
+  <action name="actionSauvegarder">
+   <property name="text">
+    <string>Sauvegarder</string>
    </property>
   </action>
  </widget>

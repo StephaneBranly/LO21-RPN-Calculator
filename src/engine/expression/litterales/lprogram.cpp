@@ -19,7 +19,19 @@ const std::string Engine::Lprogram::toString() const
     str+=" ]";
     return str;
 }
-
+const std::string Engine::Lprogram::toEditString() const
+{
+    std::string str = "[";
+    for(auto it = content.begin(); it!=content.end();++it)
+    {
+        if(dynamic_cast<editString*>(*it)==nullptr)
+            str+=" "+(*it)->toString();
+        else
+            str+=" "+dynamic_cast<editString*>(*it)->toEditString();
+    }
+    str+=" ]";
+    return str;
+};
 
 void Engine::Lprogram::eval()
 {

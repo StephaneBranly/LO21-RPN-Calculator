@@ -22,5 +22,10 @@ public:
     virtual void explicitEval() = 0;
 };
 
+class editString{
+public:
+    virtual const std::string toEditString() const = 0;
+};
+
 }
 #endif // EXPRESSION_H

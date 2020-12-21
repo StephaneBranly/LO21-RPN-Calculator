@@ -11,6 +11,7 @@
 #include <QDebug>
 #include <QDockWidget>
 #include <QKeyEvent>
+#include <QFileDialog>
 
 Mainwindow::Mainwindow(QWidget *parent)
     : QMainWindow(parent)
@@ -26,6 +27,7 @@ Mainwindow::Mainwindow(QWidget *parent)
     editAtomDialog = new EditAtom(this);
     settings = new Settings(this);
     about = new About(this);
+    saveW = new SaveWindow(this);
 
     connect(ui->a_keyboardnumeric, SIGNAL(toggled(bool)),keyboardnumeric,SLOT(toggleDock(bool)));
     connect(ui->a_keyboardfunctions, SIGNAL(toggled(bool)),keyboardfunctions,SLOT(toggleDock(bool)));
@@ -33,6 +35,8 @@ Mainwindow::Mainwindow(QWidget *parent)
     connect(ui->a_vars, SIGNAL(toggled(bool)),variables,SLOT(toggleDock(bool)));
     connect(ui->actionParametres, SIGNAL(triggered()), this, SLOT(openSettingsWindow()));
     connect(ui->actionA_propos, SIGNAL(triggered()), this, SLOT(openAboutWindow()));
+    connect(ui->actionOuvrir, SIGNAL(triggered()), this, SLOT(loadFiles()));
+    connect(ui->actionSauvegarder, SIGNAL(triggered()), this, SLOT(openSaveWindow()));
     ui->mainLayout->addWidget(pile);
 
     ui->mainLayout->addWidget(commandline);
@@ -128,6 +132,7 @@ void Mainwindow::updateAtoms(const std::list<std::tuple<QString,QString,QString>
     progs.sort();
     variables->updateVars(vars);
     programmes->updateProgs(progs);
+    saveW->updateAtoms(progs,vars);
 }
 
 void Mainwindow::execute(const QString a)
@@ -144,6 +149,12 @@ void Mainwindow::editAtom(const QString s)
     editAtomDialog->setAtomValue(buffer);
     editAtomDialog->show();
 }
+void Mainwindow::getAtomEditValueToSave()
+{
+    buffer = saveW->getBuffer();
+    notify("needAtomValue");
+    saveW->setBuffer(buffer);
+}
 void Mainwindow::openSettingsWindow()
 {
     settings->setInputValue(pile->getSize());
@@ -153,8 +164,43 @@ void Mainwindow::openAboutWindow()
 {
     about->show();
 }
+
+void Mainwindow::openSaveWindow()
+{
+    saveW->show();
+}
 void Mainwindow::updateSizeStack(int s)
 {
     pile->updateSize(s);
     notify("stackChanged");
+}
+void Mainwindow::loadFiles()
+{
+    QFileDialog dialog(this);
+    dialog.setNameFilter(tr("Programs (*.txt *.comput)"));
+    dialog.setViewMode(QFileDialog::Detail);
+    dialog.setFileMode(QFileDialog::ExistingFiles);
+
+    if ( QDialog::Accepted == dialog.exec() )
+    {
+        QStringList filenames = dialog.selectedFiles();
+        QStringList::const_iterator it = filenames.begin();
+        QStringList::const_iterator eIt = filenames.end();
+        while ( it != eIt )
+        {
+            QString fileName = *it++;
+            if ( !fileName.isEmpty() )
+            {
+                QFile file(fileName);
+               if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+                   return;
+               buffer = "";
+               while (!file.atEnd()) {
+                   QByteArray line = file.readLine();
+                   buffer += " "+line.trimmed()+" ";
+               }
+               notify("executeBuffer");
+            }
+        }
+    }
 }
