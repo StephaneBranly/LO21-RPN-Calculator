@@ -51,4 +51,6 @@ void Commandline::updateText()
     this->ui->TextEdit->insert(textContent);
     if(cursor) // Permet de faire clignoter le curseur
         this->ui->TextEdit->insert("_");
+    else
+        this->ui->TextEdit->insert(" ");
 }

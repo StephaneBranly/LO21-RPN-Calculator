@@ -58,17 +58,12 @@ void::Engine::OperatorWHILE::executeOpe(vector<Expression*> e){
     {
         if(a!=nullptr)
         {
-            qDebug()<<"Valeur";
-            qDebug()<<(int)a->getValue();
             if(a->getValue()!=0)
             {
-                qDebug()<<QString::fromStdString(exp->toString())+" A EXECUTER";
-
                 if(toEval!=nullptr)
                     dynamic_cast<ExplicitEval*>(exp->getCopy())->explicitEval();
                 else
                     exp->getCopy()->eval();
-                qDebug()<<p.size();
                 if(p.size()>0)
                     a = dynamic_cast<R1value*>(p.pop());
                 else
