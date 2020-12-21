@@ -1,0 +1,139 @@
+@startuml
+package Engine {
+class Expression {
+}
+
+class ExpressionFactory{
+}
+
+package Littérales {
+class Latom {
+  - atom : string
+  + Latom(s : const string)
+  + Latom(const Latom&)
+  + setLatom(s : const string) : Latom*
+  + getValue() const : string
+  + eval()
+  + toString() const : const string
+  + getCopy() const : Expression*
+  + ~Latom
+}
+Expression <|-- Latom
+
+class LatomFactory {
+  + isSameType(s : const string) const : bool
+  + createExpressionFromString(s : const string) const : Latom*
+}
+ExpressionFactory <|- LatomFactory
+Latom "*" -- "1" LatomFactory
+
+class Lexpression {
+  - expression : string
+  + Lexpression(s : const string)
+  + setLatom(s : const string) : Lexpression*
+  + getValue() const : string
+  + eval()
+  + toString() const : const string
+  + getCopy() const : Expression*
+  + explicitEval()
+  + ~Lexpression()
+}
+Expression <|-- Lexpression
+ExplicitEval <|-- Lexpression
+
+class LexpressionFactory {
+  + isSameType(s : const string) const : bool
+  + createExpressionFromString(s : const string) const : Lexpression*
+}
+ExpressionFactory <|- LexpressionFactory
+Lexpression "*" -- "1" LexpressionFactory
+
+class Lrational {
+  - numerator : int
+  - denominator : int
+  - PGCD(a : int, b : int) : int
+  + Lrational(n : int, d : int)
+  + Lrational(e1 : Linteger&, e2 : Linteger&)
+  + setRational(n : int, d : int)
+  + setRational(e1 : Linteger&, e2 : Linteger&)
+  + getValue() : double
+  + toString() const : const string
+  + getCopy() const : Expression*
+  + getNumerator() : int
+  + getDenominator() : int
+  + simplifyType() : Expression*
+  + ~Lrational()
+}
+Lnumerical <|-- Lrational
+R1value <|-- Lrational
+
+class Linteger {
+  - value : int
+  + Linteger(s : const string)
+  + Linteger(: const Linteger&)
+  + Linteger(v : int)
+  + setLinteger(v : int) : Linteger*
+  + getvalue() : double
+  + toString() const : const string
+  + getCopy() const : Expression*
+  + simplifyType() : Expression*
+  + ~Linteger()
+}
+Lnumerical <|-- Linteger
+R1value <|-- Linteger
+
+class LintegerFactory {
+  + isSameType(s : const string) const : bool
+  + createExpressionFromString(s : const string) const : Linteger*
+}
+ExpressionFactory <|-- LintegerFactory
+Linteger "*" -- "1" LintegerFactory
+
+abstract class Lnumerical {
+  + Lnumerical()
+  + Lnumerical(type : const string)
+  + eval()
+  + {virtual} simplifyType() : Expression*
+}
+Expression <|-- Lnumerical
+
+abstract class R1value {
+  + {virtual} getValue() : double
+}
+
+class Lprogram {
+  - content : list<Expression*>
+  + Lprogram()
+  + Lprogram(: const Lprogram&)
+  + eval()
+  + toString() const : const string
+  + getCopy() const : Expression*
+  + explicitEval()
+  + push_back(e : Expression*)
+}
+Expression <|-- Lprogram
+ExplicitEval <|-- Lprogram
+
+class Lreal {
+  - real : double
+  + Lreal(s : const string)
+  + Lreal(r : double)
+  + setReal(r : double) : Lreal*
+  + getValue() : double
+  + toString() const : const string
+  + getCopy() const : Expression*
+  + simplifyType() : Expression*
+  + ~Lreal()
+}
+Lnumerical <|-- Lreal
+R1value <|-- Lreal
+
+class LrealFactory {
+  + isSameType(s : const string) const : bool
+  + createExpressionFromString(s : const string) : Lreal*
+}
+ExpressionFactory <|-- LrealFactory
+Lreal "*" -- "1" LrealFactory
+}
+}
+@enduml
