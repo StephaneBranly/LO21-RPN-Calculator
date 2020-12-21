@@ -6,6 +6,8 @@
 #include "linteger.h"
 
 namespace Engine {
+
+    // Factory reconnaissant et creant les Linteger
     class LintegerFactory : public ExpressionFactory
     {
     public:

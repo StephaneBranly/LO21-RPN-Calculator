@@ -6,6 +6,8 @@
 #include "latom.h"
 
 namespace Engine {
+
+    // Factory reconnaissant et creant les Latom
     class LatomFactory : public ExpressionFactory
     {
     public:

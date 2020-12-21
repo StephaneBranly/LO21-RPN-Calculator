@@ -3,8 +3,11 @@
 #include <string>
 #include <stdexcept>
 
+
+
 namespace Engine {
 
+// ComputerException qui herite de std::exception comme la majorite des librairies .cpp (uniformisation)
 class ComputerException : public std::exception {
 protected:
     std::string info;

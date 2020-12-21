@@ -8,6 +8,7 @@ namespace Engine{
 
 class LogicTest;
 
+// Definition des operateurs logiques et de comparaisons
 class OperatorLogic : public Operator
 {
 protected:

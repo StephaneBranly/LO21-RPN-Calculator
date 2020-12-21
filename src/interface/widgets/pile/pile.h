@@ -8,6 +8,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class Pile; }
 QT_END_NAMESPACE
 
+// Pile
 class Pile : public QWidget
 {
     Q_OBJECT

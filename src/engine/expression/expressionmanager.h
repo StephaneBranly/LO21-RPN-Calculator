@@ -9,6 +9,8 @@
 using namespace std;
 
 namespace  Engine{
+
+// Classe du manager d'expression, contient la factory d'expressions
 class ExpressionManager{
 private:
     list<Expression*> exps;

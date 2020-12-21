@@ -8,6 +8,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class EditAtom; }
 QT_END_NAMESPACE
 
+// Fenetre d'edition d'atoms
 class EditAtom : public QDialog
 {
     Q_OBJECT

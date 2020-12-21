@@ -6,6 +6,8 @@
 #include "lexpression.h"
 
 namespace Engine {
+
+// Factory reconnaissant et creant les Lexpression
 class LexpressionFactory : public ExpressionFactory
     {
     public:

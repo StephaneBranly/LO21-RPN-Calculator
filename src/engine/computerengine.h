@@ -8,6 +8,9 @@
 #include "stack/stack.h"
 
 namespace Engine{
+
+// Moteur principal, contient la pile, un manager d'expressions, un manager d'atoms
+// Herite de Subject, peut donc notifier le connector qui herite de Observor
 class ComputerEngine: public Subject
 {
 private:

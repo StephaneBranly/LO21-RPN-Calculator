@@ -7,7 +7,7 @@ using namespace std;
 
 namespace Engine{
 
-
+// Definition des operateurs conditionnels IFT, IFTE, WHILE
 class OperatorIFT : public Operator {
     public:
         OperatorIFT():Operator("OperatorIFT",2){}

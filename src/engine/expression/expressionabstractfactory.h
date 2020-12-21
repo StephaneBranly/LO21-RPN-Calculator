@@ -7,6 +7,8 @@
 #include "operator/operatorsdefinition.h"
 
 namespace Engine {
+
+// Classe abstraite de factory, englobe une multitude de factories dont la factory d'operators
 class ExpressionAbstractFactory
 {
 private:

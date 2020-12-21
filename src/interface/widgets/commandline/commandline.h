@@ -9,6 +9,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class Commandline; }
 QT_END_NAMESPACE
 
+// Ligne de commande
 class Commandline : public QWidget
 {
     Q_OBJECT

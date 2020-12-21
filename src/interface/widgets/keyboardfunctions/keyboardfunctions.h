@@ -9,6 +9,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class KeyboardFunctions; }
 QT_END_NAMESPACE
 
+// Clavier de fonctions
 class KeyboardFunctions : public QWidget
 {
     Q_OBJECT

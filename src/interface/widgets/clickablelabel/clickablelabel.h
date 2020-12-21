@@ -5,6 +5,7 @@
 #include <QWidget>
 #include <Qt>
 
+// Specialisation de label pour le rendre clickable
 class ClickableLabel : public QLabel {
 
 Q_OBJECT

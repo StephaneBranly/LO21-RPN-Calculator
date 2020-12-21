@@ -9,6 +9,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class KeyboardNumeric; }
 QT_END_NAMESPACE
 
+// Clavier numerique
 class KeyboardNumeric : public QWidget
 {
     Q_OBJECT
