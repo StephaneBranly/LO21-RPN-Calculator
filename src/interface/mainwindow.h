@@ -24,6 +24,7 @@ namespace Ui { class Mainwindow; }
 QT_END_NAMESPACE
 
 // Fenetre principale de l'interface, s'occupe de tous ses widgets
+// Herite de Subject, peut donc notifier le connector qui herite de Observor
 class Mainwindow : public QMainWindow, public Subject
 {
     Q_OBJECT

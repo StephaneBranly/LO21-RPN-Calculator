@@ -54,10 +54,8 @@ void Engine::ExpressionManager::evalCommandLine(const string str){
                 try {
                     current = factory->createExpressionFromString(*it);
                     if(prof.empty()) // On push l'expression soit a la racine, soit dans le Lprogram
-                    {
                         commandLineExpressions.push_back(current);
-                        exps.push_back(current);
-                    }
+
                     else
                         prof.back()->push_back(current);
 
