@@ -1,18 +1,20 @@
 @startuml
 class Subject {
 }
-
 class exception {
 }
+
+
 
 package Engine {
 
 package Exception {
 
 class ComputerException {
-  - info : string
+  # info : string
   + ComputerException(str : const string&)
   + what() const : const char*
+  + ~ComputerException()
 }
 exception <|-- ComputerException
 }
@@ -29,12 +31,16 @@ class ComputerEngine {
   + {static} getInstance() : ComputerEngine&
 }
 Subject <|-- ComputerEngine
+ComputerEngine *-- Stack
+ComputerEngine *-- ExpressionManager
+ComputerEngine *-- AtomManager
+ComputerEngine *-- Handler
 
 class Handler{
   + instance : ComputerEngine*
   + ~Handler()
 }
-ComputerEngine *-left- Handler
+ComputerEngine *-- Handler
 
 package Stack {
 class Stack {
@@ -50,7 +56,6 @@ class Stack {
   + top() const : Expression*
   + toStringList() : list<string>
 }
-ComputerEngine *-right- Stack
 Stack "1" -- "*" Expression
 }
 
@@ -58,14 +63,15 @@ package Expression {
 class ExpressionManager {
   - exps : list<Expression*>
   - factory : ExpressionAbstractFactory*
+  - contentEval : string
   + ExpressionManager()
   + evalCommandLine(str : const string)
+  + getContentEval() const : const string
   + split(text : const string&, delimiter : char) : vector<string>
   + createExpressionFromString (s : const string) : Expression*
   + getFactory() : ExpressionAbstractFactory*
   + ~ExpressionManager()
 }
-ComputerEngine *-- ExpressionManager
 ExpressionManager "1" -- "*" Expression
 ExpressionManager "1" -- "1" ExpressionAbstractFactory
 
@@ -79,7 +85,7 @@ class ExpressionAbstractFactory {
   - operatorFactory : OperatorFactory*
   - factories : list<ExpressionFactory*>
   + ExpressionAbstractFactory()
-  + createExpressionFromString(s : const string)
+  + createExpressionFromString(s : const string) const
   + registerFactory(factory : ExpressionFactory*)
   + getOperatorFactory() const : OperatorFactory*
 }
@@ -87,12 +93,12 @@ ExpressionAbstractFactory "1" -- "1" OperatorFactory
 ExpressionAbstractFactory "1" -- "*" ExpressionFactory
 
 abstract class Expression {
-  # type : string
+  # type : string = "Expression"
+  + Expression(type : const string)
   + {virtual} eval()
   + {virtual} toString() const : const string
   + getType() const : const string
   + {virtual} getCopy() const : Expression*
-  + Expression(type : const string)
   + {virtual} ~Expression()
 }
 
@@ -109,7 +115,6 @@ class AtomManager {
   + addAtom(name : const string, expression : Expression*)
   + toTupleStringList() : list<tuple<string, string, string>>
 }
-ComputerEngine *-- AtomManager
 AtomManager "1" -- "*" Expression
 
 package Operator {
@@ -120,580 +125,23 @@ abstract class Operator {
   + {virtual} executeOpe(e : vector<Expression*>)
   + eval()
   + {virtual} getCopy() const : Expression*
+  + {virtual} ~Operator()
 }
 Expression <|-- Operator
-
-class ActionBinary {
-  + {virtual} executeActionBinary(L1 : Expression*, L2 : Expression*) : Expression
-}
-
-class OperatorAritBinary{
-  - opes : map<tuple<string, string>, ActionBinary*>
-  + OperatorAritBinary(t : const string)
-  + registerActionBinary(type1 : string, type2 : string, a: ActionBinary*)
-  + executeOpe(e : vector<Expression*>)
-}
-Operator <|-- OperatorAritBinary
-
-class OperatorPLUS {
-  + OperatorPLUS()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritBinary <|-- OperatorPLUS
-
-class OperatorMINUS {
-  + OperatorMINUS()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritBinary <|-- OperatorMINUS
-
-
-class OperatorMUL {
-  + OperatorMUL()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritBinary <|-- OperatorMUL
-
-class OperatorDIV {
-  + OperatorDIV()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritBinary <|-- OperatorDIV
-
-class OperatorDIVINT {
-  + OperatorDIVINT()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritBinary <|-- OperatorDIVINT
-
-class OperatorMOD {
-  + OperatorMOD()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritBinary <|-- OperatorMOD
-
-class OperatorPOW {
-  + OperatorPOW()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritBinary <|-- OperatorPOW
-
-class SumIntInt {
-  - executeActionBinary(L1 : Expression*, L2 : Expression*)
-}
-ActionBinary <|-- SumIntInt
-
-class SumIntReal {
-  - executeActionBinary(L1 : Expression*, L2 : Expression*)
-}
-ActionBinary <|-- SumIntReal
-
-class SumIntRat {
-  - executeActionBinary(L1 : Expression*, L2 : Expression*)
-}
-ActionBinary <|-- SumIntRat
-
-class SumRealRat {
-  - executeActionBinary(L1 : Expression*, L2 : Expression*)
-}
-ActionBinary <|-- SumRealRat
-
-class SumRatRat {
-  - executeActionBinary(L1 : Expression*, L2 : Expression*)
-}
-ActionBinary <|-- SumRatRat
-
-class SubIntInt {
-  - executeActionBinary(L1 : Expression*, L2 : Expression*)
-}
-ActionBinary <|-- SubIntInt
-
-class SubIntReal {
-  - executeActionBinary(L1 : Expression*, L2 : Expression*)
-}
-ActionBinary <|-- SubIntReal
-
-class SubIntRat {
-  - executeActionBinary(L1 : Expression*, L2 : Expression*)
-}
-ActionBinary <|-- SubIntRat
-
-class SubRealRat {
-  - executeActionBinary(L1 : Expression*, L2 : Expression*)
-}
-ActionBinary <|-- SubRealRat
-
-class SubRatRat {
-  - executeActionBinary(L1 : Expression*, L2 : Expression*)
-}
-ActionBinary <|-- SubRatRat
-
-class MulIntInt {
-  - executeActionBinary(L1 : Expression*, L2 : Expression*)
-}
-ActionBinary <|-- MulIntInt
-
-class MulIntReal {
-  - executeActionBinary(L1 : Expression*, L2 : Expression*)
-}
-ActionBinary <|-- MulIntReal
-
-class MulIntRat {
-  - executeActionBinary(L1 : Expression*, L2 : Expression*)
-}
-ActionBinary <|-- MulIntRat
-
-class MulRealRat {
-  - executeActionBinary(L1 : Expression*, L2 : Expression*)
-}
-ActionBinary <|-- MulRealRat
-
-class MulRatRat {
-  - executeActionBinary(L1 : Expression*, L2 : Expression*)
-}
-ActionBinary <|-- MulRatRat
-
-class DivIntInt {
-  - executeActionBinary(L1 : Expression*, L2 : Expression*)
-}
-ActionBinary <|-- DivIntInt
-
-class DivIntReal {
-  - executeActionBinary(L1 : Expression*, L2 : Expression*)
-}
-ActionBinary <|-- DivIntReal
-
-class DivIntRat {
-  - executeActionBinary(L1 : Expression*, L2 : Expression*)
-}
-ActionBinary <|-- DivIntRat
-
-class DivRealRat {
-  - executeActionBinary(L1 : Expression*, L2 : Expression*)
-}
-ActionBinary <|-- DivRealRat
-
-class DivRatRat {
-  - executeActionBinary(L1 : Expression*, L2 : Expression*)
-}
-ActionBinary <|-- DivRatRat
-
-class DivintIntInt {
-  - executeActionBinary(L1 : Expression*, L2 : Expression*)
-}
-ActionBinary <|-- DivintIntInt
-
-class ModIntInt {
-  - executeActionBinary(L1 : Expression*, L2 : Expression*)
-}
-ActionBinary <|-- ModIntInt
-
-class PowIntInt {
-  - executeActionBinary(L1 : Expression*, L2 : Expression*)
-}
-ActionBinary <|-- PowIntInt
-
-class PowRealInt {
-  - executeActionBinary(L1 : Expression*, L2 : Expression*)
-}
-ActionBinary <|-- PowRealInt
-
-class PowRatInt {
-  - executeActionBinary(L1 : Expression*, L2 : Expression*)
-}
-ActionBinary <|-- PowRatInt
-
-class ActionUnary {
-  + {virtual} executeActionUnary(L : Expression*)
-}
-
-class OperatorAritUnary {
-  - opes : map<string, ActionUnary*>
-  + OperatorAritUnary(t : const string)
-  + registerActionUnary(type : string, a : ActionUnary*)
-  + executeOpe(e : vector<Expression*>)
-}
-
-class OperatorNEG {
-  + OperatorNEG()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritUnary <|-- OperatorNEG
-
-class OperatorNUM {
-  + OperatorNUM()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritUnary <|-- OperatorNUM
-
-class OperatorDEN {
-  + OperatorDEN()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritUnary<|-- OperatorDEN
-
-class NegInt {
-  + executeActionUnary(L : Expression*) : Expression*
-}
-ActionUnary <|-- NegInt
-
-class NegReal {
-  + executeActionUnary(L : Expression*) : Expression*
-}
-ActionUnary <|-- NegReal
-
-class NegRat {
-  + executeActionUnary(L : Expression*) : Expression*
-}
-ActionUnary <|-- NegRat
-
-class NumInt {
-  + executeActionUnary(L : Expression*) : Expression*
-}
-ActionUnary <|-- NumInt
-
-class NumRat {
-  + executeActionUnary(L : Expression*) : Expression*
-}
-ActionUnary <|-- NumRat
-
-class DenInt {
-  + executeActionUnary(L : Expression*) : Expression*
-}
-ActionUnary <|-- DenInt
-
-class DenRat {
-  + executeActionUnary(L : Expression*) : Expression*
-}
-ActionUnary <|-- DenRat
 
 class OperatorFactory {
   - operators : map<string, Operator*>
   + isSameType(s : const string) const : bool
-  + createExpressionFromString(s : const string) : Expression*
+  + createExpressionFromString(s : const string) const : Expression*
   + addOperator(name : const string, ope : Operator*)
   + removeOperator(name : const string)
 }
 ExpressionFactory <|- OperatorFactory
 OperatorFactory "1" -- "*" Operator
-
-abstract class LogicTest {
-  + {virtual} test(E1 : Expression*, E2 : Expression*) : bool
-}
-
-class OperatorLogic {
-  - tests : map<tuple<string, string>, LogicTest*>
-  + OperatorLogic(t : const string, arrity : const size_t)
-  + executeOpe(e : vector<Expression*>)
-  + registerTest(type1 : string, type2 : string, t : LogicTest*)
-}
-Operator <|--OperatorLogic
-
-class OperatorAnd {
-  + OperatorAnd()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorLogic <|-- OperatorAnd
-
-class OperatorOr {
-  + OperatorOr()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorLogic <|-- OperatorOr
-
-class OperatorNot {
-  + OperatorNot()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorLogic <|-- OperatorNot
-
-class OperatorEq {
-  + OperatorEq()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorLogic <|-- OperatorEq
-
-class OperatorGeq {
-  + OperatorGeq()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorLogic <|-- OperatorGeq
-
-class OperatorLeq {
-  + OperatorLeq()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorLogic <|-- OperatorLeq
-
-class OperatorGt {
-  + OperatorGt()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorLogic <|-- OperatorGt
-
-class OperatorLt {
-  + OperatorLt()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorLogic <|-- OperatorLt
-
-class OperatorDiff {
-  + OperatorDiff()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorLogic <|-- OperatorDiff
-
-class R1testAND {
-  - test(E1 : Expression*, E2 : Expression*) const : bool
-}
-LogicTest <|-- R1testAND
-
-class R1testOR {
-  - test(E1 : Expression*, E2 : Expression*) const : bool
-}
-LogicTest <|-- R1testOR
-
-class R1testEQ {
-  - test(E1 : Expression*, E2 : Expression*) const : bool
-}
-LogicTest <|-- R1testEQ
-
-class R1testNOT {
-  - test(E1 : Expression*, E2 : Expression*) const : bool
-}
-LogicTest <|-- R1testNOT
-
-class R1testGEQ {
-  - test(E1 : Expression*, E2 : Expression*) const : bool
-}
-LogicTest <|-- R1testGEQ
-
-class R1testLEQ {
-  - test(E1 : Expression*, E2 : Expression*) const : bool
-}
-LogicTest <|-- R1testLEQ
-
-class R1testLT {
-  - test(E1 : Expression*, E2 : Expression*) const : bool
-}
-LogicTest <|-- R1testLT
-
-class R1testGT {
-  - test(E1 : Expression*, E2 : Expression*) const : bool
-}
-LogicTest <|-- R1testGT
-
-class R1testDIFF {
-  - test(E1 : Expression*, E2 : Expression*) const : bool
-}
-LogicTest <|-- R1testDIFF
-
-class OperatorCLEAR {
-  + OperatorCLEAR()
-  + executeOpe(e : vector<Expression*>)
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-Operator <|-- OperatorCLEAR
-
-class OperatorSWAP {
-  + OperatorSWAP()
-  + executeOpe(e : vector<Expression*>)
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-Operator <|-- OperatorSWAP
-
-class OperatorDROP {
-  + OperatorDROP()
-  + executeOpe(e : vector<Expression*>)
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-Operator <|-- OperatorDROP
-
-class OperatorDUP {
-  + OperatorDUP()
-  + executeOpe(e : vector<Expression*>)
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-Operator <|-- OperatorDUP
-
-class OperatorEVAL {
-  + OperatorEVAL()
-  + executeOpe(e : vector<Expression*>)
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-Operator <|-- OperatorEVAL
-
-class OperatorSTO {
-  + OperatorSTO()
-  + executeOpe(e : vector<Expression*>)
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-Operator <|-- OperatorSTO
-
-class OperatorFORGET {
-  + OperatorFORGET()
-  + executeOpe(e : vector<Expression*>)
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-Operator <|-- OperatorFORGET
-
-class OperatorTYPE {
-  + OperatorTYPE()
-  + executeOpe(e : vector<Expression*>)
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-Operator <|-- OperatorTYPE
 }
 
 package Litterales {
-class Latom {
-  - atom : string
-  + Latom(s : const string)
-  + Latom(const Latom&)
-  + setLatom(s : const string) : Latom*
-  + getValue() const : string
-  + eval()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-Expression <|-- Latom
 
-class LatomFactory {
-  + isSameType(s : const string) const : bool
-  + createExpressionFromString(s : const string) : Latom*
-}
-ExpressionFactory <|- LatomFactory
-Latom "*" -- "1" LatomFactory
-
-class Lexpression {
-  - expression : string
-  + Lexpression(s : const string)
-  + setLatom(s : const string) : Lexpression*
-  + getValue() : string
-  + eval()
-  + toString() const : const string
-  + getCopy() const : Expression*
-  + explicitEval()
-}
-Expression <|-- Lexpression
-
-class LexpressionFactory {
-  + isSameType(s : const string) const : bool
-  + createExpressionFromString(s : const string) : Lexpression*
-}
-ExpressionFactory <|- LexpressionFactory
-Lexpression "*" -- "1" LexpressionFactory
-
-class Lrational {
-  - numerateur : int
-  - denominateur : int
-  - PGCD(a : int, b : int) : int
-  + Lrational(n : int, d : int)
-  + Lrational(e1 : Linteger&, e2 : Linteger&)
-  + setRational(n : int, d : int)
-  + setRational(e1 : Linteger&, e2 : Linteger&)
-  + getValue() : double
-  + toString() const : const string
-  + getCopy() const : Expression*
-  + getNumerator() : int
-  + getDenominator() : int
-  + simplifyType() : Expression*
-}
-Lnumerical <|-- Lrational
-R1value <|-- Lrational
-
-class Linteger {
-  - value : int
-  + Linteger(s : const string)
-  + Linteger(const Linteger&)
-  + Linteger(v : int)
-  + setLinteger(v : int) : Linteger*
-  + getvalue() : int
-  + toString() const : const string
-  + getCopy() const : Expression*
-  + simplifyType() : Expression*
-}
-Lnumerical <|-- Linteger
-R1value <|-- Linteger
-
-class LintegerFactory {
-  + isSameType(s : const string) const : bool
-  + createExpressionFromString(s : const string) : Linteger*
-}
-ExpressionFactory <|-- LintegerFactory
-Linteger "*" -- "1" LintegerFactory
-
-abstract class Lnumerical {
-  + Lnumerical(type : const string)
-  + eval()
-  + {virtual} simplifyType() : Expression*
-}
-Expression <|-- Lnumerical
-
-abstract class R1value {
-  + {virtual} getValue() : double
-}
-
-class Lprogram {
-  - content : list<Expression*>
-  + Lprogram()
-  + Lprogram(: const Lprogram&)
-  + eval()
-  + toString() const : const string
-  + getCopy() const : Expression*
-  + explicitEval()
-  + push_back(e : Expression*)
-}
-Expression <|-- Lprogram
-ExplicitEval <|-- Lprogram
-
-class Lreal {
-  - real : double
-  + Lreal(s : const string)
-  + Lreal(r : float)
-  + setReal(r : float) : Lreal*
-  + getValue() : double
-  + toString() const : const string
-  + getCopy() const : Expression*
-  + simplifyType() : Expression*
-}
-Lnumerical <|-- Lreal
-R1value <|-- Lreal
-
-class LrealFactory {
-  + isSameType(s : const string) const : bool
-  + createExpressionFromString(s : const string) : Lreal*
-}
-ExpressionFactory <|-- LrealFactory
-Lreal "*" -- "1" LrealFactory
-}
 }
 
 }
