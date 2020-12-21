@@ -18,7 +18,6 @@ Settings::~Settings()
 
 void Settings::acceptedChanges()
 {
-    qDebug()<<"acceptedChanged";
     int size = ui->spinBox->value();
     emit stackSizeChanged(size);
 }
