@@ -31,4 +31,6 @@ Observer <|-- Connector
 Connector -- Mainwindow
 Connector -- ComputerEngine
 Subject -- Observer
+Subject <|-- Mainwindow
+Subject <|-- ComputerEngine
 @enduml
