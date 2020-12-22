@@ -6,366 +6,134 @@ class Expression {
 class ExpressionFactory{
 }
 
-package Operator {
-
-abstract class Operator {
-  - arrity : size_t
-  + Operator(type : const string, arrity : const size_t)
-  + getArrity() const : size_t
-  + {virtual} executeOpe(e : vector<Expression*>)
+package Littérales {
+class Latom {
+  - atom : string
+  + Latom(s : const string)
+  + Latom(const Latom&)
+  + setLatom(s : const string) : Latom*
+  + getValue() const : string
   + eval()
-  + {virtual} getCopy() const : Expression*
-  + {virtual} ~Operator()
-}
-Expression <|-down- Operator
-
-class OperatorAritBinary{
-  - opes : map<tuple<string, string>, ActionBinary*>
-  + OperatorAritBinary(t : const string)
-  + OperatorAritBinary(o : const OperatorAritBinary&)
-  + registerActionBinary(type1 : string, type2 : string, a: ActionBinary*)
-  + executeOpe(e : vector<Expression*>)
-  + ~OperatorAritBinary()
-}
-Operator <|------- OperatorAritBinary
-OperatorAritBinary ---- ActionBinary
-
-class OperatorAritUnary {
-  - opes : map<string, ActionUnary*>
-  + OperatorAritUnary(t : const string)
-  + OperatorAritUnary(o : const OperatorAritUnary&)
-  + registerActionUnary(type : string, a : ActionUnary*)
-  + executeOpe(e : vector<Expression*>)
-  + ~OperatorAritUnary()
-}
-Operator <|-left- OperatorAritUnary
-OperatorAritUnary --- ActionUnary
-
-abstract class ActionBinary {
-  + {virtual} executeActionBinary(L1 : Expression*, L2 : Expression*) : Expression*
-  + {virtual} ~ActionBinary()
-  + {virtual} getCopy() const : ActionBinary*
-}
-
-abstract class ActionUnary {
-  + {virtual} executeActionUnary(L : Expression*) : Expression*
-  + {virtual} ~ActionUnary()
-  + {virtual} getCopy() const : ActionUnary*
-}
-
-class OperatorPLUS {
-  + OperatorPLUS()
   + toString() const : const string
   + getCopy() const : Expression*
+  + ~Latom
 }
-OperatorAritBinary <|-up- OperatorPLUS
+Expression <|-- Latom
 
-class OperatorMINUS {
-  + OperatorMINUS()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritBinary <|-up- OperatorMINUS
-
-class OperatorMUL {
-  + OperatorMUL()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritBinary <|-- OperatorMUL
-
-class OperatorDIV {
-  + OperatorDIV()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritBinary <|-- OperatorDIV
-
-class OperatorDIVINT {
-  + OperatorDIVINT()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritBinary <|--- OperatorDIVINT
-
-class OperatorMOD {
-  + OperatorMOD()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritBinary <|--- OperatorMOD
-
-class OperatorPOW {
-  + OperatorPOW()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritBinary <|--- OperatorPOW
-
-class OperatorNEG {
-  + OperatorNEG()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritUnary <|-up- OperatorNEG
-
-class OperatorNUM {
-  + OperatorNUM()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritUnary <|-left- OperatorNUM
-
-class OperatorDEN {
-  + OperatorDEN()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritUnary<|-up- OperatorDEN
-
-class OperatorSIN {
-  + OperatorSIN()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritUnary<|-up- OperatorSIN
-
-class OperatorCOS {
-  + OperatorCOS()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritUnary<|-up- OperatorCOS
-
-class OperatorTAN {
-  + OperatorTAN()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritUnary<|-down- OperatorTAN
-
-class OperatorARCSIN {
-  + OperatorARCSIN()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritUnary<|-down- OperatorARCSIN
-
-class OperatorARCCOS {
-  + OperatorARCCOS()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritUnary<|-right- OperatorARCCOS
-
-class OperatorARCTAN {
-  + OperatorARCTAN()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritUnary<|-down- OperatorARCTAN
-
-class OperatorSQRT {
-  + OperatorSQRT()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritUnary<|-left- OperatorSQRT
-
-class OperatorEXP {
-  + OperatorEXP()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritUnary<|-left- OperatorEXP
-
-class OperatorLN {
-  + OperatorLN()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorAritUnary<|-- OperatorLN
-
-class OperatorIFT {
-  + OperatorIFT()
-  + toString() const : const string
-  + getCopy() const : Expression*
-  + executeOpe(e : vector<Expression*>)
-}
-Operator <|-up- OperatorIFT
-
-class OperatorIFTE {
-  + OperatorIFTE()
-  + toString() const : const string
-  + getCopy() const : Expression*
-  + executeOpe(e : vector<Expression*>)
-}
-Operator <|-up- OperatorIFTE
-
-class OperatorWHILE {
-  - deepLimit : unsigned int = 1000
-  + OperatorWHILE()
-  + setDeepLimit(i : const unsigned int)
-  + toString() const : const string
-  + getCopy() const : Expression*
-  + executeOpe(e : vector<Expression*>)
-}
-Operator <|-- OperatorWHILE
-
-class OperatorFactory {
-  - operators : map<string, Operator*>
+class LatomFactory {
   + isSameType(s : const string) const : bool
-  + createExpressionFromString(s : const string) const : Expression*
-  + getOriginalOperatorFromString(s : const string) : Expression*
-  + addOperator(name : const string, ope : Operator*)
-  + removeOperator(name : const string)
+  + createExpressionFromString(s : const string) const : Latom*
 }
-ExpressionFactory <|-- OperatorFactory
-OperatorFactory "1" -- "*" Operator
+ExpressionFactory <|- LatomFactory
+Latom "*" -- "1" LatomFactory
 
-class OperatorLogic {
-  - tests : map<tuple<string, string>, LogicTest*>
-  + OperatorLogic(t : const string, arrity : const size_t)
-  + OperatorLogic(o : const OperatorLogic&)
-  + executeOpe(e : vector<Expression*>)
-  + registerTest(type1 : string, type2 : string, t : LogicTest*)
-  + ~OperatorLogic()
-}
-Operator <|------ OperatorLogic
-OperatorLogic -- LogicTest
-
-abstract class LogicTest {
-  + {virtual} test(E1 : Expression*, E2 : Expression*) const : bool
-  + {virtual} ~LogicTest()
-  + {virtual} getCopy() const : LogicTest*
-}
-
-class OperatorAnd {
-  + OperatorAnd()
+class Lexpression {
+  - expression : string
+  + Lexpression(s : const string)
+  + setLatom(s : const string) : Lexpression*
+  + getValue() const : string
+  + eval()
   + toString() const : const string
   + getCopy() const : Expression*
+  + explicitEval()
+  + ~Lexpression()
 }
-OperatorLogic <|-right- OperatorAnd
+Expression <|-- Lexpression
+ExplicitEval <|-- Lexpression
 
-class OperatorOr {
-  + OperatorOr()
+class LexpressionFactory {
+  + isSameType(s : const string) const : bool
+  + createExpressionFromString(s : const string) const : Lexpression*
+}
+ExpressionFactory <|- LexpressionFactory
+Lexpression "*" -- "1" LexpressionFactory
+
+class Lrational {
+  - numerator : int
+  - denominator : int
+  - PGCD(a : int, b : int) : int
+  + Lrational(n : int, d : int)
+  + Lrational(e1 : Linteger&, e2 : Linteger&)
+  + setRational(n : int, d : int)
+  + setRational(e1 : Linteger&, e2 : Linteger&)
+  + getValue() : double
   + toString() const : const string
   + getCopy() const : Expression*
+  + getNumerator() : int
+  + getDenominator() : int
+  + simplifyType() : Expression*
+  + ~Lrational()
 }
-OperatorLogic <|-right- OperatorOr
+Lnumerical <|-- Lrational
+R1value <|-- Lrational
 
-class OperatorNot {
-  + OperatorNot()
+class Linteger {
+  - value : int
+  + Linteger(s : const string)
+  + Linteger(: const Linteger&)
+  + Linteger(v : int)
+  + setLinteger(v : int) : Linteger*
+  + getvalue() : double
   + toString() const : const string
   + getCopy() const : Expression*
+  + simplifyType() : Expression*
+  + ~Linteger()
 }
-OperatorLogic <|-left- OperatorNot
+Lnumerical <|-- Linteger
+R1value <|-- Linteger
 
-class OperatorEq {
-  + OperatorEq()
+class LintegerFactory {
+  + isSameType(s : const string) const : bool
+  + createExpressionFromString(s : const string) const : Linteger*
+}
+ExpressionFactory <|-- LintegerFactory
+Linteger "*" -- "1" LintegerFactory
+
+abstract class Lnumerical {
+  + Lnumerical()
+  + Lnumerical(type : const string)
+  + eval()
+  + {virtual} simplifyType() : Expression*
+}
+Expression <|-- Lnumerical
+
+abstract class R1value {
+  + {virtual} getValue() : double
+}
+
+class Lprogram {
+  - content : list<Expression*>
+  + Lprogram()
+  + Lprogram(: const Lprogram&)
+  + eval()
   + toString() const : const string
   + getCopy() const : Expression*
+  + explicitEval()
+  + push_back(e : Expression*)
 }
-OperatorLogic <|-up- OperatorEq
+Expression <|-- Lprogram
+ExplicitEval <|-- Lprogram
 
-class OperatorGeq {
-  + OperatorGeq()
+class Lreal {
+  - real : double
+  + Lreal(s : const string)
+  + Lreal(r : double)
+  + setReal(r : double) : Lreal*
+  + getValue() : double
   + toString() const : const string
   + getCopy() const : Expression*
+  + simplifyType() : Expression*
+  + ~Lreal()
 }
-OperatorLogic <|--- OperatorGeq
+Lnumerical <|-- Lreal
+R1value <|-- Lreal
 
-class OperatorLeq {
-  + OperatorLeq()
-  + toString() const : const string
-  + getCopy() const : Expression*
+class LrealFactory {
+  + isSameType(s : const string) const : bool
+  + createExpressionFromString(s : const string) : Lreal*
 }
-OperatorLogic <|--- OperatorLeq
-
-class OperatorGt {
-  + OperatorGt()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorLogic <|-- OperatorGt
-
-class OperatorLt {
-  + OperatorLt()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorLogic <|-- OperatorLt
-
-class OperatorDiff {
-  + OperatorDiff()
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-OperatorLogic <|-- OperatorDiff
-
-class OperatorCLEAR {
-  + OperatorCLEAR()
-  + executeOpe(e : vector<Expression*>)
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-Operator <|-- OperatorCLEAR
-
-class OperatorSWAP {
-  + OperatorSWAP()
-  + executeOpe(e : vector<Expression*>)
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-Operator <|-- OperatorSWAP
-
-class OperatorDROP {
-  + OperatorDROP()
-  + executeOpe(e : vector<Expression*>)
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-Operator <|--- OperatorDROP
-
-class OperatorDUP {
-  + OperatorDUP()
-  + executeOpe(e : vector<Expression*>)
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-Operator <|--- OperatorDUP
-
-class OperatorEVAL {
-  + OperatorEVAL()
-  + executeOpe(e : vector<Expression*>)
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-Operator <|---- OperatorEVAL
-
-class OperatorSTO {
-  + OperatorSTO()
-  + executeOpe(e : vector<Expression*>)
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-Operator <|---- OperatorSTO
-
-class OperatorFORGET {
-  + OperatorFORGET()
-  + executeOpe(e : vector<Expression*>)
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-Operator <|----- OperatorFORGET
-
-class OperatorTYPE {
-  + OperatorTYPE()
-  + executeOpe(e : vector<Expression*>)
-  + toString() const : const string
-  + getCopy() const : Expression*
-}
-Operator <|----- OperatorTYPE
+ExpressionFactory <|-- LrealFactory
+Lreal "*" -- "1" LrealFactory
 }
 }
 @enduml
