@@ -1,4 +1,5 @@
 @startuml
+package Engine {
 class Expression {
 }
 
@@ -39,6 +40,18 @@ class OperatorAritUnary {
 }
 Operator <|-left- OperatorAritUnary
 OperatorAritUnary --- ActionUnary
+
+abstract class ActionBinary {
+  + {virtual} executeActionBinary(L1 : Expression*, L2 : Expression*) : Expression*
+  + {virtual} ~ActionBinary()
+  + {virtual} getCopy() const : ActionBinary*
+}
+
+abstract class ActionUnary {
+  + {virtual} executeActionUnary(L : Expression*) : Expression*
+  + {virtual} ~ActionUnary()
+  + {virtual} getCopy() const : ActionUnary*
+}
 
 class OperatorPLUS {
   + OperatorPLUS()
@@ -195,7 +208,7 @@ class OperatorWHILE {
   + setDeepLimit(i : const unsigned int)
   + toString() const : const string
   + getCopy() const : Expression*
-  + executeOpe(e : vector<Expression*>) 
+  + executeOpe(e : vector<Expression*>)
 }
 Operator <|-- OperatorWHILE
 
@@ -220,6 +233,12 @@ class OperatorLogic {
 }
 Operator <|------ OperatorLogic
 OperatorLogic -- LogicTest
+
+abstract class LogicTest {
+  + {virtual} test(E1 : Expression*, E2 : Expression*) const : bool
+  + {virtual} ~LogicTest()
+  + {virtual} getCopy() const : LogicTest*
+}
 
 class OperatorAnd {
   + OperatorAnd()
@@ -247,21 +266,21 @@ class OperatorEq {
   + toString() const : const string
   + getCopy() const : Expression*
 }
-OperatorLogic <|-left- OperatorEq
+OperatorLogic <|-up- OperatorEq
 
 class OperatorGeq {
   + OperatorGeq()
   + toString() const : const string
   + getCopy() const : Expression*
 }
-OperatorLogic <|---- OperatorGeq
+OperatorLogic <|--- OperatorGeq
 
 class OperatorLeq {
   + OperatorLeq()
   + toString() const : const string
   + getCopy() const : Expression*
 }
-OperatorLogic <|---- OperatorLeq
+OperatorLogic <|--- OperatorLeq
 
 class OperatorGt {
   + OperatorGt()
@@ -347,5 +366,6 @@ class OperatorTYPE {
   + getCopy() const : Expression*
 }
 Operator <|----- OperatorTYPE
+}
 }
 @enduml
