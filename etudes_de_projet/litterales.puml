@@ -6,7 +6,7 @@ class Expression {
 class ExpressionFactory{
 }
 
-package Littérales {
+package Litterales {
 class Latom {
   - atom : string
   + Latom(s : const string)
