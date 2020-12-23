@@ -4,6 +4,8 @@
 #include <string>
 
 namespace Engine {
+
+// Un atom est un identifiant potentiel associe a un Lprogram pour Lnumerical
 class Latom : public Expression
 {
     std::string atom;

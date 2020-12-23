@@ -315,7 +315,7 @@
           <item>
            <widget class="QPushButton" name="ButtonIFTE">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
@@ -328,7 +328,7 @@
           <item>
            <widget class="QPushButton" name="ButtonWHILE">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
@@ -457,7 +457,7 @@
           <item>
            <widget class="QPushButton" name="ButtonNUM">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
@@ -476,7 +476,7 @@
           <item>
            <widget class="QPushButton" name="ButtonDEN">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
@@ -493,7 +493,7 @@
           <item>
            <widget class="QPushButton" name="ButtonSQRT">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
@@ -506,7 +506,7 @@
           <item>
            <widget class="QPushButton" name="ButtonPOW">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
@@ -526,7 +526,7 @@
           <item>
            <widget class="QPushButton" name="ButtonLN">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
@@ -539,7 +539,7 @@
           <item>
            <widget class="QPushButton" name="ButtonEXP">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
@@ -565,7 +565,7 @@
           <item>
            <widget class="QPushButton" name="ButtonSIN">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
@@ -578,7 +578,7 @@
           <item>
            <widget class="QPushButton" name="ButtonCOS">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
@@ -591,7 +591,7 @@
           <item>
            <widget class="QPushButton" name="ButtonTAN">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
@@ -608,7 +608,7 @@
           <item>
            <widget class="QPushButton" name="ButtonARCCOS">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
@@ -621,7 +621,7 @@
           <item>
            <widget class="QPushButton" name="ButtonARCSIN">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
@@ -634,7 +634,7 @@
           <item>
            <widget class="QPushButton" name="ButtonARCTAN">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>

@@ -4,6 +4,8 @@
 #include "../expression.h"
 
 namespace Engine {
+
+// Classe abstraite des litterales numeriques
 class Lnumerical : public Expression
 {
 public:
@@ -13,6 +15,7 @@ public:
     virtual Expression* simplifyType() = 0;
 };
 
+//  Classe permettant de creer un polymorphisme avec Lnumerical, indique le domaine dans lequel la Lnumerical est
 class R1value
 {
 public:

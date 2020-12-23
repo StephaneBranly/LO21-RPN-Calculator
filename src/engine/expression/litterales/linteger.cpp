@@ -7,7 +7,7 @@ Engine::Linteger::Linteger(const Linteger& li): Lnumerical("Linteger"),value(li.
 
 Engine::Linteger::Linteger(const std::string s): Lnumerical("Linteger"){
     try {
-        value = std::stoi(s);
+        value = std::stoi(s); // on essaye de convertir de String vers Integer
     }
     catch (const std::invalid_argument& ia) {
         throw ComputerException("Argument invalide.");

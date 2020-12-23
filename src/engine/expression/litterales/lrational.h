@@ -4,6 +4,9 @@
 #include "../../exception/CompException.h"
 
 namespace Engine {
+
+// Type Lrational, est une Lnumerical dans le domaine R1 (herite de R1value)
+// herite de editString quand son affichage n'est pas le meme que sa chaine de genereation (3/5 se genere avec 3 5 /)
 class Lrational  : public Lnumerical, public R1value, public editString
 {
     int numerator;

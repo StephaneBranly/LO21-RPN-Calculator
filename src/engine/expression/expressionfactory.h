@@ -6,6 +6,8 @@
 #include "expression.h"
 
 namespace Engine {
+
+// Classe abstraite de Factory
 class ExpressionFactory
 {
 public:

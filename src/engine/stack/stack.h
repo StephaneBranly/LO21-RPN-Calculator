@@ -6,6 +6,8 @@
 #include <list>
 
 namespace  Engine {
+
+// Classe pile encapsulant un vector
 class Stack {
 public :
     Stack() = default;

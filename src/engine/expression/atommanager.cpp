@@ -21,6 +21,7 @@ Engine::Expression* Engine::AtomManager::getExpressionFromString(const std::stri
         return atoms.at(s)->getCopy();
     throw ComputerException("Il n'existe pas d'atom "+s);
 }
+
 void Engine::AtomManager::removeAtom(const std::string s)
 {
     if(alreadyExists(s))

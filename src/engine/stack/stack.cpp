@@ -3,6 +3,9 @@
 #include "../expression/expression.h"
 
 #include <QDebug>
+
+// Notification a chaque changement d'etat de la pile
+
 Engine::Expression* Engine::Stack::pop()
 {
     Expression* item = this->top();

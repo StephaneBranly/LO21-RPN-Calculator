@@ -17,6 +17,7 @@ QT_END_NAMESPACE
 
 class Variable;
 
+// Widget affichant les variables de l'utilisateur
 class Variables : public QWidget
 {
     Q_OBJECT
@@ -41,6 +42,7 @@ signals:
     void editAtom(const QString s);
 };
 
+// Widget de cette fenetre
 class Variable : public QWidget
 {
     Q_OBJECT

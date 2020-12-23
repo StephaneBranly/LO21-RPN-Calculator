@@ -4,6 +4,7 @@
 #include <list>
 #include <string>
 
+// Sujet pouvant etre observe
 class Subject
 {
 public:

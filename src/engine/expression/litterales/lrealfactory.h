@@ -6,6 +6,8 @@
 #include "lreal.h"
 
 namespace Engine {
+
+// Factory reconnaissant et creant des Lreal
     class LrealFactory : public ExpressionFactory
     {
     public:

@@ -15,6 +15,7 @@ QT_END_NAMESPACE
 
 class SaveWindowItem;
 
+// Fenetre de sauvegarde
 class SaveWindow : public QDialog
 {
     Q_OBJECT
@@ -37,6 +38,7 @@ signals:
     void needAtomValue();
 };
 
+// Items composant cette fenetre
 class SaveWindowItem : public QWidget
 {
     Q_OBJECT

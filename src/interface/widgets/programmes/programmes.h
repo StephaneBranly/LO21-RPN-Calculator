@@ -15,6 +15,7 @@ QT_END_NAMESPACE
 
 class Program;
 
+// Widget affichant les programmes de l'utilisateur
 class Programmes : public QWidget
 {
     Q_OBJECT
@@ -39,6 +40,7 @@ signals:
     void editAtom(const QString s);
 };
 
+// Item program
 class Program : public QWidget
 {
     Q_OBJECT

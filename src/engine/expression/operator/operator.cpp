@@ -2,6 +2,10 @@
 #include "../../computerengine.h"
 #include "../../exception/CompException.h"
 
+
+// L'evaluation regarde s'il y a assez d'items dans la pile (en comparant avec l'arrite)
+// Puis appele l'execution de l'operateur en envoyant les elements depiles
+// S'occupe de rempiler en cas d'erreur
 void Engine::Operator::eval()
 {
     Stack& p = ComputerEngine::getInstance().getStack();

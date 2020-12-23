@@ -5,7 +5,7 @@
 #include "../litterales/lprogram.h"
 
 
-
+// Execute a si condition est vraie
 void::Engine::OperatorIFT::executeOpe(vector<Expression*> e){
     R1value* a=dynamic_cast<R1value*>(e[1]);
 
@@ -24,6 +24,7 @@ void::Engine::OperatorIFT::executeOpe(vector<Expression*> e){
         throw ComputerException(e[1]->toString()+" n'est pas le résultat d'un test logique...");
 }
 
+// Execute a si condition est vraie, b sinon
 void::Engine::OperatorIFTE::executeOpe(vector<Expression*> e){
     R1value* a=dynamic_cast<R1value*>(e[2]);
 
@@ -45,6 +46,7 @@ void::Engine::OperatorIFTE::executeOpe(vector<Expression*> e){
         throw ComputerException(e[2]->toString()+" n'est pas le résultat d'un test logique...");
 }
 
+// boucle le tant que la condition est valide
 void::Engine::OperatorWHILE::executeOpe(vector<Expression*> e){
     Stack& p = ComputerEngine::getInstance().getStack();
 
@@ -56,17 +58,12 @@ void::Engine::OperatorWHILE::executeOpe(vector<Expression*> e){
     {
         if(a!=nullptr)
         {
-            qDebug()<<"Valeur";
-            qDebug()<<(int)a->getValue();
             if(a->getValue()!=0)
             {
-                qDebug()<<QString::fromStdString(exp->toString())+" A EXECUTER";
-
                 if(toEval!=nullptr)
                     dynamic_cast<ExplicitEval*>(exp->getCopy())->explicitEval();
                 else
                     exp->getCopy()->eval();
-                qDebug()<<p.size();
                 if(p.size()>0)
                     a = dynamic_cast<R1value*>(p.pop());
                 else

@@ -7,6 +7,7 @@
 #include "../observer/observer.h"
 #include <string>
 
+// Permet de faire la connection entre l'Engine et l'Interfarce
 class Connector : public Observer
 {
 public:

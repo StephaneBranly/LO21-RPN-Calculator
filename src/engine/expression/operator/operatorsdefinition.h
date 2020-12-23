@@ -4,6 +4,8 @@
 #include "operator.h"
 
 namespace Engine {
+
+// Definition des differents  operateurs affectant la pile, atoms, ...
 class OperatorCLEAR : public Operator {
 public:
     OperatorCLEAR(): Operator("OperatorCLEAR",0){}

@@ -13,7 +13,10 @@ Engine::Latom* Engine::Latom::setLatom(std::string s){
     return this;
 }
 
-
+// L'evaluation d'un atom
+// - empile la Lexpression si l'atom n'est pas defini
+// - execute le Lprogram (de maniere explicite) si la Latom est associee a un Lprogram
+// - evalue l'Expression associee a la Latom sinon
 void Engine::Latom::eval(){
     AtomManager& a = ComputerEngine::getInstance().getAtomManager();
     if(a.alreadyExists(atom))
@@ -24,7 +27,7 @@ void Engine::Latom::eval(){
             Lprogram* prog = dynamic_cast<Lprogram*>(e);
             prog->explicitEval();
         }
-        else if(1)
+        else
         {
             e->eval();
         }

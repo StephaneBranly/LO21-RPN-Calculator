@@ -5,6 +5,8 @@
 #include "linteger.h"
 
 namespace Engine {
+
+// Lreal, est une Lnumerical dans le domaine R1 (herite de R1 value)
 class Lreal : public Lnumerical, public R1value
 {
     double real;

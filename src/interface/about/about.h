@@ -8,6 +8,8 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class About; }
 QT_END_NAMESPACE
 
+
+// Fenetre d'infos
 class About : public QDialog
 {
     Q_OBJECT

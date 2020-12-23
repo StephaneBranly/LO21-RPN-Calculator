@@ -7,6 +7,9 @@
 #include <string>
 #include <string>
 namespace Engine {
+
+// AtomManager, s'occupe de la gestion de stockage de Lnumerical et Lprogram associes a un nom.
+// Stocke dans atoms qui est un map de NomAtoms, Pointeur vers Expression
 class AtomManager
 {
     std::map<std::string, Expression*> atoms;

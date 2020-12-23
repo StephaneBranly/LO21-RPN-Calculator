@@ -9,6 +9,7 @@
 
 Connector::Connector(Mainwindow& w, Engine::ComputerEngine& e) : window(w), engine(e)
 {
+    // Connexion du connector a l'Engine et a l'Interface
     window.show();
     window.attach(this);
     engine.getInstance().attach(this);
@@ -16,6 +17,8 @@ Connector::Connector(Mainwindow& w, Engine::ComputerEngine& e) : window(w), engi
 
 void Connector::notify(const std::string &message)
 {
+    // Filtrage des differents messages pouvant etre recus.
+    // Et communication entre les deux parties pour transmettre correctement les informations
     if(message=="clickEval")
     {
         const std::string content = window.getContentCommandLine().toStdString();

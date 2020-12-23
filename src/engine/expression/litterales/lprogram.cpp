@@ -9,6 +9,7 @@ Engine::Lprogram::Lprogram(const Lprogram& p): Expression("Lprogram")
         content.push_back((*it)->getCopy());
     }
 }
+
 const std::string Engine::Lprogram::toString() const
 {
     std::string str = "[";
@@ -24,7 +25,7 @@ const std::string Engine::Lprogram::toEditString() const
     std::string str = "[";
     for(auto it = content.begin(); it!=content.end();++it)
     {
-        if(dynamic_cast<editString*>(*it)==nullptr)
+        if(dynamic_cast<editString*>(*it)==nullptr) // Ici on fait attention a prendre le toEditString() si le string d'edition de l'expression est different de celui d'affichage
             str+=" "+(*it)->toString();
         else
             str+=" "+dynamic_cast<editString*>(*it)->toEditString();
@@ -38,6 +39,7 @@ void Engine::Lprogram::eval()
     Engine::ComputerEngine::getInstance().getStack().push(this);
 }
 
+// Evaluation de toutes ses Expressions
 void Engine::Lprogram::explicitEval()
 {
     for(auto it = content.begin(); it!=content.end();++it)

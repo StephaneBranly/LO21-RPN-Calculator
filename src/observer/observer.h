@@ -3,6 +3,7 @@
 
 #include <string>
 
+// Observer sur un objet
 class Observer
 {
 public:

@@ -8,6 +8,9 @@
 using namespace std;
 
 namespace Engine {
+
+// Classe abstraite des operateurs
+// Comporte une arrite qui permet de verifier automatiquement la possibilite d'executer l'operation avant de l'execute
     class Operator : public Expression {
         size_t arrity;
     public :

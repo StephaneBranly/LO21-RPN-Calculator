@@ -9,9 +9,10 @@
 using namespace std;
 
 namespace  Engine{
+
+// Classe du manager d'expression, contient la factory d'expressions
 class ExpressionManager{
 private:
-    list<Expression*> exps;
     ExpressionAbstractFactory* factory;
     std::string contentEval;
 public :
@@ -21,7 +22,6 @@ public :
     vector<string> split(const string& text, char delimiter);
     Expression* createExpressionFromString (const string s);
     ExpressionAbstractFactory* getFactory(){ return factory; }
-    ~ExpressionManager();
 };
 }
 

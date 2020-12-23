@@ -5,6 +5,9 @@
 #include "operator.h"
 
 namespace Engine {
+
+// Factory d'operateurs, contient un map de nomOperateur, Pointeur vers l'operateur
+// Permet de reconnaitre si un string est un operateur, et de le generer
     class OperatorFactory : public ExpressionFactory
     {
     private:
