@@ -1,12 +1,10 @@
 @startuml
-class QWidget{}
-class Subject{}
-class QMainWindow{}
-class QLabel{}
-class QDialog{}
+class Subject
+class QMainWindow
+class QLabel
+class QDialog
 
 package Interface <<Folder>>{
-
 
 class Pile {
     - ui : Pile*
@@ -21,7 +19,7 @@ class Pile {
 
 class Commandline{
     - ui : Commandline*
-    - textContent : QString 
+    - textContent : QString
     - clock : QTimer*
     - cursor : bool = false
     + Commandline(parent : QWidget*)
@@ -32,17 +30,17 @@ class Commandline{
     + updateText()
     + getText() const : QString
 }
-    
-    
+
+
 class KeyboardFunctions{
    - ui : KeyboardFunctions*
    - dock : QDockWidget*
    - signalMapper : QSignalMapper*
    + KeyboardFunctions(parent : QMainWindow*)
    + ~KeyboardFunctions()
-   + getDock() const : QDockWidget* 
+   + getDock() const : QDockWidget*
 }
-    
+
 
 class KeyboardNumeric{
    - ui : KeyboardNumeric*
@@ -50,20 +48,20 @@ class KeyboardNumeric{
    - signalMapper : QSignalMapper*
    + KeyboardNumeric(parent : QMainWindow*)
    + ~KeyboardNumeric()
-   + getDock() const : QDockWidget* 
+   + getDock() const : QDockWidget*
 }
-    
-    
+
+
 class Programmes{
   - ui : Programmes*
-  - dock : QDockWidget* 
+  - dock : QDockWidget*
   - progs : list<Program*>
   + Programmes(parent : QMainWindow*)
   + ~Programmes()
   + getDock() const : QDockWidget*
   + updateProgs(li : list<QString>)
 }
-  
+
 class Program{
   - parent : Programmes*
   - name : QString
@@ -73,12 +71,12 @@ class Program{
   - label : QLabel*
   - editLabel : ClickableLabel*
   + Program(v : Programmes*, name : const QString)
-} 
+}
 
-  
-class Variables{ 
+
+class Variables{
   - ui : Variables*
-  - dock : QDockWidget* 
+  - dock : QDockWidget*
   - vars : list<Variable*>
   + Variables(parent : QMainWindow*)
   + ~Variables()
@@ -99,12 +97,12 @@ class Variable {
 
 class Mainwindow{
     - ui : Mainwindow*
-    - commandline : Commandline* 
-    - pile : Pile* 
-    - keyboardnumeric : KeyboardNumeric* 
-    - keyboardfunctions : KeyboardFunctions* 
-    - programmes : Programmes* 
-    - variables : Variables* 
+    - commandline : Commandline*
+    - pile : Pile*
+    - keyboardnumeric : KeyboardNumeric*
+    - keyboardfunctions : KeyboardFunctions*
+    - programmes : Programmes*
+    - variables : Variables*
     - editAtomDialog : EditAtom*
     - buffer : QString
     - settings : Settings*
@@ -118,10 +116,9 @@ class Mainwindow{
     + setBuffer(s : QString)
     + setMessage(m:const QString)
     + updateAtoms(l : const list<tuple<QString, QString, QString>>)
-    + updateStacks(m : const list<QString>) 
+    + updateStacks(m : const list<QString>)
 }
-    
-class QMainWindow{}
+
 
 class ClickableLabel {
   - refName : QString =""
@@ -174,6 +171,8 @@ class About {
 }
 
 
+class QWidget
+
 QWidget <|-- Programmes
 QWidget <|-- Program
 QWidget <|-- KeyboardNumeric
@@ -183,18 +182,18 @@ QWidget <|-- Variables
 QWidget <|-- Variable
 QWidget <|-- Commandline
 QWidget <|-- SaveWindowItem
-QDialog <|-up- Settings
-QDialog <|-left- SaveWindow
-QDialog <|-right- EditAtom
-QDialog <|-down- About
-Mainwindow "1" *-- "0..*" QWidget
+QDialog <|--- Settings
+QDialog <|-- SaveWindow
+QDialog <|-- EditAtom
+QDialog <|--- About
+Mainwindow *-- QWidget
 QMainWindow <|-- Mainwindow
 Subject <|-- Mainwindow
-QLabel <|-- ClickableLabel
+QLabel <|--- ClickableLabel
 Programmes o-- Program
 Variables o-- Variable
 SaveWindow o-- SaveWindowItem
 
-
 }
+
 @enduml
