@@ -1,0 +1,148 @@
+@startuml
+class Subject {
+}
+class exception {
+}
+
+
+
+package Engine {
+
+package Exception {
+
+class ComputerException {
+  # info : string
+  + ComputerException(str : const string&)
+  + what() const : const char*
+  + ~ComputerException()
+}
+exception <|-- ComputerException
+}
+
+class ComputerEngine {
+  - stack : Stack
+  - expressionManager : ExpressionManager
+  - atomManager : AtomManager
+  - {static} hand : Handler
+  + ComputerEngine()
+  + getStack() : Stack&
+  + getExpressionManager() : ExpressionManager&
+  + getAtomManager() : AtomManager&
+  + {static} getInstance() : ComputerEngine&
+}
+Subject <|-- ComputerEngine
+ComputerEngine *-- Stack
+ComputerEngine *-- ExpressionManager
+ComputerEngine *-- AtomManager
+ComputerEngine *-- Handler
+
+class Handler{
+  + instance : ComputerEngine*
+  + ~Handler()
+}
+ComputerEngine *-- Handler
+
+package Stack {
+class Stack {
+  - items : vector<Expression*>
+  + Stack()
+  + ~Stack()
+  + push(item : Expression*)
+  + clear()
+  + swap()
+  + pop() : Expression*
+  + isEmpty() const : bool
+  + size() const : size_t
+  + top() const : Expression*
+  + toStringList() : list<string>
+}
+Stack "1" -- "*" Expression
+}
+
+package Expression {
+class ExpressionManager {
+  - exps : list<Expression*>
+  - factory : ExpressionAbstractFactory*
+  - contentEval : string
+  + ExpressionManager()
+  + evalCommandLine(str : const string)
+  + getContentEval() const : const string
+  + split(text : const string&, delimiter : char) : vector<string>
+  + createExpressionFromString (s : const string) : Expression*
+  + getFactory() : ExpressionAbstractFactory*
+  + ~ExpressionManager()
+}
+ExpressionManager "1" -- "*" Expression
+ExpressionManager "1" -- "1" ExpressionAbstractFactory
+
+abstract class ExpressionFactory {
+  + ExpressionFactory()
+  + {virtual} isSameType(s : const string) const : bool
+  + {virtual} createExpressionFromString(s : const string) : Expression*
+}
+
+class ExpressionAbstractFactory {
+  - operatorFactory : OperatorFactory*
+  - factories : list<ExpressionFactory*>
+  + ExpressionAbstractFactory()
+  + createExpressionFromString(s : const string) const
+  + registerFactory(factory : ExpressionFactory*)
+  + getOperatorFactory() const : OperatorFactory*
+}
+ExpressionAbstractFactory "1" -- "1" OperatorFactory
+ExpressionAbstractFactory "1" -- "*" ExpressionFactory
+
+abstract class Expression {
+  # type : string = "Expression"
+  + Expression(type : const string)
+  + {virtual} eval()
+  + {virtual} toString() const : const string
+  + getType() const : const string
+  + {virtual} getCopy() const : Expression*
+  + {virtual} ~Expression()
+}
+
+class ExplicitEval {
+  + {virtual} explicitEval()
+}
+
+class AtomManager {
+  - atoms : map<string, Expression*>
+  + alreadyExists(name : const string) : bool
+  + getExpressionFromAtom(a : const Latom*) : Expression*
+  + getExpressionFromString(s : const string) : Expression*
+  + removeAtom(name : const string)
+  + addAtom(name : const string, expression : Expression*)
+  + toTupleStringList() : list<tuple<string, string, string>>
+}
+AtomManager "1" -- "*" Expression
+
+package Operator {
+abstract class Operator {
+  - arrity : size_t
+  + Operator(type : const string, arrity : const size_t)
+  + getArrity() const : size_t
+  + {virtual} executeOpe(e : vector<Expression*>)
+  + eval()
+  + {virtual} getCopy() const : Expression*
+  + {virtual} ~Operator()
+}
+Expression <|-- Operator
+
+class OperatorFactory {
+  - operators : map<string, Operator*>
+  + isSameType(s : const string) const : bool
+  + createExpressionFromString(s : const string) const : Expression*
+  + addOperator(name : const string, ope : Operator*)
+  + removeOperator(name : const string)
+}
+ExpressionFactory <|- OperatorFactory
+OperatorFactory "1" -- "*" Operator
+}
+
+package Litterales {
+
+}
+
+}
+@enduml
