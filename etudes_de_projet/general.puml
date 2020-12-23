@@ -20,11 +20,15 @@ class Connector {
 }
 
 package Engine {
-class ComputerEngine {}
+class ComputerEngine {
+
+}
 }
 
 package Interface {
-class Mainwindow
+class Mainwindow {
+  
+}
 }
 
 Observer <|-- Connector
