@@ -1,0 +1,199 @@
+@startuml
+class Subject
+class QMainWindow
+class QLabel
+class QDialog
+
+package Interface <<Folder>>{
+
+class Pile {
+    - ui : Pile*
+    - size : size_t = 5
+    + Pile(parent : QWidget*)
+    + ~Pile()
+    + setMessage(m : const QString = "")
+    + updateContent(content : const list<QString>)
+    + updateSize(t : size_t)
+    + getSize() const : size_t
+}
+
+class Commandline{
+    - ui : Commandline*
+    - textContent : QString
+    - clock : QTimer*
+    - cursor : bool = false
+    + Commandline(parent : QWidget*)
+    + ~Commandline()
+    + addText(str : const QString)
+    + clearText()
+    + backspace()
+    + updateText()
+    + getText() const : QString
+}
+
+
+class KeyboardFunctions{
+   - ui : KeyboardFunctions*
+   - dock : QDockWidget*
+   - signalMapper : QSignalMapper*
+   + KeyboardFunctions(parent : QMainWindow*)
+   + ~KeyboardFunctions()
+   + getDock() const : QDockWidget*
+}
+
+
+class KeyboardNumeric{
+   - ui : KeyboardNumeric*
+   - dock : QDockWidget*
+   - signalMapper : QSignalMapper*
+   + KeyboardNumeric(parent : QMainWindow*)
+   + ~KeyboardNumeric()
+   + getDock() const : QDockWidget*
+}
+
+
+class Programmes{
+  - ui : Programmes*
+  - dock : QDockWidget*
+  - progs : list<Program*>
+  + Programmes(parent : QMainWindow*)
+  + ~Programmes()
+  + getDock() const : QDockWidget*
+  + updateProgs(li : list<QString>)
+}
+
+class Program{
+  - parent : Programmes*
+  - name : QString
+  - content : QString
+  - button : QPushButton*
+  - layout : QHBoxLayout*
+  - label : QLabel*
+  - editLabel : ClickableLabel*
+  + Program(v : Programmes*, name : const QString)
+}
+
+
+class Variables{
+  - ui : Variables*
+  - dock : QDockWidget*
+  - vars : list<Variable*>
+  + Variables(parent : QMainWindow*)
+  + ~Variables()
+  + getDock() const : QDockWidget*
+  + updateVars(li : const list<QString>)
+}
+
+class Variable {
+  - parent : Variables*
+  - name : QString
+  - content : QString
+  - button : QPushButton*
+  - layout : QHBoxLayout*
+  - label : QLabel*
+  - editLabel : ClickableLabel*
+  + Variable(v : Variables*, name : const QString)
+}
+
+class Mainwindow{
+    - ui : Mainwindow*
+    - commandline : Commandline*
+    - pile : Pile*
+    - keyboardnumeric : KeyboardNumeric*
+    - keyboardfunctions : KeyboardFunctions*
+    - programmes : Programmes*
+    - variables : Variables*
+    - editAtomDialog : EditAtom*
+    - buffer : QString
+    - settings : Settings*
+    - about : About*
+    - saveW : SaveWindow*
+    # keyPressEvent(ev : QKeyEvent*)
+    + Mainwindow(parent : QWidget*)
+    + ~Mainwindow()
+    + getContentCommandLine() const : const QString
+    + const QString getBuffer() const
+    + setBuffer(s : QString)
+    + setMessage(m:const QString)
+    + updateAtoms(l : const list<tuple<QString, QString, QString>>)
+    + updateStacks(m : const list<QString>)
+}
+
+
+class ClickableLabel {
+  - refName : QString =""
+  # mousePressEvent(event : QMouseEvent*)
+  + setRefName(s : QString)
+  + {explicit} ClickableLabel(parent : QWidget*, f : WindowFlags)
+  + ~ClickableLabel()
+}
+
+class Settings {
+  - ui : Settings*
+  + {explicit} Settings(parent : QWidget*)
+  + ~Settings()
+  + setInputValue(s : const size_t)
+}
+
+class SaveWindow {
+  - *ui : SaveWindow
+  - atoms : list<SaveWindowItem*>
+  - buffer : QString
+  + {explicit} SaveWindow(p : QWidget*)
+  + ~SaveWindow()
+  + setBuffer(s : const QString)
+  + getBuffer() const : QString
+}
+
+class SaveWindowItem {
+  - name : QString
+  - checkbox : QCheckBox*
+  - layout : QHBoxLayout*
+  - label : QLabel*
+  + {explicit} SaveWindowItem(parent : QWidget*, valueName : const QString)
+  + isChecked() const : bool
+  + getAtomName() const : QString
+}
+
+class EditAtom {
+  + {explicit} EditAtom(parent : QWidget*)
+  + ~EditAtom()
+  + setAtomName(: const QString)
+  + setAtomValue(: const QString)
+  - ui : EditAtom*
+  - oldName : QString
+}
+
+class About {
+  - ui : About*
+  + {explicit} About(parent : QWidget*)
+  + ~About()
+}
+
+
+class QWidget
+
+QWidget <|-- Programmes
+QWidget <|-- Program
+QWidget <|-- KeyboardNumeric
+QWidget <|-- KeyboardFunctions
+QWidget <|-- Pile
+QWidget <|-- Variables
+QWidget <|-- Variable
+QWidget <|-- Commandline
+QWidget <|-- SaveWindowItem
+QDialog <|--- Settings
+QDialog <|-- SaveWindow
+QDialog <|-- EditAtom
+QDialog <|--- About
+Mainwindow *-- QWidget
+QMainWindow <|-- Mainwindow
+Subject <|-- Mainwindow
+QLabel <|--- ClickableLabel
+Programmes o-- Program
+Variables o-- Variable
+SaveWindow o-- SaveWindowItem
+
+}
+
+@enduml

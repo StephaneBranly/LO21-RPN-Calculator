@@ -1,0 +1,40 @@
+@startuml
+class Observer {
+  + ~Observer()
+  + {virtual} notify(message : const string&)
+}
+
+class Subject {
+  - listObserver : list<Observer*>
+  + notify(message : const string&)
+  + attach(obs : Observer*)
+  + detach(obs : Observer*)
+}
+
+
+class Connector {
+  - window : Mainwindow&
+  - engine : ComputerEngine&
+  + Connector(w : Mainwindow&, engine : ComputerEngine&)
+  + notify(&message : const string)
+}
+
+package Engine {
+class ComputerEngine {
+
+}
+}
+
+package Interface {
+class Mainwindow {
+  
+}
+}
+
+Observer <|-- Connector
+Connector -- Mainwindow
+Connector -- ComputerEngine
+Subject -- Observer
+Subject <|-- Mainwindow
+Subject <|-- ComputerEngine
+@enduml
